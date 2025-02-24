@@ -1,0 +1,8 @@
+---
+toc: true
+title: Configuration - Default
+---
+
+In order to generate and `instance_tag` and a `type_tag` a configuration `MUST` be defined.
+Where not given, the `bdns-plus` default configuration will be used.
+
