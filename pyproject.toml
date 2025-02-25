@@ -17,14 +17,25 @@ platforms = ["linux-64"]
 [tool.pixi.pypi-dependencies]
 bdns_plus = { path = ".", editable = true }
 
+[tool.pixi.feature.docs.dependencies]
+quarto = "*"
+
+[tool.pixi.feature.package.dependencies]
+hatch = "*"
+
 [tool.pixi.environments]
 docs = ["docs"]
+package = {features = ["package"], no-default-feature = true}
 
 [tool.pixi.tasks]
 test = "pytest"
 
 [tool.pixi.feature.docs.tasks]
 build-docs = { cmd = "quarto render .", cwd = "docs" }
+
+[tool.pixi.feature.package.tasks]
+build = "hatch build"
+# publish = "hatch publish -u __token__ -a <your-pypi-token>"
 
 [tool.pixi.dependencies]
 frictionless = ">=5.18.0,<6"
@@ -34,5 +45,4 @@ pytest = "*"
 pydantic-extra-types = ">=2.10.2,<3"
 pycountry = ">=24.6.1,<25"
 
-[tool.pixi.feature.docs.dependencies]
-quarto = "*"
+

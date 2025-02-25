@@ -2,7 +2,7 @@
 # pixi environments
 .pixi
 *.egg-info
-
+dist/*
 src/bdns_plus/__pycache__/*
 tests/__pycache__/*
 docs/_site/*
