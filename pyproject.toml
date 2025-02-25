@@ -20,8 +20,6 @@ bdns_plus = { path = ".", editable = true }
 [tool.pixi.environments]
 docs = ["docs"]
 
-
-
 [tool.pixi.tasks]
 test = "pytest"
 
