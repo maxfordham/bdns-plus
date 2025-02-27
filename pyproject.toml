@@ -28,7 +28,7 @@ docs = ["docs"]
 package = {features = ["package"], no-default-feature = true}
 
 [tool.pixi.tasks]
-test = "pytest"
+tests = "pytest"
 
 [tool.pixi.feature.docs.tasks]
 build-docs = { cmd = "quarto render .", cwd = "docs" }
@@ -36,6 +36,7 @@ build-docs = { cmd = "quarto render .", cwd = "docs" }
 [tool.pixi.feature.package.tasks]
 build = "hatch build"
 # publish = "hatch publish -u __token__ -a <your-pypi-token>"
+# ship  = {depends-on = ["build", "publish"]}
 
 [tool.pixi.dependencies]
 frictionless = ">=5.18.0,<6"
@@ -44,5 +45,6 @@ annotated-types = ">=0.7.0,<0.8"
 pytest = "*"
 pydantic-extra-types = ">=2.10.2,<3"
 pycountry = ">=24.6.1,<25"
+pydantic-settings = ">=2.8.0,<3"
 
 

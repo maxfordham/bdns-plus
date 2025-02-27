@@ -1,27 +1,15 @@
 from bdns_plus.models import Config
-from typing import Annotated
+
+MAX_LEVELS = 100
+MAX_VOLUMES = 9
 
 def test_config():
     config = Config()
-    assert len(config.levels) == 100
-    assert len(config.volumes) == 9
+    assert len(config.levels) == MAX_LEVELS, "default levels found."
+    assert len(config.volumes) == MAX_VOLUMES, "default volumes found."
     assert config.level_no_digits == 2
     assert config.volume_no_digits == 1
-
-# def test_country_validator():
-#     value = "EN"
-#     from pydantic_extra_types.country import CountryAlpha2
-#     # EvenNumber = Annotated[int, AfterValidator(is_even)]
-#     check = CountryAlpha2(value)
-#     assert check
-
-#     value = "ASDF"
-#     from pydantic_extra_types.country import CountryAlpha2
-#     # EvenNumber = Annotated[int, AfterValidator(is_even)]
-#     check = CountryAlpha2(value)
-#     assert not check
-
-
+    assert config.is_bdns_plus_default
 
 def test_pycountry():
     import pycountry

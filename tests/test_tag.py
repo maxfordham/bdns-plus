@@ -1,5 +1,5 @@
-from bdns_plus.tag import build_tag, bdns_tag
-from bdns_plus.models import TagField, Tag, BdnsTag
+from bdns_plus.models import BdnsTag, BdnsTagWithType, TagDef, TagField
+from bdns_plus.tag import Tag, build_tag
 
 f = TagField(
     field_name="instance_reference",
@@ -9,23 +9,24 @@ f = TagField(
     zfill=1,
 )
 
-tag = Tag(
+tag = TagDef(
     name="test",
     description="test tag",
     fields=[
         TagField(field_name="field1"),
         TagField(field_name="field2"),
         TagField(field_name="field3"),
-    ]
+    ],
 )
 
-def test_bdns_tag():
+def test_build_tag():
+    tag_def = BdnsTag()
     data = {
         "abbreviation": "ABBR",
         "instance_reference": "1",
         "instance_extra": "example",
     }
-    tag = bdns_tag(data, gen_iref=False)
+    tag = build_tag(data, tag=tag_def, gen_iref=False)
     assert isinstance(tag, str)
     assert tag == "ABBR-1_example"
 
@@ -35,12 +36,12 @@ def test_bdns_tag():
         "InstanceReference": 1,
         "InstanceExtra": "example",
     }
-    tag = bdns_tag(data, gen_iref=False)
+    tag = build_tag(data, tag=tag_def, gen_iref=False)
     assert tag == "ABBR-1_example"
-    tag = bdns_tag(data, include_type=True, gen_iref=False)
+    tag = build_tag(data, tag=BdnsTagWithType(), gen_iref=False)
     assert tag == "ABBR1-1_example"
 
-def test_bdns_tag_gen_iref():
+def test_TagItem():  # noqa: N802
 
     data = {
         "Abbreviation": "ABBR",
@@ -49,8 +50,9 @@ def test_bdns_tag_gen_iref():
         "level_instance": 1,
         "InstanceExtra": "example",
     }
-    tag = bdns_tag(data)
-    assert tag == "ABBR-1011_example"
-    tag = bdns_tag(data, include_type=True, gen_iref=True)
-    assert tag == "ABBR1-1011_example"
+    tag = Tag(data)
+    assert tag.bdns == "ABBR-1011_example"
+    assert tag.instance == "ABBR/1/1/1/example"
+    assert tag.type == "ABBR1"
+
 
