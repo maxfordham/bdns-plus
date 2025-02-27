@@ -1,3 +1,5 @@
+"""load asset abbreviations from github and local file."""
+
 import csv
 import logging
 from enum import Enum
