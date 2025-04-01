@@ -7,7 +7,7 @@ from enum import Enum
 
 from pydantic import AliasChoices, BaseModel, Field, ImportString, model_validator
 
-from .abbreviations import get_bdns_asset_abbreviations_enum
+from .abbreviations import get_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
 from .gen_levels_volumes import gen_levels_config, gen_volumes_config
 
@@ -22,7 +22,7 @@ def to_records(data: list[list]) -> list[dict]:
     return [dict(zip(data[0], x)) for x in data[1:]]
 
 
-AbbreviationsEnum = StrEnum("AbbreviationsEnum", get_bdns_asset_abbreviations_enum())
+AbbreviationsEnum = StrEnum("AbbreviationsEnum", get_asset_abbreviations_enum())
 
 
 # TODO: this feels a bit like repetition of pydantic... could probs use datamodel-code-gen instead...
@@ -59,6 +59,12 @@ class TagType(str, Enum):
     bdns = "bdns"
     instance = "instance"
     type = "type"
+
+
+class _Base(BaseModel):
+    id: int
+    code: str | int
+    description: str
 
 
 class Level(BaseModel):
@@ -150,10 +156,10 @@ class ConfigIref(BaseModel):
     levels: list[Level] = Field(default_levels())
     volumes: list[Volume] = Field(default_volumes())
     map_volume_level: dict[int, int] | None = None  # allows for restricting volumes to known levels
-    level_no_digits: int | None = None
-    no_levels: int | None = None
-    no_volumes: int | None = None
-    volume_no_digits: int | None = None
+    level_no_digits: int | None = None  # TODO: computed field
+    no_levels: int | None = None  # TODO: computed field
+    no_volumes: int | None = None  # TODO: computed field
+    volume_no_digits: int | None = None  # TODO: computed field
     iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING
 
     @model_validator(mode="after")

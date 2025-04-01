@@ -19,25 +19,39 @@ class StrEnum(str, Enum):
     pass
 
 
-def get_local_asset_abbreviations():
-    return list(csv.reader(FPTH_LOCAL_BDNS.read_text().split("\n")))
+def read_csv(path):
+    return list(csv.reader(path.read_text().split("\n")))
 
 
-def get_github_asset_abbreviations():
-    csv_data = StringIO(requests.get(ENV.URL_ABBREVIATIONS).content.decode())
+def get_local_bdns_asset_abbreviations():
+    return read_csv(FPTH_LOCAL_BDNS)
+
+
+def get_github_bdns_asset_abbreviations():
+    csv_data = StringIO(requests.get(ENV.ABBREVIATIONS_BDNS).content.decode())
     return list(csv.reader(csv_data))
 
 
 def get_bdns_asset_abbreviations():
     try:
-        data = get_github_asset_abbreviations()
+        data = get_github_bdns_asset_abbreviations()
     except:
         logger.warning(
             "could not retrieve abbreviations from GitHub - using local copy.",
         )
-        data = get_local_asset_abbreviations()
+        data = get_local_bdns_asset_abbreviations()
     return data
 
 
-def get_bdns_asset_abbreviations_enum() -> dict[str, str]:
-    return {x[1]: x[1] for x in get_bdns_asset_abbreviations()[1:]}
+def get_custom_asset_abbreviations() -> list[list]:
+    return read_csv(ENV.ABBREVIATIONS_CUSTOM) if ENV.ABBREVIATIONS_CUSTOM else []
+
+
+def get_asset_abbreviations() -> dict:
+    bdns = {x[1]: x[0] for x in get_bdns_asset_abbreviations()}
+    custom = {x[1]: x[0] for x in get_custom_asset_abbreviations()}
+    return bdns | custom
+
+
+def get_asset_abbreviations_enum() -> dict[str, str]:
+    return {x: x for x in list(get_asset_abbreviations().keys())}
