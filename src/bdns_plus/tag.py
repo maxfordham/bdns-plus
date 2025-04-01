@@ -1,8 +1,9 @@
 """contains functions to build string tags from data."""
+
 from __future__ import annotations
 
 from .iref import serialize_iref
-from .models import Config, ConfigIref, Iref, TagDef
+from .models import Config, ConfigIref, Iref, ITagData, TagDef
 
 
 def _gen_iref(data: dict, config: ConfigIref | None = None) -> Iref:
@@ -31,16 +32,18 @@ def _validate_tag_data(data: dict, tag: TagDef) -> dict:
         if field.allow_none is False and data.get(field.field_name) is None:
             e = f"field_name={field.field_name} is required and cannot be None"
             raise ValueError(e)
-        if field.validate is not None and value is not None:
-            assert field.validate(value)
+        if field.validator is not None and value is not None:
+            assert field.validator(value)
     return data
 
 
 def _get_tag_data(
-    data: dict, tag: TagDef, *, gen_iref: bool = True, config: ConfigIref | None = None,
+    data: dict | ITagData,
+    tag: TagDef,
+    *,
+    gen_iref: bool = True,
+    config: ConfigIref | None = None,
 ) -> dict:
-
-
     if gen_iref:
         try:
             iref_data = Iref(**data)
@@ -63,7 +66,12 @@ def _get_tag_data(
 
 
 def build_tag(
-    data: dict, tag: TagDef, *, gen_iref: bool = True, config: ConfigIref | None = None, is_clean_data: bool = False,
+    data: dict,
+    tag: TagDef,
+    *,
+    gen_iref: bool = True,
+    config: ConfigIref | None = None,
+    is_clean_data: bool = False,
 ) -> str:
     """Build tag string from data."""
     tag_data = _get_tag_data(data, tag, gen_iref=gen_iref, config=config) if not is_clean_data else data
@@ -78,20 +86,30 @@ def build_tag(
             s += f"{field.prefix}{value}{field.suffix}"
     return s
 
+
 def bdns_tag(data: dict, *, config: Config | None = None, gen_iref: bool = True, is_clean_data: bool = False) -> str:
     if config is None:
         config = Config()
-    return build_tag(data, tag=config.bdns_tag, config=config, gen_iref=gen_iref, is_clean_data = is_clean_data)
+    return build_tag(data, tag=config.bdns_tag, config=config, gen_iref=gen_iref, is_clean_data=is_clean_data)
 
-def instance_tag(data: dict, *, config: Config | None = None, gen_iref: bool = True, is_clean_data: bool = False) -> str:
+
+def instance_tag(
+    data: dict,
+    *,
+    config: Config | None = None,
+    gen_iref: bool = True,
+    is_clean_data: bool = False,
+) -> str:
     if config is None:
         config = Config()
-    return build_tag(data, tag=config.i_tag, config=config, gen_iref=gen_iref, is_clean_data = is_clean_data)
+    return build_tag(data, tag=config.i_tag, config=config, gen_iref=gen_iref, is_clean_data=is_clean_data)
+
 
 def type_tag(data: dict, *, config: Config | None = None, is_clean_data: bool = False) -> str:
     if config is None:
         config = Config()
-    return build_tag(data, tag=config.t_tag, config=config, gen_iref=False, is_clean_data = is_clean_data)
+    return build_tag(data, tag=config.t_tag, config=config, gen_iref=False, is_clean_data=is_clean_data)
+
 
 class Tag:
     """TagDef class with bdns_tag, i_tag, and t_tag properties."""
@@ -124,4 +142,3 @@ class Tag:
     def type(self) -> str:
         """Return bdns tag string from data."""
         return type_tag(self.data, config=self.config, is_clean_data=True)
-

@@ -1,6 +1,7 @@
 """register of default fields for bdns_plus."""
 # TODO: maybe load this from json...
 
+
 def validate_alpha2_country(code: str) -> bool:
     import pycountry
 
@@ -10,6 +11,7 @@ def validate_alpha2_country(code: str) -> bool:
         raise ValueError(e)
     return True
 
+
 def country_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "country",
@@ -17,8 +19,9 @@ def country_field(prefix: str = "", suffix: str = "") -> dict:
         "allow_none": True,
         "prefix": prefix,
         "suffix": suffix,
-        "validate": validate_alpha2_country,
+        "validator": validate_alpha2_country,
     }
+
 
 def city_field(prefix: str = "", suffix: str = "") -> dict:
     return {
@@ -29,6 +32,7 @@ def city_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
+
 def project_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "project",
@@ -37,6 +41,7 @@ def project_field(prefix: str = "", suffix: str = "") -> dict:
         "prefix": prefix,
         "suffix": suffix,
     }
+
 
 def abbreviation_field(prefix: str = "", suffix: str = "") -> dict:
     return {
@@ -47,6 +52,7 @@ def abbreviation_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
+
 def volume_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "volume",
@@ -55,6 +61,7 @@ def volume_field(prefix: str = "", suffix: str = "") -> dict:
         "prefix": prefix,
         "suffix": suffix,
     }
+
 
 def level_field(prefix: str = "", suffix: str = "") -> dict:
     return {
@@ -65,6 +72,7 @@ def level_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
+
 def level_instance_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "level_instance",
@@ -74,7 +82,8 @@ def level_instance_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
-def instance_reference_field(prefix: str = "-", suffix: str = "") -> dict: 
+
+def instance_reference_field(prefix: str = "-", suffix: str = "") -> dict:
     return {
         "field_name": "instance_reference",
         "field_aliases": ["InstanceReference"],
@@ -82,6 +91,7 @@ def instance_reference_field(prefix: str = "-", suffix: str = "") -> dict:
         "prefix": prefix,
         "suffix": suffix,
     }
+
 
 def instance_extra_field(prefix: str = "", suffix: str = "") -> dict:
     return {
@@ -92,6 +102,7 @@ def instance_extra_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
+
 def type_reference_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "type_reference",
@@ -101,6 +112,7 @@ def type_reference_field(prefix: str = "", suffix: str = "") -> dict:
         "suffix": suffix,
     }
 
+
 def type_extra_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "type_extra",
@@ -109,6 +121,7 @@ def type_extra_field(prefix: str = "", suffix: str = "") -> dict:
         "prefix": prefix,
         "suffix": suffix,
     }
+
 
 def bdns_fields(*, include_type: bool = False) -> list[dict]:
     fields = [
@@ -123,12 +136,14 @@ def bdns_fields(*, include_type: bool = False) -> list[dict]:
         fields.insert(4, type_reference_field())
     return fields
 
+
 def type_fields() -> list[dict]:
     return [
         abbreviation_field(),
         type_reference_field(),
         type_extra_field(suffix="/"),
     ]
+
 
 def instance_fields(*, include_type: bool = False) -> list[dict]:
     fields = [

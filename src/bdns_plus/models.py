@@ -1,4 +1,5 @@
 """data models for bdns_plus."""
+
 from __future__ import annotations
 
 import typing as ty
@@ -6,14 +7,22 @@ from enum import Enum
 
 from pydantic import AliasChoices, BaseModel, Field, ImportString, model_validator
 
-from .config import gen_levels_config, gen_volumes_config
+from .abbreviations import get_bdns_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
+from .gen_levels_volumes import gen_levels_config, gen_volumes_config
 
 INSTANCE_REFERENCE_FSTRING = "{volume_id}{level_id}{level_instance_id}"
 
 
+class StrEnum(str, Enum):
+    pass
+
+
 def to_records(data: list[list]) -> list[dict]:
     return [dict(zip(data[0], x)) for x in data[1:]]
+
+
+AbbreviationsEnum = StrEnum("AbbreviationsEnum", get_bdns_asset_abbreviations_enum())
 
 
 # TODO: this feels a bit like repetition of pydantic... could probs use datamodel-code-gen instead...
@@ -25,7 +34,7 @@ class TagField(BaseModel):
     suffix: str = ""
     zfill: int | None = None
     regex: str | None = None
-    validate: ImportString | None = None  # ty.Callable[[ty.Any], bool] | None = None
+    validator: ImportString | None = None  # ty.Callable[[ty.Any], bool] | None = None
 
 
 class TagDef(BaseModel):  # RootModel
@@ -39,42 +48,56 @@ class ConfigType(str, Enum):
     volume = "volume"
     level_instance = "level_instance"
 
+
 class IdentifierType(str, Enum):
     id = "id"
     number = "number"
     name = "name"
+
 
 class TagType(str, Enum):
     bdns = "bdns"
     instance = "instance"
     type = "type"
 
+
 class Level(BaseModel):
     level: int
     level_id: int
     level_name: str
+
 
 class Volume(BaseModel):
     volume: int
     volume_id: int
     volume_name: str
 
+
 def default_levels() -> list[Level]:
     return [Level(**x) for x in to_records(gen_levels_config())]
+
 
 def default_volumes() -> list[Volume]:
     return [Volume(**x) for x in to_records(gen_volumes_config())]
 
+
 class Iref(BaseModel):
     level: int = Field(
-        ..., validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
+        ...,
+        validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
     )
-    level_iref: int = Field(
-        ..., validation_alias=AliasChoices("level_instance", "LevelInstance", "VolumeLevelInstance", "level_iref"),
+    level_iref: int = Field(  # TODO: volume_level_instance
+        ...,
+        validation_alias=AliasChoices("level_instance", "LevelInstance", "VolumeLevelInstance", "level_iref"),
     )
     volume: int = Field(
-        1, validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
+        1,
+        validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
     )
+
+
+class ITagData(Iref):
+    abbreviation: AbbreviationsEnum | None = None
 
 
 class BdnsTag(TagDef):
@@ -86,6 +109,7 @@ class BdnsTag(TagDef):
         di["description"] = "TagDef Definition in accordance with Building Data Naming System"
         di["fields"] = bdns_fields(include_type=False)
         return di
+
 
 class BdnsTagWithType(TagDef):
     @model_validator(mode="before")
@@ -118,6 +142,7 @@ class InstanceTag(TagDef):
         di["description"] = "TagDef Definition in accordance with Building Data Naming System"
         di["fields"] = instance_fields(include_type=False)
         return di
+
 
 class ConfigIref(BaseModel):
     """defines params required to generate an instance ref. levels and volumes."""
@@ -158,7 +183,6 @@ class ConfigTags(BaseModel):
 
     @model_validator(mode="after")
     def _check_is_bdns_plus_default(self) -> ty.Self:
-
         check_default = [
             bool(isinstance(i, c))
             for i, c in zip([self.bdns_tag, self.i_tag, self.t_tag], [BdnsTag, InstanceTag, TypeTag])
@@ -168,7 +192,13 @@ class ConfigTags(BaseModel):
 
         return self
 
+
 class Config(ConfigIref, ConfigTags):
     """bdns+ configuration model. levels, volumes and tag definintions. pre-configured with sensible defaults."""
 
 
+class GenDefinition(BaseModel):
+    abbreviation: AbbreviationsEnum | list[AbbreviationsEnum]
+    no_items: int = 1
+    on_levels: list | None = None
+    on_volumes: list | None = None

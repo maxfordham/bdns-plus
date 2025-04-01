@@ -1,9 +1,4 @@
-from bdns_plus.config import gen_config_package, gen_levels, gen_levels_resource, gen_volumes_resource
-
-
-def test_gen_levels():
-    levels = gen_levels()
-    assert len(levels) == 100
+from bdns_plus.config import gen_config_package, gen_levels_resource, gen_volumes_resource
 
 
 def test_gen_levels_resource():

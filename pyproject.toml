@@ -1,10 +1,10 @@
 [project]
 authors = [{name = "jgunstone", email = "j.gunstone@maxfordham.com"}]
-dependencies = []
 description = "Add a short description here"
 name = "bdns-plus"
 requires-python = ">= 3.11"
 version = "0.1.0"
+dependencies = ["pytest-examples>=0.0.15,<0.0.16"]
 
 [build-system]
 build-backend = "hatchling.build"

@@ -1,4 +1,5 @@
 """Instance reference integer (iref) utilities"""
+
 from __future__ import annotations
 
 from typing import Annotated
@@ -46,7 +47,7 @@ def serialize_iref(
     level_id = map_level[level]
     volume_id = map_volume[volume]
 
-    # validate that levels and volumes are compatible
+    # validator that levels and volumes are compatible
     if config.map_volume_level is not None:
         if volume_id not in config.map_volume_level:
             e = f"volume_id={volume_id} not in config.map_volume_level"
@@ -63,5 +64,4 @@ def serialize_iref(
 
 
 def deserialize_iref(iref: int) -> tuple[int, int]:
-    """return level number and level instance given an instance reference integer"""
-    pass
+    """Return level number and level instance given an instance reference integer"""
