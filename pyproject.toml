@@ -29,6 +29,7 @@ anywidget = ">=0.9.18,<0.10"
 
 [tool.pixi.feature.docs.pypi-dependencies]
 jupyterlab-quarto = { version = ">=0.3.4,<0.4"}
+bsdd = { version = ">=0.8.1,<0.9"}
 
 [tool.pixi.feature.package.dependencies]
 hatch = "*"

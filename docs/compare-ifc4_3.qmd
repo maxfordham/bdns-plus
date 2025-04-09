@@ -1,0 +1,78 @@
+---
+title: Compare BDNS Abbreviations vs ifc4x3 classes
+toc: true
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.17.0
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+Comparison 
+
+```{python}
+import pandas as pd
+import pathlib
+from bsdd import Client
+from bdns_plus.abbreviations import get_bdns_asset_abbreviations
+from itables import show
+import pandas as pd
+
+IFC4X3_URI = "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3"
+# BDNS_REGISTER = pathlib.Path(__file__).parent.parent / "BDNS_Abbreviations_Register.csv"
+
+def get_ifc_classes(client):
+    def get_batch(i):
+        return client.get_classes(
+            IFC4X3_URI,
+            use_nested_classes=False,
+            class_type="Class",
+            offset=i[0],
+            limit=i[1],
+        )["classes"]
+
+    ifc_classes = {}
+    for i in [(0, 1000), (1000, 2000)]:  # 1418 classes in total. 1000 max request limit
+        ifc_classes = ifc_classes | {x["code"]: x for x in get_batch(i)}
+    return ifc_classes
+
+
+client = Client()
+ifc_classes = get_ifc_classes(client)
+bdns_abbreviations = get_bdns_asset_abbreviations()
+
+map_bdns_ifc = {x[1]: x[-2] for x in bdns_abbreviations[1:]}
+ifc_in_bdns = set([x[-2] for x in bdns_abbreviations[1:]])
+
+map_ifc_bdns = {}
+for ifc in ifc_in_bdns:
+    map_ifc_bdns[ifc] = [k for k,v in map_bdns_ifc.items() if v == ifc]
+
+_map_ifc_bdns = {k: [str(v)] for k, v in map_ifc_bdns.items()}
+df_ifc_map_bdns = pd.DataFrame.from_dict(_map_ifc_bdns).T.reset_index().rename(columns={"index":"ifc4_3", 0:"bdns_abbreviation"})
+show(df_ifc_map_bdns)
+```
+
+```{python}
+print(f"number of unique ifc classes including enums: {len(ifc_classes)}")
+print(f"number of unique ifc classes in bdns: {len(ifc_in_bdns)}")
+```
+
+
+
+
+```{python}
+
+
+
+```
+
+```{python}
+# ifc_classes
+```
+
