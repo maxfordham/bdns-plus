@@ -6,3 +6,4 @@ dist/*
 src/bdns_plus/__pycache__/*
 tests/__pycache__/*
 docs/_site/*
+__pycache__

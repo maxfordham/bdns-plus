@@ -1,6 +1,6 @@
 [project]
 authors = [{name = "jgunstone", email = "j.gunstone@maxfordham.com"}]
-description = "Add a short description here"
+description = "bdns references + configurable equipment references for drawings"
 name = "bdns-plus"
 requires-python = ">= 3.11"
 version = "0.1.0"
@@ -18,7 +18,17 @@ platforms = ["linux-64"]
 bdns_plus = { path = ".", editable = true }
 
 [tool.pixi.feature.docs.dependencies]
-quarto = "*"
+jupyterlab = { version = ">=4.0.0,<5"}
+quarto = ">=1.6.40,<2"
+jupytext = ">=1.17.0,<2"
+pandas = "*"
+great_tables = ">=0.17.0,<0.18"
+ipywidgets = ">=8.1.5,<9"
+itables = ">=2.3.0,<3"
+anywidget = ">=0.9.18,<0.10"
+
+[tool.pixi.feature.docs.pypi-dependencies]
+jupyterlab-quarto = { version = ">=0.3.4,<0.4"}
 
 [tool.pixi.feature.package.dependencies]
 hatch = "*"
@@ -31,6 +41,7 @@ package = {features = ["package"], no-default-feature = true}
 tests = "pytest"
 
 [tool.pixi.feature.docs.tasks]
+write-docs = { cmd = "jupyter lab", cwd = "docs" }
 build-docs = { cmd = "quarto render .", cwd = "docs" }
 
 [tool.pixi.feature.package.tasks]

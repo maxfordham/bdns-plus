@@ -1,1 +1,1 @@
-"""simple, single building project with no custom configuration."""
+"""Simple, single building project with no custom configuration."""

@@ -44,6 +44,9 @@ def _get_tag_data(
     gen_iref: bool = True,
     config: ConfigIref | None = None,
 ) -> dict:
+    """Get tag data from data."""
+    if isinstance(data, ITagData):
+        data = data.model_dump()
     if gen_iref:
         try:
             iref_data = Iref(**data)
@@ -65,8 +68,11 @@ def _get_tag_data(
     return result
 
 
+from enum import Enum
+
+
 def build_tag(
-    data: dict,
+    data: dict | ITagData,
     tag: TagDef,
     *,
     gen_iref: bool = True,
@@ -80,11 +86,13 @@ def build_tag(
         value = tag_data.get(field.field_name)
         if value is None:
             continue  # go to next field
+        if isinstance(value, Enum):
+            value = value.value
         if field.zfill is not None:
             value = str(value).zfill(field.zfill)
         if value is not None:
             s += f"{field.prefix}{value}{field.suffix}"
-    return s
+    return s.strip("_/-.")
 
 
 def bdns_tag(data: dict, *, config: Config | None = None, gen_iref: bool = True, is_clean_data: bool = False) -> str:
@@ -121,7 +129,11 @@ class Tag:
 
         # merge all data required for all tags
         _data = {}
-        for tag, _gen_iref in zip([config.bdns_tag, config.i_tag, config.t_tag], [gen_iref, gen_iref, False]):
+        for tag, _gen_iref in zip(
+            [config.bdns_tag, config.i_tag, config.t_tag],
+            [gen_iref, gen_iref, False],
+            strict=False,
+        ):
             _data = _data | _get_tag_data(data, tag, gen_iref=_gen_iref, config=config)
         self.data = _data
 

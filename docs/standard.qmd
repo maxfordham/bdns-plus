@@ -1,6 +1,6 @@
 ---
 toc: true
-title: BDNS-plus
+title: BDNS-plus (WIP)
 ---
 
 [BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) **plus** a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).

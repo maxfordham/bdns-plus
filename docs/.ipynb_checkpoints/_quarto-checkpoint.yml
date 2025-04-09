@@ -2,9 +2,12 @@ project:
   type: website
 
 website:
+  title: "bdns_plus"
   navbar:
     left:
-      - index.qmd
+      - href: index.qmd
+        text: bdns_plus
+      - standard.qmd
       - examples.qmd
 
 format:

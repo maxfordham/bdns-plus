@@ -75,8 +75,8 @@ def level_field(prefix: str = "", suffix: str = "") -> dict:
 
 def level_instance_field(prefix: str = "", suffix: str = "") -> dict:
     return {
-        "field_name": "level_instance",
-        "field_aliases": ["LevelInstance"],
+        "field_name": "level_iref",
+        "field_aliases": ["LevelInstance", "level_instance"],
         "allow_none": False,
         "prefix": prefix,
         "suffix": suffix,
