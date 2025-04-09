@@ -48,8 +48,8 @@ def get_custom_asset_abbreviations() -> list[list]:
 
 
 def get_asset_abbreviations() -> dict:
-    bdns = {x[1]: x[0] for x in get_bdns_asset_abbreviations()}
-    custom = {x[1]: x[0] for x in get_custom_asset_abbreviations()}
+    bdns = {x[1]: x[0] for x in get_bdns_asset_abbreviations()[1:]}
+    custom = {x[1]: x[0] for x in get_custom_asset_abbreviations()[1:]}
     return bdns | custom
 
 
