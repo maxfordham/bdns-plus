@@ -6,6 +6,7 @@ website:
     left:
       - index.qmd
       - examples.qmd
+      - compare-ifc4_3.qmd
 
 format:
   html:
