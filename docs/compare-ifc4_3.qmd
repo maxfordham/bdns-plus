@@ -4,6 +4,7 @@ toc: true
 format:
   html:
     code-fold: true
+    page-layout: custom
 jupyter:
   jupytext:
     text_representation:
