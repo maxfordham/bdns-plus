@@ -168,150 +168,923 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Comparison</p>
-<div id="5c46aa58" class="cell" data-execution_count="1">
+<div id="42dee4c2" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pathlib</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bsdd <span class="im">import</span> Client</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_bdns_asset_abbreviations</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_bdns_asset_abbreviations, get_asset_abbreviations_enum, get_asset_abbreviations</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> itables <span class="im">import</span> show</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>IFC4X3_URI <span class="op">=</span> <span class="st">"https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3"</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># BDNS_REGISTER = pathlib.Path(__file__).parent.parent / "BDNS_Abbreviations_Register.csv"</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ifc_classes(client):</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_batch(i):</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> client.get_classes(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            IFC4X3_URI,</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            use_nested_classes<span class="op">=</span><span class="va">False</span>,</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            class_type<span class="op">=</span><span class="st">"Class"</span>,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            offset<span class="op">=</span>i[<span class="dv">0</span>],</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            limit<span class="op">=</span>i[<span class="dv">1</span>],</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        )[<span class="st">"classes"</span>]</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>IFC4X3_URI <span class="op">=</span> <span class="st">"https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3"</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ifc_strip_enum(ifc_class):</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> re.sub(<span class="vs">r"([A-Z0-9_]+_?)$"</span>, <span class="st">""</span>, ifc_class) </span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> ifc_class_is_enum(ifc_class):</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> ifc_strip_enum(ifc_class) <span class="op">==</span> ifc_class:</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">False</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="va">True</span></span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    ifc_classes <span class="op">=</span> {}</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> [(<span class="dv">0</span>, <span class="dv">1000</span>), (<span class="dv">1000</span>, <span class="dv">2000</span>)]:  <span class="co"># 1418 classes in total. 1000 max request limit</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        ifc_classes <span class="op">=</span> ifc_classes <span class="op">|</span> {x[<span class="st">"code"</span>]: x <span class="cf">for</span> x <span class="kw">in</span> get_batch(i)}</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ifc_classes</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client()</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>ifc_classes <span class="op">=</span> get_ifc_classes(client)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>bdns_abbreviations <span class="op">=</span> get_bdns_asset_abbreviations()</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_ifc_classes(client):</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">def</span> get_batch(i):</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> client.get_classes(</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>            IFC4X3_URI,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>            use_nested_classes<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>            class_type<span class="op">=</span><span class="st">"Class"</span>,</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>            offset<span class="op">=</span>i[<span class="dv">0</span>],</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            limit<span class="op">=</span>i[<span class="dv">1</span>],</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        )[<span class="st">"classes"</span>]</span>
 <span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>map_bdns_ifc <span class="op">=</span> {x[<span class="dv">1</span>]: x[<span class="op">-</span><span class="dv">2</span>] <span class="cf">for</span> x <span class="kw">in</span> bdns_abbreviations[<span class="dv">1</span>:]}</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>ifc_in_bdns <span class="op">=</span> <span class="bu">set</span>([x[<span class="op">-</span><span class="dv">2</span>] <span class="cf">for</span> x <span class="kw">in</span> bdns_abbreviations[<span class="dv">1</span>:]])</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>map_ifc_bdns <span class="op">=</span> {}</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ifc <span class="kw">in</span> ifc_in_bdns:</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    map_ifc_bdns[ifc] <span class="op">=</span> [k <span class="cf">for</span> k,v <span class="kw">in</span> map_bdns_ifc.items() <span class="cf">if</span> v <span class="op">==</span> ifc]</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>_map_ifc_bdns <span class="op">=</span> {k: [<span class="bu">str</span>(v)] <span class="cf">for</span> k, v <span class="kw">in</span> map_ifc_bdns.items()}</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>df_ifc_map_bdns <span class="op">=</span> pd.DataFrame.from_dict(_map_ifc_bdns).T.reset_index().rename(columns<span class="op">=</span>{<span class="st">"index"</span>:<span class="st">"ifc4_3"</span>, <span class="dv">0</span>:<span class="st">"bdns_abbreviation"</span>})</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>show(df_ifc_map_bdns)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display">
-<table id="itables_6fe4d473_ef6b_4f6d_b2da_71315c1223ee" class="display nowrap" data-quarto-disable-processing="true" style="table-layout:auto;width:auto;margin:auto;caption-side:bottom">
-<thead>
-    <tr style="text-align: right;">
-      
-      <th>ifc4_3</th>
-      <th>bdns_abbreviation</th>
-    </tr>
-  </thead><tbody><tr>
-<td style="vertical-align:middle; text-align:left">
-<a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
-    <g style="fill:#d9d7fc">
-        <path d="M100,400H500V357H100Z"></path>
-        <path d="M100,300H400V257H100Z"></path>
-        <path d="M0,200H400V157H0Z"></path>
-        <path d="M100,100H500V57H100Z"></path>
-        <path d="M100,350H500V307H100Z"></path>
-        <path d="M100,250H400V207H100Z"></path>
-        <path d="M0,150H400V107H0Z"></path>
-        <path d="M100,50H500V7H100Z"></path>
-    </g>
-    <g style="fill:#1a1366;stroke:#1a1366;">
-   <rect x="100" y="7" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="5s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="0" y="107" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="3.5s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="0;0;400" dur="3.5s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="207" width="300" height="43">
-    <animate attributename="width" values="0;300;0" dur="3s" repeatcount="indefinite"></animate>
-    <animate attributename="x" values="100;100;400" dur="3s" repeatcount="indefinite"></animate>
-  </rect>
-        <rect x="100" y="307" width="400" height="43">
-    <animate attributename="width" values="0;400;0" dur="4s" repeatcount="indefinite"></animate>
-      <animate attributename="x" values="100;100;500" dur="4s" repeatcount="indefinite"></animate>
-  </rect>
-        <g style="fill:transparent;stroke-width:8; stroke-linejoin:round" rx="5">
-            <g transform="translate(45 50) rotate(-45)">
-                <circle r="33" cx="0" cy="0"></circle>
-                <rect x="-8" y="32" width="16" height="30"></rect>
-            </g>
-
-            <g transform="translate(450 152)">
-                <polyline points="-15,-20 -35,-20 -35,40 25,40 25,20"></polyline>
-                <rect x="-15" y="-40" width="60" height="60"></rect>
-            </g>
-
-            <g transform="translate(50 352)">
-                <polygon points="-35,-5 0,-40 35,-5"></polygon>
-                <polygon points="-35,10 0,45 35,10"></polygon>
-            </g>
-
-            <g transform="translate(75 250)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-
-            <g transform="translate(425 250) rotate(180)">
-                <polyline points="-30,30 -60,0 -30,-30"></polyline>
-                <polyline points="0,30 -30,0 0,-30"></polyline>
-            </g>
-        </g>
-    </g>
-</svg>
-</a>
-Loading ITables v2.3.0 from the internet...
-(need <a href="https://mwouts.github.io/itables/troubleshooting.html">help</a>?)</td>
-</tr></tbody>
-</table>
-<link href="https://www.unpkg.com/dt_for_itables@2.2.0/dt_bundle.css" rel="stylesheet">
-<script type="module">
-    import {DataTable, jQuery as $} from 'https://www.unpkg.com/dt_for_itables@2.2.0/dt_bundle.js';
-
-    document.querySelectorAll("#itables_6fe4d473_ef6b_4f6d_b2da_71315c1223ee:not(.dataTable)").forEach(table => {
-        if (!(table instanceof HTMLTableElement))
-            return;
-
-        // Define the table data
-        const data = [["IfcFlowTreatmentDevice", "['ADS', 'AS']"], ["IfcCompressor", "['CMP', 'ACP']"], ["IfcSwitchingDeviceTOGGLESWITCH", "['ELSW']"], ["IfcControllerPROGRAMMABLE", "['DDC', 'DRC', 'PLC', 'DWCCP', 'HLI', 'WLC']"], ["IfcValveSAFETYCUTOFF", "['SNV']"], ["IfcCableCarrierSegment", "['CABASK']"], ["IfcInterceptor", "['SSP']"], ["IfcCommunicationsAppliancePRINTER", "['PRNTR']"], ["IfcGroup", "['LGRP']"], ["IfcValveMIXING", "['TMV']"], ["IfcCoolingTower", "['CT']"], ["IfcElectricGeneratorCHP", "['CHP']"], ["IfcValvePRESSURERELIEF", "['PRFV']"], ["IfcFlowMeter", "['MTR', 'EBM', 'EMV', 'FM', 'GMV', 'HM', 'HMV', 'WMV']"], ["IfcDistributionSystemFIREPROTECTION", "['KFSS']"], ["IfcWindow", "['ECG', 'WD']"], ["IfcActuatorELECTRICACTUATOR", "['FPSW', 'WDO', 'SWACT', 'SDACT']"], ["IfcElectricApplianceWASHINGMACHINE", "['WSH']"], ["IfcLightFixtureDIRECTIONSOURCE", "['LL', 'TL']"], ["IfcDamperCONTROLDAMPER", "['BYCD', 'ICD', 'RECD', 'RTCD', 'RTISD']"], ["IfcSwitchingDevice", "['AIC', 'VIC', 'STS', 'HTCO', 'IFU', 'FMO', 'FS', 'LSW', 'APSW', 'DEWSW', 'DPSW', 'SPSW', 'TDSW']"], ["IfcValveCHECK", "['CKV', 'CKVS']"], ["IfcPumpSUMPPUMP", "['SMPP']"], ["IfcElectricApplianceVENDINGMACHINE", "['VEND']"], ["IfcSpaceHeater", "['FSHL', 'DH', 'EUH', 'GUH', 'HTR', 'TC', 'EHT', 'TRHC', 'TRH', 'UFM', 'UH', 'WAC', 'CCH']"], ["IfcCableSegmentBUSBARSEGMENT", "['BB', 'BBTO', 'RBB']"], ["IfcProtectiveDeviceCIRCUITBREAKER", "['CB', 'MCB']"], ["IfcDistributionElement", "['CIP']"], ["IfcAirTerminal", "['EAV', 'SAV', 'AT', 'GR', 'EG', 'SG', 'LOU', 'ELOU', 'ILOU']"], ["IfcAudioVisualApplianceAMPLIFIER", "['AMP']"], ["IfcElectricTimeControlTIMECLOCK", "['TMCLK']"], ["IfcDuctSegment", "['DUW', 'FDUW']"], ["IfcSwitchingDeviceSELECTORSWITCH", "['SCS']"], ["IfcBoiler", "['BLR']"], ["IfcAudioVisualAppliance", "['AVEQ', 'AAE', 'AMIX', 'MIX', 'AVKP', 'AVE', 'AVO', 'AVS', 'BTAI', 'CCU', 'CD', 'DEC', 'CMS', 'MSW', 'RBP', 'TCD', 'TPAN', 'VMIX', 'WNG', 'WPD', 'WRCVR', 'WSEND']"], ["IfcDamper", "['DMP', 'EXD', 'IISD', 'MD']"], ["IfcSensorWINDSENSOR", "['WS']"], ["IfcChiller", "['CH', 'CCCH', 'HTCH', 'LTCH']"], ["IfcCableSegment", "['DCA', 'CA', 'FCA', 'TR', 'EBA', 'ERO', 'ETA']"], ["IfcUnitaryEquipmentDEHUMIDIFIER", "['DHUM']"], ["IfcDamperSMOKEDAMPER", "['MSCD', 'MSD']"], ["IfcDistributionBoardCONSUMERUNIT", "['CU']"], ["IfcSwitchingDeviceCONTACTOR", "['RTE']"], ["IfcCoilDXCOOLINGCOIL", "['DXC']"], ["IfcSensorPRESSURESENSOR", "['DPS', 'PS', 'SPS']"], ["IfcOutlet", "['OUT', 'FLRB', 'LER']"], ["IfcBurner", "['FR']"], ["IfcTankBREAKPRESSURE", "['BTK', 'BTKBS']"], ["IfcTankEXPANSION", "['ET']"], ["IfcProtectiveDeviceFUSEDISCONNECTOR", "['DSCTF']"], ["IfcTransformerRECTIFIER", "['REC']"], ["IfcFilter", "['FLT', 'APU', 'AWSH', 'BFLT', 'CFLT', 'CTFS', 'CTSFLT', 'CTSEP', 'CTSSEP', 'DGA', 'DTS', 'DSU', 'PFLT', 'RO', 'SSFLT', 'VSFLT', 'RRFLT', 'UVDU']"], ["IfcTransformer", "['DCDC', 'PVTXMR', 'TXMR']"], ["IfcSanitaryTerminalSINK", "['KSINKM', 'KSINK']"], ["IfcElectricAppliance", "['BVAP', 'BVC', 'BVCFMG', 'BVCFM', 'BVCFMN', 'BVCFMU', 'BVCFME', 'BVS', 'FCSD', 'CKBP', 'CKDSTE', 'CKGRD', 'CKKET', 'CKPBP', 'CKPSTE', 'CKROT', 'CKSTE', 'DISP', 'DISPB', 'DISPC', 'DISPIB', 'DISPJ', 'DISPMK', 'DISPIC', 'DISPW', 'ELOCK', 'EMDH', 'LLOCK', 'MLOCK', 'EAPPL', 'ADY', 'EPOS', 'GYMEQ', 'FOODEQ', 'HDY', 'STE', 'ETCFP', 'FSCPL', 'FSCWL', 'FSHCPL', 'FSHCWL', 'FSHPL', 'FSHWL', 'FSICD', 'FSIWL', 'FSIW', 'FSSWL', 'KSTCH', 'KSMBL', 'KBBL', 'KBC', 'KCO', 'KCWM', 'KCDY', 'KDR', 'KDPR', 'KICT', 'KJC', 'KMBS', 'KMM', 'KMS', 'KMIX', 'KPM', 'KPPM', 'KFS', 'KSBL', 'KTST', 'KUVSC', 'KVPM', 'KVCM', 'KVWM', 'KVW', 'IM', 'WSTFD', 'WSTC', 'WSTWG', 'IWH']"], ["IfcUnitaryControlElementWEATHERSTATION", "['WST']"], ["IfcWasteTerminal", "['BVKOC', 'AD']"], ["IfcUnitaryEquipment", "['USS', 'FCU', 'CTFU', 'PFU', 'HIU', 'ASHP', 'GSHP', 'HP', 'WSHP', 'PU', 'WMS', 'CTSU']"], ["IfcFan", "['FAN', 'CTF', 'ELVPF', 'EF', 'GSF', 'GTF', 'KEF', 'MEV', 'MEVK', 'PF', 'RLF', 'RTF', 'SEF', 'SPF', 'SF', 'TEF', 'TF']"], ["IfcUnitaryEquipmentSPLITSYSTEM", "['DX', 'BCBOX', 'HVRF', 'VRF', 'VRV']"], ["IfcFilterAIRPARTICLEFILTER", "['PCU']"], ["IfcUnitaryControlElementINDICATORPANEL", "['CIE']"], ["IfcSwitchingDeviceDIMMERSWITCH", "['DIM']"], ["IfcCoil", "['COIL']"], ["IfcCommunicationsApplianceANTENNA", "['ANT', 'WANT']"], ["IfcValveSTEAMTRAP", "['GV']"], ["IfcValvePRESSUREREDUCING", "['PRV']"], ["IfcMotorConnection", "['VSD', 'VFD']"], ["IfcCoilHYDRONICCOIL", "['PHC', 'RHC']"], ["IfcElectricFlowStorageDevice", "['BATTLI', 'LB']"], ["IfcAlarmSIREN", "['HS']"], ["IfcTransportElementMOVINGWALKWAY", "['AW']"], ["IfcTankSTORAGE", "['CAST', 'CNR', 'EWT', 'FHT', 'FOST', 'GWST', 'HWC', 'MWST', 'DWST', 'RNWST', 'SPT', 'TST', 'TK', 'WRT']"], ["IfcDistributionBoardSWITCHBOARD", "['HVSB', 'LVSB', 'MSP', 'MSB', 'MVSB', 'SWGR']"], ["IfcFlowMeterGASMETER", "['GM']"], ["IfcControllerTWOPOSITION", "['DWCRB']"], ["IfcCommunicationsApplianceNETWORKBRIDGE", "['ETS', 'FBS']"], ["IfcFurniture", "['EKC', 'FSSG', 'CSC', 'KSTC', 'KCART', 'LCKR', 'WSTBIN']"], ["IfcDamperFIRESMOKEDAMPER", "['MFSD']"], ["IfcCooledBeamACTIVE", "['ACHB']"], ["IfcSensorHEATSENSOR", "['HD']"], ["IfcAlarmLIGHT", "['DWCOI', 'BCN']"], ["IfcCondenserAIRCOOLED", "['DAC']"], ["IfcElectricGenerator", "['CSG']"], ["IfcStackTerminal", "['AVR']"], ["IfcSolarDeviceSOLARPANEL", "['PVP']"], ["IfcLightFixture", "['LT', 'DL', 'EL', 'UL', 'WL', 'LBO', 'LPO']"], ["IfcElectricApplianceREFRIGERATOR", "['CRHW', 'CRREF', 'REF', 'REFRP']"], ["IfcSwitchingDeviceSWITCHDISCONNECTOR", "['EISO', 'DSCTS', 'ESB', 'PVACDS', 'PVDCDS']"], ["IfcAirToAirHeatRecoveryRUNAROUNDCOILLOOP", "['RAC']"], ["IfcCooledBeam", "['CHB']"], ["IfcValveDIVERTING", "['BYV']"], ["IfcAirTerminalBoxCONSTANTFLOW", "['CAV', 'CAVE', 'CAVEF', 'CAVEM', 'CAVS', 'CAVSF', 'CAVSM']"], ["IfcProtectiveDevice", "['BTR', 'ATS', 'EISOTX']"], ["IfcSwitchingDeviceKEYPAD", "['LKP', 'SDKP', 'KP']"], ["IfcDistributionBoardDISTRIBUTIONBOARD", "['EVDP', 'LVCPB', 'HVCPB', 'DB', 'LVDP', 'HVDP', 'MDP', 'UPSB', 'PVDCC', 'PVDB']"], ["IfcSensorGASSENSOR", "['GD']"], ["IfcElectricApplianceFREEZER", "['FRZBCF', 'CRFRZ', 'FRZ', 'FRZICC']"], ["IfcProtectiveDeviceVARISTOR", "['SPD']"], ["IfcPipeSegment", "['PW']"], ["IfcController", "['RFIDC', 'CNTRL', 'IRRC', 'ROC', 'PVDAS', 'PVMC', 'PVMLPE', 'SDC']"], ["IfcElectricFlowStorageDeviceBATTERY", "['BATT', 'EHB']"], ["IfcPumpCIRCULATOR", "['CP']"], ["IfcAlarm", "['PDB', 'FAS']"], ["IfcUnitaryEquipmentAIRCONDITIONINGUNIT", "['ACU', 'CRAC']"], ["IfcElectricApplianceELECTRICCOOKER", "['CKCMWO', 'CKCMOV', 'CKCVOV', 'CKDOVN', 'CKFRYD', 'CKFRY', 'CKHOVN', 'CKICOV', 'CKIU', 'CKIRCK', 'CKIW', 'KMCS', 'CKPC', 'CKPOVN', 'CKRC', 'CKSGRL', 'CKTOVN', 'FRY', 'OVN', 'WDR']"], ["IfcAirToAirHeatRecoveryROTARYWHEEL", "['TW']"], ["IfcSanitaryTerminalSANITARYFOUNTAIN", "['DF', 'EEW']"], ["IfcUnitaryControlElement", "['LCM', 'LCP', 'CTCP', 'FACP', 'MCC', 'RIO', 'VAVCTR', 'ELC']"], ["IfcSensorLIGHTSENSOR", "['LPS']"], ["IfcElectricApplianceDISHWASHER", "['DW', 'CDWFM', 'CDWPTM', 'CDWPUW', 'CDWRM', 'CDWUM', 'CDWSCS']"], ["IfcFireSuppressionTerminalHOSEREEL", "['KHRL']"], ["IfcSensorFLOWSENSOR", "['AVFS', 'WVFS']"], ["IfcValveCOMMISSIONING", "['BLV']"], ["IfcAudioVisualApplianceTUNER", "['DSP']"], ["IfcAlarmBREAKGLASSBUTTON", "['BGU']"], ["IfcFurnitureSHELF", "['KTBL', 'KWMGR', 'KSR', 'CDWRT']"], ["IfcFlowMeterENERGYMETER", "['EM']"], ["IfcEvaporator", "['EVP']"], ["IfcDamperFUMEHOODEXHAUST", "['FHEX', 'KVCH', 'KVGH']"], ["IfcSensor", "['HDS', 'GLYPR', 'IMUS', 'LDS', 'LVLS', 'LTMTS', 'MCS', 'MTS', 'NDS', 'PMS', 'PCS', 'SSS', 'VS', 'VBS']"], ["IfcSolarDeviceSOLARCOLLECTOR", "['SWHP']"], ["IfcUnitaryEquipmentAIRHANDLER", "['AHU', 'CRAH', 'DOAS', 'MAU']"], ["IfcDamperFIREDAMPER", "['FD']"], ["IfcDuctSilencer", "['SLCR']"], ["IfcLightFixtureSECURITYLIGHTING", "['EXIT']"], ["IfcValveGASCOCK", "['BV']"], ["IfcAudioVisualApplianceSPEAKER", "['SPK', 'VAS']"], ["IfcAudioVisualApplianceMICROPHONE", "['MIC', 'VAM']"], ["IfcActuator", "['ACT']"], ["IfcFireSuppressionTerminal", "['GSH']"], ["IfcAlarmMANUALPULLBOX", "['DA', 'DWCPC']"], ["IfcCommunicationsApplianceROUTER", "['RTR', 'WRTR', 'WAP']"], ["IfcAudioVisualAppliancePLAYER", "['NVR']"], ["IfcValve", "['TMUV', 'TP', 'TPE', 'VLV', 'AV', 'BFP', 'BDV', 'BFV', 'CHWV', 'CDWV', 'CV', 'CVM', 'CVO', 'DPCV', 'ENV', 'FV', 'FCV', 'HWV', 'LCV', 'MUV', 'MMV', 'PA', 'PCV', 'PICV', 'PWV', 'RCV', 'RTV', 'SGV', 'SPRV', 'SPV', 'TCV', 'WHAV']"], ["IfcSensorHUMIDITYSENSOR", "['HMS', 'OHMS']"], ["IfcAudioVisualApplianceDISPLAY", "['AMON', 'DWB', 'DS', 'VDW']"], ["IfcAirToAirHeatRecovery", "['MVHR', 'HRU']"], ["IfcSanitaryTerminalWASHHANDBASIN", "['HWB']"], ["IfcTransportElementESCALATOR", "['ESC']"], ["IfcElectricFlowStorageDeviceUPS", "['UPS']"], ["IfcFurnitureDESK", "['DESK']"], ["IfcDoorDOOR", "['DR', 'FDR']"], ["IfcUnitaryControlElementALARMPANEL", "['AP']"], ["IfcElectricFlowTreatmentDevice", "['PFC']"], ["IfcAudioVisualApplianceSWITCHER", "['EVCRU']"], ["IfcAudioVisualApplianceCOMMUNICATIONTERMINAL", "['EVCCP']"], ["IfcDamperBALANCINGDAMPER", "['VCD']"], ["IfcCommunicationsApplianceSCANNER", "['RFIDR', 'BIOR', 'PROXR', 'SCAN']"], ["IfcCableCarrierSegmentCABLELADDERSEGMENT", "['CALAD']"], ["IfcChillerAIRCOOLED", "['ACCH']"], ["IfcDamperRELIEFDAMPER", "['PRLD']"], ["IfcSensorCONTACTSENSOR", "['CNTS']"], ["IfcFlowMeterWATERMETER", "['WM']"], ["IfcUnitaryControlElementTHERMOSTAT", "['TSTAT']"], ["IfcLightFixturePOINTSOURCE", "['PL', 'SL']"], ["IfcCooledBeamPASSIVE", "['PCHB']"], ["IfcFastener", "['CIS', 'ECL']"], ["IfcPump", "['FJP', 'FP', 'PMP', 'CNP', 'AXCWP', 'BSP', 'CHWP', 'CDWP', 'CTSEPP', 'DHWP', 'DP', 'FHP', 'FOP', 'GBP', 'GWBP', 'HXP', 'HTCHP', 'HTCWP', 'HWP', 'LTCHWP', 'LTCDWP', 'LTHWP', 'PAPS', 'DWBP', 'DWTP', 'PCHWP', 'PP', 'PCWP', 'PWP', 'RNWBP', 'RNWP', 'RCP', 'RWP', 'SCHWP', 'SHCP', 'SHWP', 'SP', 'SEPP', 'SEP', 'SPP', 'TMUP', 'TRP', 'VCP', 'WWP', 'WRP']"], ["IfcCableCarrierSegmentCABLETRAYSEGMENT", "['CATR']"], ["IfcOutletDATAOUTLET", "['CNDO', 'DATA', 'FLRDX', 'FLRQD']"], ["IfcAlarmBELL", "['FB']"], ["IfcSpaceHeaterRADIATOR", "['RP', 'RAD', 'ERAD', 'HTB']"], ["IfcAudioVisualApplianceRECEIVER", "['EVCO', 'DRO', 'ETO', 'FTO']"], ["IfcSensorMOVEMENTSENSOR", "['LMS', 'MOS']"], ["IfcCableCarrierSegmentCABLETRUNKINGSEGMENT", "['CATRK', 'CAFTRK']"], ["IfcHeatExchangerPLATE", "['CPHX', 'HPHX', 'PHX']"], ["IfcSpaceINTERNAL", "['ROOM']"], ["IfcTankVESSEL", "['BRITK', 'CBUFF', 'BUFF', 'HBUFF']"], ["IfcChillerWATERCOOLED", "['WCCH']"], ["IfcCoilWATERCOOLINGCOIL", "['CC']"], ["IfcValveAIRRELEASE", "['AAV']"], ["IfcCommunicationsApplianceGATEWAY", "['CGW', 'LTGW']"], ["IfcElectricFlowStorageDeviceHARMONICFILTER", "['AHF', 'PHF']"], ["IfcElectricApplianceMICROWAVE", "['CKMWO']"], ["IfcSensorSMOKESENSOR", "['ASD', 'SD']"], ["IfcSensorRADIATIONSENSOR", "['SDSTM']"], ["IfcElectricGeneratorENGINEGENERATOR", "['DG', 'GEN']"], ["IfcBoilerSTEAM", "['SB']"], ["IfcUnitaryEquipmentROOFTOPUNIT", "['RTU']"], ["IfcFireSuppressionTerminalSPRINKLER", "['SPH']"], ["IfcEvaporativeCooler", "['HYAC']"], ["IfcTank", "['DEA', 'DET', 'EST', 'FODT', 'DWTT', 'CHDU', 'DPOT']"], ["IfcElectricApplianceTUMBLEDRYER", "['TDY']"], ["IfcCableSegmentFIBERTUBE", "['COAXCA']"], ["IfcAirTerminalBox", "['FPB', 'UFT', 'VAV', 'VAVE', 'VAVS', 'VVTB', 'VVT', 'KVVC']"], ["IfcDistributionSystem", "['KUDS', 'KUCS']"], ["IfcCoilWATERHEATINGCOIL", "['HC']"], ["IfcUnitaryControlElementGASDETECTIONPANEL", "['GASDET']"], ["IfcShadingDevice", "['BL']"], ["IfcCommunicationsAppliance", "['DPU', 'HMI', 'IDF', 'SRV', 'NAM', 'NMS', 'PDUIPD', 'POEETS', 'SDNC', 'UPSMS', 'LBCN']"], ["IfcDistributionBoard", "['ITDP', 'KDP', 'MPNL', 'MDU', 'PB', 'PDU', 'RMU']"], ["IfcTransformerINVERTER", "['IVT', 'PVI', 'ELI']"], ["IfcInterceptorGREASE", "['GI']"], ["IfcTransportElementELEVATOR", "['ELV']"], ["IfcOutletPOWEROUTLET", "['EVCE', 'CGDXO', 'CUSF', 'CUUF', 'DDR', 'DSSO', 'DSO', 'DXO', 'SSSO', 'SSO']"], ["IfcFlowTerminal", "['CKCGR', 'CKGRCK', 'CKGWR']"], ["IfcHeatExchanger", "['HX']"], ["IfcFilterWATERFILTER", "['WCR', 'WSR', 'EMWC']"], ["IfcDistributionSystemSECURITY", "['ACS']"], ["IfcAudioVisualApplianceCAMERA", "['CAM', 'PTZCAM']"], ["IfcSensorCO2SENSOR", "['CDS']"], ["IfcInterceptorOIL", "['OI', 'SOI']"], ["IfcSensorTEMPERATURESENSOR", "['CS', 'TPS', 'OTPS']"], ["IfcElectricApplianceFREESTANDINGWATERHEATER", "['DEWH', 'EWH']"], ["IfcCommunicationsApplianceNETWORKAPPLIANCE", "['FW']"], ["IfcSensorCOSENSOR", "['COS']"], ["IfcBoilerWATER", "['BVWB', 'DGWH', 'GWH']"], ["IfcUnitaryControlElementCONTROLPANEL", "['FPCP', 'GSCP', 'FSS', 'VP', 'CTRP', 'GBCP', 'GENCP', 'GWCP', 'HVACCP', 'LDP', 'RDT']"], ["IfcValveISOLATING", "['SISV', 'ISV']"], ["IfcHumidifier", "['HUM']"], ["IfcSensorSOUNDSENSOR", "['SLS']"], ["IfcElectricMotor", "['SDM', 'ELDM', 'ELTM']"], ["IfcProtectiveDeviceRESIDUALCURRENTCIRCUITBREAKER", "['RCCB', 'RCBO']"], ["IfcCondenser", "['CDU']"]];
-
-        // Define the dt_args
-        let dt_args = {"layout": {"topStart": "pageLength", "topEnd": "search", "bottomStart": "info", "bottomEnd": "paging"}, "order": [], "warn_on_selected_rows_not_rendered": true};
-        dt_args["data"] = data;
-
-        
-        new DataTable(table, dt_args);
-    });
-</script>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    ifc_classes <span class="op">=</span> {}</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> i <span class="kw">in</span> [(<span class="dv">0</span>, <span class="dv">1000</span>), (<span class="dv">1000</span>, <span class="dv">2000</span>)]:  <span class="co"># 1418 classes in total. 1000 max request limit</span></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        ifc_classes <span class="op">=</span> ifc_classes <span class="op">|</span> {x[<span class="st">"code"</span>]: x <span class="cf">for</span> x <span class="kw">in</span> get_batch(i)}</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> ifc_classes</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>client <span class="op">=</span> Client()</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>ifc_classes <span class="op">=</span> get_ifc_classes(client)</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>ifc_classes_core <span class="op">=</span> {k:v <span class="cf">for</span> k, v <span class="kw">in</span> ifc_classes.items() <span class="cf">if</span> <span class="kw">not</span> ifc_class_is_enum(k)}</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>bdns_abbreviations <span class="op">=</span> get_bdns_asset_abbreviations()</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>map_bdns_ifc <span class="op">=</span> {x[<span class="dv">1</span>]: x[<span class="op">-</span><span class="dv">2</span>] <span class="cf">for</span> x <span class="kw">in</span> bdns_abbreviations[<span class="dv">1</span>:]}</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>ifc_in_bdns <span class="op">=</span> <span class="bu">set</span>([x[<span class="op">-</span><span class="dv">2</span>] <span class="cf">for</span> x <span class="kw">in</span> bdns_abbreviations[<span class="dv">1</span>:]])</span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>map_ifc_bdns <span class="op">=</span> {}</span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> ifc <span class="kw">in</span> ifc_in_bdns:</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>    map_ifc_bdns[ifc] <span class="op">=</span> [k <span class="cf">for</span> k, v <span class="kw">in</span> map_bdns_ifc.items() <span class="cf">if</span> v <span class="op">==</span> ifc]</span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a>core_map_ifc_bdns  <span class="op">=</span> {k:v <span class="cf">for</span> k,v <span class="kw">in</span> map_ifc_bdns.items() <span class="cf">if</span> <span class="kw">not</span> ifc_class_is_enum(k)}</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>_map_ifc_bdns <span class="op">=</span> {k: [<span class="bu">str</span>(v)] <span class="cf">for</span> k, v <span class="kw">in</span> map_ifc_bdns.items()}</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>df_ifc_map_bdns <span class="op">=</span> pd.DataFrame.from_dict(_map_ifc_bdns).T.reset_index().rename(columns<span class="op">=</span>{<span class="st">"index"</span>:<span class="st">"ifc4_3"</span>, <span class="dv">0</span>:<span class="st">"bdns_abbreviation"</span>})</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="co"># show(df_ifc_map_bdns)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
-</div>
-<div id="b3247fe3" class="cell" data-execution_count="2">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number of unique ifc classes including enums: </span><span class="sc">{</span><span class="bu">len</span>(ifc_classes)<span class="sc">}</span><span class="ss">"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"number of unique ifc classes in bdns: </span><span class="sc">{</span><span class="bu">len</span>(ifc_in_bdns)<span class="sc">}</span><span class="ss">"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Quantifying the task of adding at least 1no bdns abbreviation for every core IFC4x3 class</strong></p>
+<div id="18374cd9" class="cell" data-execution_count="2">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"len(ifc_classes)       = </span><span class="sc">{</span><span class="bu">len</span>(ifc_classes)<span class="sc">}</span><span class="ss"> "</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"len(ifc_classes_core)  = </span><span class="sc">{</span><span class="bu">len</span>(ifc_classes_core)<span class="sc">}</span><span class="ss">  (i.e. without the enum, e.g. IfcValve)"</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"len(core_map_ifc_bdns) = </span><span class="sc">{</span><span class="bu">len</span>(core_map_ifc_bdns)<span class="sc">}</span><span class="ss">   (i.e. number of core Ifc classes with at least 1no mapping to an abbreviation)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 <div class="cell-output cell-output-stdout">
-<pre><code>number of unique ifc classes including enums: 1418
-number of unique ifc classes in bdns: 215</code></pre>
+<pre><code>len(ifc_classes)       = 1418 
+len(ifc_classes_core)  = 247  (i.e. without the enum, e.g. IfcValve)
+len(core_map_ifc_bdns) = 61   (i.e. number of core Ifc classes with at least 1no mapping to an abbreviation)</code></pre>
 </div>
 </div>
-<div id="2603020e" class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ifc_classes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="f165d3f4" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> add_descriptions(abbreviations):</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    map_abbreviation_description <span class="op">=</span> get_asset_abbreviations()</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> [<span class="ss">f"</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss"> - </span><span class="sc">{</span>map_abbreviation_description[x]<span class="sc">}</span><span class="ss">"</span> <span class="cf">for</span> x <span class="kw">in</span> abbreviations]</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>core_map_ifc_bdns_descriptions <span class="op">=</span> {k: add_descriptions(v) <span class="cf">for</span> k, v <span class="kw">in</span> core_map_ifc_bdns.items()}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>core_map_ifc_bdns_one_to_one <span class="op">=</span> {k:v[<span class="dv">0</span>] <span class="cf">for</span> k, v <span class="kw">in</span> core_map_ifc_bdns.items() <span class="cf">if</span> <span class="bu">len</span>(v) <span class="op">==</span> <span class="dv">1</span>}</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="co"># br = """</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># """</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>br <span class="op">=</span> <span class="st">"&lt;br&gt;"</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>updates <span class="op">=</span> {<span class="st">'IfcDamper'</span>: <span class="st">'DMP'</span>,</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcCableSegment'</span>: <span class="st">'CA'</span>,</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcController'</span>: <span class="st">'CNTRL'</span>,</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcCompressor'</span>: <span class="st">'CMP'</span>,</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcLightFixture'</span>: <span class="st">'LT'</span>,</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcChiller'</span>: <span class="st">'CH'</span>,</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcWindow'</span>: <span class="st">'WD'</span>,</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcOutlet'</span>: <span class="st">'OUT'</span>,</span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcTransformer'</span>: <span class="st">'TXMR'</span>,</span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcPump'</span>: <span class="st">'PMP'</span>,</span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcFlowMeter'</span>: <span class="st">'MTR'</span>,</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcSpaceHeater'</span>: <span class="st">'HTR'</span>,</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcFan'</span>: <span class="st">'FAN'</span>,</span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcFilter'</span>: <span class="st">'FLT'</span>,</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a> <span class="st">'IfcAirTerminal'</span>: <span class="st">'AT'</span>}</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>core_map_ifc_bdns_descriptions_str <span class="op">=</span> {k: [br.join(v)] <span class="cf">for</span> k,v <span class="kw">in</span> core_map_ifc_bdns_descriptions.items()}</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.DataFrame.from_dict(core_map_ifc_bdns_descriptions_str).T.reset_index().rename(columns<span class="op">=</span>{<span class="st">"index"</span>:<span class="st">"ifc_class"</span>, <span class="dv">0</span>: <span class="st">"bdns_options"</span>})</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"bdns_core"</span>] <span class="op">=</span> df.ifc_class.<span class="bu">map</span>(core_map_ifc_bdns_one_to_one)</span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>df[<span class="st">"bdns_suggested_updates"</span>] <span class="op">=</span> df.ifc_class.<span class="bu">map</span>(updates)</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a><span class="co"># df.to_csv("map.csv")</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>df.fillna(<span class="st">""</span>).style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<style type="text/css">
+</style>
+
+<table id="T_a57c6" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
+<th id="T_a57c6_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">ifc_class</th>
+<th id="T_a57c6_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">bdns_options</th>
+<th id="T_a57c6_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">bdns_core</th>
+<th id="T_a57c6_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">bdns_suggested_updates</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td id="T_a57c6_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
+<td id="T_a57c6_row0_col0" class="data row0 col0">IfcGroup</td>
+<td id="T_a57c6_row0_col1" class="data row0 col1">LGRP - lighting - group</td>
+<td id="T_a57c6_row0_col2" class="data row0 col2">LGRP</td>
+<td id="T_a57c6_row0_col3" class="data row0 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
+<td id="T_a57c6_row1_col0" class="data row1 col0">IfcAirToAirHeatRecovery</td>
+<td id="T_a57c6_row1_col1" class="data row1 col1">MVHR - air handling - mechanical ventilation with heat recovery<br>
+HRU - air handling unit - heat recovery unit</td>
+<td id="T_a57c6_row1_col2" class="data row1 col2"></td>
+<td id="T_a57c6_row1_col3" class="data row1 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
+<td id="T_a57c6_row2_col0" class="data row2 col0">IfcWasteTerminal</td>
+<td id="T_a57c6_row2_col1" class="data row2 col1">BVKOC - beverage machine - knock out chute<br>
+AD - waste terminal - area drain</td>
+<td id="T_a57c6_row2_col2" class="data row2 col2"></td>
+<td id="T_a57c6_row2_col3" class="data row2 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
+<td id="T_a57c6_row3_col0" class="data row3 col0">IfcFan</td>
+<td id="T_a57c6_row3_col1" class="data row3 col1">FAN - fan<br>
+CTF - fan - cooling tower fan<br>
+ELVPF - fan - elevator / lift well pressurization fan<br>
+EF - fan - exhaust fan<br>
+GSF - fan - garage / car park supply fan<br>
+GTF - fan - garage / car park transfer fan<br>
+KEF - fan - kitchen exhaust fan<br>
+MEV - fan - mechanical extract ventilation<br>
+MEVK - fan - mechanical extract ventilation kitchen<br>
+PF - fan - pressurization fan<br>
+RLF - fan - relief fan<br>
+RTF - fan - return fan<br>
+SEF - fan - smoke exhaust fan<br>
+SPF - fan - stairwell pressurization fan<br>
+SF - fan - supply fan<br>
+TEF - fan - toilet extract fan<br>
+TF - fan - transfer fan</td>
+<td id="T_a57c6_row3_col2" class="data row3 col2"></td>
+<td id="T_a57c6_row3_col3" class="data row3 col3">FAN</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
+<td id="T_a57c6_row4_col0" class="data row4 col0">IfcElectricFlowTreatmentDevice</td>
+<td id="T_a57c6_row4_col1" class="data row4 col1">PFC - electric distribution - power factor correction system</td>
+<td id="T_a57c6_row4_col2" class="data row4 col2">PFC</td>
+<td id="T_a57c6_row4_col3" class="data row4 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</td>
+<td id="T_a57c6_row5_col0" class="data row5 col0">IfcStackTerminal</td>
+<td id="T_a57c6_row5_col1" class="data row5 col1">AVR - natural air ventilator</td>
+<td id="T_a57c6_row5_col2" class="data row5 col2">AVR</td>
+<td id="T_a57c6_row5_col3" class="data row5 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</td>
+<td id="T_a57c6_row6_col0" class="data row6 col0">IfcDuctSegment</td>
+<td id="T_a57c6_row6_col1" class="data row6 col1">DUW - distribution ventilation - ductwork<br>
+FDUW - distribution ventilation - ductwork fire rated</td>
+<td id="T_a57c6_row6_col2" class="data row6 col2"></td>
+<td id="T_a57c6_row6_col3" class="data row6 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</td>
+<td id="T_a57c6_row7_col0" class="data row7 col0">IfcFlowTreatmentDevice</td>
+<td id="T_a57c6_row7_col1" class="data row7 col1">ADS - filter - air and dirt separator<br>
+AS - filter - air separator</td>
+<td id="T_a57c6_row7_col2" class="data row7 col2"></td>
+<td id="T_a57c6_row7_col3" class="data row7 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">8</td>
+<td id="T_a57c6_row8_col0" class="data row8 col0">IfcFlowMeter</td>
+<td id="T_a57c6_row8_col1" class="data row8 col1">MTR - meter<br>
+EBM - meter - electric branch meter<br>
+EMV - meter - electric meter (virtual)<br>
+FM - meter - flow meter<br>
+GMV - meter - gas meter (virtual)<br>
+HM - meter - heat meter<br>
+HMV - meter - heat meter (virtual)<br>
+WMV - meter - water meter (virtual)</td>
+<td id="T_a57c6_row8_col2" class="data row8 col2"></td>
+<td id="T_a57c6_row8_col3" class="data row8 col3">MTR</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">9</td>
+<td id="T_a57c6_row9_col0" class="data row9 col0">IfcFastener</td>
+<td id="T_a57c6_row9_col1" class="data row9 col1">CIS - lightning protection - cast-in-socket<br>
+ECL - lightning protection - earthing clamp</td>
+<td id="T_a57c6_row9_col2" class="data row9 col2"></td>
+<td id="T_a57c6_row9_col3" class="data row9 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">10</td>
+<td id="T_a57c6_row10_col0" class="data row10 col0">IfcFurniture</td>
+<td id="T_a57c6_row10_col1" class="data row10 col1">EKC - electronic key cabinet<br>
+FSSG - food serving - sneeze guard<br>
+CSC - furniture - chemical storage cabinet<br>
+KSTC - furniture - commercial kitchen storage cabinet<br>
+KCART - furniture - commercial kitchen trolley/cart<br>
+LCKR - furniture - locker<br>
+WSTBIN - waste management - waste bin</td>
+<td id="T_a57c6_row10_col2" class="data row10 col2"></td>
+<td id="T_a57c6_row10_col3" class="data row10 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">11</td>
+<td id="T_a57c6_row11_col0" class="data row11 col0">IfcWindow</td>
+<td id="T_a57c6_row11_col1" class="data row11 col1">ECG - electrochromic glass<br>
+WD - window</td>
+<td id="T_a57c6_row11_col2" class="data row11 col2"></td>
+<td id="T_a57c6_row11_col3" class="data row11 col3">WD</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">12</td>
+<td id="T_a57c6_row12_col0" class="data row12 col0">IfcCableSegment</td>
+<td id="T_a57c6_row12_col1" class="data row12 col1">DCA - distribution data - data cable<br>
+CA - distribution electric - cable<br>
+FCA - distribution electric - fire rated cable<br>
+TR - lighting - track - electric track for lights<br>
+EBA - lightning protection - earthing bar<br>
+ERO - lightning protection - earthing rod<br>
+ETA - lightning protection - earthing tape</td>
+<td id="T_a57c6_row12_col2" class="data row12 col2"></td>
+<td id="T_a57c6_row12_col3" class="data row12 col3">CA</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">13</td>
+<td id="T_a57c6_row13_col0" class="data row13 col0">IfcDamper</td>
+<td id="T_a57c6_row13_col1" class="data row13 col1">DMP - damper<br>
+EXD - damper - exhaust damper<br>
+IISD - damper - inlet isolation damper<br>
+MD - damper - motorised damper</td>
+<td id="T_a57c6_row13_col2" class="data row13 col2"></td>
+<td id="T_a57c6_row13_col3" class="data row13 col3">DMP</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">14</td>
+<td id="T_a57c6_row14_col0" class="data row14 col0">IfcCondenser</td>
+<td id="T_a57c6_row14_col1" class="data row14 col1">CDU - condensing unit</td>
+<td id="T_a57c6_row14_col2" class="data row14 col2">CDU</td>
+<td id="T_a57c6_row14_col3" class="data row14 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">15</td>
+<td id="T_a57c6_row15_col0" class="data row15 col0">IfcPipeSegment</td>
+<td id="T_a57c6_row15_col1" class="data row15 col1">PW - distribution piped services - pipework</td>
+<td id="T_a57c6_row15_col2" class="data row15 col2">PW</td>
+<td id="T_a57c6_row15_col3" class="data row15 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">16</td>
+<td id="T_a57c6_row16_col0" class="data row16 col0">IfcController</td>
+<td id="T_a57c6_row16_col1" class="data row16 col1">RFIDC - access control - RFID controller<br>
+CNTRL - controller<br>
+IRRC - controller - irrigation controller<br>
+ROC - controller - room controller<br>
+PVDAS - pv data acquisition system<br>
+PVMC - pv microgrid controller<br>
+PVMLPE - pv module-level power electronics<br>
+SDC - shading - shading device controller</td>
+<td id="T_a57c6_row16_col2" class="data row16 col2"></td>
+<td id="T_a57c6_row16_col3" class="data row16 col3">CNTRL</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th">17</td>
+<td id="T_a57c6_row17_col0" class="data row17 col0">IfcPump</td>
+<td id="T_a57c6_row17_col1" class="data row17 col1">FJP - fire suppression - fire jockey pump<br>
+FP - fire suppression - fire pump<br>
+PMP - pump<br>
+CNP - pump - automatic condensate pump<br>
+AXCWP - pump - auxilliary process cooling water pump<br>
+BSP - pump - booster pump<br>
+CHWP - pump - chilled water pump<br>
+CDWP - pump - condenser water pump<br>
+CTSEPP - pump - cooling tower separator pump<br>
+DHWP - pump - domestic hot water circulation pump<br>
+DP - pump - dosing pump<br>
+FHP - pump - fire hydrant pump<br>
+FOP - pump - fuel oil pump<br>
+GBP - pump - gas booster pump<br>
+GWBP - pump - greywater booster pump<br>
+HXP - pump - heat exchanger pump<br>
+HTCHP - pump - high temperature chilled water pump<br>
+HTCWP - pump - high temperature condenser water pump<br>
+HWP - pump - hot water pump<br>
+LTCHWP - pump - low temperature chilled water pump<br>
+LTCDWP - pump - low temperature condenser water pump<br>
+LTHWP - pump - low temperature hot water pump<br>
+PAPS - pump - packaged pump set<br>
+DWBP - pump - potable/domestic water booster pump<br>
+DWTP - pump - potable/domestic water transfer pump<br>
+PCHWP - pump - primary chilled water pump<br>
+PP - pump - primary pump<br>
+PCWP - pump - process cooling water pump<br>
+PWP - pump - process water pump<br>
+RNWBP - pump - rainwater booster pump<br>
+RNWP - pump - rainwater pump<br>
+RCP - pump - recirculation pump<br>
+RWP - pump - recycled water pump<br>
+SCHWP - pump - secondary chilled water pump<br>
+SHCP - pump - secondary heating circulation pump<br>
+SHWP - pump - secondary hot water circulating pump<br>
+SP - pump - secondary pump<br>
+SEPP - pump - separator pump<br>
+SEP - pump - sewage ejector pump<br>
+SPP - pump - sprinkler pump<br>
+TMUP - pump - tower make up pump<br>
+TRP - pump - transfer pump<br>
+VCP - pump - vacuum pump<br>
+WWP - pump - waste water pump<br>
+WRP - pump - wet riser pump</td>
+<td id="T_a57c6_row17_col2" class="data row17 col2"></td>
+<td id="T_a57c6_row17_col3" class="data row17 col3">PMP</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">18</td>
+<td id="T_a57c6_row18_col0" class="data row18 col0">IfcActuator</td>
+<td id="T_a57c6_row18_col1" class="data row18 col1">ACT - actuator</td>
+<td id="T_a57c6_row18_col2" class="data row18 col2">ACT</td>
+<td id="T_a57c6_row18_col3" class="data row18 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th">19</td>
+<td id="T_a57c6_row19_col0" class="data row19 col0">IfcUnitaryEquipment</td>
+<td id="T_a57c6_row19_col1" class="data row19 col1">USS - electric distribution - unit substation<br>
+FCU - fan coil unit<br>
+CTFU - filter - cooling tower filtration unit<br>
+PFU - filter - process filtration unit<br>
+HIU - heat interface unit<br>
+ASHP - heat pump - air source heat pump<br>
+GSHP - heat pump - ground source heat pump<br>
+HP - heat pump - heat pump<br>
+WSHP - heat pump - water source heat pump<br>
+PU - pressurisation unit<br>
+WMS - pressurisation unit - water system makeup unit<br>
+CTSU - water treatment - cooling tower water treatment unit</td>
+<td id="T_a57c6_row19_col2" class="data row19 col2"></td>
+<td id="T_a57c6_row19_col3" class="data row19 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">20</td>
+<td id="T_a57c6_row20_col0" class="data row20 col0">IfcSensor</td>
+<td id="T_a57c6_row20_col1" class="data row20 col1">HDS - fire detection - hydrogen detector<br>
+GLYPR - sensor - glycol protector sensor<br>
+IMUS - sensor - inertial measurement unit sensor<br>
+LDS - sensor - leak detection sensor<br>
+LVLS - sensor - level sensor<br>
+LTMTS - sensor - lighting multisensor<br>
+MCS - sensor - moisture content sensor<br>
+MTS - sensor - multi sensor<br>
+NDS - sensor - nitrogen dioxide sensor<br>
+PMS - sensor - particulate matter sensor<br>
+PCS - sensor - people counting sensor<br>
+SSS - sensor - seismic sensor<br>
+VS - sensor - velocity sensor<br>
+VBS - sensor - vibration sensor</td>
+<td id="T_a57c6_row20_col2" class="data row20 col2"></td>
+<td id="T_a57c6_row20_col3" class="data row20 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">21</td>
+<td id="T_a57c6_row21_col0" class="data row21 col0">IfcCompressor</td>
+<td id="T_a57c6_row21_col1" class="data row21 col1">CMP - compressor<br>
+ACP - compressor - air compressor</td>
+<td id="T_a57c6_row21_col2" class="data row21 col2"></td>
+<td id="T_a57c6_row21_col3" class="data row21 col3">CMP</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th">22</td>
+<td id="T_a57c6_row22_col0" class="data row22 col0">IfcBoiler</td>
+<td id="T_a57c6_row22_col1" class="data row22 col1">BLR - burner - boiler</td>
+<td id="T_a57c6_row22_col2" class="data row22 col2">BLR</td>
+<td id="T_a57c6_row22_col3" class="data row22 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">23</td>
+<td id="T_a57c6_row23_col0" class="data row23 col0">IfcCoolingTower</td>
+<td id="T_a57c6_row23_col1" class="data row23 col1">CT - chiller - cooling tower</td>
+<td id="T_a57c6_row23_col2" class="data row23 col2">CT</td>
+<td id="T_a57c6_row23_col3" class="data row23 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">24</td>
+<td id="T_a57c6_row24_col0" class="data row24 col0">IfcElectricGenerator</td>
+<td id="T_a57c6_row24_col1" class="data row24 col1">CSG - generator - clean steam generator</td>
+<td id="T_a57c6_row24_col2" class="data row24 col2">CSG</td>
+<td id="T_a57c6_row24_col3" class="data row24 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row25" class="row_heading level0 row25" data-quarto-table-cell-role="th">25</td>
+<td id="T_a57c6_row25_col0" class="data row25 col0">IfcHumidifier</td>
+<td id="T_a57c6_row25_col1" class="data row25 col1">HUM - humidifier</td>
+<td id="T_a57c6_row25_col2" class="data row25 col2">HUM</td>
+<td id="T_a57c6_row25_col3" class="data row25 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row26" class="row_heading level0 row26" data-quarto-table-cell-role="th">26</td>
+<td id="T_a57c6_row26_col0" class="data row26 col0">IfcDistributionElement</td>
+<td id="T_a57c6_row26_col1" class="data row26 col1">CIP - lightning protection - concrete inspection pit</td>
+<td id="T_a57c6_row26_col2" class="data row26 col2">CIP</td>
+<td id="T_a57c6_row26_col3" class="data row26 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row27" class="row_heading level0 row27" data-quarto-table-cell-role="th">27</td>
+<td id="T_a57c6_row27_col0" class="data row27 col0">IfcTank</td>
+<td id="T_a57c6_row27_col1" class="data row27 col1">DEA - tank - deareator tank<br>
+DET - tank - decontamination tank<br>
+EST - tank - emergency sewer tank<br>
+FODT - tank - fuel oil day tank<br>
+DWTT - tank - potable/domestic water transfer tank<br>
+CHDU - water treatment - chemical dosage unit<br>
+DPOT - water treatment - dosing pot</td>
+<td id="T_a57c6_row27_col2" class="data row27 col2"></td>
+<td id="T_a57c6_row27_col3" class="data row27 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row28" class="row_heading level0 row28" data-quarto-table-cell-role="th">28</td>
+<td id="T_a57c6_row28_col0" class="data row28 col0">IfcProtectiveDevice</td>
+<td id="T_a57c6_row28_col1" class="data row28 col1">BTR - battery - battery trip unit<br>
+ATS - electric distribution - automatic transfer switch<br>
+EISOTX - electric protective device - isolation transformer</td>
+<td id="T_a57c6_row28_col2" class="data row28 col2"></td>
+<td id="T_a57c6_row28_col3" class="data row28 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row29" class="row_heading level0 row29" data-quarto-table-cell-role="th">29</td>
+<td id="T_a57c6_row29_col0" class="data row29 col0">IfcSwitchingDevice</td>
+<td id="T_a57c6_row29_col1" class="data row29 col1">AIC - access control - audio intercom<br>
+VIC - access control - video intercom<br>
+STS - electric distribution - static transfer switch<br>
+HTCO - electric protective device - high temperature cut out switch<br>
+IFU - fire detection - input output interface unit<br>
+FMO - fire suppression - firemans override switch<br>
+FS - fire suppression - sprinkler flow switch<br>
+LSW - lighting - control - switch<br>
+APSW - switch - absolute pressure<br>
+DEWSW - switch - dew point<br>
+DPSW - switch - differential pressure<br>
+SPSW - switch - static pressure<br>
+TDSW - switch - thermal dispersion flow proving switch</td>
+<td id="T_a57c6_row29_col2" class="data row29 col2"></td>
+<td id="T_a57c6_row29_col3" class="data row29 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row30" class="row_heading level0 row30" data-quarto-table-cell-role="th">30</td>
+<td id="T_a57c6_row30_col0" class="data row30 col0">IfcDistributionSystem</td>
+<td id="T_a57c6_row30_col1" class="data row30 col1">KUDS - furniture - commercial kitchen utlity distribution system<br>
+KUCS - furniture - commercial kithcen utility chase system</td>
+<td id="T_a57c6_row30_col2" class="data row30 col2"></td>
+<td id="T_a57c6_row30_col3" class="data row30 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row31" class="row_heading level0 row31" data-quarto-table-cell-role="th">31</td>
+<td id="T_a57c6_row31_col0" class="data row31 col0">IfcShadingDevice</td>
+<td id="T_a57c6_row31_col1" class="data row31 col1">BL - shading - shading device blinds</td>
+<td id="T_a57c6_row31_col2" class="data row31 col2">BL</td>
+<td id="T_a57c6_row31_col3" class="data row31 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row32" class="row_heading level0 row32" data-quarto-table-cell-role="th">32</td>
+<td id="T_a57c6_row32_col0" class="data row32 col0">IfcSpaceHeater</td>
+<td id="T_a57c6_row32_col1" class="data row32 col1">FSHL - food serving - heat lamp<br>
+DH - heat emitter - duct heater<br>
+EUH - heat emitter - electric unit heater<br>
+GUH - heat emitter - gas unit heater<br>
+HTR - heat emitter - heater<br>
+TC - heat emitter - hydronic trench convector<br>
+EHT - heat emitter - trace heating<br>
+TRHC - heat emitter - trench heater and cooler<br>
+TRH - heat emitter - trench heating<br>
+UFM - heat emitter - underfloor manifold<br>
+UH - heat emitter - unit heater<br>
+WAC - heat emitter - warm air curtain<br>
+CCH - radiant surface - chilled ceiling</td>
+<td id="T_a57c6_row32_col2" class="data row32 col2"></td>
+<td id="T_a57c6_row32_col3" class="data row32 col3">HTR</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row33" class="row_heading level0 row33" data-quarto-table-cell-role="th">33</td>
+<td id="T_a57c6_row33_col0" class="data row33 col0">IfcCableCarrierSegment</td>
+<td id="T_a57c6_row33_col1" class="data row33 col1">CABASK - cable management - cable basket</td>
+<td id="T_a57c6_row33_col2" class="data row33 col2">CABASK</td>
+<td id="T_a57c6_row33_col3" class="data row33 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row34" class="row_heading level0 row34" data-quarto-table-cell-role="th">34</td>
+<td id="T_a57c6_row34_col0" class="data row34 col0">IfcTransformer</td>
+<td id="T_a57c6_row34_col1" class="data row34 col1">DCDC - electric distribution - dc-dc converter<br>
+PVTXMR - pv transformer<br>
+TXMR - transformer</td>
+<td id="T_a57c6_row34_col2" class="data row34 col2"></td>
+<td id="T_a57c6_row34_col3" class="data row34 col3">TXMR</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row35" class="row_heading level0 row35" data-quarto-table-cell-role="th">35</td>
+<td id="T_a57c6_row35_col0" class="data row35 col0">IfcFilter</td>
+<td id="T_a57c6_row35_col1" class="data row35 col1">FLT - filter<br>
+APU - filter - air purifier unit<br>
+AWSH - filter - air washer unit<br>
+BFLT - filter - bag filter<br>
+CFLT - filter - carbon filter<br>
+CTFS - filter - cooling tower filtration unit<br>
+CTSFLT - filter - cooling tower sand filter<br>
+CTSEP - filter - cooling tower separator<br>
+CTSSEP - filter - cooling tower separator / sand separator<br>
+DGA - filter - degasser filter<br>
+DTS - filter - dirt separator<br>
+DSU - filter - exhaust dry scrubber unit<br>
+PFLT - filter - panel filter<br>
+RO - filter - reverse osmosis system<br>
+SSFLT - filter - side stream water filters<br>
+VSFLT - filter - vacuum system filter<br>
+RRFLT - filter - water - reverse rinsing filter<br>
+UVDU - uv disinfection unit</td>
+<td id="T_a57c6_row35_col2" class="data row35 col2"></td>
+<td id="T_a57c6_row35_col3" class="data row35 col3">FLT</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row36" class="row_heading level0 row36" data-quarto-table-cell-role="th">36</td>
+<td id="T_a57c6_row36_col0" class="data row36 col0">IfcElectricAppliance</td>
+<td id="T_a57c6_row36_col1" class="data row36 col1">BVAP - beverage machine - airpot<br>
+BVC - beverage machine - chai machine<br>
+BVCFMG - beverage machine - coffee grinder<br>
+BVCFM - beverage machine - coffee machine<br>
+BVCFMN - beverage machine - coffee nitro machine<br>
+BVCFMU - beverage machine - coffee urn<br>
+BVCFME - beverage machine - espresso machine<br>
+BVS - beverage machine - steamer<br>
+FCSD - cleaning - floor cleaner scrubber dryer<br>
+CKBP - cooking appliance - bratt pan<br>
+CKDSTE - cooking appliance - dim sum steamer<br>
+CKGRD - cooking appliance - griddle<br>
+CKKET - cooking appliance - kettle<br>
+CKPBP - cooking appliance - pressure bratt pan<br>
+CKPSTE - cooking appliance - pressure steamer<br>
+CKROT - cooking appliance - rotisserie<br>
+CKSTE - cooking appliance - steamer<br>
+DISP - dispenser<br>
+DISPB - dispenser - broth<br>
+DISPC - dispenser - cereal<br>
+DISPIB - dispenser - ice/beverage<br>
+DISPJ - dispenser - juice<br>
+DISPMK - dispenser - milk<br>
+DISPIC - dispenser - soft serve ice cream<br>
+DISPW - dispenser - water<br>
+ELOCK - door - electric lock<br>
+EMDH - door - electromagnetic door holder<br>
+LLOCK - door - latch lock<br>
+MLOCK - door - magnetic lock<br>
+EAPPL - electric appliance<br>
+ADY - electric appliance - air dryer<br>
+EPOS - electric appliance - electronic point of sale<br>
+GYMEQ - electric appliance - exercise / gym equipment<br>
+FOODEQ - electric appliance - food equipment<br>
+HDY - electric appliance - hand dryer<br>
+STE - electric appliance - steamer<br>
+ETCFP - employee timeclock with fingerprint scanner<br>
+FSCPL - food serving - cold plate<br>
+FSCWL - food serving - cold well<br>
+FSHCPL - food serving - hot and cold plate<br>
+FSHCWL - food serving - hot and cold well<br>
+FSHPL - food serving - hot plate<br>
+FSHWL - food serving - hot well<br>
+FSICD - food serving - ice cream display<br>
+FSIWL - food serving - ice well<br>
+FSIW - food serving - induction warmer<br>
+FSSWL - food serving - soup well<br>
+KSTCH - furniture - commercial kitchen storage cabinet heated<br>
+KSMBL - kitchen appliance - blender/smoothie maker<br>
+KBBL - kitchen appliance - bowl blender<br>
+KBC - kitchen appliance - bowl cutter<br>
+KCO - kitchen appliance - can opener<br>
+KCWM - kitchen appliance - crepe and waffle maker<br>
+KCDY - kitchen appliance - cutlery dryer<br>
+KDR - kitchen appliance - dough divider/rounder<br>
+KDPR - kitchen appliance - dough press<br>
+KICT - kitchen appliance - insect trap<br>
+KJC - kitchen appliance - juicer<br>
+KMBS - kitchen appliance - meat bone saw<br>
+KMM - kitchen appliance - meat mincer<br>
+KMS - kitchen appliance - meat slicer<br>
+KMIX - kitchen appliance - mixer<br>
+KPM - kitchen appliance - pacotizing machine<br>
+KPPM - kitchen appliance - potato peeling machine<br>
+KFS - kitchen appliance - scale<br>
+KSBL - kitchen appliance - stick blender<br>
+KTST - kitchen appliance - toaster<br>
+KUVSC - kitchen appliance - uv knife steralizer<br>
+KVPM - kitchen appliance - vacuum packing machine<br>
+KVCM - kitchen appliance - veg cutting machine<br>
+KVWM - kitchen appliance - vegetable washer<br>
+KVW - kitchen appliance - vegetable washer and dryer<br>
+IM - refrigeration - ice maker<br>
+WSTFD - waste management - food dehydrator<br>
+WSTC - waste management - waste compactor<br>
+WSTWG - waste management - wet waste grinder<br>
+IWH - water heater - instantaneous water heater</td>
+<td id="T_a57c6_row36_col2" class="data row36 col2"></td>
+<td id="T_a57c6_row36_col3" class="data row36 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row37" class="row_heading level0 row37" data-quarto-table-cell-role="th">37</td>
+<td id="T_a57c6_row37_col0" class="data row37 col0">IfcAirTerminal</td>
+<td id="T_a57c6_row37_col1" class="data row37 col1">EAV - air terminal - air valve - extract<br>
+SAV - air terminal - air valve - supply<br>
+AT - air terminal - generic<br>
+GR - air terminal - grille<br>
+EG - air terminal - grille - extract<br>
+SG - air terminal - grille - supply<br>
+LOU - air terminal - louvre<br>
+ELOU - air terminal - louvre - exhaust/extract<br>
+ILOU - air terminal - louvre - inlet/intake</td>
+<td id="T_a57c6_row37_col2" class="data row37 col2"></td>
+<td id="T_a57c6_row37_col3" class="data row37 col3">AT</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row38" class="row_heading level0 row38" data-quarto-table-cell-role="th">38</td>
+<td id="T_a57c6_row38_col0" class="data row38 col0">IfcCoil</td>
+<td id="T_a57c6_row38_col1" class="data row38 col1">COIL - coil</td>
+<td id="T_a57c6_row38_col2" class="data row38 col2">COIL</td>
+<td id="T_a57c6_row38_col3" class="data row38 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row39" class="row_heading level0 row39" data-quarto-table-cell-role="th">39</td>
+<td id="T_a57c6_row39_col0" class="data row39 col0">IfcHeatExchanger</td>
+<td id="T_a57c6_row39_col1" class="data row39 col1">HX - heat exchanger</td>
+<td id="T_a57c6_row39_col2" class="data row39 col2">HX</td>
+<td id="T_a57c6_row39_col3" class="data row39 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row40" class="row_heading level0 row40" data-quarto-table-cell-role="th">40</td>
+<td id="T_a57c6_row40_col0" class="data row40 col0">IfcDistributionBoard</td>
+<td id="T_a57c6_row40_col1" class="data row40 col1">ITDP - electric distribution - distribution panel for itc equipment<br>
+KDP - electric distribution - kitchen electric distribution panel/board<br>
+MPNL - electric distribution - main panel / board<br>
+MDU - electric distribution - mains distribution unit<br>
+PB - electric distribution - panel board<br>
+PDU - electric distribution - power distribution unit<br>
+RMU - electric distribution - ring main unit</td>
+<td id="T_a57c6_row40_col2" class="data row40 col2"></td>
+<td id="T_a57c6_row40_col3" class="data row40 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row41" class="row_heading level0 row41" data-quarto-table-cell-role="th">41</td>
+<td id="T_a57c6_row41_col0" class="data row41 col0">IfcMotorConnection</td>
+<td id="T_a57c6_row41_col1" class="data row41 col1">VSD - motor controller - vsd (inverter drive)<br>
+VFD - variable frequency drive</td>
+<td id="T_a57c6_row41_col2" class="data row41 col2"></td>
+<td id="T_a57c6_row41_col3" class="data row41 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row42" class="row_heading level0 row42" data-quarto-table-cell-role="th">42</td>
+<td id="T_a57c6_row42_col0" class="data row42 col0">IfcCooledBeam</td>
+<td id="T_a57c6_row42_col1" class="data row42 col1">CHB - radiant surface - chilled beam</td>
+<td id="T_a57c6_row42_col2" class="data row42 col2">CHB</td>
+<td id="T_a57c6_row42_col3" class="data row42 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row43" class="row_heading level0 row43" data-quarto-table-cell-role="th">43</td>
+<td id="T_a57c6_row43_col0" class="data row43 col0">IfcElectricMotor</td>
+<td id="T_a57c6_row43_col1" class="data row43 col1">SDM - shading - shading device motor<br>
+ELDM - transportation - lift / elevator door motor<br>
+ELTM - transportation - lift / elevator traction machine</td>
+<td id="T_a57c6_row43_col2" class="data row43 col2"></td>
+<td id="T_a57c6_row43_col3" class="data row43 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row44" class="row_heading level0 row44" data-quarto-table-cell-role="th">44</td>
+<td id="T_a57c6_row44_col0" class="data row44 col0">IfcUnitaryControlElement</td>
+<td id="T_a57c6_row44_col1" class="data row44 col1">LCM - lighting - control - module<br>
+LCP - lighting - control - panel<br>
+CTCP - panel - chemical treatment control panel<br>
+FACP - panel - fire alarm control panel<br>
+MCC - panel - motor control center<br>
+RIO - panel - remote i/o control panel<br>
+VAVCTR - panel - variable air volume control station / panel<br>
+ELC - transportation - lift / elevator controller</td>
+<td id="T_a57c6_row44_col2" class="data row44 col2"></td>
+<td id="T_a57c6_row44_col3" class="data row44 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row45" class="row_heading level0 row45" data-quarto-table-cell-role="th">45</td>
+<td id="T_a57c6_row45_col0" class="data row45 col0">IfcAlarm</td>
+<td id="T_a57c6_row45_col1" class="data row45 col1">PDB - emergency assistance - panic duress button<br>
+FAS - fire detection - alarm annunciator sounder or beacon</td>
+<td id="T_a57c6_row45_col2" class="data row45 col2"></td>
+<td id="T_a57c6_row45_col3" class="data row45 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row46" class="row_heading level0 row46" data-quarto-table-cell-role="th">46</td>
+<td id="T_a57c6_row46_col0" class="data row46 col0">IfcBurner</td>
+<td id="T_a57c6_row46_col1" class="data row46 col1">FR - burner - furnace</td>
+<td id="T_a57c6_row46_col2" class="data row46 col2">FR</td>
+<td id="T_a57c6_row46_col3" class="data row46 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row47" class="row_heading level0 row47" data-quarto-table-cell-role="th">47</td>
+<td id="T_a57c6_row47_col0" class="data row47 col0">IfcCommunicationsAppliance</td>
+<td id="T_a57c6_row47_col1" class="data row47 col1">DPU - data processing unit / computer<br>
+HMI - human machine interface<br>
+IDF - ict equipment - intermediate distribution frame<br>
+SRV - ict equipment - multi-purpose server<br>
+NAM - ict equipment - network access manager<br>
+NMS - ict equipment - network monitoring system<br>
+PDUIPD - ict equipment - pdu ip dongle<br>
+POEETS - ict equipment - power-over-ethernet network switch<br>
+SDNC - ict equipment - software-defined networking controller<br>
+UPSMS - ict equipment - ups management system<br>
+LBCN - location services - beacon</td>
+<td id="T_a57c6_row47_col2" class="data row47 col2"></td>
+<td id="T_a57c6_row47_col3" class="data row47 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row48" class="row_heading level0 row48" data-quarto-table-cell-role="th">48</td>
+<td id="T_a57c6_row48_col0" class="data row48 col0">IfcDuctSilencer</td>
+<td id="T_a57c6_row48_col1" class="data row48 col1">SLCR - duct silencer - attenuator</td>
+<td id="T_a57c6_row48_col2" class="data row48 col2">SLCR</td>
+<td id="T_a57c6_row48_col3" class="data row48 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row49" class="row_heading level0 row49" data-quarto-table-cell-role="th">49</td>
+<td id="T_a57c6_row49_col0" class="data row49 col0">IfcLightFixture</td>
+<td id="T_a57c6_row49_col1" class="data row49 col1">LT - lighting - fixture<br>
+DL - lighting - fixture - downlight<br>
+EL - lighting - fixture - standalone emergency light<br>
+UL - lighting - fixture - uplight<br>
+WL - lighting - fixture - wall light<br>
+LBO - lighting - fixture external - bollard<br>
+LPO - lighting - fixture external - lampost</td>
+<td id="T_a57c6_row49_col2" class="data row49 col2"></td>
+<td id="T_a57c6_row49_col3" class="data row49 col3">LT</td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row50" class="row_heading level0 row50" data-quarto-table-cell-role="th">50</td>
+<td id="T_a57c6_row50_col0" class="data row50 col0">IfcValve</td>
+<td id="T_a57c6_row50_col1" class="data row50 col1">TMUV - pump - tower make up valve<br>
+TP - trap primer<br>
+TPE - trap primer - electronic trap primer<br>
+VLV - valve<br>
+AV - valve - angle stop valve<br>
+BFP - valve - backflow preventer valve<br>
+BDV - valve - blowdown valve<br>
+BFV - valve - butterfly valve<br>
+CHWV - valve - chilled water valve<br>
+CDWV - valve - condenser water valve<br>
+CV - valve - control valve<br>
+CVM - valve - control valve modulating<br>
+CVO - valve - control valve open closed<br>
+DPCV - valve - differential pressure control valve<br>
+ENV - valve - energy valve<br>
+FV - valve - float valve<br>
+FCV - valve - flow control valve<br>
+HWV - valve - hot water valve<br>
+LCV - valve - level control valve<br>
+MUV - valve - make up water valve<br>
+MMV - valve - master thermostatic valve<br>
+PA - valve - pressure attenuator<br>
+PCV - valve - pressure control valve<br>
+PICV - valve - pressure independent control valve<br>
+PWV - valve - process water valve<br>
+RCV - valve - recirculation valve<br>
+RTV - valve - return valve<br>
+SGV - valve - seismic gas valve<br>
+SPRV - valve - steam pressure reducing valve<br>
+SPV - valve - supply valve<br>
+TCV - valve - temperature control valve<br>
+WHAV - valve - water hammer arrestor</td>
+<td id="T_a57c6_row50_col2" class="data row50 col2"></td>
+<td id="T_a57c6_row50_col3" class="data row50 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row51" class="row_heading level0 row51" data-quarto-table-cell-role="th">51</td>
+<td id="T_a57c6_row51_col0" class="data row51 col0">IfcEvaporativeCooler</td>
+<td id="T_a57c6_row51_col1" class="data row51 col1">HYAC - chiller - hybrid air cooler or fluid cooler</td>
+<td id="T_a57c6_row51_col2" class="data row51 col2">HYAC</td>
+<td id="T_a57c6_row51_col3" class="data row51 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row52" class="row_heading level0 row52" data-quarto-table-cell-role="th">52</td>
+<td id="T_a57c6_row52_col0" class="data row52 col0">IfcOutlet</td>
+<td id="T_a57c6_row52_col1" class="data row52 col1">OUT - outlet<br>
+FLRB - outlet - floor box<br>
+LER - outlet - linear electric receptacle</td>
+<td id="T_a57c6_row52_col2" class="data row52 col2"></td>
+<td id="T_a57c6_row52_col3" class="data row52 col3">OUT</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row53" class="row_heading level0 row53" data-quarto-table-cell-role="th">53</td>
+<td id="T_a57c6_row53_col0" class="data row53 col0">IfcInterceptor</td>
+<td id="T_a57c6_row53_col1" class="data row53 col1">SSP - sand separator</td>
+<td id="T_a57c6_row53_col2" class="data row53 col2">SSP</td>
+<td id="T_a57c6_row53_col3" class="data row53 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row54" class="row_heading level0 row54" data-quarto-table-cell-role="th">54</td>
+<td id="T_a57c6_row54_col0" class="data row54 col0">IfcChiller</td>
+<td id="T_a57c6_row54_col1" class="data row54 col1">CH - chiller<br>
+CCCH - chiller - critical cooling chiller<br>
+HTCH - chiller - high temperature chiller<br>
+LTCH - chiller - low temperature chiller</td>
+<td id="T_a57c6_row54_col2" class="data row54 col2"></td>
+<td id="T_a57c6_row54_col3" class="data row54 col3">CH</td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row55" class="row_heading level0 row55" data-quarto-table-cell-role="th">55</td>
+<td id="T_a57c6_row55_col0" class="data row55 col0">IfcAirTerminalBox</td>
+<td id="T_a57c6_row55_col1" class="data row55 col1">FPB - air terminal box - fan powered box<br>
+UFT - air terminal box - under floor variable air volume box<br>
+VAV - air terminal box - variable air volume box<br>
+VAVE - air terminal box - variable air volume box - extract<br>
+VAVS - air terminal box - variable air volume box - supply<br>
+VVTB - air terminal box - variable volume and temperature box<br>
+VVT - air terminal box - variable volume terminal unit<br>
+KVVC - kitchen ventilation - ventilated ceiling</td>
+<td id="T_a57c6_row55_col2" class="data row55 col2"></td>
+<td id="T_a57c6_row55_col3" class="data row55 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row56" class="row_heading level0 row56" data-quarto-table-cell-role="th">56</td>
+<td id="T_a57c6_row56_col0" class="data row56 col0">IfcFireSuppressionTerminal</td>
+<td id="T_a57c6_row56_col1" class="data row56 col1">GSH - fire suppression - gas suppression head</td>
+<td id="T_a57c6_row56_col2" class="data row56 col2">GSH</td>
+<td id="T_a57c6_row56_col3" class="data row56 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row57" class="row_heading level0 row57" data-quarto-table-cell-role="th">57</td>
+<td id="T_a57c6_row57_col0" class="data row57 col0">IfcEvaporator</td>
+<td id="T_a57c6_row57_col1" class="data row57 col1">EVP - evaporator</td>
+<td id="T_a57c6_row57_col2" class="data row57 col2">EVP</td>
+<td id="T_a57c6_row57_col3" class="data row57 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row58" class="row_heading level0 row58" data-quarto-table-cell-role="th">58</td>
+<td id="T_a57c6_row58_col0" class="data row58 col0">IfcFlowTerminal</td>
+<td id="T_a57c6_row58_col1" class="data row58 col1">CKCGR - cooking appliance - chargrill<br>
+CKGRCK - cooking appliance - gas range<br>
+CKGWR - cooking appliance - gas wok range</td>
+<td id="T_a57c6_row58_col2" class="data row58 col2"></td>
+<td id="T_a57c6_row58_col3" class="data row58 col3"></td>
+</tr>
+<tr class="even">
+<td id="T_a57c6_level0_row59" class="row_heading level0 row59" data-quarto-table-cell-role="th">59</td>
+<td id="T_a57c6_row59_col0" class="data row59 col0">IfcAudioVisualAppliance</td>
+<td id="T_a57c6_row59_col1" class="data row59 col1">AVEQ - av equipment<br>
+AAE - av equipment - audio assistive equipment<br>
+AMIX - av equipment - audio mixer / splitter / equalizer / diplexer<br>
+MIX - av equipment - audio mixing desk<br>
+AVKP - av equipment - audio video control keypad<br>
+AVE - av equipment - audio visual encoder<br>
+AVO - av equipment - audio visual outlet<br>
+AVS - av equipment - audio visual switch<br>
+BTAI - av equipment - bluetooth audio interface<br>
+CCU - av equipment - camera control unit<br>
+CD - av equipment - codec device<br>
+DEC - av equipment - iptv / digital signage decoder<br>
+CMS - av equipment - iptv content management system device<br>
+MSW - av equipment - matrix switcher<br>
+RBP - av equipment - room booking panel<br>
+TCD - av equipment - thin client device<br>
+TPAN - av equipment - touch panel<br>
+VMIX - av equipment - vision mixing desk<br>
+WNG - av equipment - white noise generator<br>
+WPD - av equipment - wireless presentation device<br>
+WRCVR - av equipment - wireless receiver<br>
+WSEND - av equipment - wireless sender</td>
+<td id="T_a57c6_row59_col2" class="data row59 col2"></td>
+<td id="T_a57c6_row59_col3" class="data row59 col3"></td>
+</tr>
+<tr class="odd">
+<td id="T_a57c6_level0_row60" class="row_heading level0 row60" data-quarto-table-cell-role="th">60</td>
+<td id="T_a57c6_row60_col0" class="data row60 col0">IfcElectricFlowStorageDevice</td>
+<td id="T_a57c6_row60_col1" class="data row60 col1">BATTLI - battery - lithium ion cell<br>
+LB - electric distribution - load bank</td>
+<td id="T_a57c6_row60_col2" class="data row60 col2"></td>
+<td id="T_a57c6_row60_col3" class="data row60 col3"></td>
+</tr>
+</tbody>
+</table>
+</div>
 </div>
 
 
