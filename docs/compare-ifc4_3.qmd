@@ -81,6 +81,19 @@ print(f"len(ifc_classes_core)  = {len(ifc_classes_core)}  (i.e. without the enum
 print(f"len(core_map_ifc_bdns) = {len(core_map_ifc_bdns)}   (i.e. number of core Ifc classes with at least 1no mapping to an abbreviation)")
 ```
 
+**IfcClass**'s that only have enums in BDNS, not the core class
+
+```{python}
+ifc_missing_core = sorted([x for x in list(set([ifc_strip_enum(x) for x in ifc_in_bdns])) if x not in core_map_ifc_bdns])
+bdns_data = [x + [ifc_strip_enum(x[4])] for x in bdns_abbreviations[1:]] # add ifc core col
+print(f"len(ifc_missing_core) = {len(ifc_missing_core)}")
+print(f"-----")
+for k, v in {x: [f"{b[4]} - {b[0]} - {b[1]}" for b in bdns_data if x == b[6]] for x in ifc_missing_core}.items():
+    print(k)
+    for _ in v:
+        print(f"   {_}")
+```
+
 ```{python}
 def add_descriptions(abbreviations):
     map_abbreviation_description = get_asset_abbreviations()
