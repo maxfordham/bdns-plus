@@ -20,7 +20,6 @@ class Env(BaseSettings):
     ABBREVIATIONS_CUSTOM: pathlib.Path | None = Field(None, description="Custom abbreviations file")
     LEVELS: pathlib.Path | None = None
     VOLUMES: pathlib.Path | None = None
-    BDNS_PLUS_CONFIG_DIR: pathlib.Path | None = Field(None)
     # in-place reloading possible:
     # https://docs.pydantic.dev/latest/concepts/pydantic_settings/#in-place-reloading
 
