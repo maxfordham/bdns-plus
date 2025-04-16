@@ -1,4 +1,4 @@
-"""Instance reference integer (iref) utilities"""
+"""Instance reference integer (iref) utilities."""
 
 from __future__ import annotations
 
@@ -64,4 +64,4 @@ def serialize_iref(
 
 
 def deserialize_iref(iref: int) -> tuple[int, int]:
-    """Return level number and level instance given an instance reference integer"""
+    """Return level number and level instance given an instance reference integer."""

@@ -129,12 +129,12 @@ class Tag:
 
         # merge all data required for all tags
         _data = {}
-        for tag, _gen_iref in zip(
+        for tag, gen_iref_ in zip(
             [config.bdns_tag, config.i_tag, config.t_tag],
             [gen_iref, gen_iref, False],
             strict=False,
         ):
-            _data = _data | _get_tag_data(data, tag, gen_iref=_gen_iref, config=config)
+            _data = _data | _get_tag_data(data, tag, gen_iref=gen_iref_, config=config)
         self.data = _data
 
         self.config = config

@@ -5,8 +5,18 @@ website:
   navbar:
     left:
       - index.qmd
-      - examples.qmd
+      - summarise-default-config.qmd  
       - compare-ifc4_3.qmd
+      - examples
+
+    right:
+      - icon: github
+        href: https://github.com/maxfordham/document-issue
+        aria-label: GitHub
+
+  sidebar:
+      - text: "Examples"
+        contents: examples/*
 
 format:
   html:

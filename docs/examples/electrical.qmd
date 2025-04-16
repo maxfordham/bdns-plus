@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: Electrical Distribution Equipment
 format:
   html:
     code-fold: true
@@ -15,7 +15,6 @@ jupyter:
     language: python
     name: python3
 ---
-
 ```{python}
 import pandas as pd
 from bdns_plus.gen_idata import gen_config_iref
@@ -86,3 +85,4 @@ df = pd.DataFrame(li).sort_values(by=["level"])
 df.columns = annotated_cols
 df.style
 ```
+

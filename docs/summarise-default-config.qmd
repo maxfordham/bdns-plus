@@ -1,0 +1,64 @@
+---
+title: Summarise Default Equipment Referencing Nomenclature
+toc: true
+execute:
+  echo: false
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.17.0
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
+---
+```{python}
+from bdns_plus.models import ConfigTags, TagDef, ConfigIref, BdnsTag, BdnsTagWithType, TypeTag, InstanceTag, INSTANCE_REFERENCE_FSTRING
+from IPython.display import Markdown
+```
+
+```{python}
+def summarise_tag_config(tag: TagDef)-> str:  
+    header = f"## {tag.name}" + "\n\n" + tag.description
+    req = "**Required**: " + "".join([f"{x.prefix}[{x.field_name}]{x.suffix}" for x in tag.fields if not x.allow_none]).strip("/")
+    allow = "**Allowed**: " + "".join([f"{x.prefix}[{x.field_name}]{x.suffix}" for x in tag.fields]).strip("/")
+    return f"{header}\n\n{req}\n\n{allow}"
+
+def summarise_instance_reference_construction(config_iref: ConfigIref):
+    volume_no_digits, level_no_digits = config_iref.volume_no_digits, config_iref.level_no_digits
+    return f"""The instance reference for the BDNS tag is constructed from volume and level data as follows:
+
+- Volumes are represented by {volume_no_digits}no integer digits (volume_id).
+- Levels are represented by {level_no_digits}no integer digits (level_id).
+- An enumerating integer value is added to ensure uniqueness for a given floor / level (level_instance_id).
+- These numbers are joined without delimiter to create a unique number for a given abbreviation:
+  - {INSTANCE_REFERENCE_FSTRING.replace("{", "[").replace("}", "]")}"""
+
+def summarise_bdns_tag(tagdef: BdnsTag | BdnsTagWithType, config_iref: ConfigIref):
+    s = summarise_tag_config(tagdef)
+    return f"""{s}
+
+default_tags = [getattr(config, x) for x in ["i_tag", "t_tag"]]
+tag_mds = [summarise_tag_config(x) for x in default_tags]
+Markdown(tag_mds[0])"""
+```
+
+```{python}
+Markdown(summarise_tag_config(TypeTag()))
+```
+
+```{python}
+Markdown(summarise_tag_config(InstanceTag()))
+```
+
+```{python}
+Markdown(summarise_tag_config(BdnsTag()))
+```
+
+```{python}
+config_iref = ConfigIref()
+Markdown(summarise_instance_reference_construction(config_iref) )
+```
