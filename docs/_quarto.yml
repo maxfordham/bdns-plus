@@ -5,18 +5,23 @@ website:
   navbar:
     left:
       - index.qmd
-      - summarise-default-config.qmd  
+      - default-tags.qmd
+      - customisations.qmd
       - compare-ifc4_3.qmd
-      - examples
+      - text: "Examples"
+        href: examples/index.html
 
     right:
       - icon: github
-        href: https://github.com/maxfordham/document-issue
+        href: https://github.com/maxfordham/bdns-plus
         aria-label: GitHub
 
   sidebar:
-      - text: "Examples"
-        contents: examples/*
+    - id: Examples
+      collapse-level: 1
+      contents:
+        - text: "Examples"
+          contents: examples/*
 
 format:
   html:

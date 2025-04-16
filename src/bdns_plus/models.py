@@ -209,7 +209,7 @@ class ConfigIref(BaseModel):
 class ConfigTags(BaseModel):
     """defines tag definitions. bdns, instance and type tags. pre-configured with sensible defaults."""
 
-    bdns_tag: type[TagDef] = BdnsTag()
+    bdns_tag: type[BdnsTag | BdnsTagWithType] = BdnsTag()  # FIXED
     i_tag: type[TagDef] = InstanceTag()
     t_tag: type[TagDef] = TypeTag()
     custom_i_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
@@ -239,3 +239,16 @@ class GenDefinition(BaseModel):
     no_items: int = 1
     on_levels: list | None = None
     on_volumes: list | None = None
+
+
+class GenLevelsVolumes(BaseModel):
+    level_min: int = -1
+    level_max: int = 3
+    no_volumes: int = 1
+
+
+class GenExampleProject(GenLevelsVolumes):
+    """Example project for bdns_plus."""
+
+    name: str = "Example Project"
+    description: str | None = None

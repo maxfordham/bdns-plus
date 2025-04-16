@@ -1,5 +1,12 @@
 ---
-toc: true
 title: Examples
+format:
+  html:
+    code-fold: true
 ---
+
+By default, if no project configuration variables are found that indicate the
+levels and volumes within a project `bdns-plus` will generate the maximum solution
+space that will fit into 3no integer values (volume = 1 integer, levels = 2 integers). 
+
 

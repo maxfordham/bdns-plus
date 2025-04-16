@@ -60,4 +60,7 @@ pydantic-extra-types = ">=2.10.2,<3"
 pycountry = ">=24.6.1,<25"
 pydantic-settings = ">=2.8.0,<3"
 
+[dependency-groups]
+docs = ["jsonschema2md>=1.5.2,<2"]
+
 

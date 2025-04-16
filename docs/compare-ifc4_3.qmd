@@ -1,6 +1,8 @@
 ---
 title: Compare BDNS Abbreviations vs ifc4x3 classes
 toc: true
+execute: 
+  enabled: false
 format:
   html:
     code-fold: true

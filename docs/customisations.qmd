@@ -1,0 +1,70 @@
+---
+toc: true
+execute:
+  echo: false
+title: Customisations
+---
+
+
+```{python}
+import json
+import jsonschema2md
+from IPython.display import Markdown
+from bdns_plus.env import Env
+from bdns_plus._utils import data_as_yaml_markdown
+
+```
+
+`bdns-plus` is designed to "just-work" and assumes a set of sensible defaults.
+That said, it is also possible to configure `bdns-plus` to better suit your projects requirements.
+Configuration is achieved through the setting of environment variables, defined below.
+
+## Configuration Properties
+```{python}
+parser = jsonschema2md.Parser(
+    examples_as_yaml=False,
+    show_examples="all",
+)
+md_lines = parser.parse_schema(Env.model_json_schema())
+Markdown(''.join(md_lines[2:]))
+```
+
+By default, they are set as follows:
+
+```{python}
+Markdown(data_as_yaml_markdown(Env().model_dump()))
+```
+
+## Levels and Volumes
+
+You see that `levels` and `volumes` are set to `None` by default.
+In the background, `bdns-plus` generates levels and volumes tables supporting
+all numeric combinations where the level can be encoded by 2no integer digits
+and the volume can be encoded by 1no integer digit >= 1. See @tbl-levels and @tbl-volumes.
+
+```{python}
+from bdns_plus.gen_levels_volumes import gen_volumes_config, gen_levels_config
+import pandas as pd
+_ = gen_volumes_config()
+df_volumes = pd.DataFrame(_[1:], columns = _[0])
+df_volumes
+```
+
+
+```{python}
+_ = gen_levels_config()
+df_levels = pd.DataFrame(_[1:], columns = _[0])
+df_levels
+```
+
+
+Setting the levels and volumes explicitly allows users to:
+
+- restrict the allowed values to a more limited set
+- extend the levels / volumes for extremely large projects 
+(i.e. >90 floors, >9 basement floors, >9 volumes).
+- add encodings for things like mezzanine levels (though this is not recommended)
+
+
+
+
