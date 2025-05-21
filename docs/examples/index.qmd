@@ -3,10 +3,158 @@ title: Examples
 format:
   html:
     code-fold: true
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.17.0
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
 ---
 
-By default, if no project configuration variables are found that indicate the
-levels and volumes within a project `bdns-plus` will generate the maximum solution
-space that will fit into 3no integer values (volume = 1 integer, levels = 2 integers). 
+In the examples below, we demonstrate how to generate and display asset tagging data for different types of equipment using the bdns-plus library.
 
+```{python}
+import pandas as pd
+from bdns_plus.gen_idata import gen_config_iref
+
+from bdns_plus.tag import bdns_tag, Tag
+from bdns_plus.abbreviations import get_asset_abbreviations
+from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref
+from bdns_plus.models import ConfigIref, GenDefinition, TTagData
+from IPython.display import Markdown
+import random
+```
+
+```{python}
+LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 1
+config_iref = gen_config_iref(LEVEL_MIN, LEVEL_MAX, NO_VOLUMES).model_dump()
+df_levels = pd.DataFrame(config_iref["levels"])
+df_volumes = pd.DataFrame(config_iref["volumes"])
+
+display(Markdown(f"""
+- level_min = {LEVEL_MIN}
+- level_max = {LEVEL_MAX} 
+- no_volumes = {LEVEL_MAX}"""))
+display(Markdown("generate project config tables:"))
+```
+
+**Levels**
+
+```{python}
+#| echo: false
+#| label: tbl-levels
+df_levels
+```
+
+**Volumes**
+
+```{python}
+#| echo: false
+#| label: tbl-volumes
+df_volumes
+```
+
+## Electrical Distribution Equipment
+
+For the main electrical dsitribution equipment a reference to every individual item is typically required,
+and the default tagging procedure whereby the equipment is referenced by its level, volume and
+level / volume instance is appropriate.
+
+```{python}
+def get_electrical_system(level_min=-1, level_max=3, no_volumes=1):
+    config_iref = gen_config_iref(level_min, level_max, no_volumes)
+    gen_def1 = GenDefinition(abbreviation=["PB"], no_items=1, on_levels=[0], on_volumes=None)  # 1 pb in GF
+    gen_def2 = GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=None, on_volumes=None)  # 2 dbs / floor
+    gen_def3 = GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=[0], on_volumes=None)  # 1 pb in GF
+    gen_defs = [gen_def1, gen_def2, gen_def3]
+
+    return batch_gen_idata(gen_defs, config_iref)
+
+
+idata = get_electrical_system(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+map_abbreviation_description = get_asset_abbreviations()
+li = []
+for x in idata:
+    tag = Tag(x)
+    li.append(x.model_dump(mode="json") | {"asset_description":map_abbreviation_description[x.abbreviation.value], "bdns": tag.bdns, "type": tag.type, "instance": tag.instance})
+
+li = [{k:v for k,v in x.items() if v is not None} for x in li]
+user_defined = [
+    "abbreviation",
+    # "type_reference",
+    # "type_extra",
+    "level",
+    "level_iref",
+    "volume",
+]
+generated = [
+    "asset_description",
+    "bdns_tag",
+    "type_tag",
+    "instance_tag"
+]
+annotated_cols = pd.MultiIndex.from_tuples([("user-defined", x) for x in user_defined] + [("generated", x) for x in generated])
+
+df = pd.DataFrame(li).sort_values(by=["level"])
+df.columns = annotated_cols
+df.style
+```
+
+## Electrical Accessories
+
+For electrical accessories such as sockets and switches, it is more common to simply indicate the type.
+
+```{python}
+li = """DSSO
+DSO
+SSSO
+SSO
+FLRB
+INSO""".split("\n")
+li_nos = [4, 2, 3, 2, 3, 2] # [random.randint(2, 4) for n in range(0, len(li))]
+# ^ fixed random no's so git doesn't complain
+
+typs = []
+for abbreviation, type_ref in zip(li, li_nos):
+    for n in range(1, type_ref):
+        typs.append(TTagData(abbreviation=abbreviation, type_reference=n))
+
+df_typs = pd.DataFrame([x.model_dump(mode="json") | {"asset_description": map_abbreviation_description[x.abbreviation.value]} | {"type_tag": Tag(x).type} for x in typs])
+df_typs = df_typs.fillna("")
+df_typs.style
+```
+
+## Lighting
+
+For light fixtures it is also typical to tag only by type, though it is common to also show additional info like if the fitting is emergency or not (see table below). 
+At later stages, a light fitting will often be uniquely identified to have specific commissioning values (e.g. a single spotlight on a control sytem, or a fitting that must be angled in a specific way), to achieve this just add the volume, level and level_iref parameters as shown in the []()value above.
+
+```{python}
+li = """LT
+DL
+EXIT
+PL
+SL""".split("\n")
+
+li_nos = [3, 3, 4, 4, 2] # [random.randint(2, 4) for n in range(0, len(li))]
+# ^ fixed random no's so git doesn't complain
+map_e = {0:"", 1: "E"}
+typs = []
+for abbreviation, type_ref in zip(li, li_nos):
+    for n in range(1, type_ref):
+        e = map_e[int(1/random.randint(1,5))]
+        if abbreviation == "EXIT":
+            e = "E"
+        typs.append(TTagData(abbreviation=abbreviation, type_reference=n, type_extra=e))
+
+
+
+df_typs = pd.DataFrame([x.model_dump(mode="json") | {"asset_description": map_abbreviation_description[x.abbreviation.value]} | {"type_tag": Tag(x).type} for x in typs])
+df_typs
+```
 
