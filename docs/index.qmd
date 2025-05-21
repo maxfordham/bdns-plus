@@ -1,6 +1,17 @@
 ---
 toc: true
 title: BDNS-plus (WIP)
+jupyter:
+  jupytext:
+    text_representation:
+      extension: .qmd
+      format_name: quarto
+      format_version: '1.0'
+      jupytext_version: 1.17.0
+  kernelspec:
+    display_name: Python 3 (ipykernel)
+    language: python
+    name: python3
 ---
 
 [BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) **plus** a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).

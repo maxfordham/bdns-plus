@@ -1,5 +1,5 @@
 ---
-title: Default Tags
+title: Defaults
 toc: true
 execute:
   echo: false

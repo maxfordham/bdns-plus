@@ -7,7 +7,6 @@ website:
       - index.qmd
       - default-tags.qmd
       - customisations.qmd
-      - compare-ifc4_3.qmd
       - text: "Examples"
         href: examples/index.html
 
@@ -15,10 +14,12 @@ website:
       - icon: github
         href: https://github.com/maxfordham/bdns-plus
         aria-label: GitHub
+      - text: "Notes"
+        href: compare-ifc4_3.qmd
 
   sidebar:
     - id: Examples
-      collapse-level: 1
+      collapse-level: 2
       contents:
         - text: "Examples"
           contents: examples/*
