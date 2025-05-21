@@ -2,8 +2,15 @@
 
 from __future__ import annotations
 
+import logging
+from enum import Enum
+
+from pydantic import ValidationError
+
 from .iref import serialize_iref
-from .models import Config, ConfigIref, Iref, ITagData, TagDef
+from .models import Config, ConfigIref, Iref, ITagData, TagDef, TTagData
+
+logger = logging.getLogger(__name__)
 
 
 def _gen_iref(data: dict, config: ConfigIref | None = None) -> Iref:
@@ -38,14 +45,14 @@ def _validate_tag_data(data: dict, tag: TagDef) -> dict:
 
 
 def _get_tag_data(
-    data: dict | ITagData,
+    data: dict | ITagData | TTagData,
     tag: TagDef,
     *,
     gen_iref: bool = True,
     config: ConfigIref | None = None,
 ) -> dict:
     """Get tag data from data."""
-    if isinstance(data, ITagData):
+    if isinstance(data, (ITagData, TTagData)):
         data = data.model_dump()
     if gen_iref:
         try:
@@ -65,14 +72,12 @@ def _get_tag_data(
     for field in tag.fields:
         value = data.get(field.field_name)
         result[field.field_name] = value
+
     return result
 
 
-from enum import Enum
-
-
 def build_tag(
-    data: dict | ITagData,
+    data: dict | ITagData | TTagData,
     tag: TagDef,
     *,
     gen_iref: bool = True,
@@ -126,31 +131,45 @@ class Tag:
         """Init TagDef class."""
         if config is None:
             config = Config()
+        self.config = config
+        self.data = data
+        self.gen_iref = gen_iref
 
         # merge all data required for all tags
-        _data = {}
-        for tag, gen_iref_ in zip(
-            [config.bdns_tag, config.i_tag, config.t_tag],
-            [gen_iref, gen_iref, False],
-            strict=False,
-        ):
-            _data = _data | _get_tag_data(data, tag, gen_iref=gen_iref_, config=config)
-        self.data = _data
-
-        self.config = config
-        self.gen_iref = gen_iref
+        # _data = {}
+        # for tag, gen_iref_ in zip(
+        #     [config.bdns_tag, config.i_tag, config.t_tag],
+        #     [gen_iref, gen_iref, False],
+        #     strict=False,
+        # ):
+        #     _data = _data | _get_tag_data(data, tag, gen_iref=gen_iref_, config=config)
+        # self.data = _data
 
     @property
     def bdns(self) -> str:
         """Return bdns tag string from data."""
-        return bdns_tag(self.data, config=self.config, gen_iref=self.gen_iref, is_clean_data=True)
+        # config.bdns_tag)
+        try:
+            data = _get_tag_data(self.data, self.config.bdns_tag, gen_iref=self.gen_iref, config=self.config)
+            return bdns_tag(data, config=self.config, gen_iref=self.gen_iref, is_clean_data=True)
+        except ValidationError as e:
+            _e = f"failed to build bdns tag from data={self.data} with error={e}"
+            logger.info(_e)
+            return None
 
     @property
     def instance(self) -> str:
         """Return bdns tag string from data."""
-        return instance_tag(self.data, config=self.config, gen_iref=self.gen_iref, is_clean_data=True)
+        try:
+            data = _get_tag_data(self.data, self.config.i_tag, gen_iref=self.gen_iref, config=self.config)
+            return instance_tag(data, config=self.config, gen_iref=self.gen_iref, is_clean_data=True)
+        except ValidationError as e:
+            _e = f"failed to build bdns tag from data={self.data} with error={e}"
+            logger.info(_e)
+            return None
 
     @property
     def type(self) -> str:
         """Return bdns tag string from data."""
-        return type_tag(self.data, config=self.config, is_clean_data=True)
+        data = _get_tag_data(self.data, self.config.t_tag, gen_iref=False, config=self.config)
+        return type_tag(data, config=self.config, is_clean_data=True)

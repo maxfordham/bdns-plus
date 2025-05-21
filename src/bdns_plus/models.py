@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing as ty
 from enum import Enum
 
-from pydantic import AliasChoices, BaseModel, Field, ImportString, model_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, ImportString, model_validator
 
 from .abbreviations import get_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
@@ -105,8 +105,17 @@ class Iref(BaseModel):
     )
 
 
-class ITagData(Iref):
-    abbreviation: AbbreviationsEnum | None = None
+class TTagData(BaseModel):
+    abbreviation: AbbreviationsEnum
+    type_reference: int | None = None
+    type_extra: str | None = None
+
+    model_config = ConfigDict(allow_extra=True, populate_by_name=True)
+
+
+class ITagData(Iref, TTagData):
+    # allow extra to support unknown / custom tag data
+    pass
 
 
 class BdnsTag(TagDef):
@@ -178,8 +187,8 @@ class ConfigIref(BaseModel):
     no_volumes: int | None = None  # TODO: computed field
     volume_no_digits: int | None = None  # TODO: computed field
     iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING
-    is_default_levels: bool = False
-    is_default_volumes: bool = False
+    is_default_levels: bool = False  # TODO: required?
+    is_default_volumes: bool = False  # TODO: required?
 
     @model_validator(mode="after")
     def _check_volumes_and_levels(self) -> ty.Self:
@@ -231,7 +240,7 @@ class ConfigTags(BaseModel):
 
 
 class Config(ConfigIref, ConfigTags):
-    """bdns+ configuration model. levels, volumes and tag definintions. pre-configured with sensible defaults."""
+    """bdns+ configuration model. levels, volumes and tag definitions. pre-configured with sensible defaults."""
 
 
 class GenDefinition(BaseModel):

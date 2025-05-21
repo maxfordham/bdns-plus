@@ -19,6 +19,7 @@ tag = TagDef(
     ],
 )
 
+
 def test_build_tag():
     tag_def = BdnsTag()
     data = {
@@ -41,8 +42,8 @@ def test_build_tag():
     tag = build_tag(data, tag=BdnsTagWithType(), gen_iref=False)
     assert tag == "ABBR1-1_example"
 
-def test_TagItem():  # noqa: N802
 
+def test_Tag():  # noqa: N802
     data = {
         "Abbreviation": "ABBR",
         "TypeReference": 1,
@@ -56,3 +57,12 @@ def test_TagItem():  # noqa: N802
     assert tag.type == "ABBR1"
 
 
+def test_type_only_Tag():  # noqa: N802
+    data = {
+        "Abbreviation": "ABBR",
+        "TypeReference": 1,
+    }
+    tag = Tag(data)
+    assert tag.bdns is None
+    assert tag.instance is None
+    assert tag.type == "ABBR1"

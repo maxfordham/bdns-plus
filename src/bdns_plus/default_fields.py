@@ -141,7 +141,7 @@ def type_fields() -> list[dict]:
     return [
         abbreviation_field(),
         type_reference_field(),
-        type_extra_field(suffix="/"),
+        type_extra_field(prefix="/"),
     ]
 
 

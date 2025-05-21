@@ -17,6 +17,7 @@ class Env(BaseSettings):
     )
     LEVELS: pathlib.Path | None = Field(None, description="allows user to define only levels present in the project")
     VOLUMES: pathlib.Path | None = Field(None, description="allows user to define only volumes present in the project")
+    # MAP_ABBREVIATIONS_IREFCONFIG: dict[str, str] = Field( # TODO: allow different setup for idfferent object types (abbreviations)
     # in-place reloading possible:
     # https://docs.pydantic.dev/latest/concepts/pydantic_settings/#in-place-reloading
 
