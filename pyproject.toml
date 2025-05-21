@@ -45,6 +45,7 @@ delete-docs = "rm -r docs/_site"
 [tool.pixi.feature.docs.tasks]
 jlab = { cmd = "jupyter lab", cwd = "docs" }
 render = { cmd = "quarto render .", cwd = "docs" }
+preview = { cmd = "quarto preview .", cwd = "docs" }
 
 [tool.pixi.feature.package.tasks]
 build = "hatch build"

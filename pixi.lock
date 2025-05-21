@@ -775,7 +775,7 @@ packages:
 - pypi: .
   name: bdns-plus
   version: 0.1.0
-  sha256: fc6389f4180cd1af8f2038104e55d0860d9b4d9863cadb7d2ab4a02514a32d89
+  sha256: bff6dea0e51cd2513ee44eb699eef0ce8a0709a9166375ac5d710496e06857b7
   requires_dist:
   - pytest-examples>=0.0.15,<0.0.16
   - notebook-intelligence>=1.3.4,<2
