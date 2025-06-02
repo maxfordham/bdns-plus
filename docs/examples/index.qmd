@@ -1,5 +1,5 @@
 ---
-title: Examples
+title: Simple
 format:
   html:
     code-fold: true

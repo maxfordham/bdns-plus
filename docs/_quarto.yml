@@ -9,21 +9,25 @@ website:
       - default-tags.qmd
       - customisations.qmd
       - text: "Examples"
+        id: examples
         href: examples/index.html
 
     right:
+      - text: "Notes"
+        href: compare-ifc4_3.qmd
       - icon: github
         href: https://github.com/maxfordham/bdns-plus
         aria-label: GitHub
-      - text: "Notes"
-        href: compare-ifc4_3.qmd
+
 
   sidebar:
-    - id: Examples
-      collapse-level: 2
-      contents:
-        - text: "Examples"
-          contents: examples/*
+    - id: examples
+      # collapse-level: 2
+      contents: 
+        - examples/index.qmd
+        - examples/custom-project-example.qmd
+        # - text: "Examples"
+        #   contents: examples/*
 
 format:
   html:
