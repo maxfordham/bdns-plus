@@ -67,17 +67,20 @@ class _Base(BaseModel):
         ...,
         description="Unique Code for the tag. Likely used in drawing references and when modelling.",
     )
-    description: str = Field(..., description="Unique Description for the tag. Used in reports / legends.")
+    description: str = Field(  # name, title ?
+        ...,
+        description="Unique Description for the tag. Used in reports / legends.",
+    )
 
 
 class Level(BaseModel):
-    level: int
+    level: int | str
     level_id: int
     level_name: str
 
 
 class Volume(BaseModel):
-    volume: int
+    volume: int | str
     volume_id: int
     volume_name: str
 
