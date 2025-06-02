@@ -51,7 +51,7 @@ class ConfigType(str, Enum):
 
 class IdentifierType(str, Enum):
     id = "id"
-    number = "number"
+    code = "code"
     name = "name"
 
 
@@ -67,22 +67,16 @@ class _Base(BaseModel):
         ...,
         description="Unique Code for the tag. Likely used in drawing references and when modelling.",
     )
-    description: str = Field(  # name, title ?
+    name: str = Field(  # name, title ?
         ...,
         description="Unique Description for the tag. Used in reports / legends.",
     )
 
 
-class Level(BaseModel):
-    level: int | str
-    level_id: int
-    level_name: str
+class Level(_Base): ...
 
 
-class Volume(BaseModel):
-    volume: int | str
-    volume_id: int
-    volume_name: str
+class Volume(_Base): ...
 
 
 def default_levels() -> list[Level]:
@@ -94,7 +88,7 @@ def default_volumes() -> list[Volume]:
 
 
 class Iref(BaseModel):
-    level: int = Field(
+    level: int | str = Field(
         ...,
         validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
     )
@@ -102,7 +96,7 @@ class Iref(BaseModel):
         ...,
         validation_alias=AliasChoices("level_instance", "LevelInstance", "VolumeLevelInstance", "level_iref"),
     )
-    volume: int = Field(
+    volume: int | str = Field(
         1,
         validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
     )
@@ -184,6 +178,8 @@ class ConfigIref(BaseModel):
 
     levels: list[Level] = Field([])
     volumes: list[Volume] = Field([])
+    level_identifier_type: IdentifierType = IdentifierType.code
+    volume_identifier_type: IdentifierType = IdentifierType.code
     map_volume_level: dict[int, int] | None = None  # allows for restricting volumes to known levels
     level_no_digits: int | None = None  # TODO: computed field
     no_levels: int | None = None  # TODO: computed field
@@ -205,9 +201,9 @@ class ConfigIref(BaseModel):
 
     @model_validator(mode="after")
     def _get_no_digits(self) -> ty.Self:
-        level_ids = [len(str(x.level_id)) for x in self.levels]
+        level_ids = [len(str(x.id)) for x in self.levels]
         self.level_no_digits = max(level_ids)
-        volume_ids = [len(str(x.volume_id)) for x in self.volumes]
+        volume_ids = [len(str(x.id)) for x in self.volumes]
         self.volume_no_digits = max(volume_ids)
         return self
 
