@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>For Discussion in Workshop</title>
+<title>Customisations</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,16 +20,51 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
+<link href="./tag-solid.ico" rel="icon">
 <script src="site_libs/quarto-html/quarto.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
@@ -38,7 +73,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-d4d76bf8491c20bad77d141916dc28e1.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-be8836405f18090b4686adb5ef938fc8.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-49cba3c16fbc9d2ed550089060a829c1.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -66,6 +101,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -85,15 +123,30 @@ ul.task-list li input[type="checkbox"] {
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
-<span class="menu-text">BDNS-plus (WIP - NEEDS REDRAFTING)</span></a>
+<span class="menu-text">BDNS-plus (WIP)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./examples.html"> 
+    <a class="nav-link" href="./default-tags.html"> 
+<span class="menu-text">Defaults</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./customisations.html" aria-current="page"> 
+<span class="menu-text">Customisations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./examples/index.html"> 
 <span class="menu-text">Examples</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/maxfordham/bdns-plus"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./compare-ifc4_3.html"> 
-<span class="menu-text">Compare BDNS Abbreviations vs ifc4x3 classes</span></a>
+<span class="menu-text">Notes</span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -106,15 +159,22 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#configuration-properties" id="toc-configuration-properties" class="nav-link active" data-scroll-target="#configuration-properties">Configuration Properties</a></li>
+  <li><a href="#levels-and-volumes" id="toc-levels-and-volumes" class="nav-link" data-scroll-target="#levels-and-volumes">Levels and Volumes</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">For Discussion in Workshop</h1>
+<h1 class="title">Customisations</h1>
 </div>
 
 
@@ -131,8 +191,227 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<p><code>bdns-plus</code> is designed to “just-work” and assumes a set of sensible defaults. That said, it is also possible to configure <code>bdns-plus</code> to better suit your projects requirements. Configuration is achieved through the setting of environment variables, defined below.</p>
+<section id="configuration-properties" class="level2">
+<h2 class="anchored" data-anchor-id="configuration-properties">Configuration Properties</h2>
+<div id="318241fc" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
+<ul>
+<li><a id="properties/BDNS_VERSION"></a><strong><code>BDNS_VERSION</code></strong> <em>(string)</em>: BDNS version. Allows a project to pin to a specifc version. Default: <code>"master"</code>.</li>
+<li><a id="properties/ABBREVIATIONS_CUSTOM"></a><strong><code>ABBREVIATIONS_CUSTOM</code></strong>: Custom abbreviations file. Allows project additions and modifications to BDNS abbreviations register. Default: <code>null</code>.
+<ul>
+<li><strong>Any of</strong>
+<ul>
+<li><a id="properties/ABBREVIATIONS_CUSTOM/anyOf/0"></a><em>string, format: path</em></li>
+<li><a id="properties/ABBREVIATIONS_CUSTOM/anyOf/1"></a><em>null</em></li>
+</ul></li>
+</ul></li>
+<li><a id="properties/LEVELS"></a><strong><code>LEVELS</code></strong>: allows user to define only levels present in the project. Default: <code>null</code>.
+<ul>
+<li><strong>Any of</strong>
+<ul>
+<li><a id="properties/LEVELS/anyOf/0"></a><em>string, format: path</em></li>
+<li><a id="properties/LEVELS/anyOf/1"></a><em>null</em></li>
+</ul></li>
+</ul></li>
+<li><a id="properties/VOLUMES"></a><strong><code>VOLUMES</code></strong>: allows user to define only volumes present in the project. Default: <code>null</code>.
+<ul>
+<li><strong>Any of</strong>
+<ul>
+<li><a id="properties/VOLUMES/anyOf/0"></a><em>string, format: path</em></li>
+<li><a id="properties/VOLUMES/anyOf/1"></a><em>null</em></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+<p>By default, they are set as follows:</p>
+<div id="a5e7511e" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">BDNS_VERSION</span><span class="kw">:</span><span class="at"> master</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ABBREVIATIONS_CUSTOM</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">LEVELS</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">VOLUMES</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ABBREVIATIONS_BDNS</span><span class="kw">:</span><span class="at"> https://raw.githubusercontent.com/theodi/BDNS/master/BDNS_Abbreviations_Register.csv</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ABBREVIATIONS_BDNS_REPO</span><span class="kw">:</span><span class="at"> https://github.com/theodi/BDNS/blob/master/BDNS_Abbreviations_Register.csv</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</section>
+<section id="levels-and-volumes" class="level2">
+<h2 class="anchored" data-anchor-id="levels-and-volumes">Levels and Volumes</h2>
+<p>You see that <code>levels</code> and <code>volumes</code> are set to <code>None</code> by default. In the background, <code>bdns-plus</code> generates levels and volumes tables supporting all numeric combinations where the level can be encoded by 2no integer digits and the volume can be encoded by 1no integer digit &gt;= 1. See (<strong>?@tbl-levels</strong>) and (<strong>?@tbl-volumes</strong>).</p>
+<div id="tbl-volumes" class="cell anchored" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="4">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">volume</th>
+<th data-quarto-table-cell-role="th">volume_id</th>
+<th data-quarto-table-cell-role="th">volume_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>1</td>
+<td>Volume 1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>2</td>
+<td>Volume 2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>3</td>
+<td>Volume 3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>4</td>
+<td>Volume 4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>5</td>
+<td>Volume 5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>6</td>
+<td>Volume 6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>7</td>
+<td>7</td>
+<td>Volume 7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>8</td>
+<td>8</td>
+<td>Volume 8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>9</td>
+<td>9</td>
+<td>Volume 9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tbl-levels" class="cell anchored" data-execution_count="5">
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">level</th>
+<th data-quarto-table-cell-role="th">level_id</th>
+<th data-quarto-table-cell-role="th">level_name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>-10</td>
+<td>90</td>
+<td>Basement 10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>-9</td>
+<td>91</td>
+<td>Basement 9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>-8</td>
+<td>92</td>
+<td>Basement 8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>-7</td>
+<td>93</td>
+<td>Basement 7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>-6</td>
+<td>94</td>
+<td>Basement 6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>85</td>
+<td>85</td>
+<td>Level 85</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>86</td>
+<td>86</td>
+<td>Level 86</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>87</td>
+<td>87</td>
+<td>Level 87</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>88</td>
+<td>88</td>
+<td>Level 88</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>89</td>
+<td>89</td>
+<td>Level 89</td>
+</tr>
+</tbody>
+</table>
+
+<p>100 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p>Setting the levels and volumes explicitly allows users to:</p>
+<ul>
+<li>restrict the allowed values to a more limited set, and ensure compliance with that set</li>
+<li>extend the levels / volumes for extremely large projects (i.e.&nbsp;&gt;90 floors, &gt;9 basement floors, &gt;9 volumes).</li>
+<li>add encodings for things like mezzanine levels (though this is not recommended)</li>
+</ul>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
