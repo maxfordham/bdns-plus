@@ -14,7 +14,7 @@ jupyter:
     name: python3
 ---
 
-[BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) **plus** a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
+[BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) ➕ **equipment tagging**. `bdns-plus` extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
 
 
 ## Language
@@ -28,6 +28,10 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 - `level` - a floor of a building.
 - `type` - a specific type of equipment, i.e. an item with a defined model number that can ultimately be purchased.
 - `instance` - a specific piece of equipment / asset within a project. Every asset is unique.
+- **WIP** `system_type` - what system type a piece of equipment belongs to (e.g. a radiator would below to LTHW system type)
+- **WIP** `system_id` - the specific system that a piece of equipment belongs to. For electrical systems this parameter
+isn't used as typically all electrical appliances will connect back a common point (the utilities connection), but for
+closed mechanical systems (e.g. LTHW systems) it is possible/common to have multiple distinct closed systems within a single project.
 
 ## Overview
 

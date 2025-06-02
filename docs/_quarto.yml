@@ -2,6 +2,7 @@ project:
   type: website
 
 website:
+  favicon: tag-solid.ico
   navbar:
     left:
       - index.qmd

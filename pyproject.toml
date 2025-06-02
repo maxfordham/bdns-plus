@@ -4,7 +4,7 @@ description = "bdns references + configurable equipment references for drawings"
 name = "bdns-plus"
 requires-python = ">= 3.11"
 version = "0.1.0"
-dependencies = ["pytest-examples>=0.0.15,<0.0.16", "notebook-intelligence>=1.3.4,<2", "jupyterlab-myst>=2.4.2,<3"]
+dependencies = ["pytest-examples>=0.0.15,<0.0.16", "notebook-intelligence>=1.3.4,<2", "jupyterlab-myst>=2.4.2,<3", "bsdd>=0.8.2,<0.9"]
 
 [build-system]
 build-backend = "hatchling.build"
@@ -30,6 +30,9 @@ anywidget = ">=0.9.18,<0.10"
 [tool.pixi.feature.docs.pypi-dependencies]
 jupyterlab-quarto = { version = ">=0.3.4,<0.4"}
 bsdd = { version = ">=0.8.1,<0.9"}
+
+[dependency-groups]
+docs = ["jsonschema2md>=1.5.2,<2", "notebook-intelligence>=1.3.5,<2"]
 
 [tool.pixi.feature.package.dependencies]
 hatch = "*"
@@ -61,7 +64,6 @@ pydantic-extra-types = ">=2.10.2,<3"
 pycountry = ">=24.6.1,<25"
 pydantic-settings = ">=2.8.0,<3"
 
-[dependency-groups]
-docs = ["jsonschema2md>=1.5.2,<2"]
+
 
 

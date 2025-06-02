@@ -18,6 +18,10 @@ jupyter:
 
 In the examples below, we demonstrate how to generate and display asset tagging data for different types of equipment using the bdns-plus library.
 
+## Configure Dummy Project
+
+Below we generate some test data for a dummy project that has 1no volume and 5no levels. 
+
 ```{python}
 import pandas as pd
 from bdns_plus.gen_idata import gen_config_iref
@@ -28,9 +32,7 @@ from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref
 from bdns_plus.models import ConfigIref, GenDefinition, TTagData
 from IPython.display import Markdown
 import random
-```
 
-```{python}
 LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 1
 config_iref = gen_config_iref(LEVEL_MIN, LEVEL_MAX, NO_VOLUMES).model_dump()
 df_levels = pd.DataFrame(config_iref["levels"])
@@ -40,7 +42,7 @@ display(Markdown(f"""
 - level_min = {LEVEL_MIN}
 - level_max = {LEVEL_MAX} 
 - no_volumes = {LEVEL_MAX}"""))
-display(Markdown("generate project config tables:"))
+display(Markdown("project config tables:"))
 ```
 
 **Levels**
@@ -61,7 +63,7 @@ df_volumes
 
 ## Electrical Distribution Equipment
 
-For the main electrical dsitribution equipment a reference to every individual item is typically required,
+For the main electrical distribution equipment a reference to every individual item is typically required,
 and the default tagging procedure whereby the equipment is referenced by its level, volume and
 level / volume instance is appropriate.
 
@@ -157,4 +159,3 @@ for abbreviation, type_ref in zip(li, li_nos):
 df_typs = pd.DataFrame([x.model_dump(mode="json") | {"asset_description": map_abbreviation_description[x.abbreviation.value]} | {"type_tag": Tag(x).type} for x in typs])
 df_typs
 ```
-
