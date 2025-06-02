@@ -16,6 +16,17 @@ jupyter:
     name: python3
 ---
 
+```{python}
+#| echo: false
+%run _utils.py
+```
+
+::: {.callout-note collapse="true"}
+## View shared code for generating docs examples
+```python
+{{< include _utils.py >}}
+```
+:::
 
 ## Ventilation Equipment with Project specific format
 
@@ -64,7 +75,7 @@ level_min, level_max = LEVEL_MIN, LEVEL_MAX
 
 
 
-header=["volume", "volume_id", "volume_name"]
+header=["code", "id", "name"]
 csv_str = """N,1,North Block
 E,2,East Block
 S,3,South Block
@@ -75,7 +86,7 @@ _ = gen_levels_config(level_min=level_min, level_max=level_max)
 levels = [Level(**dict(zip(_[0],x) )) for x in _[1:]]
 config_iref = ConfigIref(levels=levels,volumes=volumes)
 
-Markdown(data_as_yaml_markdown(config_iref.model_dump()))
+Markdown(data_as_yaml_markdown(config_iref.model_dump(mode="json")))
 
 ```
 
@@ -84,5 +95,7 @@ gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_vol
 gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=2, on_levels=None, on_volumes=None) 
 gen_def3 = GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=[0], on_volumes=None)
 gen_defs = [gen_def1, gen_def2, gen_def3]
-# idata = batch_gen_idata(gen_defs, config_iref)
+idata = batch_gen_idata(gen_defs, config_iref)
+config = Config(**config_iref.model_dump())
+get_idata_tag_table(idata, config=config)
 ```

@@ -19,20 +19,24 @@ class StrEnum(str, Enum):
     pass
 
 
-def read_csv(path):
+def read_csv(path) -> list[list]:
+    """Read a CSV file and return its content as a list of lists."""
     return list(csv.reader(path.read_text().split("\n")))
 
 
-def get_local_bdns_asset_abbreviations():
+def get_local_bdns_asset_abbreviations() -> list[list]:
+    """Read the local BDNS abbreviations CSV file."""
     return read_csv(FPTH_LOCAL_BDNS)
 
 
-def get_github_bdns_asset_abbreviations():
+def get_github_bdns_asset_abbreviations() -> list[list]:
+    """Fetch the BDNS abbreviations CSV file from GitHub."""
     csv_data = StringIO(requests.get(ENV.ABBREVIATIONS_BDNS).content.decode())
     return list(csv.reader(csv_data))
 
 
-def get_bdns_asset_abbreviations():
+def get_bdns_asset_abbreviations() -> list[list]:
+    """Get BDNS asset abbreviations, either from GitHub or local file."""
     try:
         data = get_github_bdns_asset_abbreviations()
     except:

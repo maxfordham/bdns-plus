@@ -23,15 +23,28 @@ In the examples below, we demonstrate how to generate and display asset tagging 
 Below we generate some test data for a dummy project that has 1no volume and 5no levels. 
 
 ```{python}
+#| echo: false
+%run _utils.py
+```
+
+::: {.callout-note collapse="true"}
+## View shared code for generating docs examples
+```python
+{{< include _utils.py >}}
+```
+:::
+
+```{python}
 import pandas as pd
 from bdns_plus.gen_idata import gen_config_iref
 
 from bdns_plus.tag import bdns_tag, Tag
 from bdns_plus.abbreviations import get_asset_abbreviations
 from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref
-from bdns_plus.models import ConfigIref, GenDefinition, TTagData
+from bdns_plus.models import ConfigIref, GenDefinition, TTagData, ITagData, Config
 from IPython.display import Markdown
 import random
+
 
 LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 1
 config_iref = gen_config_iref(LEVEL_MIN, LEVEL_MAX, NO_VOLUMES).model_dump()
@@ -79,31 +92,7 @@ def get_electrical_system(level_min=-1, level_max=3, no_volumes=1):
 
 
 idata = get_electrical_system(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
-map_abbreviation_description = get_asset_abbreviations()
-li = []
-for x in idata:
-    tag = Tag(x)
-    li.append(x.model_dump(mode="json") | {"asset_description":map_abbreviation_description[x.abbreviation.value], "bdns": tag.bdns, "type": tag.type, "instance": tag.instance})
-
-li = [{k:v for k,v in x.items() if v is not None} for x in li]
-user_defined = [
-    "abbreviation",
-    # "type_reference",
-    # "type_extra",
-    "level",
-    "level_iref",
-    "volume",
-]
-generated = [
-    "asset_description",
-    "bdns_tag",
-    "type_tag",
-    "instance_tag"
-]
-annotated_cols = pd.MultiIndex.from_tuples([("user-defined", x) for x in user_defined] + [("generated", x) for x in generated])
-
-df = pd.DataFrame(li).sort_values(by=["level"])
-df.columns = annotated_cols
+df = get_idata_tag_table(idata)
 df.style
 ```
 
@@ -112,6 +101,7 @@ df.style
 For electrical accessories such as sockets and switches, it is more common to simply indicate the type.
 
 ```{python}
+map_abbreviation_description = get_asset_abbreviations()
 li = """DSSO
 DSO
 SSSO

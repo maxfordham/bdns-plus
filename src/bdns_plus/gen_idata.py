@@ -19,17 +19,18 @@ def next_iref():  # TODO: implement
 def gen_idata(
     gen_def: GenDefinition,
     config: ConfigIref | None = None,
-):
+) -> list[ITagData]:
+    """Generate tag data - mostly used for testing and documentation purposes."""
     if config is None:
         config = ConfigIref()
 
     on_volumes = gen_def.on_volumes
     if on_volumes is None:  # all volumes
-        on_volumes = [x.volume for x in config.volumes]
+        on_volumes = [x.code for x in config.volumes]
 
     on_levels = gen_def.on_levels
     if on_levels is None:  # all levels
-        on_levels = [x.level for x in config.levels]
+        on_levels = [x.code for x in config.levels]
 
     items = []
     for v in on_volumes:
@@ -44,7 +45,5 @@ def gen_idata(
     return items
 
 
-def batch_gen_idata(gen_defs: list[GenDefinition], config: ConfigIref | None = None):
-    data = [gen_idata(gen_def, config) for gen_def in gen_defs]
-    data = list(chain(*data))
-    return data
+def batch_gen_idata(gen_defs: list[GenDefinition], config: ConfigIref | None = None) -> list[ITagData]:
+    return list(chain(*[gen_idata(gen_def, config) for gen_def in gen_defs]))
