@@ -57,7 +57,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="../site_libs/quarto-nav/headroom.min.js"></script>
 <script src="../site_libs/clipboard/clipboard.min.js"></script>
 <script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -101,6 +101,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -216,6 +219,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+View shared code for generating docs examples
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> Config, ITagData</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> Tag</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_idata_tag_table(idata: <span class="bu">list</span>[ITagData], config: Config <span class="op">=</span> <span class="va">None</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    map_abbreviation_description <span class="op">=</span> get_asset_abbreviations()</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    li <span class="op">=</span> []</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> idata:</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        tag <span class="op">=</span> Tag(x, config<span class="op">=</span>config)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        tag_data <span class="op">=</span> {</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"asset_description"</span>: map_abbreviation_description[x.abbreviation.value],</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">"bdns"</span>: tag.bdns,</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"type"</span>: tag.<span class="bu">type</span>,</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"instance"</span>: tag.instance,</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        li.append(x.model_dump(mode<span class="op">=</span><span class="st">"json"</span>) <span class="op">|</span> tag_data)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    li <span class="op">=</span> [{k: v <span class="cf">for</span> k, v <span class="kw">in</span> x.items() <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>} <span class="cf">for</span> x <span class="kw">in</span> li]</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    user_defined <span class="op">=</span> [</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"abbreviation"</span>,</span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "type_reference",</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "type_extra",</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"level"</span>,</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"level_iref"</span>,</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"volume"</span>,</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    generated <span class="op">=</span> [</span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"asset_description"</span>,</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bdns_tag"</span>,</span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type_tag"</span>,</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">"instance_tag"</span>,</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ]</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    annotated_cols <span class="op">=</span> pd.MultiIndex.from_tuples(</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        [(<span class="st">"user-defined"</span>, x) <span class="cf">for</span> x <span class="kw">in</span> user_defined] <span class="op">+</span> [(<span class="st">"generated"</span>, x) <span class="cf">for</span> x <span class="kw">in</span> generated],</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(li).sort_values(by<span class="op">=</span>[<span class="st">"level"</span>])</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> annotated_cols</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
 <section id="ventilation-equipment-with-project-specific-format" class="level2">
 <h2 class="anchored" data-anchor-id="ventilation-equipment-with-project-specific-format">Ventilation Equipment with Project specific format</h2>
 <p>For a specific project, there was a requirement to construct the tags for ventilation equipment as follows:</p>
@@ -229,103 +289,258 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>TEF.E.02.01 (…)</li>
 <li>KEF.E.03.02</li>
 </ul>
-<div id="85e8160c" class="cell" data-execution_count="1">
+<div id="7842ac88" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus._utils <span class="im">import</span> data_as_yaml_markdown</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> gen_config_iref</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> bdns_tag, Tag</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref, gen_levels_config, gen_volumes_config</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> ConfigIref, GenDefinition, TTagData, Level, Volume</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="st">"""AHU</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="st">MVHR</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="st">FAN</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="st">KEF</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="st">TEF"""</span>.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>li_nos <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>] <span class="co"># [random.randint(2, 4) for n in range(0, len(li))]</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_vent_system(level_min<span class="op">=-</span><span class="dv">1</span>, level_max<span class="op">=</span><span class="dv">3</span>, no_volumes<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    config_iref <span class="op">=</span> gen_config_iref(level_min, level_max, no_volumes)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"MVHR"</span>, <span class="st">"TEF"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>) </span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>    gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>    gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch_gen_idata(gen_defs, config_iref)</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>level_min, level_max <span class="op">=</span> LEVEL_MIN, LEVEL_MAX</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>header<span class="op">=</span>[<span class="st">"volume"</span>, <span class="st">"volume_id"</span>, <span class="st">"volume_name"</span>]</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>csv_str <span class="op">=</span> <span class="st">"""N,1,North Block</span></span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="st">E,2,East Block</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="st">S,3,South Block</span></span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a><span class="st">W,4,North Block"""</span></span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="bu">list</span>(csv.reader(csv_str.strip().splitlines()))</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> [Volume(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(header,x) )) <span class="cf">for</span> x <span class="kw">in</span> rows]</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> gen_levels_config(level_min<span class="op">=</span>level_min, level_max<span class="op">=</span>level_max)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [Level(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(_[<span class="dv">0</span>],x) )) <span class="cf">for</span> x <span class="kw">in</span> _[<span class="dv">1</span>:]]</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> ConfigIref(levels<span class="op">=</span>levels,volumes<span class="op">=</span>volumes)</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>Markdown(data_as_yaml_markdown(config_iref.model_dump()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus._utils <span class="im">import</span> data_as_yaml_markdown</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> gen_config_iref</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> bdns_tag, Tag</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref, gen_levels_config, gen_volumes_config</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> ConfigIref, GenDefinition, TTagData, Level, Volume</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="st">"""AHU</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="st">MVHR</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="st">FAN</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="st">KEF</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">TEF"""</span>.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>li_nos <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>] <span class="co"># [random.randint(2, 4) for n in range(0, len(li))]</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_vent_system(level_min<span class="op">=-</span><span class="dv">1</span>, level_max<span class="op">=</span><span class="dv">3</span>, no_volumes<span class="op">=</span><span class="dv">1</span>):</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    config_iref <span class="op">=</span> gen_config_iref(level_min, level_max, no_volumes)</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"MVHR"</span>, <span class="st">"TEF"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>) </span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch_gen_idata(gen_defs, config_iref)</span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>level_min, level_max <span class="op">=</span> LEVEL_MIN, LEVEL_MAX</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a>header<span class="op">=</span>[<span class="st">"code"</span>, <span class="st">"id"</span>, <span class="st">"name"</span>]</span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>csv_str <span class="op">=</span> <span class="st">"""N,1,North Block</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="st">E,2,East Block</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="st">S,3,South Block</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="st">W,4,North Block"""</span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="bu">list</span>(csv.reader(csv_str.strip().splitlines()))</span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> [Volume(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(header,x) )) <span class="cf">for</span> x <span class="kw">in</span> rows]</span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> gen_levels_config(level_min<span class="op">=</span>level_min, level_max<span class="op">=</span>level_max)</span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [Level(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(_[<span class="dv">0</span>],x) )) <span class="cf">for</span> x <span class="kw">in</span> _[<span class="dv">1</span>:]]</span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> ConfigIref(levels<span class="op">=</span>levels,volumes<span class="op">=</span>volumes)</span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a>Markdown(data_as_yaml_markdown(config_iref.model_dump(mode<span class="op">=</span><span class="st">"json"</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="1">
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span><span class="kw">:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">level</span><span class="kw">:</span><span class="at"> </span><span class="dv">-1</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">99</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_name</span><span class="kw">:</span><span class="at"> Basement 1</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">level</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_name</span><span class="kw">:</span><span class="at"> Ground</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">level</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_name</span><span class="kw">:</span><span class="at"> Level 1</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">level</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_name</span><span class="kw">:</span><span class="at"> Level 2</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">level</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">level_name</span><span class="kw">:</span><span class="at"> Level 3</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">volume</span><span class="kw">:</span><span class="at"> </span><span class="ch">N</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_name</span><span class="kw">:</span><span class="at"> North Block</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">volume</span><span class="kw">:</span><span class="at"> E</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_name</span><span class="kw">:</span><span class="at"> East Block</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">volume</span><span class="kw">:</span><span class="at"> S</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_name</span><span class="kw">:</span><span class="at"> South Block</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">volume</span><span class="kw">:</span><span class="at"> W</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_id</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">volume_name</span><span class="kw">:</span><span class="at"> North Block</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="fu">map_volume_level</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="fu">level_no_digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="fu">no_levels</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="fu">no_volumes</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_no_digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">iref_fstring</span><span class="kw">:</span><span class="at"> </span><span class="st">'{volume_id}{level_id}{level_instance_id}'</span></span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="fu">is_default_levels</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="fu">is_default_volumes</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="2">
+<div class="sourceCode" id="cb3"><pre class="sourceCode yaml code-with-copy"><code class="sourceCode yaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">levels</span><span class="kw">:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">99</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="dv">-1</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Basement 1</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="dv">0</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Ground</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Level 1</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Level 2</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> Level 3</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="fu">volumes</span><span class="kw">:</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> </span><span class="ch">N</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> North Block</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> E</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> East Block</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">3</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> S</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> South Block</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="kw">-</span><span class="at"> </span><span class="fu">id</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">code</span><span class="kw">:</span><span class="at"> W</span></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">name</span><span class="kw">:</span><span class="at"> North Block</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a><span class="fu">level_identifier_type</span><span class="kw">:</span><span class="at"> code</span></span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_identifier_type</span><span class="kw">:</span><span class="at"> code</span></span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a><span class="fu">map_volume_level</span><span class="kw">:</span><span class="at"> </span><span class="ch">null</span></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="fu">level_no_digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">2</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a><span class="fu">no_levels</span><span class="kw">:</span><span class="at"> </span><span class="dv">5</span></span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a><span class="fu">no_volumes</span><span class="kw">:</span><span class="at"> </span><span class="dv">4</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="fu">volume_no_digits</span><span class="kw">:</span><span class="at"> </span><span class="dv">1</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a><span class="fu">iref_fstring</span><span class="kw">:</span><span class="at"> </span><span class="st">'{volume_id}{level_id}{level_instance_id}'</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a><span class="fu">is_default_levels</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a><span class="fu">is_default_volumes</span><span class="kw">:</span><span class="at"> </span><span class="ch">false</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
-<div id="f637dbb9" class="cell" data-execution_count="2">
+<div id="490e6290" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"MVHR"</span>, <span class="st">"TEF"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>) </span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co"># idata = batch_gen_idata(gen_defs, config_iref)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"MVHR"</span>, <span class="st">"TEF"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>) </span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>idata <span class="op">=</span> batch_gen_idata(gen_defs, config_iref)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(<span class="op">**</span>config_iref.model_dump())</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>get_idata_tag_table(idata, config<span class="op">=</span>config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">user-defined</th>
+<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">generated</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">abbreviation</th>
+<th data-quarto-table-cell-role="th">level</th>
+<th data-quarto-table-cell-role="th">level_iref</th>
+<th data-quarto-table-cell-role="th">volume</th>
+<th data-quarto-table-cell-role="th">asset_description</th>
+<th data-quarto-table-cell-role="th">bdns_tag</th>
+<th data-quarto-table-cell-role="th">type_tag</th>
+<th data-quarto-table-cell-role="th">instance_tag</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">7</td>
+<td>TEF</td>
+<td>-1</td>
+<td>2</td>
+<td>N</td>
+<td>fan - toilet extract fan</td>
+<td>TEF-1992</td>
+<td>TEF</td>
+<td>TEF/N/-1/2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">6</td>
+<td>MVHR</td>
+<td>-1</td>
+<td>2</td>
+<td>N</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-1992</td>
+<td>MVHR</td>
+<td>MVHR/N/-1/2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">5</td>
+<td>TEF</td>
+<td>-1</td>
+<td>1</td>
+<td>N</td>
+<td>fan - toilet extract fan</td>
+<td>TEF-1991</td>
+<td>TEF</td>
+<td>TEF/N/-1/1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">4</td>
+<td>MVHR</td>
+<td>-1</td>
+<td>1</td>
+<td>N</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-1991</td>
+<td>MVHR</td>
+<td>MVHR/N/-1/1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">24</td>
+<td>MVHR</td>
+<td>-1</td>
+<td>1</td>
+<td>E</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-2991</td>
+<td>MVHR</td>
+<td>MVHR/E/-1/1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">40</td>
+<td>MVHR</td>
+<td>3</td>
+<td>1</td>
+<td>E</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-2031</td>
+<td>MVHR</td>
+<td>MVHR/E/3/1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">83</td>
+<td>TEF</td>
+<td>3</td>
+<td>2</td>
+<td>W</td>
+<td>fan - toilet extract fan</td>
+<td>TEF-4032</td>
+<td>TEF</td>
+<td>TEF/W/3/2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">82</td>
+<td>MVHR</td>
+<td>3</td>
+<td>2</td>
+<td>W</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-4032</td>
+<td>MVHR</td>
+<td>MVHR/W/3/2</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">81</td>
+<td>TEF</td>
+<td>3</td>
+<td>1</td>
+<td>W</td>
+<td>fan - toilet extract fan</td>
+<td>TEF-4031</td>
+<td>TEF</td>
+<td>TEF/W/3/1</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">80</td>
+<td>MVHR</td>
+<td>3</td>
+<td>1</td>
+<td>W</td>
+<td>air handling - mechanical ventilation with hea...</td>
+<td>MVHR-4031</td>
+<td>MVHR</td>
+<td>MVHR/W/3/1</td>
+</tr>
+</tbody>
+</table>
+
+<p>100 rows × 8 columns</p>
+</div>
+</div>
 </div>
 
 
