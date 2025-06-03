@@ -37,6 +37,6 @@ def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> pd.Data
     annotated_cols = pd.MultiIndex.from_tuples(
         [("user-defined", x) for x in user_defined] + [("generated", x) for x in generated],
     )
-    df = pd.DataFrame(li).sort_values(by=["level"])
+    df = pd.DataFrame(li).sort_values(by=["level"]).reset_index(drop=True)
     df.columns = annotated_cols
     return df

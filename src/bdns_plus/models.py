@@ -34,7 +34,7 @@ class TagField(BaseModel):
     suffix: str = ""
     zfill: int | None = None
     regex: str | None = None
-    validator: ImportString | None = None  # ty.Callable[[ty.Any], bool] | None = None
+    validator: ImportString | None = None
 
 
 class TagDef(BaseModel):  # RootModel
@@ -218,8 +218,8 @@ class ConfigTags(BaseModel):
     """defines tag definitions. bdns, instance and type tags. pre-configured with sensible defaults."""
 
     bdns_tag: type[BdnsTag | BdnsTagWithType] = BdnsTag()  # FIXED
-    i_tag: type[TagDef] = InstanceTag()
-    t_tag: type[TagDef] = TypeTag()
+    i_tag: TagDef | type[TagDef] = InstanceTag()
+    t_tag: TagDef | type[TagDef] = TypeTag()
     custom_i_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
     custom_t_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
     map_custom_i_tags: dict[str, str] = {}

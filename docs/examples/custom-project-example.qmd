@@ -53,27 +53,8 @@ from bdns_plus.abbreviations import get_asset_abbreviations
 from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref, gen_levels_config, gen_volumes_config
 from bdns_plus.models import ConfigIref, GenDefinition, TTagData, Level, Volume
 
-
-li = """AHU
-MVHR
-FAN
-KEF
-TEF""".split("\n")
-LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 1
-li_nos = [3, 3, 4, 4, 2] # [random.randint(2, 4) for n in range(0, len(li))]
-
-def get_vent_system(level_min=-1, level_max=3, no_volumes=1):
-    config_iref = gen_config_iref(level_min, level_max, no_volumes)
-    gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=None)  # 1 pb in GF
-    gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=2, on_levels=None, on_volumes=None) 
-    gen_def3 = GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=[0], on_volumes=None)  # 1 pb in GF
-    gen_defs = [gen_def1, gen_def2, gen_def3]
-
-    return batch_gen_idata(gen_defs, config_iref)
-
+LEVEL_MIN, LEVEL_MAX = 0, 3
 level_min, level_max = LEVEL_MIN, LEVEL_MAX
-
-
 
 header=["code", "id", "name"]
 csv_str = """N,1,North Block
@@ -86,16 +67,56 @@ _ = gen_levels_config(level_min=level_min, level_max=level_max)
 levels = [Level(**dict(zip(_[0],x) )) for x in _[1:]]
 config_iref = ConfigIref(levels=levels,volumes=volumes)
 
-Markdown(data_as_yaml_markdown(config_iref.model_dump(mode="json")))
-
 ```
+
+**Levels**
+
+```{python}
+#| echo: false
+pd.DataFrame([x.model_dump() for x in config_iref.levels]).set_index("id")
+```
+
+**Volumes**
+
+```{python}
+#| echo: false
+pd.DataFrame([x.model_dump() for x in config_iref.volumes]).set_index("id")
+```
+
+## Setup custom Tags
+
+Tags are built from metadata on the object. `bdns_plus` has sensible defaults but tag definitions
+can also be defined to suit the requirements of a specific project.
+
+```{python}
+from bdns_plus.models import TagDef, TagField
+from bdns_plus.default_fields import abbreviation_field, volume_field, level_field, level_instance_field, instance_extra_field
+
+fields = [
+    abbreviation_field(suffix="."),
+    volume_field(suffix="."),
+    level_field(suffix=".", zfill=2),
+    level_instance_field(suffix=".", zfill=2),
+    instance_extra_field(),
+]
+
+itag_def = TagDef(
+    name="vent instances",
+    description="for xxx project",
+    fields = fields,
+)
+
+# Markdown(data_as_yaml_markdown(itag_def.model_dump(mode="json")))
+pd.DataFrame([x.model_dump() for x in itag_def.fields])
+```
+
 
 ```{python}
 gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=None)
-gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=2, on_levels=None, on_volumes=None) 
-gen_def3 = GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=[0], on_volumes=None)
+gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=None, on_volumes=None) 
+gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0], on_volumes=["N"])
 gen_defs = [gen_def1, gen_def2, gen_def3]
 idata = batch_gen_idata(gen_defs, config_iref)
-config = Config(**config_iref.model_dump())
+config = Config(**config_iref.model_dump(), i_tag=itag_def)
 get_idata_tag_table(idata, config=config)
 ```
