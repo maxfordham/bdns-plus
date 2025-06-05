@@ -42,6 +42,7 @@ from bdns_plus.tag import bdns_tag, Tag
 from bdns_plus.abbreviations import get_asset_abbreviations
 from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref
 from bdns_plus.models import ConfigIref, GenDefinition, TTagData, ITagData, Config
+from bdns_plus.docs import get_idata_tag_table
 from IPython.display import Markdown
 import random
 
@@ -92,7 +93,7 @@ def get_electrical_system(level_min=-1, level_max=3, no_volumes=1):
 
 
 idata = get_electrical_system(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
-df = get_idata_tag_df(get_idata_tag_table(idata))
+df = get_idata_tag_df(*get_idata_tag_table(idata))
 df.style
 ```
 

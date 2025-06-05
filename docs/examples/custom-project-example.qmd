@@ -122,5 +122,5 @@ gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0],
 gen_defs = [gen_def1, gen_def2, gen_def3]
 idata = batch_gen_idata(gen_defs, config_iref)
 config = Config(**config_iref.model_dump(), i_tag=itag_def)
-get_idata_tag_df(get_idata_tag_table(idata, config=config))
+get_idata_tag_df(*get_idata_tag_table(idata, config=config))
 ```
