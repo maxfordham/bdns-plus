@@ -18,14 +18,10 @@ jupyter:
 ```{python}
 from bdns_plus.models import ConfigTags, TagDef, ConfigIref, BdnsTag, BdnsTagWithType, TypeTag, InstanceTag, INSTANCE_REFERENCE_FSTRING
 from IPython.display import Markdown
+from bdns_plus.docs import summarise_tag_config
 ```
 
 ```{python}
-def summarise_tag_config(tag: TagDef)-> str:  
-    header = f"## {tag.name}" + "\n\n" + tag.description
-    req = "**Required**: " + "".join([f"{x.prefix}[{x.field_name}]{x.suffix}" for x in tag.fields if not x.allow_none]).strip("/")
-    allow = "**Allowed**: " + "".join([f"{x.prefix}[{x.field_name}]{x.suffix}" for x in tag.fields]).strip("/")
-    return f"{header}\n\n{req}\n\n{allow}"
 
 def summarise_instance_reference_construction(config_iref: ConfigIref):
     volume_no_digits, level_no_digits = config_iref.volume_no_digits, config_iref.level_no_digits
@@ -37,13 +33,6 @@ def summarise_instance_reference_construction(config_iref: ConfigIref):
 - These numbers are joined without delimiter to create a unique number for a given abbreviation:
   - {INSTANCE_REFERENCE_FSTRING.replace("{", "[").replace("}", "]")}"""
 
-def summarise_bdns_tag(tagdef: BdnsTag | BdnsTagWithType, config_iref: ConfigIref):
-    s = summarise_tag_config(tagdef)
-    return f"""{s}
-
-default_tags = [getattr(config, x) for x in ["i_tag", "t_tag"]]
-tag_mds = [summarise_tag_config(x) for x in default_tags]
-Markdown(tag_mds[0])"""
 ```
 
 ```{python}
@@ -62,3 +51,38 @@ Markdown(summarise_tag_config(BdnsTag()))
 config_iref = ConfigIref()
 Markdown(summarise_instance_reference_construction(config_iref) )
 ```
+
+
+## Levels and Volumes
+
+You see that `levels` and `volumes` are set to `None` by default.
+In the background, `bdns-plus` generates levels and volumes tables supporting
+all numeric combinations where the level can be encoded by 2no integer digits
+and the volume can be encoded by 1no integer digit >= 1. See (@tbl-levels) and (@tbl-volumes).
+
+```{python}
+#| label: tbl-volumes
+from bdns_plus.gen_levels_volumes import gen_volumes_config, gen_levels_config
+import pandas as pd
+_ = gen_volumes_config()
+df_volumes = pd.DataFrame(_[1:], columns = _[0])
+df_volumes
+```
+
+
+```{python}
+#| label: tbl-levels
+_ = gen_levels_config()
+df_levels = pd.DataFrame(_[1:], columns = _[0])
+df_levels
+```
+
+
+Setting the levels and volumes explicitly allows users to:
+
+- restrict the allowed values to a more limited set, and ensure compliance with that set
+- extend the levels / volumes for extremely large projects 
+(i.e. >90 floors, >9 basement floors, >9 volumes).
+- add encodings for things like mezzanine levels (though this is not recommended)
+
+

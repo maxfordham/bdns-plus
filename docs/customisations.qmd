@@ -35,38 +35,4 @@ By default, they are set as follows:
 Markdown(data_as_yaml_markdown(Env().model_dump()))
 ```
 
-## Levels and Volumes
-
-You see that `levels` and `volumes` are set to `None` by default.
-In the background, `bdns-plus` generates levels and volumes tables supporting
-all numeric combinations where the level can be encoded by 2no integer digits
-and the volume can be encoded by 1no integer digit >= 1. See (@tbl-levels) and (@tbl-volumes).
-
-```{python}
-#| label: tbl-volumes
-from bdns_plus.gen_levels_volumes import gen_volumes_config, gen_levels_config
-import pandas as pd
-_ = gen_volumes_config()
-df_volumes = pd.DataFrame(_[1:], columns = _[0])
-df_volumes
-```
-
-
-```{python}
-#| label: tbl-levels
-_ = gen_levels_config()
-df_levels = pd.DataFrame(_[1:], columns = _[0])
-df_levels
-```
-
-
-Setting the levels and volumes explicitly allows users to:
-
-- restrict the allowed values to a more limited set, and ensure compliance with that set
-- extend the levels / volumes for extremely large projects 
-(i.e. >90 floors, >9 basement floors, >9 volumes).
-- add encodings for things like mezzanine levels (though this is not recommended)
-
-
-
 

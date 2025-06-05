@@ -6,8 +6,9 @@ website:
   navbar:
     left:
       - index.qmd
-      - default-tags.qmd
+      - defaults.qmd
       - customisations.qmd
+      - tag-builder.py
       - text: "Examples"
         id: examples
         href: examples/index.html

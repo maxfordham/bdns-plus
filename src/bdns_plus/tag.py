@@ -44,7 +44,7 @@ def _validate_tag_data(data: dict, tag: TagDef) -> dict:
     return data
 
 
-def _get_tag_data(
+def _get_tag_data(  # BUG: this is modifying the data dict in place, which is not ideal
     data: dict | ITagData | TTagData,
     tag: TagDef,
     *,
@@ -76,19 +76,11 @@ def _get_tag_data(
     return result
 
 
-def build_tag(
-    data: dict | ITagData | TTagData,
-    tag: TagDef,
-    *,
-    gen_iref: bool = True,
-    config: ConfigIref | None = None,
-    is_clean_data: bool = False,
-) -> str:
+def _build_tag(data: dict, tag: TagDef) -> str:
     """Build tag string from data."""
-    tag_data = _get_tag_data(data, tag, gen_iref=gen_iref, config=config) if not is_clean_data else data
     s = ""
     for field in tag.fields:
-        value = tag_data.get(field.field_name)
+        value = data.get(field.field_name)
         if value is None:
             continue  # go to next field
         if isinstance(value, Enum):
@@ -98,6 +90,28 @@ def build_tag(
         if value is not None:
             s += f"{field.prefix}{value}{field.suffix}"
     return s.strip("_/-.")
+
+
+def simple_tag(
+    data: dict | ITagData | TTagData,
+    tag: TagDef,
+) -> str:
+    """Build tag string from data. By default, generates an iref on the fly."""
+    tag_data = _get_tag_data(data, tag, gen_iref=False, config=None)
+    return _build_tag(tag_data, tag)
+
+
+def build_tag(
+    data: dict | ITagData | TTagData,
+    tag: TagDef,
+    *,
+    gen_iref: bool = True,
+    config: ConfigIref | None = None,
+    is_clean_data: bool = False,
+) -> str:
+    """Build tag string from data. By default, generates an iref on the fly."""
+    tag_data = _get_tag_data(data, tag, gen_iref=gen_iref, config=config) if not is_clean_data else data
+    return _build_tag(tag_data, tag)
 
 
 def bdns_tag(data: dict, *, config: Config | None = None, gen_iref: bool = True, is_clean_data: bool = False) -> str:
