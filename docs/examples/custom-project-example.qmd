@@ -90,7 +90,7 @@ Tags are built from metadata on the object. `bdns_plus` has sensible defaults bu
 can also be defined to suit the requirements of a specific project.
 
 ```{python}
-from bdns_plus.models import TagDef, TagField
+from bdns_plus.models import TagDef, TagField, Config
 from bdns_plus.default_fields import abbreviation_field, volume_field, level_field, level_instance_field, instance_extra_field
 from bdns_plus.docs import get_idata_tag_table
 
