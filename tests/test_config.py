@@ -3,13 +3,13 @@ from bdns_plus.config import gen_config_package, gen_levels_resource, gen_volume
 
 def test_gen_levels_resource():
     res = gen_levels_resource()
-    assert res.header == ["level", "level_id", "level_name"]
+    assert res.header == ["id", "code", "name"]
     assert len(res.read_rows()) == 100
 
 
 def test_gen_volume_resource():
     res = gen_volumes_resource()
-    assert res.header == ["volume", "volume_id", "volume_name"]
+    assert res.header == ["id", "code", "name"]
     assert len(res.read_rows()) == 9
 
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 import typing as ty
 from enum import Enum
 
-from pydantic import AliasChoices, BaseModel, Field, ImportString, model_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, ImportString, model_validator
 
 from .abbreviations import get_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
@@ -19,7 +19,7 @@ class StrEnum(str, Enum):
 
 
 def to_records(data: list[list]) -> list[dict]:
-    return [dict(zip(data[0], x)) for x in data[1:]]
+    return [dict(zip(data[0], x, strict=False)) for x in data[1:]]
 
 
 AbbreviationsEnum = StrEnum("AbbreviationsEnum", get_asset_abbreviations_enum())
@@ -34,7 +34,7 @@ class TagField(BaseModel):
     suffix: str = ""
     zfill: int | None = None
     regex: str | None = None
-    validator: ImportString | None = None  # ty.Callable[[ty.Any], bool] | None = None
+    validator: ImportString | None = None
 
 
 class TagDef(BaseModel):  # RootModel
@@ -51,7 +51,7 @@ class ConfigType(str, Enum):
 
 class IdentifierType(str, Enum):
     id = "id"
-    number = "number"
+    code = "code"
     name = "name"
 
 
@@ -62,21 +62,21 @@ class TagType(str, Enum):
 
 
 class _Base(BaseModel):
-    id: int
-    code: str | int
-    description: str
+    id: int = Field(..., description="Unique integer ID for the tag. Likely used by the database.")
+    code: str | int = Field(
+        ...,
+        description="Unique Code for the tag. Likely used in drawing references and when modelling.",
+    )
+    name: str = Field(  # name, title ?
+        ...,
+        description="Unique Description for the tag. Used in reports / legends.",
+    )
 
 
-class Level(BaseModel):
-    level: int
-    level_id: int
-    level_name: str
+class Level(_Base): ...
 
 
-class Volume(BaseModel):
-    volume: int
-    volume_id: int
-    volume_name: str
+class Volume(_Base): ...
 
 
 def default_levels() -> list[Level]:
@@ -88,7 +88,7 @@ def default_volumes() -> list[Volume]:
 
 
 class Iref(BaseModel):
-    level: int = Field(
+    level: int | str = Field(
         ...,
         validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
     )
@@ -96,14 +96,23 @@ class Iref(BaseModel):
         ...,
         validation_alias=AliasChoices("level_instance", "LevelInstance", "VolumeLevelInstance", "level_iref"),
     )
-    volume: int = Field(
+    volume: int | str = Field(
         1,
         validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
     )
 
 
-class ITagData(Iref):
-    abbreviation: AbbreviationsEnum | None = None
+class TTagData(BaseModel):
+    abbreviation: AbbreviationsEnum
+    type_reference: int | None = None
+    type_extra: str | None = None
+
+    model_config = ConfigDict(allow_extra=True, populate_by_name=True)
+
+
+class ITagData(Iref, TTagData):
+    # allow extra to support unknown / custom tag data
+    pass
 
 
 class BdnsTag(TagDef):
@@ -111,7 +120,7 @@ class BdnsTag(TagDef):
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
         di = {}
-        di["name"] = "bdns"
+        di["name"] = "BDNS Tag"
         di["description"] = "TagDef Definition in accordance with Building Data Naming System"
         di["fields"] = bdns_fields(include_type=False)
         return di
@@ -122,10 +131,18 @@ class BdnsTagWithType(TagDef):
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
         di = {}
-        di["name"] = "bdns"
+        di["name"] = "BDNS Tag (inc. Type)"
         di["description"] = "TagDef Definition in accordance with Building Data Naming System. Type included."
         di["fields"] = bdns_fields(include_type=True)
         return di
+
+
+tref_tag_def_description = (
+    "Default Tag Definition for indentifying a unique type of equipment, "
+    "there is likely to be many instances of a type in the building. "
+    "Expected to be used when a unique reference to every item is not required. "
+    "For example, a light fitting type that may be used in many locations."
+)
 
 
 class TypeTag(TagDef):
@@ -133,10 +150,16 @@ class TypeTag(TagDef):
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
         di = {}
-        di["name"] = "bdns"
-        di["description"] = "TagDef Definition in accordance with Building Data Naming System"
+        di["name"] = "Type Tag"
+        di["description"] = tref_tag_def_description
         di["fields"] = type_fields()
         return di
+
+
+iref_tag_def_description = (
+    "Default Tag Definition for indentifying a unique instance of equipment within a building. "
+    "Expected to be used for adding equipment references to drawings, reports and legends. "
+)
 
 
 class InstanceTag(TagDef):
@@ -144,8 +167,8 @@ class InstanceTag(TagDef):
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
         di = {}
-        di["name"] = "bdns"
-        di["description"] = "TagDef Definition in accordance with Building Data Naming System"
+        di["name"] = "Instance Tag"
+        di["description"] = iref_tag_def_description
         di["fields"] = instance_fields(include_type=False)
         return di
 
@@ -153,20 +176,34 @@ class InstanceTag(TagDef):
 class ConfigIref(BaseModel):
     """defines params required to generate an instance ref. levels and volumes."""
 
-    levels: list[Level] = Field(default_levels())
-    volumes: list[Volume] = Field(default_volumes())
+    levels: list[Level] = Field([])
+    volumes: list[Volume] = Field([])
+    level_identifier_type: IdentifierType = IdentifierType.code
+    volume_identifier_type: IdentifierType = IdentifierType.code
     map_volume_level: dict[int, int] | None = None  # allows for restricting volumes to known levels
     level_no_digits: int | None = None  # TODO: computed field
     no_levels: int | None = None  # TODO: computed field
     no_volumes: int | None = None  # TODO: computed field
     volume_no_digits: int | None = None  # TODO: computed field
     iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING
+    is_default_levels: bool = False  # TODO: required?
+    is_default_volumes: bool = False  # TODO: required?
+
+    @model_validator(mode="after")
+    def _check_volumes_and_levels(self) -> ty.Self:
+        if len(self.levels) == 0:
+            self.is_default_levels = True
+            self.levels = default_levels()
+        if len(self.volumes) == 0:
+            self.is_default_volumes = True
+            self.volumes = default_volumes()
+        return self
 
     @model_validator(mode="after")
     def _get_no_digits(self) -> ty.Self:
-        level_ids = [len(str(x.level_id)) for x in self.levels]
+        level_ids = [len(str(x.id)) for x in self.levels]
         self.level_no_digits = max(level_ids)
-        volume_ids = [len(str(x.volume_id)) for x in self.volumes]
+        volume_ids = [len(str(x.id)) for x in self.volumes]
         self.volume_no_digits = max(volume_ids)
         return self
 
@@ -180,18 +217,20 @@ class ConfigIref(BaseModel):
 class ConfigTags(BaseModel):
     """defines tag definitions. bdns, instance and type tags. pre-configured with sensible defaults."""
 
-    bdns_tag: type[TagDef] = BdnsTag()
-    i_tag: type[TagDef] = InstanceTag()
-    t_tag: type[TagDef] = TypeTag()
+    bdns_tag: type[BdnsTag | BdnsTagWithType] = BdnsTag()  # FIXED
+    i_tag: TagDef | type[TagDef] = InstanceTag()
+    t_tag: TagDef | type[TagDef] = TypeTag()
     custom_i_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
     custom_t_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
+    map_custom_i_tags: dict[str, str] = {}
+    map_custom_t_tags: dict[str, str] = {}
     is_bdns_plus_default: bool = True
 
     @model_validator(mode="after")
     def _check_is_bdns_plus_default(self) -> ty.Self:
         check_default = [
             bool(isinstance(i, c))
-            for i, c in zip([self.bdns_tag, self.i_tag, self.t_tag], [BdnsTag, InstanceTag, TypeTag])
+            for i, c in zip([self.bdns_tag, self.i_tag, self.t_tag], [BdnsTag, InstanceTag, TypeTag], strict=True)
         ]
         if False in check_default:
             self.is_bdns_plus_default = False
@@ -200,7 +239,7 @@ class ConfigTags(BaseModel):
 
 
 class Config(ConfigIref, ConfigTags):
-    """bdns+ configuration model. levels, volumes and tag definintions. pre-configured with sensible defaults."""
+    """bdns+ configuration model. levels, volumes and tag definitions. pre-configured with sensible defaults."""
 
 
 class GenDefinition(BaseModel):
@@ -208,3 +247,16 @@ class GenDefinition(BaseModel):
     no_items: int = 1
     on_levels: list | None = None
     on_volumes: list | None = None
+
+
+class GenLevelsVolumes(BaseModel):
+    level_min: int = -1
+    level_max: int = 3
+    no_volumes: int = 1
+
+
+class GenExampleProject(GenLevelsVolumes):
+    """Example project for bdns_plus."""
+
+    name: str = "Example Project"
+    description: str | None = None

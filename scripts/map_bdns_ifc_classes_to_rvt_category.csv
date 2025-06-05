@@ -1,0 +1,68 @@
+ifc_class,rvt_category
+IfcActuator,Mechanical Equipment
+IfcAirTerminal,Air Terminals
+IfcAirTerminalBox,Mechanical Equipment
+IfcAirToAirHeatRecovery,Mechanical Equipment
+IfcAlarm,Specialty Equipment
+IfcAudioVisualAppliance,Specialty Equipment
+IfcBoiler,Mechanical Equipment
+IfcBurner,Mechanical Equipment
+IfcCableCarrierSegment,Cable Trays
+IfcCableSegment,Conduits
+IfcChiller,Mechanical Equipment
+IfcCoil,Mechanical Equipment
+IfcCommunicationsAppliance,Data Devices
+IfcCompressor,Mechanical Equipment
+IfcCondenser,Mechanical Equipment
+IfcController,Mechanical Equipment
+IfcCooledBeam,Mechanical Equipment
+IfcCoolingTower,Mechanical Equipment
+IfcDamper,Mechanical Equipment
+IfcDistributionBoard,Electrical Equipment
+IfcDistributionElement,Mechanical Equipment
+IfcDistributionSystem,Mechanical Equipment
+IfcDoor,Doors
+IfcDuctSegment,Ducts
+IfcDuctSilencer,Duct Accessories
+IfcElectricAppliance,Electrical Equipment
+IfcElectricFlowStorageDevice,Electrical Equipment
+IfcElectricFlowTreatmentDevice,Electrical Equipment
+IfcElectricGenerator,Electrical Equipment
+IfcElectricMotor,Mechanical Equipment
+IfcElectricTimeControl,Electrical Equipment
+IfcEvaporativeCooler,Mechanical Equipment
+IfcEvaporator,Mechanical Equipment
+IfcFan,Mechanical Equipment
+IfcFastener,Specialty Equipment
+IfcFilter,Mechanical Equipment
+IfcFireSuppressionTerminal,Fire Protection
+IfcFlowMeter,Plumbing Fixtures
+IfcFlowTerminal,Plumbing Fixtures
+IfcFlowTreatmentDevice,Mechanical Equipment
+IfcFurniture,Furniture
+IfcGroup,Generic Models
+IfcHeatExchanger,Mechanical Equipment
+IfcHumidifier,Mechanical Equipment
+IfcInterceptor,Plumbing Fixtures
+IfcLightFixture,Lighting Fixtures
+IfcMotorConnection,Electrical Equipment
+IfcOutlet,Electrical Fixtures
+IfcPipeSegment,Pipes
+IfcProtectiveDevice,Electrical Equipment
+IfcPump,Mechanical Equipment
+IfcSanitaryTerminal,Plumbing Fixtures
+IfcSensor,Specialty Equipment
+IfcShadingDevice,Specialty Equipment
+IfcSolarDevice,Specialty Equipment
+IfcSpace,Spaces
+IfcSpaceHeater,Mechanical Equipment
+IfcStackTerminal,Plumbing Fixtures
+IfcSwitchingDevice,Electrical Equipment
+IfcTank,Mechanical Equipment
+IfcTransformer,Electrical Equipment
+IfcTransportElement,Specialty Equipment
+IfcUnitaryControlElement,Mechanical Equipment
+IfcUnitaryEquipment,Mechanical Equipment
+IfcValve,Mechanical Equipment
+IfcWasteTerminal,Plumbing Fixtures
+IfcWindow,Windows

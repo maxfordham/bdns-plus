@@ -1,0 +1,216 @@
+ifc4_3,bdns_abbreviation
+IfcBoilerSTEAM,['SB']
+IfcHeatExchanger,['HX']
+IfcCoolingTower,['CT']
+IfcControllerTWOPOSITION,['DWCRB']
+IfcDistributionElement,['CIP']
+IfcSwitchingDeviceSWITCHDISCONNECTOR,"['EISO', 'DSCTS', 'ESB', 'PVACDS', 'PVDCDS']"
+IfcCoilWATERHEATINGCOIL,['HC']
+IfcSensorPRESSURESENSOR,"['DPS', 'PS', 'SPS']"
+IfcBurner,['FR']
+IfcSensorSMOKESENSOR,"['ASD', 'SD']"
+IfcElectricApplianceMICROWAVE,['CKMWO']
+IfcValveDIVERTING,['BYV']
+IfcValveCHECK,"['CKV', 'CKVS']"
+IfcTransformerINVERTER,"['IVT', 'PVI', 'ELI']"
+IfcProtectiveDeviceVARISTOR,['SPD']
+IfcValvePRESSURERELIEF,['PRFV']
+IfcSanitaryTerminalWASHHANDBASIN,['HWB']
+IfcUnitaryControlElementINDICATORPANEL,['CIE']
+IfcHeatExchangerPLATE,"['CPHX', 'HPHX', 'PHX']"
+IfcCooledBeamACTIVE,['ACHB']
+IfcCooledBeamPASSIVE,['PCHB']
+IfcBoiler,['BLR']
+IfcElectricApplianceELECTRICCOOKER,"['CKCMWO', 'CKCMOV', 'CKCVOV', 'CKDOVN', 'CKFRYD', 'CKFRY', 'CKHOVN', 'CKICOV', 'CKIU', 'CKIRCK', 'CKIW', 'KMCS', 'CKPC', 'CKPOVN', 'CKRC', 'CKSGRL', 'CKTOVN', 'FRY', 'OVN', 'WDR']"
+IfcSensorLIGHTSENSOR,['LPS']
+IfcUnitaryEquipmentROOFTOPUNIT,['RTU']
+IfcElectricApplianceFREEZER,"['FRZBCF', 'CRFRZ', 'FRZ', 'FRZICC']"
+IfcAirTerminalBox,"['FPB', 'UFT', 'VAV', 'VAVE', 'VAVS', 'VVTB', 'VVT', 'KVVC']"
+IfcLightFixturePOINTSOURCE,"['PL', 'SL']"
+IfcLightFixtureDIRECTIONSOURCE,"['LL', 'TL']"
+IfcAirTerminalBoxCONSTANTFLOW,"['CAV', 'CAVE', 'CAVEF', 'CAVEM', 'CAVS', 'CAVSF', 'CAVSM']"
+IfcDamperFUMEHOODEXHAUST,"['FHEX', 'KVCH', 'KVGH']"
+IfcElectricGeneratorCHP,['CHP']
+IfcSwitchingDeviceTOGGLESWITCH,['ELSW']
+IfcDamper,"['DMP', 'EXD', 'IISD', 'MD']"
+IfcSwitchingDeviceDIMMERSWITCH,['DIM']
+IfcOutletPOWEROUTLET,"['EVCE', 'CGDXO', 'CUSF', 'CUUF', 'DDR', 'DSSO', 'DSO', 'DXO', 'SSSO', 'SSO']"
+IfcSensorCONTACTSENSOR,['CNTS']
+IfcAudioVisualApplianceCAMERA,"['CAM', 'PTZCAM']"
+IfcChillerWATERCOOLED,['WCCH']
+IfcCableSegment,"['DCA', 'CA', 'FCA', 'TR', 'EBA', 'ERO', 'ETA']"
+IfcDistributionBoardDISTRIBUTIONBOARD,"['EVDP', 'LVCPB', 'HVCPB', 'DB', 'LVDP', 'HVDP', 'MDP', 'UPSB', 'PVDCC', 'PVDB']"
+IfcController,"['RFIDC', 'CNTRL', 'IRRC', 'ROC', 'PVDAS', 'PVMC', 'PVMLPE', 'SDC']"
+IfcUnitaryEquipmentAIRHANDLER,"['AHU', 'CRAH', 'DOAS', 'MAU']"
+IfcAudioVisualApplianceAMPLIFIER,['AMP']
+IfcInterceptorOIL,"['OI', 'SOI']"
+IfcCommunicationsApplianceGATEWAY,"['CGW', 'LTGW']"
+IfcSensor,"['HDS', 'GLYPR', 'IMUS', 'LDS', 'LVLS', 'LTMTS', 'MCS', 'MTS', 'NDS', 'PMS', 'PCS', 'SSS', 'VS', 'VBS']"
+IfcCompressor,"['CMP', 'ACP']"
+IfcFlowMeterENERGYMETER,['EM']
+IfcCoil,['COIL']
+IfcUnitaryControlElementALARMPANEL,['AP']
+IfcElectricApplianceWASHINGMACHINE,['WSH']
+IfcSensorRADIATIONSENSOR,['SDSTM']
+IfcTankVESSEL,"['BRITK', 'CBUFF', 'BUFF', 'HBUFF']"
+IfcSensorCO2SENSOR,['CDS']
+IfcValveSTEAMTRAP,['GV']
+IfcAudioVisualApplianceRECEIVER,"['EVCO', 'DRO', 'ETO', 'FTO']"
+IfcCommunicationsApplianceROUTER,"['RTR', 'WRTR', 'WAP']"
+IfcCommunicationsApplianceNETWORKBRIDGE,"['ETS', 'FBS']"
+IfcCommunicationsAppliance,"['DPU', 'HMI', 'IDF', 'SRV', 'NAM', 'NMS', 'PDUIPD', 'POEETS', 'SDNC', 'UPSMS', 'LBCN']"
+IfcUnitaryControlElementWEATHERSTATION,['WST']
+IfcSwitchingDevice,"['AIC', 'VIC', 'STS', 'HTCO', 'IFU', 'FMO', 'FS', 'LSW', 'APSW', 'DEWSW', 'DPSW', 'SPSW', 'TDSW']"
+IfcTransportElementMOVINGWALKWAY,['AW']
+IfcFlowTerminal,"['CKCGR', 'CKGRCK', 'CKGWR']"
+IfcAudioVisualAppliancePLAYER,['NVR']
+IfcValveISOLATING,"['SISV', 'ISV']"
+IfcFilterWATERFILTER,"['WCR', 'WSR', 'EMWC']"
+IfcTankSTORAGE,"['CAST', 'CNR', 'EWT', 'FHT', 'FOST', 'GWST', 'HWC', 'MWST', 'DWST', 'RNWST', 'SPT', 'TST', 'TK', 'WRT']"
+IfcCooledBeam,['CHB']
+IfcSensorMOVEMENTSENSOR,"['LMS', 'MOS']"
+IfcLightFixtureSECURITYLIGHTING,['EXIT']
+IfcTankEXPANSION,['ET']
+IfcInterceptorGREASE,['GI']
+IfcCommunicationsApplianceNETWORKAPPLIANCE,['FW']
+IfcSpaceINTERNAL,['ROOM']
+IfcFireSuppressionTerminalSPRINKLER,['SPH']
+IfcAudioVisualApplianceDISPLAY,"['AMON', 'DWB', 'DS', 'VDW']"
+IfcBoilerWATER,"['BVWB', 'DGWH', 'GWH']"
+IfcSolarDeviceSOLARPANEL,['PVP']
+IfcCableSegmentBUSBARSEGMENT,"['BB', 'BBTO', 'RBB']"
+IfcLightFixture,"['LT', 'DL', 'EL', 'UL', 'WL', 'LBO', 'LPO']"
+IfcFlowMeterGASMETER,['GM']
+IfcCableCarrierSegmentCABLETRAYSEGMENT,['CATR']
+IfcControllerPROGRAMMABLE,"['DDC', 'DRC', 'PLC', 'DWCCP', 'HLI', 'WLC']"
+IfcSensorHEATSENSOR,['HD']
+IfcInterceptor,['SSP']
+IfcCoilDXCOOLINGCOIL,['DXC']
+IfcTankBREAKPRESSURE,"['BTK', 'BTKBS']"
+IfcDamperCONTROLDAMPER,"['BYCD', 'ICD', 'RECD', 'RTCD', 'RTISD']"
+IfcSensorHUMIDITYSENSOR,"['HMS', 'OHMS']"
+IfcTransportElementESCALATOR,['ESC']
+IfcCondenser,['CDU']
+IfcElectricApplianceTUMBLEDRYER,['TDY']
+IfcValveSAFETYCUTOFF,['SNV']
+IfcFurnitureDESK,['DESK']
+IfcHumidifier,['HUM']
+IfcElectricApplianceDISHWASHER,"['DW', 'CDWFM', 'CDWPTM', 'CDWPUW', 'CDWRM', 'CDWUM', 'CDWSCS']"
+IfcDamperSMOKEDAMPER,"['MSCD', 'MSD']"
+IfcUnitaryEquipmentAIRCONDITIONINGUNIT,"['ACU', 'CRAC']"
+IfcChillerAIRCOOLED,['ACCH']
+IfcSensorTEMPERATURESENSOR,"['CS', 'TPS', 'OTPS']"
+IfcWasteTerminal,"['BVKOC', 'AD']"
+IfcSanitaryTerminalSANITARYFOUNTAIN,"['DF', 'EEW']"
+IfcFastener,"['CIS', 'ECL']"
+IfcElectricApplianceVENDINGMACHINE,['VEND']
+IfcProtectiveDeviceFUSEDISCONNECTOR,['DSCTF']
+IfcDoorDOOR,"['DR', 'FDR']"
+IfcElectricTimeControlTIMECLOCK,['TMCLK']
+IfcChiller,"['CH', 'CCCH', 'HTCH', 'LTCH']"
+IfcAudioVisualApplianceMICROPHONE,"['MIC', 'VAM']"
+IfcDuctSilencer,['SLCR']
+IfcPumpSUMPPUMP,['SMPP']
+IfcElectricAppliance,"['BVAP', 'BVC', 'BVCFMG', 'BVCFM', 'BVCFMN', 'BVCFMU', 'BVCFME', 'BVS', 'FCSD', 'CKBP', 'CKDSTE', 'CKGRD', 'CKKET', 'CKPBP', 'CKPSTE', 'CKROT', 'CKSTE', 'DISP', 'DISPB', 'DISPC', 'DISPIB', 'DISPJ', 'DISPMK', 'DISPIC', 'DISPW', 'ELOCK', 'EMDH', 'LLOCK', 'MLOCK', 'EAPPL', 'ADY', 'EPOS', 'GYMEQ', 'FOODEQ', 'HDY', 'STE', 'ETCFP', 'FSCPL', 'FSCWL', 'FSHCPL', 'FSHCWL', 'FSHPL', 'FSHWL', 'FSICD', 'FSIWL', 'FSIW', 'FSSWL', 'KSTCH', 'KSMBL', 'KBBL', 'KBC', 'KCO', 'KCWM', 'KCDY', 'KDR', 'KDPR', 'KICT', 'KJC', 'KMBS', 'KMM', 'KMS', 'KMIX', 'KPM', 'KPPM', 'KFS', 'KSBL', 'KTST', 'KUVSC', 'KVPM', 'KVCM', 'KVWM', 'KVW', 'IM', 'WSTFD', 'WSTC', 'WSTWG', 'IWH']"
+IfcUnitaryControlElementCONTROLPANEL,"['FPCP', 'GSCP', 'FSS', 'VP', 'CTRP', 'GBCP', 'GENCP', 'GWCP', 'HVACCP', 'LDP', 'RDT']"
+IfcProtectiveDevice,"['BTR', 'ATS', 'EISOTX']"
+IfcElectricMotor,"['SDM', 'ELDM', 'ELTM']"
+IfcAudioVisualApplianceSPEAKER,"['SPK', 'VAS']"
+IfcTransformerRECTIFIER,['REC']
+IfcCondenserAIRCOOLED,['DAC']
+IfcAudioVisualApplianceCOMMUNICATIONTERMINAL,['EVCCP']
+IfcAirToAirHeatRecoveryROTARYWHEEL,['TW']
+IfcUnitaryControlElementTHERMOSTAT,['TSTAT']
+IfcDistributionBoard,"['ITDP', 'KDP', 'MPNL', 'MDU', 'PB', 'PDU', 'RMU']"
+IfcWindow,"['ECG', 'WD']"
+IfcDistributionBoardSWITCHBOARD,"['HVSB', 'LVSB', 'MSP', 'MSB', 'MVSB', 'SWGR']"
+IfcOutlet,"['OUT', 'FLRB', 'LER']"
+IfcUnitaryEquipmentSPLITSYSTEM,"['DX', 'BCBOX', 'HVRF', 'VRF', 'VRV']"
+IfcSwitchingDeviceCONTACTOR,['RTE']
+IfcElectricFlowStorageDeviceHARMONICFILTER,"['AHF', 'PHF']"
+IfcCableCarrierSegmentCABLELADDERSEGMENT,['CALAD']
+IfcTransformer,"['DCDC', 'PVTXMR', 'TXMR']"
+IfcAudioVisualApplianceTUNER,['DSP']
+IfcElectricFlowStorageDevice,"['BATTLI', 'LB']"
+IfcDuctSegment,"['DUW', 'FDUW']"
+IfcAlarmBREAKGLASSBUTTON,['BGU']
+IfcSanitaryTerminalSINK,"['KSINKM', 'KSINK']"
+IfcDamperBALANCINGDAMPER,['VCD']
+IfcElectricFlowStorageDeviceUPS,['UPS']
+IfcEvaporator,['EVP']
+IfcDistributionBoardCONSUMERUNIT,['CU']
+IfcElectricGenerator,['CSG']
+IfcPumpCIRCULATOR,['CP']
+IfcUnitaryControlElement,"['LCM', 'LCP', 'CTCP', 'FACP', 'MCC', 'RIO', 'VAVCTR', 'ELC']"
+IfcUnitaryEquipmentDEHUMIDIFIER,['DHUM']
+IfcAlarmBELL,['FB']
+IfcProtectiveDeviceCIRCUITBREAKER,"['CB', 'MCB']"
+IfcCoilWATERCOOLINGCOIL,['CC']
+IfcSensorCOSENSOR,['COS']
+IfcValveAIRRELEASE,['AAV']
+IfcElectricFlowTreatmentDevice,['PFC']
+IfcCommunicationsApplianceSCANNER,"['RFIDR', 'BIOR', 'PROXR', 'SCAN']"
+IfcCableCarrierSegmentCABLETRUNKINGSEGMENT,"['CATRK', 'CAFTRK']"
+IfcAudioVisualApplianceSWITCHER,['EVCRU']
+IfcSensorGASSENSOR,['GD']
+IfcSpaceHeaterRADIATOR,"['RP', 'RAD', 'ERAD', 'HTB']"
+IfcCommunicationsAppliancePRINTER,['PRNTR']
+IfcEvaporativeCooler,['HYAC']
+IfcSensorFLOWSENSOR,"['AVFS', 'WVFS']"
+IfcFireSuppressionTerminal,['GSH']
+IfcCableSegmentFIBERTUBE,['COAXCA']
+IfcPump,"['FJP', 'FP', 'PMP', 'CNP', 'AXCWP', 'BSP', 'CHWP', 'CDWP', 'CTSEPP', 'DHWP', 'DP', 'FHP', 'FOP', 'GBP', 'GWBP', 'HXP', 'HTCHP', 'HTCWP', 'HWP', 'LTCHWP', 'LTCDWP', 'LTHWP', 'PAPS', 'DWBP', 'DWTP', 'PCHWP', 'PP', 'PCWP', 'PWP', 'RNWBP', 'RNWP', 'RCP', 'RWP', 'SCHWP', 'SHCP', 'SHWP', 'SP', 'SEPP', 'SEP', 'SPP', 'TMUP', 'TRP', 'VCP', 'WWP', 'WRP']"
+IfcFlowMeter,"['MTR', 'EBM', 'EMV', 'FM', 'GMV', 'HM', 'HMV', 'WMV']"
+IfcAlarmLIGHT,"['DWCOI', 'BCN']"
+IfcFurniture,"['EKC', 'FSSG', 'CSC', 'KSTC', 'KCART', 'LCKR', 'WSTBIN']"
+IfcPipeSegment,['PW']
+IfcFlowTreatmentDevice,"['ADS', 'AS']"
+IfcDistributionSystemSECURITY,['ACS']
+IfcSwitchingDeviceSELECTORSWITCH,['SCS']
+IfcValveMIXING,['TMV']
+IfcCoilHYDRONICCOIL,"['PHC', 'RHC']"
+IfcAlarm,"['PDB', 'FAS']"
+IfcFlowMeterWATERMETER,['WM']
+IfcFilterAIRPARTICLEFILTER,['PCU']
+IfcSpaceHeater,"['FSHL', 'DH', 'EUH', 'GUH', 'HTR', 'TC', 'EHT', 'TRHC', 'TRH', 'UFM', 'UH', 'WAC', 'CCH']"
+IfcCommunicationsApplianceANTENNA,"['ANT', 'WANT']"
+IfcDamperFIRESMOKEDAMPER,['MFSD']
+IfcDamperRELIEFDAMPER,['PRLD']
+IfcElectricGeneratorENGINEGENERATOR,"['DG', 'GEN']"
+IfcValveGASCOCK,['BV']
+IfcUnitaryControlElementGASDETECTIONPANEL,['GASDET']
+IfcDistributionSystemFIREPROTECTION,['KFSS']
+IfcDamperFIREDAMPER,['FD']
+IfcSolarDeviceSOLARCOLLECTOR,['SWHP']
+IfcAlarmMANUALPULLBOX,"['DA', 'DWCPC']"
+IfcDistributionSystem,"['KUDS', 'KUCS']"
+IfcOutletDATAOUTLET,"['CNDO', 'DATA', 'FLRDX', 'FLRQD']"
+IfcSensorWINDSENSOR,['WS']
+IfcUnitaryEquipment,"['USS', 'FCU', 'CTFU', 'PFU', 'HIU', 'ASHP', 'GSHP', 'HP', 'WSHP', 'PU', 'WMS', 'CTSU']"
+IfcAlarmSIREN,['HS']
+IfcCableCarrierSegment,['CABASK']
+IfcElectricFlowStorageDeviceBATTERY,"['BATT', 'EHB']"
+IfcTransportElementELEVATOR,['ELV']
+IfcFan,"['FAN', 'CTF', 'ELVPF', 'EF', 'GSF', 'GTF', 'KEF', 'MEV', 'MEVK', 'PF', 'RLF', 'RTF', 'SEF', 'SPF', 'SF', 'TEF', 'TF']"
+IfcElectricApplianceFREESTANDINGWATERHEATER,"['DEWH', 'EWH']"
+IfcFireSuppressionTerminalHOSEREEL,['KHRL']
+IfcSensorSOUNDSENSOR,['SLS']
+IfcFurnitureSHELF,"['KTBL', 'KWMGR', 'KSR', 'CDWRT']"
+IfcActuator,['ACT']
+IfcValvePRESSUREREDUCING,['PRV']
+IfcFilter,"['FLT', 'APU', 'AWSH', 'BFLT', 'CFLT', 'CTFS', 'CTSFLT', 'CTSEP', 'CTSSEP', 'DGA', 'DTS', 'DSU', 'PFLT', 'RO', 'SSFLT', 'VSFLT', 'RRFLT', 'UVDU']"
+IfcAirToAirHeatRecoveryRUNAROUNDCOILLOOP,['RAC']
+IfcShadingDevice,['BL']
+IfcAirTerminal,"['EAV', 'SAV', 'AT', 'GR', 'EG', 'SG', 'LOU', 'ELOU', 'ILOU']"
+IfcProtectiveDeviceRESIDUALCURRENTCIRCUITBREAKER,"['RCCB', 'RCBO']"
+IfcAirToAirHeatRecovery,"['MVHR', 'HRU']"
+IfcTank,"['DEA', 'DET', 'EST', 'FODT', 'DWTT', 'CHDU', 'DPOT']"
+IfcSwitchingDeviceKEYPAD,"['LKP', 'SDKP', 'KP']"
+IfcValveCOMMISSIONING,['BLV']
+IfcStackTerminal,['AVR']
+IfcGroup,['LGRP']
+IfcAudioVisualAppliance,"['AVEQ', 'AAE', 'AMIX', 'MIX', 'AVKP', 'AVE', 'AVO', 'AVS', 'BTAI', 'CCU', 'CD', 'DEC', 'CMS', 'MSW', 'RBP', 'TCD', 'TPAN', 'VMIX', 'WNG', 'WPD', 'WRCVR', 'WSEND']"
+IfcActuatorELECTRICACTUATOR,"['FPSW', 'WDO', 'SWACT', 'SDACT']"
+IfcElectricApplianceREFRIGERATOR,"['CRHW', 'CRREF', 'REF', 'REFRP']"
+IfcMotorConnection,"['VSD', 'VFD']"
+IfcValve,"['TMUV', 'TP', 'TPE', 'VLV', 'AV', 'BFP', 'BDV', 'BFV', 'CHWV', 'CDWV', 'CV', 'CVM', 'CVO', 'DPCV', 'ENV', 'FV', 'FCV', 'HWV', 'LCV', 'MUV', 'MMV', 'PA', 'PCV', 'PICV', 'PWV', 'RCV', 'RTV', 'SGV', 'SPRV', 'SPV', 'TCV', 'WHAV']"

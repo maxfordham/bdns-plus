@@ -63,23 +63,25 @@ def volume_field(prefix: str = "", suffix: str = "") -> dict:
     }
 
 
-def level_field(prefix: str = "", suffix: str = "") -> dict:
+def level_field(prefix: str = "", suffix: str = "", zfill: int | None = None) -> dict:
     return {
         "field_name": "level",
         "field_aliases": ["Level"],
         "allow_none": False,
         "prefix": prefix,
         "suffix": suffix,
+        "zfill": zfill,
     }
 
 
-def level_instance_field(prefix: str = "", suffix: str = "") -> dict:
+def level_instance_field(prefix: str = "", suffix: str = "", zfill: int | None = None) -> dict:
     return {
         "field_name": "level_iref",
         "field_aliases": ["LevelInstance", "level_instance"],
         "allow_none": False,
         "prefix": prefix,
         "suffix": suffix,
+        "zfill": zfill,
     }
 
 
@@ -141,7 +143,7 @@ def type_fields() -> list[dict]:
     return [
         abbreviation_field(),
         type_reference_field(),
-        type_extra_field(suffix="/"),
+        type_extra_field(prefix="/"),
     ]
 
 

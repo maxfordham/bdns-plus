@@ -2,11 +2,33 @@ project:
   type: website
 
 website:
+  favicon: tag-solid.ico
   navbar:
     left:
       - index.qmd
-      - examples.qmd
-      - compare-ifc4_3.qmd
+      - defaults.qmd
+      - customisations.qmd
+      - tag-builder.py
+      - text: "Examples"
+        id: examples
+        href: examples/index.html
+
+    right:
+      - text: "Notes"
+        href: compare-ifc4_3.qmd
+      - icon: github
+        href: https://github.com/maxfordham/bdns-plus
+        aria-label: GitHub
+
+
+  sidebar:
+    - id: examples
+      # collapse-level: 2
+      contents: 
+        - examples/index.qmd
+        - examples/custom-project-example.qmd
+        # - text: "Examples"
+        #   contents: examples/*
 
 format:
   html:

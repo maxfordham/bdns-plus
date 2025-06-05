@@ -1,0 +1,418 @@
+,ifc_class,bdns_options,bdns_core,bdns_core_suggested
+0,IfcHeatExchanger,HX - heat exchanger,HX,
+1,IfcCoolingTower,CT - chiller - cooling tower,CT,
+2,IfcDistributionElement,CIP - lightning protection - concrete inspection pit,CIP,
+3,IfcBurner,FR - burner - furnace,FR,
+4,IfcBoiler,BLR - burner - boiler,BLR,
+5,IfcAirTerminalBox,"FPB - air terminal box - fan powered box
+UFT - air terminal box - under floor variable air volume box
+VAV - air terminal box - variable air volume box
+VAVE - air terminal box - variable air volume box - extract
+VAVS - air terminal box - variable air volume box - supply
+VVTB - air terminal box - variable volume and temperature box
+VVT - air terminal box - variable volume terminal unit
+KVVC - kitchen ventilation - ventilated ceiling",,
+6,IfcDamper,"DMP - damper
+EXD - damper - exhaust damper
+IISD - damper - inlet isolation damper
+MD - damper - motorised damper",,DMP
+7,IfcCableSegment,"DCA - distribution data - data cable
+CA - distribution electric - cable
+FCA - distribution electric - fire rated cable
+TR - lighting - track - electric track for lights
+EBA - lightning protection - earthing bar
+ERO - lightning protection - earthing rod
+ETA - lightning protection - earthing tape",,CA
+8,IfcController,"RFIDC - access control - RFID controller
+CNTRL - controller
+IRRC - controller - irrigation controller
+ROC - controller - room controller
+PVDAS - pv data acquisition system
+PVMC - pv microgrid controller
+PVMLPE - pv module-level power electronics
+SDC - shading - shading device controller",,CNTRL
+9,IfcSensor,"HDS - fire detection - hydrogen detector
+GLYPR - sensor - glycol protector sensor
+IMUS - sensor - inertial measurement unit sensor
+LDS - sensor - leak detection sensor
+LVLS - sensor - level sensor
+LTMTS - sensor - lighting multisensor
+MCS - sensor - moisture content sensor
+MTS - sensor - multi sensor
+NDS - sensor - nitrogen dioxide sensor
+PMS - sensor - particulate matter sensor
+PCS - sensor - people counting sensor
+SSS - sensor - seismic sensor
+VS - sensor - velocity sensor
+VBS - sensor - vibration sensor",,
+10,IfcCompressor,"CMP - compressor
+ACP - compressor - air compressor",,CMP
+11,IfcCoil,COIL - coil,COIL,
+12,IfcCommunicationsAppliance,"DPU - data processing unit / computer
+HMI - human machine interface
+IDF - ict equipment - intermediate distribution frame
+SRV - ict equipment - multi-purpose server
+NAM - ict equipment - network access manager
+NMS - ict equipment - network monitoring system
+PDUIPD - ict equipment - pdu ip dongle
+POEETS - ict equipment - power-over-ethernet network switch
+SDNC - ict equipment - software-defined networking controller
+UPSMS - ict equipment - ups management system
+LBCN - location services - beacon",,
+13,IfcSwitchingDevice,"AIC - access control - audio intercom
+VIC - access control - video intercom
+STS - electric distribution - static transfer switch
+HTCO - electric protective device - high temperature cut out switch
+IFU - fire detection - input output interface unit
+FMO - fire suppression - firemans override switch
+FS - fire suppression - sprinkler flow switch
+LSW - lighting - control - switch
+APSW - switch - absolute pressure
+DEWSW - switch - dew point
+DPSW - switch - differential pressure
+SPSW - switch - static pressure
+TDSW - switch - thermal dispersion flow proving switch",,
+14,IfcFlowTerminal,"CKCGR - cooking appliance - chargrill
+CKGRCK - cooking appliance - gas range
+CKGWR - cooking appliance - gas wok range",,
+15,IfcCooledBeam,CHB - radiant surface - chilled beam,CHB,
+16,IfcLightFixture,"LT - lighting - fixture
+DL - lighting - fixture - downlight
+EL - lighting - fixture - standalone emergency light
+UL - lighting - fixture - uplight
+WL - lighting - fixture - wall light
+LBO - lighting - fixture external - bollard
+LPO - lighting - fixture external - lampost",,LT
+17,IfcInterceptor,SSP - sand separator,SSP,
+18,IfcCondenser,CDU - condensing unit,CDU,
+19,IfcHumidifier,HUM - humidifier,HUM,
+20,IfcWasteTerminal,"BVKOC - beverage machine - knock out chute
+AD - waste terminal - area drain",,
+21,IfcFastener,"CIS - lightning protection - cast-in-socket
+ECL - lightning protection - earthing clamp",,
+22,IfcChiller,"CH - chiller
+CCCH - chiller - critical cooling chiller
+HTCH - chiller - high temperature chiller
+LTCH - chiller - low temperature chiller",,CH
+23,IfcDuctSilencer,SLCR - duct silencer - attenuator,SLCR,
+24,IfcElectricAppliance,"BVAP - beverage machine - airpot
+BVC - beverage machine - chai machine
+BVCFMG - beverage machine - coffee grinder
+BVCFM - beverage machine - coffee machine
+BVCFMN - beverage machine - coffee nitro machine
+BVCFMU - beverage machine - coffee urn
+BVCFME - beverage machine - espresso machine
+BVS - beverage machine - steamer
+FCSD - cleaning - floor cleaner scrubber dryer
+CKBP - cooking appliance - bratt pan
+CKDSTE - cooking appliance - dim sum steamer
+CKGRD - cooking appliance - griddle
+CKKET - cooking appliance - kettle
+CKPBP - cooking appliance - pressure bratt pan
+CKPSTE - cooking appliance - pressure steamer
+CKROT - cooking appliance - rotisserie
+CKSTE - cooking appliance - steamer
+DISP - dispenser
+DISPB - dispenser - broth
+DISPC - dispenser - cereal
+DISPIB - dispenser - ice/beverage
+DISPJ - dispenser - juice
+DISPMK - dispenser - milk
+DISPIC - dispenser - soft serve ice cream
+DISPW - dispenser - water
+ELOCK - door - electric lock
+EMDH - door - electromagnetic door holder
+LLOCK - door - latch lock
+MLOCK - door - magnetic lock
+EAPPL - electric appliance
+ADY - electric appliance - air dryer
+EPOS - electric appliance - electronic point of sale
+GYMEQ - electric appliance - exercise / gym equipment
+FOODEQ - electric appliance - food equipment
+HDY - electric appliance - hand dryer
+STE - electric appliance - steamer
+ETCFP - employee timeclock with fingerprint scanner
+FSCPL - food serving - cold plate
+FSCWL - food serving - cold well
+FSHCPL - food serving - hot and cold plate
+FSHCWL - food serving - hot and cold well
+FSHPL - food serving - hot plate
+FSHWL - food serving - hot well
+FSICD - food serving - ice cream display
+FSIWL - food serving - ice well
+FSIW - food serving - induction warmer
+FSSWL - food serving - soup well
+KSTCH - furniture - commercial kitchen storage cabinet heated
+KSMBL - kitchen appliance - blender/smoothie maker
+KBBL - kitchen appliance - bowl blender
+KBC - kitchen appliance - bowl cutter
+KCO - kitchen appliance - can opener
+KCWM - kitchen appliance - crepe and waffle maker
+KCDY - kitchen appliance - cutlery dryer
+KDR - kitchen appliance - dough divider/rounder
+KDPR - kitchen appliance - dough press
+KICT - kitchen appliance - insect trap
+KJC - kitchen appliance - juicer
+KMBS - kitchen appliance - meat bone saw
+KMM - kitchen appliance - meat mincer
+KMS - kitchen appliance - meat slicer
+KMIX - kitchen appliance - mixer
+KPM - kitchen appliance - pacotizing machine
+KPPM - kitchen appliance - potato peeling machine
+KFS - kitchen appliance - scale
+KSBL - kitchen appliance - stick blender
+KTST - kitchen appliance - toaster
+KUVSC - kitchen appliance - uv knife steralizer
+KVPM - kitchen appliance - vacuum packing machine
+KVCM - kitchen appliance - veg cutting machine
+KVWM - kitchen appliance - vegetable washer
+KVW - kitchen appliance - vegetable washer and dryer
+IM - refrigeration - ice maker
+WSTFD - waste management - food dehydrator
+WSTC - waste management - waste compactor
+WSTWG - waste management - wet waste grinder
+IWH - water heater - instantaneous water heater",,
+25,IfcProtectiveDevice,"BTR - battery - battery trip unit
+ATS - electric distribution - automatic transfer switch
+EISOTX - electric protective device - isolation transformer",,
+26,IfcElectricMotor,"SDM - shading - shading device motor
+ELDM - transportation - lift / elevator door motor
+ELTM - transportation - lift / elevator traction machine",,
+27,IfcDistributionBoard,"ITDP - electric distribution - distribution panel for itc equipment
+KDP - electric distribution - kitchen electric distribution panel/board
+MPNL - electric distribution - main panel / board
+MDU - electric distribution - mains distribution unit
+PB - electric distribution - panel board
+PDU - electric distribution - power distribution unit
+RMU - electric distribution - ring main unit",,
+28,IfcWindow,"ECG - electrochromic glass
+WD - window",,WD
+29,IfcOutlet,"OUT - outlet
+FLRB - outlet - floor box
+LER - outlet - linear electric receptacle",,OUT
+30,IfcTransformer,"DCDC - electric distribution - dc-dc converter
+PVTXMR - pv transformer
+TXMR - transformer",,TXMR
+31,IfcElectricFlowStorageDevice,"BATTLI - battery - lithium ion cell
+LB - electric distribution - load bank",,
+32,IfcDuctSegment,"DUW - distribution ventilation - ductwork
+FDUW - distribution ventilation - ductwork fire rated",,
+33,IfcEvaporator,EVP - evaporator,EVP,
+34,IfcElectricGenerator,CSG - generator - clean steam generator,CSG,
+35,IfcUnitaryControlElement,"LCM - lighting - control - module
+LCP - lighting - control - panel
+CTCP - panel - chemical treatment control panel
+FACP - panel - fire alarm control panel
+MCC - panel - motor control center
+RIO - panel - remote i/o control panel
+VAVCTR - panel - variable air volume control station / panel
+ELC - transportation - lift / elevator controller",,
+36,IfcElectricFlowTreatmentDevice,PFC - electric distribution - power factor correction system,PFC,
+37,IfcEvaporativeCooler,HYAC - chiller - hybrid air cooler or fluid cooler,HYAC,
+38,IfcFireSuppressionTerminal,GSH - fire suppression - gas suppression head,GSH,
+39,IfcPump,"FJP - fire suppression - fire jockey pump
+FP - fire suppression - fire pump
+PMP - pump
+CNP - pump - automatic condensate pump
+AXCWP - pump - auxilliary process cooling water pump
+BSP - pump - booster pump
+CHWP - pump - chilled water pump
+CDWP - pump - condenser water pump
+CTSEPP - pump - cooling tower separator pump
+DHWP - pump - domestic hot water circulation pump
+DP - pump - dosing pump
+FHP - pump - fire hydrant pump
+FOP - pump - fuel oil pump
+GBP - pump - gas booster pump
+GWBP - pump - greywater booster pump
+HXP - pump - heat exchanger pump
+HTCHP - pump - high temperature chilled water pump
+HTCWP - pump - high temperature condenser water pump
+HWP - pump - hot water pump
+LTCHWP - pump - low temperature chilled water pump
+LTCDWP - pump - low temperature condenser water pump
+LTHWP - pump - low temperature hot water pump
+PAPS - pump - packaged pump set
+DWBP - pump - potable/domestic water booster pump
+DWTP - pump - potable/domestic water transfer pump
+PCHWP - pump - primary chilled water pump
+PP - pump - primary pump
+PCWP - pump - process cooling water pump
+PWP - pump - process water pump
+RNWBP - pump - rainwater booster pump
+RNWP - pump - rainwater pump
+RCP - pump - recirculation pump
+RWP - pump - recycled water pump
+SCHWP - pump - secondary chilled water pump
+SHCP - pump - secondary heating circulation pump
+SHWP - pump - secondary hot water circulating pump
+SP - pump - secondary pump
+SEPP - pump - separator pump
+SEP - pump - sewage ejector pump
+SPP - pump - sprinkler pump
+TMUP - pump - tower make up pump
+TRP - pump - transfer pump
+VCP - pump - vacuum pump
+WWP - pump - waste water pump
+WRP - pump - wet riser pump",,PMP
+40,IfcFlowMeter,"MTR - meter
+EBM - meter - electric branch meter
+EMV - meter - electric meter (virtual)
+FM - meter - flow meter
+GMV - meter - gas meter (virtual)
+HM - meter - heat meter
+HMV - meter - heat meter (virtual)
+WMV - meter - water meter (virtual)",,MTR
+41,IfcFurniture,"EKC - electronic key cabinet
+FSSG - food serving - sneeze guard
+CSC - furniture - chemical storage cabinet
+KSTC - furniture - commercial kitchen storage cabinet
+KCART - furniture - commercial kitchen trolley/cart
+LCKR - furniture - locker
+WSTBIN - waste management - waste bin",,
+42,IfcPipeSegment,PW - distribution piped services - pipework,PW,
+43,IfcFlowTreatmentDevice,"ADS - filter - air and dirt separator
+AS - filter - air separator",,
+44,IfcAlarm,"PDB - emergency assistance - panic duress button
+FAS - fire detection - alarm annunciator sounder or beacon",,
+45,IfcSpaceHeater,"FSHL - food serving - heat lamp
+DH - heat emitter - duct heater
+EUH - heat emitter - electric unit heater
+GUH - heat emitter - gas unit heater
+HTR - heat emitter - heater
+TC - heat emitter - hydronic trench convector
+EHT - heat emitter - trace heating
+TRHC - heat emitter - trench heater and cooler
+TRH - heat emitter - trench heating
+UFM - heat emitter - underfloor manifold
+UH - heat emitter - unit heater
+WAC - heat emitter - warm air curtain
+CCH - radiant surface - chilled ceiling",,HTR
+46,IfcDistributionSystem,"KUDS - furniture - commercial kitchen utlity distribution system
+KUCS - furniture - commercial kithcen utility chase system",,
+47,IfcUnitaryEquipment,"USS - electric distribution - unit substation
+FCU - fan coil unit
+CTFU - filter - cooling tower filtration unit
+PFU - filter - process filtration unit
+HIU - heat interface unit
+ASHP - heat pump - air source heat pump
+GSHP - heat pump - ground source heat pump
+HP - heat pump - heat pump
+WSHP - heat pump - water source heat pump
+PU - pressurisation unit
+WMS - pressurisation unit - water system makeup unit
+CTSU - water treatment - cooling tower water treatment unit",,
+48,IfcCableCarrierSegment,CABASK - cable management - cable basket,CABASK,
+49,IfcFan,"FAN - fan
+CTF - fan - cooling tower fan
+ELVPF - fan - elevator / lift well pressurization fan
+EF - fan - exhaust fan
+GSF - fan - garage / car park supply fan
+GTF - fan - garage / car park transfer fan
+KEF - fan - kitchen exhaust fan
+MEV - fan - mechanical extract ventilation
+MEVK - fan - mechanical extract ventilation kitchen
+PF - fan - pressurization fan
+RLF - fan - relief fan
+RTF - fan - return fan
+SEF - fan - smoke exhaust fan
+SPF - fan - stairwell pressurization fan
+SF - fan - supply fan
+TEF - fan - toilet extract fan
+TF - fan - transfer fan",,FAN
+50,IfcActuator,ACT - actuator,ACT,
+51,IfcFilter,"FLT - filter
+APU - filter - air purifier unit
+AWSH - filter - air washer unit
+BFLT - filter - bag filter
+CFLT - filter - carbon filter
+CTFS - filter - cooling tower filtration unit
+CTSFLT - filter - cooling tower sand filter
+CTSEP - filter - cooling tower separator
+CTSSEP - filter - cooling tower separator / sand separator
+DGA - filter - degasser filter
+DTS - filter - dirt separator
+DSU - filter - exhaust dry scrubber unit
+PFLT - filter - panel filter
+RO - filter - reverse osmosis system
+SSFLT - filter - side stream water filters
+VSFLT - filter - vacuum system filter
+RRFLT - filter - water - reverse rinsing filter
+UVDU - uv disinfection unit",,FLT
+52,IfcShadingDevice,BL - shading - shading device blinds,BL,
+53,IfcAirTerminal,"EAV - air terminal - air valve - extract
+SAV - air terminal - air valve - supply
+AT - air terminal - generic
+GR - air terminal - grille
+EG - air terminal - grille - extract
+SG - air terminal - grille - supply
+LOU - air terminal - louvre
+ELOU - air terminal - louvre - exhaust/extract
+ILOU - air terminal - louvre - inlet/intake",,AT
+54,IfcAirToAirHeatRecovery,"MVHR - air handling - mechanical ventilation with heat recovery
+HRU - air handling unit - heat recovery unit",,
+55,IfcTank,"DEA - tank - deareator tank
+DET - tank - decontamination tank
+EST - tank - emergency sewer tank
+FODT - tank - fuel oil day tank
+DWTT - tank - potable/domestic water transfer tank
+CHDU - water treatment - chemical dosage unit
+DPOT - water treatment - dosing pot",,
+56,IfcStackTerminal,AVR - natural air ventilator,AVR,
+57,IfcGroup,LGRP - lighting - group,LGRP,
+58,IfcAudioVisualAppliance,"AVEQ - av equipment
+AAE - av equipment - audio assistive equipment
+AMIX - av equipment - audio mixer / splitter / equalizer / diplexer
+MIX - av equipment - audio mixing desk
+AVKP - av equipment - audio video control keypad
+AVE - av equipment - audio visual encoder
+AVO - av equipment - audio visual outlet
+AVS - av equipment - audio visual switch
+BTAI - av equipment - bluetooth audio interface
+CCU - av equipment - camera control unit
+CD - av equipment - codec device
+DEC - av equipment - iptv / digital signage decoder
+CMS - av equipment - iptv content management system device
+MSW - av equipment - matrix switcher
+RBP - av equipment - room booking panel
+TCD - av equipment - thin client device
+TPAN - av equipment - touch panel
+VMIX - av equipment - vision mixing desk
+WNG - av equipment - white noise generator
+WPD - av equipment - wireless presentation device
+WRCVR - av equipment - wireless receiver
+WSEND - av equipment - wireless sender",,
+59,IfcMotorConnection,"VSD - motor controller - vsd (inverter drive)
+VFD - variable frequency drive",,
+60,IfcValve,"TMUV - pump - tower make up valve
+TP - trap primer
+TPE - trap primer - electronic trap primer
+VLV - valve
+AV - valve - angle stop valve
+BFP - valve - backflow preventer valve
+BDV - valve - blowdown valve
+BFV - valve - butterfly valve
+CHWV - valve - chilled water valve
+CDWV - valve - condenser water valve
+CV - valve - control valve
+CVM - valve - control valve modulating
+CVO - valve - control valve open closed
+DPCV - valve - differential pressure control valve
+ENV - valve - energy valve
+FV - valve - float valve
+FCV - valve - flow control valve
+HWV - valve - hot water valve
+LCV - valve - level control valve
+MUV - valve - make up water valve
+MMV - valve - master thermostatic valve
+PA - valve - pressure attenuator
+PCV - valve - pressure control valve
+PICV - valve - pressure independent control valve
+PWV - valve - process water valve
+RCV - valve - recirculation valve
+RTV - valve - return valve
+SGV - valve - seismic gas valve
+SPRV - valve - steam pressure reducing valve
+SPV - valve - supply valve
+TCV - valve - temperature control valve
+WHAV - valve - water hammer arrestor",,

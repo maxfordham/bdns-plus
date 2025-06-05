@@ -1,4 +1,4 @@
-level_id,level_reference,level_name
+id,code,description
 99,B1,Basement
 0,GF,Ground Floor
 1,L1,1st Floor
