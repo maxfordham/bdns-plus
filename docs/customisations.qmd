@@ -11,7 +11,7 @@ import json
 import jsonschema2md
 from IPython.display import Markdown
 from bdns_plus.env import Env
-from bdns_plus._utils import data_as_yaml_markdown
+from bdns_plus.docs import data_as_yaml_markdown
 
 ```
 

@@ -8,7 +8,9 @@ import json
 
 import yaml
 
-from bdns_plus.models import INSTANCE_REFERENCE_FSTRING, ConfigIref, TagDef
+from bdns_plus.abbreviations import get_asset_abbreviations
+from bdns_plus.models import INSTANCE_REFERENCE_FSTRING, Config, ConfigIref, ITagData, TagDef
+from bdns_plus.tag import Tag
 
 
 # ------------------------------
@@ -75,3 +77,36 @@ def markdown_callout(string: str, callout_type: str = "note", title: str = "", c
 
 {string}
 :::"""
+
+
+def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> tuple[list[tuple[str, str]], list[dict]]:
+    map_abbreviation_description = get_asset_abbreviations()
+    li = []
+    for x in idata:
+        tag = Tag(x, config=config)
+
+        tag_data = {
+            "asset_description": map_abbreviation_description[x.abbreviation.value],
+            "bdns": tag.bdns,
+            "type": tag.type,
+            "instance": tag.instance,
+        }
+        li.append(x.model_dump(mode="json") | tag_data)
+
+    li = [{k: v for k, v in x.items() if v is not None} for x in li]
+    user_defined = [
+        "abbreviation",
+        # "type_reference",
+        # "type_extra",
+        "level",
+        "level_iref",
+        "volume",
+    ]
+    generated = [
+        "asset_description",
+        "bdns_tag",
+        "type_tag",
+        "instance_tag",
+    ]
+    header = [("user-defined", x) for x in user_defined] + [("generated", x) for x in generated]
+    return header, li

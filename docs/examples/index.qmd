@@ -28,7 +28,7 @@ Below we generate some test data for a dummy project that has 1no volume and 5no
 ```
 
 ::: {.callout-note collapse="true"}
-## View shared code for generating docs examples
+## View shared code for generating docs examples. TODO - remove
 ```python
 {{< include _utils.py >}}
 ```
@@ -92,7 +92,7 @@ def get_electrical_system(level_min=-1, level_max=3, no_volumes=1):
 
 
 idata = get_electrical_system(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
-df = get_idata_tag_table(idata)
+df = get_idata_tag_df(get_idata_tag_table(idata))
 df.style
 ```
 
