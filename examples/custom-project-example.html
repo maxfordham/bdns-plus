@@ -126,12 +126,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">BDNS-plus (WIP)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../default-tags.html"> 
+    <a class="nav-link" href="../defaults.html"> 
 <span class="menu-text">Defaults</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../customisations.html"> 
 <span class="menu-text">Customisations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tag-builder.html"> 
+<span class="menu-text">Tag Builder</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../examples/index.html" aria-current="page"> 
@@ -234,46 +238,12 @@ View shared code for generating docs examples
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> Config, ITagData</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> Tag</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_idata_tag_table(idata: <span class="bu">list</span>[ITagData], config: Config <span class="op">=</span> <span class="va">None</span>) <span class="op">-&gt;</span> pd.DataFrame:</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    map_abbreviation_description <span class="op">=</span> get_asset_abbreviations()</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    li <span class="op">=</span> []</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> x <span class="kw">in</span> idata:</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>        tag <span class="op">=</span> Tag(x, config<span class="op">=</span>config)</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        tag_data <span class="op">=</span> {</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>            <span class="st">"asset_description"</span>: map_abbreviation_description[x.abbreviation.value],</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>            <span class="st">"bdns"</span>: tag.bdns,</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>            <span class="st">"type"</span>: tag.<span class="bu">type</span>,</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>            <span class="st">"instance"</span>: tag.instance,</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>        }</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        li.append(x.model_dump(mode<span class="op">=</span><span class="st">"json"</span>) <span class="op">|</span> tag_data)</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    li <span class="op">=</span> [{k: v <span class="cf">for</span> k, v <span class="kw">in</span> x.items() <span class="cf">if</span> v <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>} <span class="cf">for</span> x <span class="kw">in</span> li]</span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    user_defined <span class="op">=</span> [</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">"abbreviation"</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "type_reference",</span></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="co"># "type_extra",</span></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">"level"</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">"level_iref"</span>,</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">"volume"</span>,</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>    generated <span class="op">=</span> [</span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>        <span class="st">"asset_description"</span>,</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>        <span class="st">"bdns_tag"</span>,</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>        <span class="st">"type_tag"</span>,</span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">"instance_tag"</span>,</span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>    ]</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>    annotated_cols <span class="op">=</span> pd.MultiIndex.from_tuples(</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>        [(<span class="st">"user-defined"</span>, x) <span class="cf">for</span> x <span class="kw">in</span> user_defined] <span class="op">+</span> [(<span class="st">"generated"</span>, x) <span class="cf">for</span> x <span class="kw">in</span> generated],</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>    df <span class="op">=</span> pd.DataFrame(li).sort_values(by<span class="op">=</span>[<span class="st">"level"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>    df.columns <span class="op">=</span> annotated_cols</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_idata_tag_df(header: <span class="bu">list</span>[<span class="bu">tuple</span>], idata: <span class="bu">list</span>[<span class="bu">dict</span>]) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    annotated_cols <span class="op">=</span> pd.MultiIndex.from_tuples(header)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    df_tags <span class="op">=</span> pd.DataFrame(idata).sort_values(by<span class="op">=</span>[<span class="st">"level"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    df_tags.columns <span class="op">=</span> annotated_cols</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_tags</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -290,36 +260,37 @@ View shared code for generating docs examples
 <li>TEF.E.02.01 (…)</li>
 <li>KEF.E.03.02</li>
 </ul>
-<div id="7fd8f5ae" class="cell" data-execution_count="2">
+<div id="1fc4aa99" class="cell" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus._utils <span class="im">import</span> data_as_yaml_markdown</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> gen_config_iref</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> bdns_tag, Tag</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref, gen_levels_config, gen_volumes_config</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> ConfigIref, GenDefinition, TTagData, Level, Volume</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX <span class="op">=</span> <span class="dv">0</span>, <span class="dv">3</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>level_min, level_max <span class="op">=</span> LEVEL_MIN, LEVEL_MAX</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>header<span class="op">=</span>[<span class="st">"code"</span>, <span class="st">"id"</span>, <span class="st">"name"</span>]</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>csv_str <span class="op">=</span> <span class="st">"""N,1,North Block</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="st">E,2,East Block</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">S,3,South Block</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">W,4,North Block"""</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="bu">list</span>(csv.reader(csv_str.strip().splitlines()))</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> [Volume(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(header,x) )) <span class="cf">for</span> x <span class="kw">in</span> rows]</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> gen_levels_config(level_min<span class="op">=</span>level_min, level_max<span class="op">=</span>level_max)</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [Level(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(_[<span class="dv">0</span>],x) )) <span class="cf">for</span> x <span class="kw">in</span> _[<span class="dv">1</span>:]]</span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> ConfigIref(levels<span class="op">=</span>levels,volumes<span class="op">=</span>volumes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> data_as_yaml_markdown</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> gen_config_iref</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> bdns_tag, Tag</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref, gen_levels_config, gen_volumes_config</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> ConfigIref, GenDefinition, TTagData, Level, Volume</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX <span class="op">=</span> <span class="dv">0</span>, <span class="dv">3</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>level_min, level_max <span class="op">=</span> LEVEL_MIN, LEVEL_MAX</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>header<span class="op">=</span>[<span class="st">"code"</span>, <span class="st">"id"</span>, <span class="st">"name"</span>]</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>csv_str <span class="op">=</span> <span class="st">"""N,1,North Block</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="st">E,2,East Block</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="st">S,3,South Block</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="st">W,4,North Block"""</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> <span class="bu">list</span>(csv.reader(csv_str.strip().splitlines()))</span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> [Volume(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(header,x) )) <span class="cf">for</span> x <span class="kw">in</span> rows]</span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> gen_levels_config(level_min<span class="op">=</span>level_min, level_max<span class="op">=</span>level_max)</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> [Level(<span class="op">**</span><span class="bu">dict</span>(<span class="bu">zip</span>(_[<span class="dv">0</span>],x) )) <span class="cf">for</span> x <span class="kw">in</span> _[<span class="dv">1</span>:]]</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> ConfigIref(levels<span class="op">=</span>levels,volumes<span class="op">=</span>volumes)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p><strong>Levels</strong></p>
-<div id="eb83880b" class="cell" data-execution_count="3">
+<div id="86edcedc" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
@@ -365,7 +336,7 @@ View shared code for generating docs examples
 </div>
 </div>
 <p><strong>Volumes</strong></p>
-<div id="1f4c702e" class="cell" data-execution_count="4">
+<div id="8de4723b" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
@@ -414,28 +385,31 @@ View shared code for generating docs examples
 <section id="setup-custom-tags" class="level2">
 <h2 class="anchored" data-anchor-id="setup-custom-tags">Setup custom Tags</h2>
 <p>Tags are built from metadata on the object. <code>bdns_plus</code> has sensible defaults but tag definitions can also be defined to suit the requirements of a specific project.</p>
-<div id="6fd978fe" class="cell" data-execution_count="5">
+<div id="a1c951fa" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> TagDef, TagField</span>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> TagDef, TagField, Config</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.default_fields <span class="im">import</span> abbreviation_field, volume_field, level_field, level_instance_field, instance_extra_field</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    abbreviation_field(suffix<span class="op">=</span><span class="st">"."</span>),</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    volume_field(suffix<span class="op">=</span><span class="st">"."</span>),</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    level_field(suffix<span class="op">=</span><span class="st">"."</span>, zfill<span class="op">=</span><span class="dv">2</span>),</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    level_instance_field(suffix<span class="op">=</span><span class="st">"."</span>, zfill<span class="op">=</span><span class="dv">2</span>),</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    instance_extra_field(),</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>]</span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>itag_def <span class="op">=</span> TagDef(</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"vent instances"</span>,</span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"for xxx project"</span>,</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    fields <span class="op">=</span> fields,</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown(data_as_yaml_markdown(itag_def.model_dump(mode="json")))</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([x.model_dump() <span class="cf">for</span> x <span class="kw">in</span> itag_def.fields])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> get_idata_tag_table</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>fields <span class="op">=</span> [</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    abbreviation_field(suffix<span class="op">=</span><span class="st">"."</span>),</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    volume_field(suffix<span class="op">=</span><span class="st">"."</span>),</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    level_field(suffix<span class="op">=</span><span class="st">"."</span>, zfill<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    level_instance_field(suffix<span class="op">=</span><span class="st">"."</span>, zfill<span class="op">=</span><span class="dv">2</span>),</span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    instance_extra_field(),</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>itag_def <span class="op">=</span> TagDef(</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"vent instances"</span>,</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"for xxx project"</span>,</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    fields <span class="op">=</span> fields,</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Markdown(data_as_yaml_markdown(itag_def.model_dump(mode="json")))</span></span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>pd.DataFrame([x.model_dump() <span class="cf">for</span> x <span class="kw">in</span> itag_def.fields])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -517,7 +491,7 @@ View shared code for generating docs examples
 </div>
 </div>
 </div>
-<div id="818ffe0c" class="cell" data-execution_count="6">
+<div id="a3bd8c30" class="cell" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)</span>
@@ -526,7 +500,7 @@ View shared code for generating docs examples
 <span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
 <span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>idata <span class="op">=</span> batch_gen_idata(gen_defs, config_iref)</span>
 <span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(<span class="op">**</span>config_iref.model_dump(), i_tag<span class="op">=</span>itag_def)</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>get_idata_tag_table(idata, config<span class="op">=</span>config)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>get_idata_tag_df(<span class="op">*</span>get_idata_tag_table(idata, config<span class="op">=</span>config))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display" data-execution_count="6">
 <div>

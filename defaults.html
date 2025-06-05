@@ -23,7 +23,7 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -67,6 +67,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -89,12 +92,16 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">BDNS-plus (WIP)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./default-tags.html" aria-current="page"> 
+    <a class="nav-link active" href="./defaults.html" aria-current="page"> 
 <span class="menu-text">Defaults</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./customisations.html"> 
 <span class="menu-text">Customisations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./tag-builder.html"> 
+<span class="menu-text">Tag Builder</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./examples/index.html"> 
@@ -127,9 +134,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#type-tag" id="toc-type-tag" class="nav-link active" data-scroll-target="#type-tag">Type Tag</a></li>
-  <li><a href="#instance-tag" id="toc-instance-tag" class="nav-link" data-scroll-target="#instance-tag">Instance Tag</a></li>
-  <li><a href="#bdns-tag" id="toc-bdns-tag" class="nav-link" data-scroll-target="#bdns-tag">BDNS Tag</a></li>
+  <li><a href="#levels-and-volumes" id="toc-levels-and-volumes" class="nav-link active" data-scroll-target="#levels-and-volumes">Levels and Volumes</a></li>
   </ul>
 </nav>
     </div>
@@ -155,31 +160,31 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div id="9bc43803" class="cell" data-execution_count="3">
-<section id="type-tag" class="level2 cell-output cell-output-display cell-output-markdown" data-execution_count="3">
-<h2 class="anchored" data-anchor-id="type-tag">Type Tag</h2>
+<div id="39e86434" class="cell" data-execution_count="3">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="3">
+<p><strong>Type Tag</strong></p>
 <p>Default Tag Definition for indentifying a unique type of equipment, there is likely to be many instances of a type in the building. Expected to be used when a unique reference to every item is not required. For example, a light fitting type that may be used in many locations.</p>
 <p><strong>Required</strong>: [abbreviation]</p>
 <p><strong>Allowed</strong>: [abbreviation][type_reference]/[type_extra]</p>
-</section>
 </div>
-<div id="f0c31d41" class="cell" data-execution_count="4">
-<section id="instance-tag" class="level2 cell-output cell-output-display cell-output-markdown" data-execution_count="4">
-<h2 class="anchored" data-anchor-id="instance-tag">Instance Tag</h2>
+</div>
+<div id="54c39c43" class="cell" data-execution_count="4">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="4">
+<p><strong>Instance Tag</strong></p>
 <p>Default Tag Definition for indentifying a unique instance of equipment within a building. Expected to be used for adding equipment references to drawings, reports and legends.</p>
 <p><strong>Required</strong>: [abbreviation]/[volume]/[level]/[level_iref]</p>
 <p><strong>Allowed</strong>: [abbreviation]/[volume]/[level]/[level_iref]/[instance_extra]</p>
-</section>
 </div>
-<div id="efa30731" class="cell" data-execution_count="5">
-<section id="bdns-tag" class="level2 cell-output cell-output-display cell-output-markdown" data-execution_count="5">
-<h2 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h2>
+</div>
+<div id="11c35b1a" class="cell" data-execution_count="5">
+<div class="cell-output cell-output-display cell-output-markdown" data-execution_count="5">
+<p><strong>BDNS Tag</strong></p>
 <p>TagDef Definition in accordance with Building Data Naming System</p>
 <p><strong>Required</strong>: [abbreviation]-[instance_reference]</p>
 <p><strong>Allowed</strong>: [country]-[city]-[project]-[abbreviation]-[instance_reference]_[instance_extra]</p>
-</section>
 </div>
-<div id="c26e377d" class="cell" data-execution_count="6">
+</div>
+<div id="c0d2bf09" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-display cell-output-markdown" data-execution_count="6">
 <p>The instance reference for the BDNS tag is constructed from volume and level data as follows:</p>
 <ul>
@@ -193,8 +198,181 @@ ul.task-list li input[type="checkbox"] {
 </ul>
 </div>
 </div>
+<section id="levels-and-volumes" class="level2">
+<h2 class="anchored" data-anchor-id="levels-and-volumes">Levels and Volumes</h2>
+<p>You see that <code>levels</code> and <code>volumes</code> are set to <code>None</code> by default. In the background, <code>bdns-plus</code> generates levels and volumes tables supporting all numeric combinations where the level can be encoded by 2no integer digits and the volume can be encoded by 1no integer digit &gt;= 1. See (<strong>?@tbl-levels</strong>) and (<strong>?@tbl-volumes</strong>).</p>
+<div id="tbl-volumes" class="cell anchored" data-execution_count="7">
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div>
 
 
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>1</td>
+<td>Volume 1</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>2</td>
+<td>Volume 2</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>3</td>
+<td>Volume 3</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>4</td>
+<td>Volume 4</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>5</td>
+<td>Volume 5</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">5</td>
+<td>6</td>
+<td>6</td>
+<td>Volume 6</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">6</td>
+<td>7</td>
+<td>7</td>
+<td>Volume 7</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">7</td>
+<td>8</td>
+<td>8</td>
+<td>Volume 8</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">8</td>
+<td>9</td>
+<td>9</td>
+<td>Volume 9</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="tbl-levels" class="cell anchored" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="8">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">code</th>
+<th data-quarto-table-cell-role="th">name</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>90</td>
+<td>-10</td>
+<td>Basement 10</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>91</td>
+<td>-9</td>
+<td>Basement 9</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>92</td>
+<td>-8</td>
+<td>Basement 8</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>93</td>
+<td>-7</td>
+<td>Basement 7</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>94</td>
+<td>-6</td>
+<td>Basement 6</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">...</td>
+<td>...</td>
+<td>...</td>
+<td>...</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">95</td>
+<td>85</td>
+<td>85</td>
+<td>Level 85</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">96</td>
+<td>86</td>
+<td>86</td>
+<td>Level 86</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">97</td>
+<td>87</td>
+<td>87</td>
+<td>Level 87</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">98</td>
+<td>88</td>
+<td>88</td>
+<td>Level 88</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">99</td>
+<td>89</td>
+<td>89</td>
+<td>Level 89</td>
+</tr>
+</tbody>
+</table>
+
+<p>100 rows × 3 columns</p>
+</div>
+</div>
+</div>
+<p>Setting the levels and volumes explicitly allows users to:</p>
+<ul>
+<li>restrict the allowed values to a more limited set, and ensure compliance with that set</li>
+<li>extend the levels / volumes for extremely large projects (i.e.&nbsp;&gt;90 floors, &gt;9 basement floors, &gt;9 volumes).</li>
+<li>add encodings for things like mezzanine levels (though this is not recommended)</li>
+</ul>
+
+
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
