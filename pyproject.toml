@@ -4,7 +4,12 @@ description = "bdns references + configurable equipment references for drawings"
 name = "bdns-plus"
 requires-python = ">= 3.11"
 version = "0.1.0"
-dependencies = ["pytest-examples>=0.0.15,<0.0.16", "notebook-intelligence>=1.3.4,<2", "jupyterlab-myst>=2.4.2,<3", "bsdd>=0.8.2,<0.9"]
+dependencies = [
+    # "pyrulefilter@git+https://github.com/maxfordham/pyrulefilter#main",
+    "bsdd>=0.8.2,<0.9",
+    "pydantic-settings>=2.8.0,<3",
+    "pycountry>=24.6.1,<25",
+]
 
 [build-system]
 build-backend = "hatchling.build"
@@ -14,8 +19,15 @@ requires = ["hatchling"]
 channels = ["conda-forge"]
 platforms = ["linux-64"]
 
+[tool.pixi.dependencies]
+frictionless = ">=5.18.0,<6"
+annotated-types = ">=0.7.0,<0.8"
+pytest = "*"
+
 [tool.pixi.pypi-dependencies]
 bdns_plus = { path = ".", editable = true }
+pytest-examples = { version = ">=0.0.18,<0.0.20" }
+pyrulefilter = { git = "git+https://github.com/maxfordham/pyrulefilter", branch = "main"} # TODO: remove when pyrulefilter is on PyPI
 
 [tool.pixi.feature.docs.dependencies]
 jupyterlab = { version = ">=4.0.0,<5"}
@@ -26,13 +38,13 @@ great_tables = ">=0.17.0,<0.18"
 ipywidgets = ">=8.1.5,<9"
 itables = ">=2.3.0,<3"
 anywidget = ">=0.9.18,<0.10"
+ipydatagrid = ">=1.4.0,<1.5.0"
 
 [tool.pixi.feature.docs.pypi-dependencies]
 jupyterlab-quarto = { version = ">=0.3.4,<0.4"}
 bsdd = { version = ">=0.8.1,<0.9"}
-
-[dependency-groups]
-docs = ["jsonschema2md>=1.5.2,<2", "notebook-intelligence>=1.3.5,<2"]
+notebook-intelligence = { version = ">1.3.4,<2"}
+jsonschema2md = { version = ">=1.5.2,<2"}
 
 [tool.pixi.feature.package.dependencies]
 hatch = "*"
@@ -47,7 +59,7 @@ delete-docs = "rm -r docs/_site"
 
 [tool.pixi.feature.docs.tasks]
 jlab = { cmd = "jupyter lab", cwd = "docs" }
-render = { cmd = "quarto render .", cwd = "docs" }
+docs = { cmd = "quarto render .", cwd = "docs" }
 preview = { cmd = "quarto preview .", cwd = "docs" }
 
 [tool.pixi.feature.package.tasks]
@@ -55,14 +67,7 @@ build = "hatch build"
 # publish = "hatch publish -u __token__ -a <your-pypi-token>"
 # ship  = {depends-on = ["build", "publish"]}
 
-[tool.pixi.dependencies]
-frictionless = ">=5.18.0,<6"
-pydantic = ">=2.10.6,<3"
-annotated-types = ">=0.7.0,<0.8"
-pytest = "*"
-pydantic-extra-types = ">=2.10.2,<3"
-pycountry = ">=24.6.1,<25"
-pydantic-settings = ">=2.8.0,<3"
+
 
 
 

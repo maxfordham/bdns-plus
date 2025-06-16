@@ -6,12 +6,16 @@ website:
   navbar:
     left:
       - index.qmd
-      - defaults.qmd
-      - customisations.qmd
-      - tag-builder.py
+      - volumes-and-levels.qmd
+      - tags.py
+      - customisations.py
+      - serialisation.qmd
+      - test.py
+      - revit.qmd
       - text: "Examples"
         id: examples
         href: examples/index.html
+
 
     right:
       - text: "Notes"
@@ -32,8 +36,8 @@ website:
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
     css: styles.css
     toc: true
+    theme:
+      light: flatly
+      dark: darkly

@@ -51,7 +51,7 @@ def data_as_json_markdown(data: dict) -> str:
 
 
 def summarise_tag_config(tag: TagDef) -> str:
-    header = f"**{tag.name}**" + "\n\n" + tag.description
+    header = f"### {tag.name}" + "\n\n" + tag.description
     req = "**Required**: " + "".join(
         [f"{x.prefix}[{x.field_name}]{x.suffix}" for x in tag.fields if not x.allow_none],
     ).strip("/")
@@ -110,3 +110,14 @@ def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> tuple[l
     ]
     header = [("user-defined", x) for x in user_defined] + [("generated", x) for x in generated]
     return header, li
+
+
+def gen_data_4levels_1volume() -> list[ITagData]:
+    """Generate data for 4 levels in 1 volume."""
+    from bdns_plus.gen_levels_volumes import gen_levels_config, gen_volumes_config
+
+    config = Config()
+    config.levels = gen_levels_config(4)
+    config.volumes = gen_volumes_config(1)
+
+    return config.bdns_tag.gen_data(config=config, gen_iref=False)

@@ -43,7 +43,7 @@ def test_build_tag():
     assert tag == "ABBR1-1_example"
 
 
-def test_Tag():  # noqa: N802
+def test_tag():
     data = {
         "Abbreviation": "ABBR",
         "TypeReference": 1,
@@ -55,6 +55,54 @@ def test_Tag():  # noqa: N802
     assert tag.bdns == "ABBR-1011_example"
     assert tag.instance == "ABBR/1/1/1/example"
     assert tag.type == "ABBR1"
+
+
+def test_custom_tag():
+    from pyrulefilter import Rule, RuleSet
+
+    from bdns_plus.models import Config, CustomTagDef
+
+    r = Rule(
+        parameter="abbreviation",
+        operator="equals",
+        value="AHU",
+    )
+    rule_set = RuleSet(rule=[r], set_type="OR")
+    data = {
+        "abbreviation": "AHU",
+        "type_reference": 1,
+        "level": 1,
+        "level_instance": 1,
+        "instance_extra": "example",
+    }
+    custom_tag = CustomTagDef(
+        description="Custom AHU Tag",
+        i_tag=TagDef(
+            name="Custom AHU Instance Tag",
+            fields=[
+                TagField(field_name="abbreviation", suffix="/"),
+                TagField(field_name="instance_extra"),
+            ],
+        ),
+        scope=rule_set,
+    )
+    config = Config(custom_tags=[custom_tag])
+    tag = Tag(data, config=config)
+    assert tag.type == "AHU"
+    assert tag.instance == "AHU/example"
+
+
+def test_tag_basement():
+    equipment_data = {
+        "abbreviation": "AHU",
+        "type": 2,
+        "level": -1,
+        "volume": 1,
+        "level_instance": 1,
+    }
+    tag = Tag(equipment_data)
+    bdns = tag.bdns
+    assert bdns == "AHU-1991"
 
 
 def test_type_only_Tag():  # noqa: N802

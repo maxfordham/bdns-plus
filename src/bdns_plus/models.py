@@ -5,7 +5,10 @@ from __future__ import annotations
 import typing as ty
 from enum import Enum
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, ImportString, model_validator
+from pydantic import AliasChoices, BaseModel, ConfigDict, Field, ImportString, computed_field, model_validator
+
+# if ty.TYPE_CHECKING:
+from pyrulefilter import RuleSet
 
 from .abbreviations import get_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
@@ -39,7 +42,7 @@ class TagField(BaseModel):
 
 class TagDef(BaseModel):  # RootModel
     name: str
-    description: str
+    description: str | None = None
     fields: list[TagField]
 
 
@@ -112,7 +115,7 @@ class TTagData(BaseModel):
 
 class ITagData(Iref, TTagData):
     # allow extra to support unknown / custom tag data
-    pass
+    instance_extra: str | None = None
 
 
 class BdnsTag(TagDef):
@@ -181,11 +184,7 @@ class ConfigIref(BaseModel):
     level_identifier_type: IdentifierType = IdentifierType.code
     volume_identifier_type: IdentifierType = IdentifierType.code
     map_volume_level: dict[int, int] | None = None  # allows for restricting volumes to known levels
-    level_no_digits: int | None = None  # TODO: computed field
-    no_levels: int | None = None  # TODO: computed field
-    no_volumes: int | None = None  # TODO: computed field
-    volume_no_digits: int | None = None  # TODO: computed field
-    iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING
+    iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING  # TODO: delete
     is_default_levels: bool = False  # TODO: required?
     is_default_volumes: bool = False  # TODO: required?
 
@@ -199,19 +198,48 @@ class ConfigIref(BaseModel):
             self.volumes = default_volumes()
         return self
 
-    @model_validator(mode="after")
-    def _get_no_digits(self) -> ty.Self:
-        level_ids = [len(str(x.id)) for x in self.levels]
-        self.level_no_digits = max(level_ids)
-        volume_ids = [len(str(x.id)) for x in self.volumes]
-        self.volume_no_digits = max(volume_ids)
-        return self
+    @computed_field
+    @property
+    def level_ids(self) -> list[int]:
+        return [x.id for x in self.levels]
 
-    @model_validator(mode="after")
-    def _get_nos(self) -> ty.Self:
-        self.no_levels = len(self.levels)
-        self.no_volumes = len(self.volumes)
-        return self
+    @computed_field
+    @property
+    def volume_ids(self) -> list[int]:
+        return [x.id for x in self.volumes]
+
+    @computed_field
+    @property
+    def level_no_digits(self) -> int | None:
+        if not self.levels:
+            return None
+        return max([len(str(x)) for x in self.level_ids])
+
+    @computed_field
+    @property
+    def volume_no_digits(self) -> int | None:
+        if not self.levels:
+            return None
+        return max([len(str(x)) for x in self.volume_ids])
+
+    @computed_field
+    @property
+    def no_levels(self) -> int:
+        return len(self.levels)
+
+    @computed_field
+    @property
+    def no_volumes(self) -> int:
+        return len(self.volumes)
+
+
+class CustomTagDef(BaseModel):
+    """Custom Tag Definition for user-defined tags that are do be applied to filtered set of items."""
+
+    description: str | None = None
+    scope: RuleSet | None = None
+    i_tag: TagDef | type[TagDef] = InstanceTag()
+    t_tag: TagDef | type[TagDef] = TypeTag()
 
 
 class ConfigTags(BaseModel):
@@ -220,11 +248,12 @@ class ConfigTags(BaseModel):
     bdns_tag: type[BdnsTag | BdnsTagWithType] = BdnsTag()  # FIXED
     i_tag: TagDef | type[TagDef] = InstanceTag()
     t_tag: TagDef | type[TagDef] = TypeTag()
-    custom_i_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
-    custom_t_tags: dict[str, type[TagDef]] = {}  # AbbreviationsEnum
-    map_custom_i_tags: dict[str, str] = {}
-    map_custom_t_tags: dict[str, str] = {}
+    custom_tags: list[CustomTagDef] = Field(
+        None,
+        description="Custom Tag Definitions for user-defined tags that are do be applied to filtered set of items.",
+    )
     is_bdns_plus_default: bool = True
+    drop_if_single_volume: bool = True
 
     @model_validator(mode="after")
     def _check_is_bdns_plus_default(self) -> ty.Self:
@@ -237,8 +266,16 @@ class ConfigTags(BaseModel):
 
         return self
 
+    @model_validator(mode="after")
+    def _drop_if_single_volume(self) -> ty.Self:
+        if self.no_volumes == 1 and self.drop_if_single_volume:
+            data = self.i_tag.model_dump(mode="json")
+            data["fields"] = [f for f in data["fields"] if f["field_name"] != "volume"]
+            self.i_tag = TagDef(**data)
+        return self
 
-class Config(ConfigIref, ConfigTags):
+
+class Config(ConfigTags, ConfigIref):
     """bdns+ configuration model. levels, volumes and tag definitions. pre-configured with sensible defaults."""
 
 

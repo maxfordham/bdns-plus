@@ -1,3 +1,9 @@
+"""
+BDNS Plus environment settings.
+
+Allows for configuration of defaults through setting of configuration variables/files.
+"""
+
 from __future__ import annotations
 
 import pathlib  # noqa: TC003
@@ -10,6 +16,7 @@ ABBREVIATIONS_BDNS_REPO_URL = "https://github.com/theodi/BDNS/blob/{BDNS_VERSION
 
 
 class Env(BaseSettings):
+    CONFIG_DIR: pathlib.Path | None = Field(None)
     BDNS_VERSION: str = Field("master", description="BDNS version. Allows a project to pin to a specifc version.")
     ABBREVIATIONS_CUSTOM: pathlib.Path | None = Field(
         None,
@@ -17,6 +24,20 @@ class Env(BaseSettings):
     )
     LEVELS: pathlib.Path | None = Field(None, description="allows user to define only levels present in the project")
     VOLUMES: pathlib.Path | None = Field(None, description="allows user to define only volumes present in the project")
+    BDNS_TAG: pathlib.Path | None = Field(
+        None,
+        description="BDNS tag to use for equipment items.",
+    )
+    TYPE_TAG: pathlib.Path | None = Field(
+        None,
+        description="Type tag to use for equipment items.",
+    )
+    INSTANCE_TAG: pathlib.Path | None = Field(
+        None,
+        description="Instance tag to use for equipment items.",
+    )
+    CUSTOM_I_TAGS: list[pathlib.Path] | None = Field(None)
+    CUSTOM_T_TAGS: list[pathlib.Path] | None = Field(None)
     # MAP_ABBREVIATIONS_IREFCONFIG: dict[str, str] = Field( # TODO: allow different setup for idfferent object types (abbreviations)
     # in-place reloading possible:
     # https://docs.pydantic.dev/latest/concepts/pydantic_settings/#in-place-reloading

@@ -9,7 +9,7 @@ from annotated_types import Ge
 from .models import Config, IdentifierType
 
 
-def serialize_iref(
+def serialize_iref(  # noqa: C901, PLR0912
     level: int,
     level_iref: Annotated[int, Ge(0)],
     *,
@@ -43,8 +43,17 @@ def serialize_iref(
         e = f"volume_identifier_type={volume_identifier_type} not supported"
         raise ValueError(e)
 
-    level_id = map_level[level]
-    volume_id = map_volume[volume]
+    try:
+        level_id = map_level[level]
+    except KeyError as err:
+        e = f"level={level} not in config.levels (length={len(config.levels)}) with identifier_type={level_indentifier_type}"
+        raise ValueError(e) from err
+
+    try:
+        volume_id = map_volume[volume]
+    except KeyError as err:
+        e = f"volume={volume} not in config.volumes (length={len(config.volumes)}) with identifier_type={volume_identifier_type}"
+        raise ValueError(e) from err
 
     # validator that levels and volumes are compatible
     if config.map_volume_level is not None:

@@ -66,7 +66,7 @@ def volume_field(prefix: str = "", suffix: str = "") -> dict:
 def level_field(prefix: str = "", suffix: str = "", zfill: int | None = None) -> dict:
     return {
         "field_name": "level",
-        "field_aliases": ["Level"],
+        "field_aliases": ["Level", "level"],
         "allow_none": False,
         "prefix": prefix,
         "suffix": suffix,
@@ -108,7 +108,7 @@ def instance_extra_field(prefix: str = "", suffix: str = "") -> dict:
 def type_reference_field(prefix: str = "", suffix: str = "") -> dict:
     return {
         "field_name": "type_reference",
-        "field_aliases": ["TypeReference"],
+        "field_aliases": ["TypeReference", "type"],
         "allow_none": True,
         "prefix": prefix,
         "suffix": suffix,
@@ -147,14 +147,20 @@ def type_fields() -> list[dict]:
     ]
 
 
-def instance_fields(*, include_type: bool = False) -> list[dict]:
+def instance_fields(*, include_type: bool = False, include_volume: bool = True) -> list[dict]:
     fields = [
         abbreviation_field(suffix="/"),
-        volume_field(suffix="/"),
         level_field(suffix="/"),
         level_instance_field(suffix="/"),
         instance_extra_field(),
     ]
-    if include_type:
+    if include_type and include_volume:
         fields.insert(1, type_reference_field())
+        fields.insert(2, volume_field(suffix="/"))
+    elif include_type and not include_volume:
+        fields.insert(1, type_reference_field())
+    elif not include_type and include_volume:
+        fields.insert(1, volume_field(suffix="/"))
+    else:
+        pass
     return fields

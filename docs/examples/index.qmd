@@ -3,17 +3,6 @@ title: Simple
 format:
   html:
     code-fold: true
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .qmd
-      format_name: quarto
-      format_version: '1.0'
-      jupytext_version: 1.17.0
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
 ---
 
 In the examples below, we demonstrate how to generate and display asset tagging data for different types of equipment using the bdns-plus library.
@@ -99,7 +88,8 @@ df.style
 
 ## Electrical Accessories
 
-For electrical accessories such as sockets and switches, it is more common to simply indicate the type.
+For electrical accessories such as sockets and switches, it is more common to simply indicate the type
+and not bother referencing every individual instance.
 
 ```{python}
 map_abbreviation_description = get_asset_abbreviations()
@@ -109,7 +99,7 @@ SSSO
 SSO
 FLRB
 INSO""".split("\n")
-li_nos = [4, 2, 3, 2, 3, 2] # [random.randint(2, 4) for n in range(0, len(li))]
+li_nos = [4, 2, 3, 2, 3, 2] # 
 # ^ fixed random no's so git doesn't complain
 
 typs = []
@@ -125,7 +115,7 @@ df_typs.style
 ## Lighting
 
 For light fixtures it is also typical to tag only by type, though it is common to also show additional info like if the fitting is emergency or not (see table below). 
-At later stages, a light fitting will often be uniquely identified to have specific commissioning values (e.g. a single spotlight on a control sytem, or a fitting that must be angled in a specific way), to achieve this just add the volume, level and level_iref parameters as shown in the []()value above.
+At later stages, a light fitting may be uniquely identified to have specific commissioning values (e.g. a single spotlight on a control sytem, or a fitting that must be angled in a specific way), to achieve this just add the volume, level and level_iref parameters as shown in the []()value above.
 
 ```{python}
 li = """LT

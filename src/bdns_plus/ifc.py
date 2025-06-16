@@ -5,14 +5,12 @@ import bsdd
 IFC4X3_URI = "https://identifier.buildingsmart.org/uri/buildingsmart/ifc/4.3"
 
 
-def ifc_strip_enum(ifc_class):
+def ifc_strip_enum(ifc_class: str) -> str:
     return re.sub(r"([A-Z0-9_]+_?)$", "", ifc_class)
 
 
-def ifc_class_is_enum(ifc_class):
-    if ifc_strip_enum(ifc_class) == ifc_class:
-        return False
-    return True
+def ifc_class_is_enum(ifc_class: str) -> bool:
+    return ifc_strip_enum(ifc_class) != ifc_class
 
 
 def get_ifc_classes(client=None):

@@ -1,23 +1,12 @@
 ---
 toc: true
 title: BDNS-plus (WIP)
-jupyter:
-  jupytext:
-    text_representation:
-      extension: .qmd
-      format_name: quarto
-      format_version: '1.0'
-      jupytext_version: 1.17.0
-  kernelspec:
-    display_name: Python 3 (ipykernel)
-    language: python
-    name: python3
 ---
 
-[BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) ➕ **equipment tagging**. `bdns-plus` extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
-
-
-## Language
+[BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) ➕ **equipment tagging**.
+`bdns-plus` extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
+It does so by defining metadata required for every item of equipment, from this metadata it is then possible to serialize a [BDNS compliant, machine read-able tag](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2),
+as well a tag that clearly communicates the metadata in a format designed for improved human-legibility and compliance with project standards.
 
 The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `SHOULD NOT`, `RECOMMENDED`, `MAY`, and `OPTIONAL` in this document are to be interpreted as described in [RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
 
@@ -35,7 +24,7 @@ closed mechanical systems (e.g. LTHW systems) it is possible/common to have mult
 
 ## Overview
 
-A definition of the properties required for equipment tagging for the digital identification equipment
+A definition of the properties required for equipment tagging for the digital identification of equipment
 for use in the design, construction and management of buildings.
 
 It is designed to be an opinionated superset of the [BDNS](https://theodi.github.io/BDNS/) standard.
@@ -51,16 +40,18 @@ leading to a potential value-add if the projects considers a BDNS compliant asse
 In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined.
 By definition, the mimumum information that `MUST` be recorded is:
 
-| property name     | property type | data type                       | description                                                                         |
-|-------------------|---------------|---------------------------------|-------------------------------------------------------------------------------------|
-| abbreviation      | Type          | uppercase alphabetic, 2-6 chars | indicates equipment type                                                            |
-| type_id           | Type          | positive integer                | refers to a specific equipment type                                                 |
-| volume_id         | Instance      | positive integer                | indicates the volume within a project the equipment is situated                     |
-| level_id          | Instance      | positive integer                | indicates the level within a project the equipment is situated                      |
-| level_instance_id | Instance      | positive integer                | a numerical indentifyer for a specific piece of equipment within a volume and level |
+| property name     | property type | description                                                                         |
+|-------------------|---------------|-------------------------------------------------------------------------------------|
+| abbreviation      | Type          | uppercase, alphabetic, 2-6 chars, indicates equipment type                          |
+| type              | Type          | refers to a specific equipment type used within a project                           |
+| volume            | Instance      | indicates the volume within a project the equipment is situated                     |
+| level             | Instance      | indicates the level within a project the equipment is situated                      |
+| level_instance_id | Instance      | a numerical indentifyer for a specific piece of equipment within a volume and level |
+| unique_instance_id| Instance      | calculated value from other instance parameters. used to create bdns tag            |
 
-Parameters with property type, `Type` (`abbreviation` and `type_id`) would be the same for every identical item of equipment.
-Parameters with property type, `Instance` (`volume_id`, `level_id` and `level_instance_id`), define a specific instance of
+
+Parameters with property type, `Type` (`abbreviation` and `type`) would be the same for every identical item of equipment.
+Parameters with property type, `Instance` (`volume`, `level` and `level_instance_id`), define a specific instance of
 equipment within a project and the combination of these paramenters and `abbreviation` `MUST` be unique.
 
 The tagging properties can used to generate:

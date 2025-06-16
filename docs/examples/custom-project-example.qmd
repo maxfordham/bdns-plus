@@ -67,34 +67,47 @@ volumes = [Volume(**dict(zip(header,x) )) for x in rows]
 _ = gen_levels_config(level_min=level_min, level_max=level_max)
 levels = [Level(**dict(zip(_[0],x) )) for x in _[1:]]
 config_iref = ConfigIref(levels=levels,volumes=volumes)
-
+df_levels = pd.DataFrame([x.model_dump() for x in config_iref.levels]).set_index("id")
+df_volumes = pd.DataFrame([x.model_dump() for x in config_iref.volumes]).set_index("id")
 ```
 
 **Levels**
 
 ```{python}
 #| echo: false
-pd.DataFrame([x.model_dump() for x in config_iref.levels]).set_index("id")
+df_levels
 ```
 
 **Volumes**
 
 ```{python}
 #| echo: false
-pd.DataFrame([x.model_dump() for x in config_iref.volumes]).set_index("id")
+df_volumes
 ```
+
+
+<!-- ```{python}
+#| layout-ncol: 2
+#| fig-cap-location: top
+#| fig-cap: 
+#|   - "Line Plot 1"
+#|   - "Line Plot 2"
+
+display(df_levels)
+display(df_volumes)
+``` -->
+
 
 ## Setup custom Tags
 
 Tags are built from metadata on the object. `bdns_plus` has sensible defaults but tag definitions
 can also be defined to suit the requirements of a specific project.
 
+
 ```{python}
 from bdns_plus.models import TagDef, TagField, Config
 from bdns_plus.default_fields import abbreviation_field, volume_field, level_field, level_instance_field, instance_extra_field
 from bdns_plus.docs import get_idata_tag_table
-
-
 
 fields = [
     abbreviation_field(suffix="."),
