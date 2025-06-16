@@ -19,7 +19,7 @@ jobs:
             pixi-version: v0.45.0
             cache: true
             cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-      - run: pixi run render
+      - run: pixi run docs
       - name: Push docs to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:
