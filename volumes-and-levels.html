@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BDNS-plus (WIP)</title>
+<title>Volumes &amp; Levels</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -20,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -72,6 +107,10 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -252,11 +291,11 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">BDNS-plus (WIP)</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./volumes-and-levels.html"> 
+    <a class="nav-link active" href="./volumes-and-levels.html" aria-current="page"> 
 <span class="menu-text">Volumes &amp; Levels</span></a>
   </li>  
   <li class="nav-item">
@@ -311,25 +350,8 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#definition-of-terms" id="toc-definition-of-terms" class="nav-link active" data-scroll-target="#definition-of-terms">Definition of Terms</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#type-tag" id="toc-type-tag" class="nav-link" data-scroll-target="#type-tag">Type Tag</a>
-  <ul class="collapse">
-  <li><a href="#type_tag-valid-implementations" id="toc-type_tag-valid-implementations" class="nav-link" data-scroll-target="#type_tag-valid-implementations"><code>type_tag</code> Valid Implementations</a></li>
-  <li><a href="#type_tag-example" id="toc-type_tag-example" class="nav-link" data-scroll-target="#type_tag-example"><code>type_tag</code> Example</a></li>
-  </ul></li>
-  <li><a href="#instance-tag" id="toc-instance-tag" class="nav-link" data-scroll-target="#instance-tag">Instance Tag</a>
-  <ul class="collapse">
-  <li><a href="#instance_tag-valid-implementations" id="toc-instance_tag-valid-implementations" class="nav-link" data-scroll-target="#instance_tag-valid-implementations"><code>instance_tag</code> Valid Implementations</a></li>
-  <li><a href="#instance_tag-example" id="toc-instance_tag-example" class="nav-link" data-scroll-target="#instance_tag-example"><code>instance_tag</code> Example</a></li>
-  </ul></li>
-  <li><a href="#bdns-tag" id="toc-bdns-tag" class="nav-link" data-scroll-target="#bdns-tag">BDNS Tag</a>
-  <ul class="collapse">
-  <li><a href="#bdns_tag-valid-implementations" id="toc-bdns_tag-valid-implementations" class="nav-link" data-scroll-target="#bdns_tag-valid-implementations"><code>bdns_tag</code> Valid Implementations</a></li>
-  <li><a href="#equipment-specific-tagging-methodologies" id="toc-equipment-specific-tagging-methodologies" class="nav-link" data-scroll-target="#equipment-specific-tagging-methodologies">Equipment Specific Tagging Methodologies</a></li>
-  </ul></li>
-  <li><a href="#project-configuration" id="toc-project-configuration" class="nav-link" data-scroll-target="#project-configuration">Project Configuration</a></li>
-  <li><a href="#related-work" id="toc-related-work" class="nav-link" data-scroll-target="#related-work">Related Work</a></li>
+  <li><a href="#defaults" id="toc-defaults" class="nav-link active" data-scroll-target="#defaults">Defaults</a></li>
+  <li><a href="#customising-volumes-and-levels" id="toc-customising-volumes-and-levels" class="nav-link" data-scroll-target="#customising-volumes-and-levels">Customising Volumes and Levels</a></li>
   </ul>
 </nav>
     </div>
@@ -339,7 +361,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BDNS-plus (WIP)</h1>
+<h1 class="title">Volumes &amp; Levels</h1>
 </div>
 
 
@@ -356,319 +378,135 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://theodi.github.io/BDNS/">BDNS (Building Device Naming Syntax)</a> ➕ <strong>equipment tagging</strong>. <code>bdns-plus</code> extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications). It does so by defining metadata required for every item of equipment, from this metadata it is then possible to serialize a <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2">BDNS compliant, machine read-able tag</a>, as well a tag that clearly communicates the metadata in a format designed for improved human-legibility and compliance with project standards.</p>
-<p>The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.</p>
-<section id="definition-of-terms" class="level2">
-<h2 class="anchored" data-anchor-id="definition-of-terms">Definition of Terms</h2>
-<ul>
-<li><code>project</code> - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.</li>
-<li><code>volume</code> - a section of a project. For a single building project it typically has 1 volume. For a multi-building project each building will be a volume. External landscaping may be a separate volume.</li>
-<li><code>level</code> - a floor of a building.</li>
-<li><code>type</code> - a specific type of equipment, i.e.&nbsp;an item with a defined model number that can ultimately be purchased.</li>
-<li><code>instance</code> - a specific piece of equipment / asset within a project. Every asset is unique.</li>
-<li><strong>WIP</strong> <code>system_type</code> - what system type a piece of equipment belongs to (e.g.&nbsp;a radiator would below to LTHW system type)</li>
-<li><strong>WIP</strong> <code>system_id</code> - the specific system that a piece of equipment belongs to. For electrical systems this parameter isn’t used as typically all electrical appliances will connect back a common point (the utilities connection), but for closed mechanical systems (e.g.&nbsp;LTHW systems) it is possible/common to have multiple distinct closed systems within a single project.</li>
-</ul>
+<p><code>bdns-plus</code> allows a project to define the levels and volumes in use in their project.</p>
+<section id="defaults" class="level2">
+<h2 class="anchored" data-anchor-id="defaults">Defaults</h2>
+<p>You see that <code>levels</code> and <code>volumes</code> are set to <code>None</code> by default. In the background, <code>bdns-plus</code> generates levels and volumes tables supporting all numeric combinations where the level can be encoded by 2no integer digits and the volume can be encoded by 1no integer digit &gt;= 1. See below.</p>
+<!-- ```{python}
+
+w.HBox([
+  w.VBox([w.HTML("<b>Volumes</b>"), gr_volumes], layout={"width": "50%"}), 
+  w.VBox([w.HTML("<b>Levels</b>"), gr_levels], layout={"width": "50%"}),
+])
+``` -->
+<!-- #| fig-cap: 
+#|   - "Line Plot 1"
+#|   - "Line Plot 2" -->
+<div id="034818b5" class="cell fig-cap-location-top quarto-layout-panel" data-execution_count="2" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"e67cf8ce254d452d9db8953752bc988d","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"1c02cd63aefc4c179250aa1bedf24905","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+</div>
+<p>The volume “code” and level “code” will be a parameter defined on every placed instance in Revit. These codes can then be used to build a tag, and also be used to map to the id and generate a BDNS compliant unique_instance_id.</p>
+<p>For example, given the following data:</p>
+<div id="992fecb7" class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> Tag</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>equipment_data <span class="op">=</span> {</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abbreviation"</span>: <span class="st">"AHU"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="dv">2</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level"</span>: <span class="dv">1</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"volume"</span>: <span class="dv">3</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level_iref"</span>:<span class="dv">1</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>tag <span class="op">=</span> Tag(equipment_data)</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>display(Markdown(tag.summary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><strong>BDNS</strong>: AHU-3011</p>
+<p><strong>Instance</strong>: AHU/3/1/1</p>
+<p><strong>Type</strong>: AHU2</p>
+</div>
+</div>
+<p>or for a more complex example, requiring mapping to “id” to create a compliant BDNS tag:</p>
+<div id="f41b4f4e" class="cell" data-execution_count="4">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>equipment_data <span class="op">=</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abbreviation"</span>: <span class="st">"AHU"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="dv">2</span>,</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level"</span>: <span class="op">-</span><span class="dv">1</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">"volume"</span>: <span class="dv">1</span>,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level_iref"</span>:<span class="dv">1</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>tag <span class="op">=</span> Tag(equipment_data)</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>display(Markdown(tag.summary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><strong>BDNS</strong>: AHU-1991</p>
+<p><strong>Instance</strong>: AHU/1/-1/1</p>
+<p><strong>Type</strong>: AHU2</p>
+</div>
+</div>
 </section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>A definition of the properties required for equipment tagging for the digital identification of equipment for use in the design, construction and management of buildings.</p>
-<p>It is designed to be an opinionated superset of the <a href="https://theodi.github.io/BDNS/">BDNS</a> standard. The focus of this standard is to simultaneously provide a unique, machine-readable identifier for each asset as well as a human-readable and intuitive tag that can be used on drawings and other design information. Whilst the BDNS standard <code>MAY</code> be used as is for equipment tagging on drawing and at later stages in asset management systems, the formation of the <code>bdns_tag</code> is not consistent with many project drawing standards. This standard aims to consistently define the properties that <code>MUST</code> be recorded for each asset, and from this information it <code>MUST</code> be possible to generate a compliant <code>bdns_tag</code>. The same properties <code>MUST</code> then be used to create a more flexible / human-readable <code>type_tag</code> and <code>instance_tag</code> for equipment references/tags on drawings. Using this approach it is possible to apply BDNS a compliant methodology on a larger number of projects, improving standardisation and leading to a potential value-add if the projects considers a BDNS compliant asset solution at the later stages of the project.</p>
-<p>In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined. By definition, the mimumum information that <code>MUST</code> be recorded is:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 12%">
-<col style="width: 71%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>abbreviation</td>
-<td>Type</td>
-<td>uppercase, alphabetic, 2-6 chars, indicates equipment type</td>
-</tr>
-<tr class="even">
-<td>type</td>
-<td>Type</td>
-<td>refers to a specific equipment type used within a project</td>
-</tr>
-<tr class="odd">
-<td>volume</td>
-<td>Instance</td>
-<td>indicates the volume within a project the equipment is situated</td>
-</tr>
-<tr class="even">
-<td>level</td>
-<td>Instance</td>
-<td>indicates the level within a project the equipment is situated</td>
-</tr>
-<tr class="odd">
-<td>level_instance_id</td>
-<td>Instance</td>
-<td>a numerical indentifyer for a specific piece of equipment within a volume and level</td>
-</tr>
-<tr class="even">
-<td>unique_instance_id</td>
-<td>Instance</td>
-<td>calculated value from other instance parameters. used to create bdns tag</td>
-</tr>
-</tbody>
-</table>
-<p>Parameters with property type, <code>Type</code> (<code>abbreviation</code> and <code>type</code>) would be the same for every identical item of equipment. Parameters with property type, <code>Instance</code> (<code>volume</code>, <code>level</code> and <code>level_instance_id</code>), define a specific instance of equipment within a project and the combination of these paramenters and <code>abbreviation</code> <code>MUST</code> be unique.</p>
-<p>The tagging properties can used to generate:</p>
+<section id="customising-volumes-and-levels" class="level2">
+<h2 class="anchored" data-anchor-id="customising-volumes-and-levels">Customising Volumes and Levels</h2>
+<p>Setting the levels and volumes explicitly allows users to:</p>
 <ul>
-<li>a <strong>type tag</strong>. to indicate the type of a given asset/piece of equipment.
+<li>restrict the allowed values to a more limited set, and ensure compliance with that set</li>
+<li>extend the levels / volumes for extremely large projects (i.e.&nbsp;&gt;90 floors, &gt;9 basement floors, &gt;9 volumes)</li>
+<li>add custom project encodings for levels and volumes
 <ul>
-<li>this is unique to the equipemnt type only, there may be many instances of this type in a building.</li>
-<li>as an example, this is typically used on lighting layouts where many luminaires of the same type are used.</li>
+<li>e.g.&nbsp;define volumes as A, B, C, D rather than numeric</li>
 </ul></li>
-<li>a <strong>instance tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
+<li>add encodings for things like mezzanine levels
 <ul>
-<li>it is directly interchangeable with the bdns tag (and <code>MAY</code> be the same).</li>
-<li>its focus is on legibility and ease of use for humans.</li>
-</ul></li>
-<li>a <strong>BDNS tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
-<ul>
-<li>its focus is on legibility and ease of use for humans and machines.</li>
-</ul></li>
-</ul>
-<p>It is acknowledged that positive integers are a restrictive format to communicate volume and level information, and that this may not be the best way to communicate this information to a user. In the sections below a description is given about how a software system can be used to convert between the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code> and a more human-readable format.</p>
-</section>
-<section id="type-tag" class="level2">
-<h2 class="anchored" data-anchor-id="type-tag">Type Tag</h2>
-<p>The <code>type_tag</code> is used to indicate the type of a given asset/piece of equipment on design information. For a given <code>Type</code> of equipment, the combination of the <code>abbreviation</code> and <code>type_id</code> <code>MUST</code> be unique. There <code>MAY</code> be many instances of eqipment of the same type within a project and therefore many indentical <code>type_tag</code>s. The <code>type_id</code> and <code>abbreviation</code> <code>MUST</code> be combined without a delimiter to create a <code>unique_type_reference</code>. Extra information about the equipment type <code>MAY</code> be stored in the <code>type_extra</code> property. The <code>type_tag</code> <code>MUST</code> include the <code>unique_type_reference</code> and <code>MAY</code> include the <code>type_extra</code> field, if <code>type_extra</code> is included it <code>MUST</code> be delimited from the <code>unique_type_reference</code> with a <code>type_extra_delimiter</code> character.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 8%">
-<col style="width: 18%">
-<col style="width: 59%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>unique_type_reference</td>
-<td>Type</td>
-<td>uppercase alphabetic, 2-6 chars</td>
-<td>combines <code>abbreviation</code> and <code>type_id</code> to create a <code>unique_type_reference</code></td>
-</tr>
-<tr class="even">
-<td>type_extra</td>
-<td>Type</td>
-<td>string</td>
-<td>used to indicate extra type information. e.g.&nbsp;<code>type_extra</code>=“E” good indicate and emergency light fitting</td>
-</tr>
-<tr class="odd">
-<td>type_extra_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>unique_type_reference</code> and <code>type_extra</code></td>
-</tr>
-<tr class="even">
-<td>type_tag</td>
-<td>Type</td>
-<td>string</td>
-<td><code>MUST</code> contain <code>unique_type_reference</code> and <code>MAY</code> contain <code>type_extra</code></td>
-</tr>
-</tbody>
-</table>
-<section id="type_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="type_tag-valid-implementations"><code>type_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>type_tag</code> = <code>unique_type_reference</code></li>
-<li><code>type_tag</code> = <code>unique_type_reference</code> + <code>type_extra_delimiter</code> + <code>type_extra</code></li>
-</ul>
-</section>
-<section id="type_tag-example" class="level3">
-<h3 class="anchored" data-anchor-id="type_tag-example"><code>type_tag</code> Example</h3>
-<ul>
-<li><code>abbreviation</code> = <code>LT</code>, <code>type_id</code> = <code>1</code>, <code>type_extra</code> = <code>E</code>, <code>type_extra_delimiter</code> = <code>/</code>
-<ul>
-<li>=&gt; <code>unique_type_reference</code> = <code>LT1</code></li>
-<li>=&gt; <code>type_tag</code> = <code>LT1/E</code></li>
-</ul></li>
-<li><code>abbreviation</code> = <code>RAD</code>, <code>type_id</code> = <code>3</code>, <code>type_extra</code> = None, <code>type_extra_delimiter</code> = <code>/</code>
-<ul>
-<li>=&gt; <code>unique_type_reference</code> = <code>RAD3</code></li>
-<li>=&gt; <code>type_tag</code> = <code>RAD3</code></li>
+<li>Note: this is not recommended as when codifying to an integer value for producing the BDNS tag it is impossible to map 1/2 floors (i.e.&nbsp;mezzanines).</li>
 </ul></li>
 </ul>
-</section>
-</section>
-<section id="instance-tag" class="level2">
-<h2 class="anchored" data-anchor-id="instance-tag">Instance Tag</h2>
-<p>The instance tag is used to indicate a specific instance of equipment within a project. For a given unique item of equipment in a project, the <code>instance_tag</code> <code>MUST</code> be unique. The <code>instance_tag</code> <code>SHOULD</code> indicate the equipment <code>abbreviation</code>, the volume, level and <code>level_instance_id</code>. The <code>instance_tag</code> <code>MAY</code> be the same as the <code>bdns_tag</code>.</p>
-<p>The <code>volume_id</code> <code>MAY</code> be mapped to a human-readable <code>volume_reference</code> and the <code>level_id</code> <code>MAY</code> be mapped to a human-readable <code>level_reference</code>. Where a mapped <code>volume_reference</code> and <code>level_reference</code> is used, a <code>level_name</code> and <code>volume_name</code> <code>MAY</code> also be provided. Extra information about the equipment instance <code>MAY</code> be stored in the <code>instance_extra</code> property. For legibility, the <code>unique_instance_reference</code> <code>MAY</code> be formatted with a delimiter (<code>instance_tag_delimiter</code>) between the <code>abbreviation</code>, <code>volume_reference</code>, <code>level_reference</code> and <code>level_instance_id</code>. The <code>unique_instance_reference</code> <code>MUST</code> serialisable / deserialisable to / from the <code>bdns_tag</code>. The <code>instance_tag</code> <code>MUST</code> include the <code>unique_instance_reference</code> and <code>MAY</code> include the <code>instance_extra</code> field. Where there is only 1no project volume, the <code>volume_reference</code> <code>MAY</code> be omitted from the <code>instance_tag</code>.</p>
-<p>It is <code>RECOMMENDED</code> that when mapping the <code>level_id</code> to the <code>level_reference</code>, mezzanine levels are ignored. This is because mezzanine levels are 1/2 levels, and there is no logical way to represent these in the <code>level_id</code> field which must be a positive integer.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 8%">
-<col style="width: 10%">
-<col style="width: 65%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>level_reference</td>
-<td>Instance</td>
-<td>string or integer</td>
-<td>indicates the level. maps to the <code>level_id</code> field. -ve numbers and strings allowed.</td>
-</tr>
-<tr class="even">
-<td>volume_reference</td>
-<td>Instance</td>
-<td>string or integer</td>
-<td>unique reference to a given piece of equipment, which encodes type, level and volume</td>
-</tr>
-<tr class="odd">
-<td>level_name</td>
-<td>Instance</td>
-<td>string</td>
-<td>combined with <code>abbreviation</code> creates a unique reference to an item of equipment</td>
-</tr>
-<tr class="even">
-<td>volume_name</td>
-<td>Instance</td>
-<td>string</td>
-<td>unique reference to a given piece of equipment, which encodes type, level and volume</td>
-</tr>
-<tr class="odd">
-<td>instance_tag_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>abbreviation</code>, <code>volume_reference</code>, <code>level_reference</code> and <code>level_instance_id</code></td>
-</tr>
-<tr class="even">
-<td>unique_instance_reference</td>
-<td>Instance</td>
-<td>string</td>
-<td>combines <code>abbreviation</code>, volume, level and <code>level_instance_id</code> to create a unique reference to an item of equipment</td>
-</tr>
-<tr class="odd">
-<td>instance_tag</td>
-<td>Instance</td>
-<td>string</td>
-<td><code>unique_instance_reference</code>, and <code>MAY</code> also show <code>instance_extra</code> information</td>
-</tr>
-<tr class="even">
-<td>instance_extra</td>
-<td>Instance</td>
-<td>string</td>
-<td>contains additional information about an instance. <code>MAY</code> be shown on <code>instance_tag</code></td>
-</tr>
-<tr class="odd">
-<td>instance_extra_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>unique_instance_reference</code> and <code>instance_extra</code></td>
-</tr>
-</tbody>
-</table>
-<section id="instance_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="instance_tag-valid-implementations"><code>instance_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>unique_instance_reference</code> = <code>abbreviation</code> + <code>instance_tag_delimiter</code> + <code>volume_reference</code> + <code>instance_tag_delimiter</code> + <code>level_reference</code> + <code>instance_tag_delimiter</code> + <code>level_instance_id</code></li>
-<li><code>instance_tag</code> = <code>unique_instance_reference</code> + <code>instance_extra_delimiter</code> + <code>instance_extra</code></li>
-</ul>
-</section>
-<section id="instance_tag-example" class="level3">
-<h3 class="anchored" data-anchor-id="instance_tag-example"><code>instance_tag</code> Example</h3>
-<ul>
-<li><code>abbreviation</code> = <code>LT</code>, <code>volume_id</code> = <code>1</code>, <code>level_id</code> = <code>0</code>, <code>level_instance_id</code> = <code>1</code>, <code>instance_extra</code> = <code>E</code>, <code>instance_extra_delimiter</code> = <code>/</code>, <code>instance_tag_delimiter</code> = <code>_</code>
-<ul>
-<li>=&gt; <code>volume_reference</code> = <code>A</code>, <code>level_reference</code> = <code>GF</code></li>
-<li>=&gt; <code>unique_instance_reference</code> = <code>LT/A/GF/1</code></li>
-<li>=&gt; <code>instance_tag</code> = <code>LT/A/GF/1_E</code></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="bdns-tag" class="level2">
-<h2 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h2>
-<p>For a given <code>abbreviation</code>, the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code> <code>MUST</code> be combined to create a unique identifier (<code>instance_id</code>) for each piece of equipment. NOTE. This unique number <code>MUST</code> be independent of the specific equipment type (<code>type_id</code>).</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>instance_id</td>
-<td>Instance</td>
-<td>positive integer</td>
-<td>combined with <code>abbreviation</code> creates a unique reference to an item of equipment</td>
-</tr>
-<tr class="even">
-<td>bdns_tag</td>
-<td>Instance</td>
-<td>string</td>
-<td>unique reference to a given piece of equipment, which encodes abbreviation, level and volume</td>
-</tr>
-</tbody>
-</table>
-<p>It <code>MUST</code> be possible to serialise and deserialise between [<code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code>] and [<code>instance_id</code>] to create a unique identifier for each piece of equipment.</p>
-<p>It <code>SHOULD</code> be simple to a user interogating the <code>instance_id</code> how to determine the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code>.</p>
-<ul>
-<li>e.g.&nbsp;<code>instance_id</code> = <code>1001</code> would be <code>volume_id</code> = <code>1</code>, <code>level_id</code> = <code>0</code> and <code>level_instance_id</code> = <code>1</code>.</li>
-</ul>
-<section id="bdns_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="bdns_tag-valid-implementations"><code>bdns_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>bdns_tag</code> = <code>abbreviation</code> + “-” + <code>instance_id</code></li>
-<li><code>bdns_tag</code> = <code>unique_type_reference</code> + “-” + <code>instance_id</code></li>
-</ul>
-</section>
-<section id="equipment-specific-tagging-methodologies" class="level3">
-<h3 class="anchored" data-anchor-id="equipment-specific-tagging-methodologies">Equipment Specific Tagging Methodologies</h3>
-<p>Projects <code>SHOULD</code> define a method for tagging equipment that is consistent across all equipment types. Projects <code>MAY</code> customise how the tag is constructed based on the equipment type if required.</p>
-</section>
-</section>
-<section id="project-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="project-configuration">Project Configuration</h2>
-</section>
-<section id="related-work" class="level2">
-<h2 class="anchored" data-anchor-id="related-work">Related Work</h2>
-<ul>
-<li>extends <a href="https://theodi.github.io/BDNS/">BDNS (Building Device Naming Syntax)</a></li>
-<li>formalises some of the logic outlined by <a href="https://github.com/TheFridgeShaman">TheFridgeShaman</a> in <a href="https://github.com/theodi/BDNS/issues/154">this discussion</a></li>
-</ul>
+<div id="6afc5b15" class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> Config, to_records</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.tag <span class="im">import</span> Tag</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> csv</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>_volumes <span class="op">=</span> <span class="st">"""id,code,name,</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="st">1,A,Block A,</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="st">2,B,Block B,</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="st">3,C,Block C,"""</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>_levels <span class="op">=</span> <span class="st">"""id,code,name,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="st">99,B1,Basement Level,</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="st">0,GF,Ground Floor,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="st">1,L1,Level 1,"""</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>volumes <span class="op">=</span> to_records(<span class="bu">list</span>(csv.reader(_volumes.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))))</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>levels <span class="op">=</span> to_records(<span class="bu">list</span>(csv.reader(_levels.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>))))</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(volumes<span class="op">=</span>volumes, levels<span class="op">=</span>levels)</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>equipment_data <span class="op">=</span> {</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="st">"abbreviation"</span>: <span class="st">"AHU"</span>,</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="st">"type"</span>: <span class="dv">2</span>,</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level"</span>: <span class="st">"B1"</span>,</span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>    <span class="st">"volume"</span>: <span class="st">"B"</span>,</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>    <span class="st">"level_iref"</span>: <span class="dv">1</span></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>tag <span class="op">=</span> Tag(equipment_data, config<span class="op">=</span>config)</span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>display(Markdown(tag.summary))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display cell-output-markdown">
+<p><strong>BDNS</strong>: AHU-2991</p>
+<p><strong>Instance</strong>: AHU/B/B1/1</p>
+<p><strong>Type</strong>: AHU2</p>
+</div>
+</div>
 
 
 </section>
 
 </main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"03c9b22d5c0f4db7950b739358267a7d":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"04d3a726cb9f44179c963abc4f7d12e7":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"0d38f9d1fa5b4759a7423cee62122fc5":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"1c02cd63aefc4c179250aa1bedf24905":{"buffers":[{"data":"WgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAAAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"9v////f////4////+f////r////7/////P////3////+/////////wAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[100],"type":null},"id":{"dtype":"int32","shape":[100],"type":null},"ipydguuid":{"dtype":"int32","shape":[100],"type":null},"name":["Basement 10","Basement 9","Basement 8","Basement 7","Basement 6","Basement 5","Basement 4","Basement 3","Basement 2","Basement 1","Ground","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9","Level 10","Level 11","Level 12","Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","Level 19","Level 20","Level 21","Level 22","Level 23","Level 24","Level 25","Level 26","Level 27","Level 28","Level 29","Level 30","Level 31","Level 32","Level 33","Level 34","Level 35","Level 36","Level 37","Level 38","Level 39","Level 40","Level 41","Level 42","Level 43","Level 44","Level 45","Level 46","Level 47","Level 48","Level 49","Level 50","Level 51","Level 52","Level 53","Level 54","Level 55","Level 56","Level 57","Level 58","Level 59","Level 60","Level 61","Level 62","Level 63","Level 64","Level 65","Level 66","Level 67","Level 68","Level 69","Level 70","Level 71","Level 72","Level 73","Level 74","Level 75","Level 76","Level 77","Level 78","Level 79","Level 80","Level 81","Level 82","Level 83","Level 84","Level 85","Level 86","Level 87","Level 88","Level 89"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":100},"corner_renderer":null,"default_renderer":"IPY_MODEL_ac354d3202624f44a45d73f20bef1e3f","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_03c9b22d5c0f4db7950b739358267a7d","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"250f5a37c0b94c7291854e6facaf033a":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"6d66ad2b1c72472bbd3f97d19e7b71fb":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"a2b774f16469445999939b32a12ce454":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_6d66ad2b1c72472bbd3f97d19e7b71fb","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_250f5a37c0b94c7291854e6facaf033a","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"ac354d3202624f44a45d73f20bef1e3f":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_04d3a726cb9f44179c963abc4f7d12e7","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_0d38f9d1fa5b4759a7423cee62122fc5","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"e67cf8ce254d452d9db8953752bc988d":{"buffers":[{"data":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAA","encoding":"base64","path":["_data","data","id","value"]},{"data":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAA","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[9],"type":null},"id":{"dtype":"int32","shape":[9],"type":null},"ipydguuid":{"dtype":"int32","shape":[9],"type":null},"name":["Volume 1","Volume 2","Volume 3","Volume 4","Volume 5","Volume 6","Volume 7","Volume 8","Volume 9"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":100},"corner_renderer":null,"default_renderer":"IPY_MODEL_a2b774f16469445999939b32a12ce454","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_ef231ac8aea04ae88d9c5812d7a6c1f5","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"ef231ac8aea04ae88d9c5812d7a6c1f5":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}}},"version_major":2,"version_minor":0}
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     // Ensure there is a toggle, if there isn't float one in the top right

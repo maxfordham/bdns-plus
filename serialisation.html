@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>BDNS-plus (WIP)</title>
+<title>Serialisation</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -252,7 +252,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">BDNS-plus (WIP)</span></a>
   </li>  
   <li class="nav-item">
@@ -268,7 +268,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Customisations</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./serialisation.html"> 
+    <a class="nav-link active" href="./serialisation.html" aria-current="page"> 
 <span class="menu-text">Serialisation</span></a>
   </li>  
   <li class="nav-item">
@@ -311,25 +311,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#definition-of-terms" id="toc-definition-of-terms" class="nav-link active" data-scroll-target="#definition-of-terms">Definition of Terms</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
-  <li><a href="#type-tag" id="toc-type-tag" class="nav-link" data-scroll-target="#type-tag">Type Tag</a>
-  <ul class="collapse">
-  <li><a href="#type_tag-valid-implementations" id="toc-type_tag-valid-implementations" class="nav-link" data-scroll-target="#type_tag-valid-implementations"><code>type_tag</code> Valid Implementations</a></li>
-  <li><a href="#type_tag-example" id="toc-type_tag-example" class="nav-link" data-scroll-target="#type_tag-example"><code>type_tag</code> Example</a></li>
-  </ul></li>
-  <li><a href="#instance-tag" id="toc-instance-tag" class="nav-link" data-scroll-target="#instance-tag">Instance Tag</a>
-  <ul class="collapse">
-  <li><a href="#instance_tag-valid-implementations" id="toc-instance_tag-valid-implementations" class="nav-link" data-scroll-target="#instance_tag-valid-implementations"><code>instance_tag</code> Valid Implementations</a></li>
-  <li><a href="#instance_tag-example" id="toc-instance_tag-example" class="nav-link" data-scroll-target="#instance_tag-example"><code>instance_tag</code> Example</a></li>
-  </ul></li>
-  <li><a href="#bdns-tag" id="toc-bdns-tag" class="nav-link" data-scroll-target="#bdns-tag">BDNS Tag</a>
-  <ul class="collapse">
-  <li><a href="#bdns_tag-valid-implementations" id="toc-bdns_tag-valid-implementations" class="nav-link" data-scroll-target="#bdns_tag-valid-implementations"><code>bdns_tag</code> Valid Implementations</a></li>
-  <li><a href="#equipment-specific-tagging-methodologies" id="toc-equipment-specific-tagging-methodologies" class="nav-link" data-scroll-target="#equipment-specific-tagging-methodologies">Equipment Specific Tagging Methodologies</a></li>
-  </ul></li>
-  <li><a href="#project-configuration" id="toc-project-configuration" class="nav-link" data-scroll-target="#project-configuration">Project Configuration</a></li>
-  <li><a href="#related-work" id="toc-related-work" class="nav-link" data-scroll-target="#related-work">Related Work</a></li>
+  <li><a href="#serialising-unique-numeric-identifiers" id="toc-serialising-unique-numeric-identifiers" class="nav-link active" data-scroll-target="#serialising-unique-numeric-identifiers">Serialising Unique Numeric Identifiers</a></li>
   </ul>
 </nav>
     </div>
@@ -339,7 +321,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">BDNS-plus (WIP)</h1>
+<h1 class="title">Serialisation</h1>
 </div>
 
 
@@ -356,314 +338,9 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://theodi.github.io/BDNS/">BDNS (Building Device Naming Syntax)</a> ➕ <strong>equipment tagging</strong>. <code>bdns-plus</code> extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications). It does so by defining metadata required for every item of equipment, from this metadata it is then possible to serialize a <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2">BDNS compliant, machine read-able tag</a>, as well a tag that clearly communicates the metadata in a format designed for improved human-legibility and compliance with project standards.</p>
-<p>The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.</p>
-<section id="definition-of-terms" class="level2">
-<h2 class="anchored" data-anchor-id="definition-of-terms">Definition of Terms</h2>
-<ul>
-<li><code>project</code> - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.</li>
-<li><code>volume</code> - a section of a project. For a single building project it typically has 1 volume. For a multi-building project each building will be a volume. External landscaping may be a separate volume.</li>
-<li><code>level</code> - a floor of a building.</li>
-<li><code>type</code> - a specific type of equipment, i.e.&nbsp;an item with a defined model number that can ultimately be purchased.</li>
-<li><code>instance</code> - a specific piece of equipment / asset within a project. Every asset is unique.</li>
-<li><strong>WIP</strong> <code>system_type</code> - what system type a piece of equipment belongs to (e.g.&nbsp;a radiator would below to LTHW system type)</li>
-<li><strong>WIP</strong> <code>system_id</code> - the specific system that a piece of equipment belongs to. For electrical systems this parameter isn’t used as typically all electrical appliances will connect back a common point (the utilities connection), but for closed mechanical systems (e.g.&nbsp;LTHW systems) it is possible/common to have multiple distinct closed systems within a single project.</li>
-</ul>
-</section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
-<p>A definition of the properties required for equipment tagging for the digital identification of equipment for use in the design, construction and management of buildings.</p>
-<p>It is designed to be an opinionated superset of the <a href="https://theodi.github.io/BDNS/">BDNS</a> standard. The focus of this standard is to simultaneously provide a unique, machine-readable identifier for each asset as well as a human-readable and intuitive tag that can be used on drawings and other design information. Whilst the BDNS standard <code>MAY</code> be used as is for equipment tagging on drawing and at later stages in asset management systems, the formation of the <code>bdns_tag</code> is not consistent with many project drawing standards. This standard aims to consistently define the properties that <code>MUST</code> be recorded for each asset, and from this information it <code>MUST</code> be possible to generate a compliant <code>bdns_tag</code>. The same properties <code>MUST</code> then be used to create a more flexible / human-readable <code>type_tag</code> and <code>instance_tag</code> for equipment references/tags on drawings. Using this approach it is possible to apply BDNS a compliant methodology on a larger number of projects, improving standardisation and leading to a potential value-add if the projects considers a BDNS compliant asset solution at the later stages of the project.</p>
-<p>In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined. By definition, the mimumum information that <code>MUST</code> be recorded is:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 12%">
-<col style="width: 71%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>abbreviation</td>
-<td>Type</td>
-<td>uppercase, alphabetic, 2-6 chars, indicates equipment type</td>
-</tr>
-<tr class="even">
-<td>type</td>
-<td>Type</td>
-<td>refers to a specific equipment type used within a project</td>
-</tr>
-<tr class="odd">
-<td>volume</td>
-<td>Instance</td>
-<td>indicates the volume within a project the equipment is situated</td>
-</tr>
-<tr class="even">
-<td>level</td>
-<td>Instance</td>
-<td>indicates the level within a project the equipment is situated</td>
-</tr>
-<tr class="odd">
-<td>level_instance_id</td>
-<td>Instance</td>
-<td>a numerical indentifyer for a specific piece of equipment within a volume and level</td>
-</tr>
-<tr class="even">
-<td>unique_instance_id</td>
-<td>Instance</td>
-<td>calculated value from other instance parameters. used to create bdns tag</td>
-</tr>
-</tbody>
-</table>
-<p>Parameters with property type, <code>Type</code> (<code>abbreviation</code> and <code>type</code>) would be the same for every identical item of equipment. Parameters with property type, <code>Instance</code> (<code>volume</code>, <code>level</code> and <code>level_instance_id</code>), define a specific instance of equipment within a project and the combination of these paramenters and <code>abbreviation</code> <code>MUST</code> be unique.</p>
-<p>The tagging properties can used to generate:</p>
-<ul>
-<li>a <strong>type tag</strong>. to indicate the type of a given asset/piece of equipment.
-<ul>
-<li>this is unique to the equipemnt type only, there may be many instances of this type in a building.</li>
-<li>as an example, this is typically used on lighting layouts where many luminaires of the same type are used.</li>
-</ul></li>
-<li>a <strong>instance tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
-<ul>
-<li>it is directly interchangeable with the bdns tag (and <code>MAY</code> be the same).</li>
-<li>its focus is on legibility and ease of use for humans.</li>
-</ul></li>
-<li>a <strong>BDNS tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
-<ul>
-<li>its focus is on legibility and ease of use for humans and machines.</li>
-</ul></li>
-</ul>
-<p>It is acknowledged that positive integers are a restrictive format to communicate volume and level information, and that this may not be the best way to communicate this information to a user. In the sections below a description is given about how a software system can be used to convert between the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code> and a more human-readable format.</p>
-</section>
-<section id="type-tag" class="level2">
-<h2 class="anchored" data-anchor-id="type-tag">Type Tag</h2>
-<p>The <code>type_tag</code> is used to indicate the type of a given asset/piece of equipment on design information. For a given <code>Type</code> of equipment, the combination of the <code>abbreviation</code> and <code>type_id</code> <code>MUST</code> be unique. There <code>MAY</code> be many instances of eqipment of the same type within a project and therefore many indentical <code>type_tag</code>s. The <code>type_id</code> and <code>abbreviation</code> <code>MUST</code> be combined without a delimiter to create a <code>unique_type_reference</code>. Extra information about the equipment type <code>MAY</code> be stored in the <code>type_extra</code> property. The <code>type_tag</code> <code>MUST</code> include the <code>unique_type_reference</code> and <code>MAY</code> include the <code>type_extra</code> field, if <code>type_extra</code> is included it <code>MUST</code> be delimited from the <code>unique_type_reference</code> with a <code>type_extra_delimiter</code> character.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 12%">
-<col style="width: 8%">
-<col style="width: 18%">
-<col style="width: 59%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>unique_type_reference</td>
-<td>Type</td>
-<td>uppercase alphabetic, 2-6 chars</td>
-<td>combines <code>abbreviation</code> and <code>type_id</code> to create a <code>unique_type_reference</code></td>
-</tr>
-<tr class="even">
-<td>type_extra</td>
-<td>Type</td>
-<td>string</td>
-<td>used to indicate extra type information. e.g.&nbsp;<code>type_extra</code>=“E” good indicate and emergency light fitting</td>
-</tr>
-<tr class="odd">
-<td>type_extra_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>unique_type_reference</code> and <code>type_extra</code></td>
-</tr>
-<tr class="even">
-<td>type_tag</td>
-<td>Type</td>
-<td>string</td>
-<td><code>MUST</code> contain <code>unique_type_reference</code> and <code>MAY</code> contain <code>type_extra</code></td>
-</tr>
-</tbody>
-</table>
-<section id="type_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="type_tag-valid-implementations"><code>type_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>type_tag</code> = <code>unique_type_reference</code></li>
-<li><code>type_tag</code> = <code>unique_type_reference</code> + <code>type_extra_delimiter</code> + <code>type_extra</code></li>
-</ul>
-</section>
-<section id="type_tag-example" class="level3">
-<h3 class="anchored" data-anchor-id="type_tag-example"><code>type_tag</code> Example</h3>
-<ul>
-<li><code>abbreviation</code> = <code>LT</code>, <code>type_id</code> = <code>1</code>, <code>type_extra</code> = <code>E</code>, <code>type_extra_delimiter</code> = <code>/</code>
-<ul>
-<li>=&gt; <code>unique_type_reference</code> = <code>LT1</code></li>
-<li>=&gt; <code>type_tag</code> = <code>LT1/E</code></li>
-</ul></li>
-<li><code>abbreviation</code> = <code>RAD</code>, <code>type_id</code> = <code>3</code>, <code>type_extra</code> = None, <code>type_extra_delimiter</code> = <code>/</code>
-<ul>
-<li>=&gt; <code>unique_type_reference</code> = <code>RAD3</code></li>
-<li>=&gt; <code>type_tag</code> = <code>RAD3</code></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="instance-tag" class="level2">
-<h2 class="anchored" data-anchor-id="instance-tag">Instance Tag</h2>
-<p>The instance tag is used to indicate a specific instance of equipment within a project. For a given unique item of equipment in a project, the <code>instance_tag</code> <code>MUST</code> be unique. The <code>instance_tag</code> <code>SHOULD</code> indicate the equipment <code>abbreviation</code>, the volume, level and <code>level_instance_id</code>. The <code>instance_tag</code> <code>MAY</code> be the same as the <code>bdns_tag</code>.</p>
-<p>The <code>volume_id</code> <code>MAY</code> be mapped to a human-readable <code>volume_reference</code> and the <code>level_id</code> <code>MAY</code> be mapped to a human-readable <code>level_reference</code>. Where a mapped <code>volume_reference</code> and <code>level_reference</code> is used, a <code>level_name</code> and <code>volume_name</code> <code>MAY</code> also be provided. Extra information about the equipment instance <code>MAY</code> be stored in the <code>instance_extra</code> property. For legibility, the <code>unique_instance_reference</code> <code>MAY</code> be formatted with a delimiter (<code>instance_tag_delimiter</code>) between the <code>abbreviation</code>, <code>volume_reference</code>, <code>level_reference</code> and <code>level_instance_id</code>. The <code>unique_instance_reference</code> <code>MUST</code> serialisable / deserialisable to / from the <code>bdns_tag</code>. The <code>instance_tag</code> <code>MUST</code> include the <code>unique_instance_reference</code> and <code>MAY</code> include the <code>instance_extra</code> field. Where there is only 1no project volume, the <code>volume_reference</code> <code>MAY</code> be omitted from the <code>instance_tag</code>.</p>
-<p>It is <code>RECOMMENDED</code> that when mapping the <code>level_id</code> to the <code>level_reference</code>, mezzanine levels are ignored. This is because mezzanine levels are 1/2 levels, and there is no logical way to represent these in the <code>level_id</code> field which must be a positive integer.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 15%">
-<col style="width: 8%">
-<col style="width: 10%">
-<col style="width: 65%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>level_reference</td>
-<td>Instance</td>
-<td>string or integer</td>
-<td>indicates the level. maps to the <code>level_id</code> field. -ve numbers and strings allowed.</td>
-</tr>
-<tr class="even">
-<td>volume_reference</td>
-<td>Instance</td>
-<td>string or integer</td>
-<td>unique reference to a given piece of equipment, which encodes type, level and volume</td>
-</tr>
-<tr class="odd">
-<td>level_name</td>
-<td>Instance</td>
-<td>string</td>
-<td>combined with <code>abbreviation</code> creates a unique reference to an item of equipment</td>
-</tr>
-<tr class="even">
-<td>volume_name</td>
-<td>Instance</td>
-<td>string</td>
-<td>unique reference to a given piece of equipment, which encodes type, level and volume</td>
-</tr>
-<tr class="odd">
-<td>instance_tag_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>abbreviation</code>, <code>volume_reference</code>, <code>level_reference</code> and <code>level_instance_id</code></td>
-</tr>
-<tr class="even">
-<td>unique_instance_reference</td>
-<td>Instance</td>
-<td>string</td>
-<td>combines <code>abbreviation</code>, volume, level and <code>level_instance_id</code> to create a unique reference to an item of equipment</td>
-</tr>
-<tr class="odd">
-<td>instance_tag</td>
-<td>Instance</td>
-<td>string</td>
-<td><code>unique_instance_reference</code>, and <code>MAY</code> also show <code>instance_extra</code> information</td>
-</tr>
-<tr class="even">
-<td>instance_extra</td>
-<td>Instance</td>
-<td>string</td>
-<td>contains additional information about an instance. <code>MAY</code> be shown on <code>instance_tag</code></td>
-</tr>
-<tr class="odd">
-<td>instance_extra_delimiter</td>
-<td>N/A</td>
-<td>string character</td>
-<td>used to delimit <code>unique_instance_reference</code> and <code>instance_extra</code></td>
-</tr>
-</tbody>
-</table>
-<section id="instance_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="instance_tag-valid-implementations"><code>instance_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>unique_instance_reference</code> = <code>abbreviation</code> + <code>instance_tag_delimiter</code> + <code>volume_reference</code> + <code>instance_tag_delimiter</code> + <code>level_reference</code> + <code>instance_tag_delimiter</code> + <code>level_instance_id</code></li>
-<li><code>instance_tag</code> = <code>unique_instance_reference</code> + <code>instance_extra_delimiter</code> + <code>instance_extra</code></li>
-</ul>
-</section>
-<section id="instance_tag-example" class="level3">
-<h3 class="anchored" data-anchor-id="instance_tag-example"><code>instance_tag</code> Example</h3>
-<ul>
-<li><code>abbreviation</code> = <code>LT</code>, <code>volume_id</code> = <code>1</code>, <code>level_id</code> = <code>0</code>, <code>level_instance_id</code> = <code>1</code>, <code>instance_extra</code> = <code>E</code>, <code>instance_extra_delimiter</code> = <code>/</code>, <code>instance_tag_delimiter</code> = <code>_</code>
-<ul>
-<li>=&gt; <code>volume_reference</code> = <code>A</code>, <code>level_reference</code> = <code>GF</code></li>
-<li>=&gt; <code>unique_instance_reference</code> = <code>LT/A/GF/1</code></li>
-<li>=&gt; <code>instance_tag</code> = <code>LT/A/GF/1_E</code></li>
-</ul></li>
-</ul>
-</section>
-</section>
-<section id="bdns-tag" class="level2">
-<h2 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h2>
-<p>For a given <code>abbreviation</code>, the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code> <code>MUST</code> be combined to create a unique identifier (<code>instance_id</code>) for each piece of equipment. NOTE. This unique number <code>MUST</code> be independent of the specific equipment type (<code>type_id</code>).</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 11%">
-<col style="width: 11%">
-<col style="width: 13%">
-<col style="width: 64%">
-</colgroup>
-<thead>
-<tr class="header">
-<th>property name</th>
-<th>property type</th>
-<th>data type</th>
-<th>description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>instance_id</td>
-<td>Instance</td>
-<td>positive integer</td>
-<td>combined with <code>abbreviation</code> creates a unique reference to an item of equipment</td>
-</tr>
-<tr class="even">
-<td>bdns_tag</td>
-<td>Instance</td>
-<td>string</td>
-<td>unique reference to a given piece of equipment, which encodes abbreviation, level and volume</td>
-</tr>
-</tbody>
-</table>
-<p>It <code>MUST</code> be possible to serialise and deserialise between [<code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code>] and [<code>instance_id</code>] to create a unique identifier for each piece of equipment.</p>
-<p>It <code>SHOULD</code> be simple to a user interogating the <code>instance_id</code> how to determine the <code>volume_id</code>, <code>level_id</code> and <code>level_instance_id</code>.</p>
-<ul>
-<li>e.g.&nbsp;<code>instance_id</code> = <code>1001</code> would be <code>volume_id</code> = <code>1</code>, <code>level_id</code> = <code>0</code> and <code>level_instance_id</code> = <code>1</code>.</li>
-</ul>
-<section id="bdns_tag-valid-implementations" class="level3">
-<h3 class="anchored" data-anchor-id="bdns_tag-valid-implementations"><code>bdns_tag</code> Valid Implementations</h3>
-<ul>
-<li><code>bdns_tag</code> = <code>abbreviation</code> + “-” + <code>instance_id</code></li>
-<li><code>bdns_tag</code> = <code>unique_type_reference</code> + “-” + <code>instance_id</code></li>
-</ul>
-</section>
-<section id="equipment-specific-tagging-methodologies" class="level3">
-<h3 class="anchored" data-anchor-id="equipment-specific-tagging-methodologies">Equipment Specific Tagging Methodologies</h3>
-<p>Projects <code>SHOULD</code> define a method for tagging equipment that is consistent across all equipment types. Projects <code>MAY</code> customise how the tag is constructed based on the equipment type if required.</p>
-</section>
-</section>
-<section id="project-configuration" class="level2">
-<h2 class="anchored" data-anchor-id="project-configuration">Project Configuration</h2>
-</section>
-<section id="related-work" class="level2">
-<h2 class="anchored" data-anchor-id="related-work">Related Work</h2>
-<ul>
-<li>extends <a href="https://theodi.github.io/BDNS/">BDNS (Building Device Naming Syntax)</a></li>
-<li>formalises some of the logic outlined by <a href="https://github.com/TheFridgeShaman">TheFridgeShaman</a> in <a href="https://github.com/theodi/BDNS/issues/154">this discussion</a></li>
-</ul>
+<section id="serialising-unique-numeric-identifiers" class="level2">
+<h2 class="anchored" data-anchor-id="serialising-unique-numeric-identifiers">Serialising Unique Numeric Identifiers</h2>
+<p>It is helpful to have a simple, machine readable unique integer number to identify a piece of equipment of a given abbreviation, as <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2">described here by BDNS</a>. Given that in BDNS-plus other fields which identify a specific instance of equipment are defined; it is possible to generate a unique id from these fields.</p>
 
 
 </section>
