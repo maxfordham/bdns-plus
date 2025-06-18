@@ -76,7 +76,8 @@ display(Markdown(tag.summary))
 ```
 
 
-or for a more complex example, requiring mapping to "id" to create a compliant BDNS tag:
+where the level is a -ve number, it is serialised to be (100 - basement level), i.e. B1 = -1 = 99. 
+The default mapping tables above facilitate this to create a compliant BDNS tag:
 
 ```{python}
 #| echo: true

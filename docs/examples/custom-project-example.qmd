@@ -9,12 +9,13 @@ jupyter:
       extension: .qmd
       format_name: quarto
       format_version: '1.0'
-      jupytext_version: 1.17.0
+      jupytext_version: 1.17.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
+
 
 ```{python}
 #| echo: false
@@ -40,7 +41,6 @@ see examples:
 - MVHW.W.01.03 (MVHW in West stand, Level 1, the third MVHW)
 - TEF.E.02.01 (...)
 - KEF.E.03.02
-
 
 ```{python}
 import pandas as pd
@@ -85,7 +85,6 @@ df_levels
 df_volumes
 ```
 
-
 <!-- ```{python}
 #| layout-ncol: 2
 #| fig-cap-location: top
@@ -102,7 +101,6 @@ display(df_volumes)
 
 Tags are built from metadata on the object. `bdns_plus` has sensible defaults but tag definitions
 can also be defined to suit the requirements of a specific project.
-
 
 ```{python}
 from bdns_plus.models import TagDef, TagField, Config
@@ -126,7 +124,6 @@ itag_def = TagDef(
 # Markdown(data_as_yaml_markdown(itag_def.model_dump(mode="json")))
 pd.DataFrame([x.model_dump() for x in itag_def.fields])
 ```
-
 
 ```{python}
 gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=None)

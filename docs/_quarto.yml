@@ -31,6 +31,9 @@ website:
       contents: 
         - examples/index.qmd
         - examples/custom-project-example.qmd
+        - examples/no-config-single-volume.py
+        - examples/no-config-multi-volume.py
+        - examples/custom-volume-and-level-codes.py  
         # - text: "Examples"
         #   contents: examples/*
 

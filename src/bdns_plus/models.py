@@ -103,6 +103,9 @@ class Iref(BaseModel):
         1,
         validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
     )
+    # TODO: allow volume is None and ignore in tag when none.
+    #       if zero set to None (e.g. for single volume projects)
+    #       this gets around Revits issue about not allowing None.
 
 
 class TTagData(BaseModel):

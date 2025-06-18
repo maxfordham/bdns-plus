@@ -153,6 +153,7 @@ class Tag:
             config = Config()
         if not isinstance(data, dict):
             data = data.model_dump(mode="json")
+        self.is_custom = False
         self.config = config
         self.data = data
         self.gen_iref = gen_iref
@@ -171,6 +172,7 @@ class Tag:
             logger.error(f"multiple custom tags matched: {matches}, returning first match")
 
         index = matches.index(True)
+        self.is_custom = False
         return self.config.custom_tags[index].i_tag, self.config.custom_tags[index].t_tag
 
     @property

@@ -25,35 +25,8 @@ import pandas as pd
 from ipydatagrid import DataGrid
 from IPython.display import display
 
+from bdns_plus.docs import display_config_summary
 from bdns_plus.models import Config
-
-
-def display_config_summary(config: Config):
-    """Display a summary of the configuration."""
-    data = config.model_dump(mode="json")
-    levels, volumes, tag_bdns, tag_type, tag_instance, custom_tags = (
-        pd.DataFrame.from_records(data["levels"]).set_index("id"),
-        pd.DataFrame.from_records(data["volumes"]).set_index("id"),
-        pd.DataFrame(data["bdns_tag"]["fields"]),
-        pd.DataFrame(data["t_tag"]["fields"]),
-        pd.DataFrame(data["i_tag"]["fields"]),
-        data["custom_tags"],
-    )
-    if custom_tags is None:
-        display_custom_tags = w.HTML("No custom tags defined.")
-
-    titles = ["levels", "volumes", "tag_bdns", "tag_type", "tag_instance", "custom_tags"]
-    grids = [
-        DataGrid(levels, column_widths={"name": 200}),
-        DataGrid(volumes, column_widths={"name": 200}),
-        *(DataGrid(x, column_widths={"field_name": 150}) for x in [tag_bdns, tag_type, tag_instance]),
-        display_custom_tags,
-    ]
-    return w.Tab(
-        grids,
-        titles=titles,
-    )
-
 
 config = Config()
 display_config_summary(config)
