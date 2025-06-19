@@ -52,6 +52,11 @@ display(
 """
 ## Project Configuration
 
+::: {.callout-tip}
+Refer to [examples](examples) for how to use the project configuration.
+:::
+
+
 It is possible to define a project custom configuration file, which can be loaded dynamically.
 This is set by defining the environment variable `BDNS_PLUS_CONFIG` to point to a JSON file or URL endpoint.
 It can be reloaded dynamically by calling the `bdns_plus.reload_config()` function.

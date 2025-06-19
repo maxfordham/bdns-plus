@@ -66,6 +66,11 @@ Markdown(summarise_instance_reference_construction(config_iref))
 # %% [markdown]
 """
 ## Custom Tag Definitions
+
+::: {.callout-tip}
+Refer to [reformat-type-and-instance-tags](examples/reformat-type-and-instance-tags) for a more comprehensive example.
+:::
+
 """
 
 # %%
@@ -144,6 +149,11 @@ display(Markdown(f"**Tag String:** `{tag_string}`"))  # This will print the tag 
 # %% [markdown]
 """
 ## Custom Tags for Specific Equipment Types
+
+::: {.callout-tip}
+Refer to [custom-nomenclature-for-vent-equipment](examples/custom-nomenclature-for-vent-equipment)
+for a more comprehensive example.
+:::
 
 ::: {.callout-warning title="not reccommended"}
 Ideally tags should be consistent across all equipment types.

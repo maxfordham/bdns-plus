@@ -9,6 +9,10 @@ title: Volumes & Levels
 
 ## Defaults
 
+::: {.callout-tip}
+Refer to [no-config-multi-volume](examples/no-config-multi-volume) for a more comprehensive example.
+:::
+
 You see that `levels` and `volumes` are set to `None` by default.
 In the background, `bdns-plus` generates levels and volumes tables supporting
 all numeric combinations where the level can be encoded by 2no integer digits
@@ -30,17 +34,6 @@ def mkgrid(df): return DataGrid(df.set_index("id"), column_widths={"name": 100})
 gr_volumes, gr_levels = mkgrid(df_volumes), mkgrid(df_levels)
 ```
 
-<!-- ```{python}
-
-w.HBox([
-  w.VBox([w.HTML("<b>Volumes</b>"), gr_volumes], layout={"width": "50%"}), 
-  w.VBox([w.HTML("<b>Levels</b>"), gr_levels], layout={"width": "50%"}),
-])
-``` -->
-
-<!-- #| fig-cap: 
-#|   - "Line Plot 1"
-#|   - "Line Plot 2" -->
 
 ```{python}
 #| layout-ncol: 2
@@ -96,6 +89,11 @@ display(Markdown(tag.summary))
 
 ## Customising Volumes and Levels
 
+::: {.callout-tip}
+Refer to [custom-volume-and-level-codes](examples/custom-volume-and-level-codes) for a more comprehensive example.
+:::
+
+
 Setting the levels and volumes explicitly allows users to:
 
 - restrict the allowed values to a more limited set, and ensure compliance with that set
@@ -142,3 +140,4 @@ equipment_data = {
 tag = Tag(equipment_data, config=config)
 display(Markdown(tag.summary))
 ```
+
