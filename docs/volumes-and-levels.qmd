@@ -10,7 +10,7 @@ title: Volumes & Levels
 ## Defaults
 
 ::: {.callout-tip}
-Refer to [no-config-multi-volume](examples/no-config-multi-volume) for a more comprehensive example.
+Refer to [no-config-multi-volume](examples/index) for a more comprehensive example.
 :::
 
 You see that `levels` and `volumes` are set to `None` by default.
