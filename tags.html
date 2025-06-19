@@ -382,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="default-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="default-tag-definitions">Default Tag Definitions</h2>
 <p>The default tag definitions are available in the <code>ConfigTags</code> class.</p>
-<div id="a5fd2fa6" class="cell" data-execution_count="2">
+<div id="d64fddb1" class="cell" data-execution_count="2">
 <section id="type-tag" class="level3 cell-output cell-output-display cell-output-markdown">
 <h3 class="anchored" data-anchor-id="type-tag">Type Tag</h3>
 <p>Default Tag Definition for indentifying a unique type of equipment, there is likely to be many instances of a type in the building. Expected to be used when a unique reference to every item is not required. For example, a light fitting type that may be used in many locations.</p>
@@ -417,7 +417,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="custom-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="custom-tag-definitions">Custom Tag Definitions</h2>
-<div id="a9b7c656" class="cell" data-execution_count="3">
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Refer to <a href="examples/reformat-type-and-instance-tags">reformat-type-and-instance-tags</a> for a more comprehensive example.</p>
+</div>
+</div>
+<div id="41e5b0dc" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tag_def <span class="op">=</span> {</span>
@@ -493,7 +506,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
@@ -502,7 +515,7 @@ Tag Definition as json data. Can be loaded dynamically and configured per projec
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Ventilation Equipment Instances"</span><span class="fu">,</span></span>
@@ -584,6 +597,19 @@ Tag Definition as json data. Can be loaded dynamically and configured per projec
 </section>
 <section id="custom-tags-for-specific-equipment-types" class="level2">
 <h2 class="anchored" data-anchor-id="custom-tags-for-specific-equipment-types">Custom Tags for Specific Equipment Types</h2>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Refer to <a href="examples/custom-nomenclature-for-vent-equipment">custom-nomenclature-for-vent-equipment</a> for a more comprehensive example.</p>
+</div>
+</div>
 <div class="callout callout-style-default callout-warning callout-titled" title="not reccommended">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -604,7 +630,7 @@ not reccommended
 <p>A RuleSet can be used to define the scope of a custom tag. (For more info refer to <a href="https://maxfordham.github.io/pyrulefilter/">pyrulefilter</a>. It allows the user to define a set of rules that are used to check the equipment data, and returns a boolean value indicating if a RuleSet matches the data. At Max Fordham, RuleSets are also used to define what equipment should be shown in a schedule, so by extension it is then possible to apply custom tags to every equipment item shown within a schedule.</p>
 <section id="ruleset-definition" class="level4">
 <h4 class="anchored" data-anchor-id="ruleset-definition">RuleSet Definition</h4>
-<div id="79bf0358" class="cell" data-execution_count="4">
+<div id="03293182" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jsonschema2md</span>
@@ -659,7 +685,7 @@ not reccommended
 <p>In this example, we show how a rule can be defined to give specific equipment a different tag if the data that defines that equipment matches a rule.</p>
 <p>The Exammple below shows ventilation equipment tagged in the normal way, but we’ll assume that AHUs must be named by their volume only (lets pretend that the project is a refurbishment and the AHU names already exist).</p>
 <p>In the code below you can see how a ruleset is defined to filter out the equipment requiring a custom tag.</p>
-<div id="7d16c776" class="cell" data-execution_count="5">
+<div id="6ab79277" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
