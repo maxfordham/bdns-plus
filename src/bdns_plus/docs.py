@@ -146,6 +146,7 @@ def gen_data_4levels_1volume() -> list[ITagData]:
 
 def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData]:
     gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
+
     gen_defs = [
         GenDefinition(abbreviation=["PB"], no_items=1, on_levels=[gf], on_volumes=None),  # 1 pb in GF
         GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=None, on_volumes=None),  # 2 dbs / floor
@@ -154,6 +155,22 @@ def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData
     ]
 
     return batch_gen_idata(gen_defs, config_iref)
+
+
+def get_vent_equipment(config_iref: ConfigIref) -> list[ITagData]:
+    gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
+    rf = config_iref.levels[-1].code  # roof floor
+    vol1 = next(x.code for x in config_iref.volumes if int(x.id) == 1)  # volume 1
+    vent_equipment = batch_gen_idata(
+        [
+            GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[rf], on_volumes=None),
+            GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=None, on_volumes=None),
+            GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[gf], on_volumes=[vol1]),
+        ],
+        config_iref,
+    )
+    # add uniclass_ss for vent equipment to demo custom tags
+    return [ITagData(**item.model_dump() | {"uniclass_ss": "Ss_65"}) for item in vent_equipment]
 
 
 def get_electrical_accessory_types():
@@ -206,11 +223,11 @@ def get_tags(tag_data: TTagData | ITagData, config: Config = None):
 def gen_project_equipment_data(config: Config = None):
     if config is None:
         config = Config()
-    # config_iref = ConfigIref(**config.model_dump(mode="json"))
     di = {
         "electrical distribution": get_electrical_distrubution_system(config),
         "electrical accessories": get_electrical_accessory_types(),
         "light fittings": get_light_fitting_types(),
+        "ventilation equipment": get_vent_equipment(config_iref=config),
     }
 
     di_ = {
@@ -292,6 +309,14 @@ def display_config_summary(config: Config):
     )
     if custom_tags is None:
         display_custom_tags = w.HTML("No custom tags defined.")
+    else:
+        display_custom_tags = w.HTML(
+            markdown_callout(
+                data_as_yaml_markdown(custom_tags),
+                callout_type="info",
+                title="Custom Tags",
+            ),
+        )
 
     titles = ["volumes", "levels", "tag_bdns", "tag_type", "tag_instance", "custom_tags"]
     grids = [

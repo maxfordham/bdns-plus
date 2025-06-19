@@ -1,6 +1,6 @@
 # %% [markdown]
 # ---
-# title: no-config-single-volume
+# title: single-volume
 # execute:
 #   echo: false
 # format:
@@ -10,9 +10,8 @@
 
 # %% [markdown]
 """
-With no project configuration, this example generates a single volume with 4 levels.
-
-User-input data:
+When a project configuration defines only a single volume, the volume number is automatically
+omitted from the instance tag.
 """
 
 # %%

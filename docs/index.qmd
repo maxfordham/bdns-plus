@@ -3,7 +3,7 @@ toc: true
 title: BDNS-plus (WIP)
 ---
 
-[BDNS (Building Device Naming Syntax)](https://theodi.github.io/BDNS/) ➕ **equipment tagging**.
+{{< var bdns >}} (Building Device Naming Syntax) ➕ **equipment tagging**.
 `bdns-plus` extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
 It does so by defining metadata required for every item of equipment, from this metadata it is then possible to serialize a [BDNS compliant, machine read-able tag](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2),
 as well a tag that clearly communicates the metadata in a format designed for improved human-legibility and compliance with project standards.

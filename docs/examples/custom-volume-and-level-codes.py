@@ -10,7 +10,8 @@
 
 # %% [markdown]
 """
-With no project configuration, this example generates a 2no volume with 4no levels.
+Within the default configuration, the volume and level codes are simple integers.
+It is possible to create project specific codes and names as shown below for volumes and levels.
 """
 
 # %%

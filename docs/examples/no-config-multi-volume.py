@@ -10,7 +10,12 @@
 
 # %% [markdown]
 """
-With no project configuration, this example generates a 2no volume with 4no levels.
+With no project configuration levels and volumes are represented as integer numbers.
+The available codes are:
+
+- Levels -10 -> 90
+- Volumes 1 -> 9
+
 """
 
 # %%
@@ -30,6 +35,6 @@ display_config_user_and_generated(user_input_config, config)
 
 # %%
 config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
-config = Config(**config_iref.model_dump())
+config = Config(**config_iref.model_dump() | user_input_config)
 df = gen_project_equipment_data(config=config)
 display_tag_data(df)

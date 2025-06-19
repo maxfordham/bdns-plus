@@ -15,7 +15,7 @@
 
 Mezzanine levels are by definition not full levels, they are sub-levels of a main level.
 This is impossible to correctly represent with an integer number, though they require an integer id to create a valid BDNS tag.
-For example L1 can be represented as 1, but then M1 must be represented by the next integer number (2) meaning that L3 must be represented by 4.
+For example Level 1 can be represented as 1, but then Mezzanine 1 must be represented by the next integer number (2) meaning that Level 3 must be represented by 4.
 This is demonstrated in the example below.
 :::
 

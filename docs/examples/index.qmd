@@ -71,7 +71,7 @@ df = gen_project_equipment_data(config=config)
 display_tag_data(df)
 ```
 
-Version {{< var version >}} is a minor upgrade.
+Version "{{< var version >}}" is a minor upgrade.
 
 Please contact us at {{< var email.info >}}.
 

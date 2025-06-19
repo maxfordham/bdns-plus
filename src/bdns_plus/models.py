@@ -113,7 +113,7 @@ class TTagData(BaseModel):
     type_reference: int | None = None
     type_extra: str | None = None
 
-    model_config = ConfigDict(allow_extra=True, populate_by_name=True)
+    model_config = ConfigDict(extra="allow", populate_by_name=True)
 
 
 class ITagData(Iref, TTagData):

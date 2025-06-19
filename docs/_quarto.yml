@@ -27,17 +27,13 @@ website:
 
   sidebar:
     - id: examples
-      # collapse-level: 2
       contents: 
-        - examples/index.qmd
-        - examples/custom-project-example.qmd
-        - examples/no-config-single-volume.py
         - examples/no-config-multi-volume.py
+        - examples/single-volume.py
         - examples/custom-volume-and-level-codes.py
-        - examples/custom-tag-format.py
+        - examples/reformat-type-and-instance-tags.py
         - examples/single-volume-mezzanine-levels.py
-        # - text: "Examples"
-        #   contents: examples/*
+        - examples/custom-nomenclature-for-vent-equipment.py
 
 format:
   html:
