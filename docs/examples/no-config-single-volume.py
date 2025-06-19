@@ -23,7 +23,8 @@ from bdns_plus.docs import (
     display_tag_data,
     gen_project_equipment_data,
 )
-from bdns_plus.models import Config, Volume
+from bdns_plus.gen_idata import gen_config_iref
+from bdns_plus.models import Config, ConfigIref, Volume
 
 user_input_config = {
     "volumes": [Volume(id=1, code=1, name="Volume 1").model_dump()],
@@ -33,9 +34,7 @@ display_config_user_and_generated(user_input_config, config)
 
 
 # %%
-
-df = gen_project_equipment_data(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES, config=config)
+config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+config = Config(**config_iref.model_dump())
+df = gen_project_equipment_data(config=config)
 display_tag_data(df)
-
-# %%
-df

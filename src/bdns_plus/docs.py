@@ -19,6 +19,7 @@ except ImportError as err:
 import itertools
 import json
 import random
+from pprint import pprint
 
 import yaml
 
@@ -205,9 +206,9 @@ def get_tags(tag_data: TTagData | ITagData, config: Config = None):
 def gen_project_equipment_data(config: Config = None):
     if config is None:
         config = Config()
-    config_iref = ConfigIref(**config.model_dump(mode="json"))
+    # config_iref = ConfigIref(**config.model_dump(mode="json"))
     di = {
-        "electrical distribution": get_electrical_distrubution_system(config_iref),
+        "electrical distribution": get_electrical_distrubution_system(config),
         "electrical accessories": get_electrical_accessory_types(),
         "light fittings": get_light_fitting_types(),
     }
@@ -292,7 +293,7 @@ def display_config_summary(config: Config):
     if custom_tags is None:
         display_custom_tags = w.HTML("No custom tags defined.")
 
-    titles = ["levels", "volumes", "tag_bdns", "tag_type", "tag_instance", "custom_tags"]
+    titles = ["volumes", "levels", "tag_bdns", "tag_type", "tag_instance", "custom_tags"]
     grids = [
         DataGrid(levels, column_widths={"name": 200}),
         DataGrid(volumes, column_widths={"name": 200}),
@@ -303,9 +304,6 @@ def display_config_summary(config: Config):
         grids,
         titles=titles,
     )
-
-
-from pprint import pprint
 
 
 def display_config_user_and_generated(user_input: dict, config: Config):

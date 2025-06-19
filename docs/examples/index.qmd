@@ -65,8 +65,9 @@ display(Markdown("project config tables:"))
 
 ```{python}
 LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 1
-
-df = gen_project_equipment_data(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+config = Config(**config_iref.model_dump())
+df = gen_project_equipment_data(config=config)
 display_tag_data(df)
 ```
 
