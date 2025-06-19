@@ -10,7 +10,6 @@ website:
       - tags.py
       - customisations.py
       - serialisation.qmd
-      - test.py
       - revit.qmd
       - text: "Examples"
         id: examples
@@ -28,7 +27,7 @@ website:
   sidebar:
     - id: examples
       contents: 
-        - examples/no-config-multi-volume.py
+        - examples/index.py
         - examples/single-volume.py
         - examples/custom-volume-and-level-codes.py
         - examples/reformat-type-and-instance-tags.py
