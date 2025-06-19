@@ -382,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="default-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="default-tag-definitions">Default Tag Definitions</h2>
 <p>The default tag definitions are available in the <code>ConfigTags</code> class.</p>
-<div id="d64fddb1" class="cell" data-execution_count="2">
+<div id="b08f9134" class="cell" data-execution_count="2">
 <section id="type-tag" class="level3 cell-output cell-output-display cell-output-markdown">
 <h3 class="anchored" data-anchor-id="type-tag">Type Tag</h3>
 <p>Default Tag Definition for indentifying a unique type of equipment, there is likely to be many instances of a type in the building. Expected to be used when a unique reference to every item is not required. For example, a light fitting type that may be used in many locations.</p>
@@ -430,7 +430,7 @@ Tip
 <p>Refer to <a href="examples/reformat-type-and-instance-tags">reformat-type-and-instance-tags</a> for a more comprehensive example.</p>
 </div>
 </div>
-<div id="41e5b0dc" class="cell" data-execution_count="3">
+<div id="fc685ca2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tag_def <span class="op">=</span> {</span>
@@ -630,7 +630,7 @@ not reccommended
 <p>A RuleSet can be used to define the scope of a custom tag. (For more info refer to <a href="https://maxfordham.github.io/pyrulefilter/">pyrulefilter</a>. It allows the user to define a set of rules that are used to check the equipment data, and returns a boolean value indicating if a RuleSet matches the data. At Max Fordham, RuleSets are also used to define what equipment should be shown in a schedule, so by extension it is then possible to apply custom tags to every equipment item shown within a schedule.</p>
 <section id="ruleset-definition" class="level4">
 <h4 class="anchored" data-anchor-id="ruleset-definition">RuleSet Definition</h4>
-<div id="03293182" class="cell" data-execution_count="4">
+<div id="a55ca8cf" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jsonschema2md</span>
@@ -685,7 +685,7 @@ not reccommended
 <p>In this example, we show how a rule can be defined to give specific equipment a different tag if the data that defines that equipment matches a rule.</p>
 <p>The Exammple below shows ventilation equipment tagged in the normal way, but we’ll assume that AHUs must be named by their volume only (lets pretend that the project is a refurbishment and the AHU names already exist).</p>
 <p>In the code below you can see how a ruleset is defined to filter out the equipment requiring a custom tag.</p>
-<div id="6ab79277" class="cell" data-execution_count="5">
+<div id="39414392" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
