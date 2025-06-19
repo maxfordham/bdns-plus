@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,9 +72,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="../site_libs/bootstrap/bootstrap-9fa745074439822173273f3e694597c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -368,6 +368,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  <span class="menu-text">Custom Project Example</span></a>
   </div>
 </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/no-config-single-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">no-config-single-volume</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/no-config-multi-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">no-config-multi-volume</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-volume-and-level-codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">custom-volume-and-level-codes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-tag-format.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">custom-tag-format</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/single-volume-mezzanine-levels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">single-volume-mezzanine-levels</span></a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -380,8 +410,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#configure-dummy-project" id="toc-configure-dummy-project" class="nav-link active" data-scroll-target="#configure-dummy-project">Configure Dummy Project</a></li>
   <li><a href="#electrical-distribution-equipment" id="toc-electrical-distribution-equipment" class="nav-link" data-scroll-target="#electrical-distribution-equipment">Electrical Distribution Equipment</a></li>
+  <li><a href="#df.to_numpy" id="toc-df.to_numpy" class="nav-link" data-scroll-target="#df.to_numpy">df.to_numpy()</a></li>
+  <li><a href="#todo-delete" id="toc-todo-delete" class="nav-link" data-scroll-target="#todo-delete">TODO: delete</a></li>
+  <li><a href="#get_idata_tag_tableidata" id="toc-get_idata_tag_tableidata" class="nav-link" data-scroll-target="#get_idata_tag_tableidata">get_idata_tag_table(idata)</a></li>
+  <li><a href="#df-pd.dataframe" id="toc-df-pd.dataframe" class="nav-link" data-scroll-target="#df-pd.dataframe">df = pd.DataFrame()</a>
+  <ul class="collapse">
   <li><a href="#electrical-accessories" id="toc-electrical-accessories" class="nav-link" data-scroll-target="#electrical-accessories">Electrical Accessories</a></li>
+  </ul></li>
+  <li><a href="#example-usage" id="toc-example-usage" class="nav-link" data-scroll-target="#example-usage">Example usage</a>
+  <ul class="collapse">
   <li><a href="#lighting" id="toc-lighting" class="nav-link" data-scroll-target="#lighting">Lighting</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -435,7 +474,7 @@ View shared code for generating docs examples. TODO - remove
 </div>
 </div>
 </div>
-<div id="442aeddc" class="cell" data-execution_count="2">
+<div id="d193e3b6" class="cell" data-editable="true" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -445,21 +484,22 @@ View shared code for generating docs examples. TODO - remove
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.abbreviations <span class="im">import</span> get_asset_abbreviations</span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> ConfigIref, GenDefinition, TTagData, ITagData, Config</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> get_idata_tag_table</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> get_idata_tag_table, get_tags, get_light_fitting_types, get_electrical_accessory_types, get_electrical_distrubution_system, gen_project_equipment_data, display_tag_data</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> Markdown</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> random</span>
 <span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> gen_config_iref(LEVEL_MIN, LEVEL_MAX, NO_VOLUMES).model_dump()</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>df_levels <span class="op">=</span> pd.DataFrame(config_iref[<span class="st">"levels"</span>])</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>df_volumes <span class="op">=</span> pd.DataFrame(config_iref[<span class="st">"volumes"</span>])</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="ss">f"""</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="ss">- level_min = </span><span class="sc">{</span>LEVEL_MIN<span class="sc">}</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- level_max = </span><span class="sc">{</span>LEVEL_MAX<span class="sc">}</span><span class="ss"> </span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- no_volumes = </span><span class="sc">{</span>LEVEL_MAX<span class="sc">}</span><span class="ss">"""</span>))</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="st">"project config tables:"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> gen_config_iref(LEVEL_MIN, LEVEL_MAX, NO_VOLUMES).model_dump()</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>df_levels <span class="op">=</span> pd.DataFrame(config_iref[<span class="st">"levels"</span>])</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>df_volumes <span class="op">=</span> pd.DataFrame(config_iref[<span class="st">"volumes"</span>])</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="ss">f"""</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="ss">- level_min = </span><span class="sc">{</span>LEVEL_MIN<span class="sc">}</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="ss">- level_max = </span><span class="sc">{</span>LEVEL_MAX<span class="sc">}</span><span class="ss"> </span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="ss">- no_volumes = </span><span class="sc">{</span>LEVEL_MAX<span class="sc">}</span><span class="ss">"""</span>))</span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>display(Markdown(<span class="st">"project config tables:"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-display cell-output-markdown">
 <ul>
@@ -472,15 +512,780 @@ View shared code for generating docs examples. TODO - remove
 <p>project config tables:</p>
 </div>
 </div>
+<div id="89af3a53" class="cell" data-execution_count="3">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">1</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> gen_config_iref(level_min<span class="op">=</span>LEVEL_MIN, level_max<span class="op">=</span>LEVEL_MAX, no_volumes<span class="op">=</span>NO_VOLUMES)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(<span class="op">**</span>config_iref.model_dump())</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> gen_project_equipment_data(config<span class="op">=</span>config)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>display_tag_data(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div id="jlfaaldprp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#jlfaaldprp table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#jlfaaldprp thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#jlfaaldprp p { margin: 0; padding: 0; }
+ #jlfaaldprp .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #jlfaaldprp .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #jlfaaldprp .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #jlfaaldprp .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #jlfaaldprp .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jlfaaldprp .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #jlfaaldprp .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #jlfaaldprp .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #jlfaaldprp .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #jlfaaldprp .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #jlfaaldprp .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #jlfaaldprp .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #jlfaaldprp .gt_spanner_row { border-bottom-style: hidden; }
+ #jlfaaldprp .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #jlfaaldprp .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #jlfaaldprp .gt_from_md> :first-child { margin-top: 0; }
+ #jlfaaldprp .gt_from_md> :last-child { margin-bottom: 0; }
+ #jlfaaldprp .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #jlfaaldprp .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #jlfaaldprp .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #jlfaaldprp .gt_row_group_first td { border-top-width: 2px; }
+ #jlfaaldprp .gt_row_group_first th { border-top-width: 2px; }
+ #jlfaaldprp .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #jlfaaldprp .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #jlfaaldprp .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #jlfaaldprp .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #jlfaaldprp .gt_left { text-align: left; }
+ #jlfaaldprp .gt_center { text-align: center; }
+ #jlfaaldprp .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #jlfaaldprp .gt_font_normal { font-weight: normal; }
+ #jlfaaldprp .gt_font_bold { font-weight: bold; }
+ #jlfaaldprp .gt_font_italic { font-style: italic; }
+ #jlfaaldprp .gt_super { font-size: 65%; }
+ #jlfaaldprp .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #jlfaaldprp .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="11" class="gt_heading gt_title gt_font_normal">Equipment Tags</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Projects contain multiple identical (equipment) type_tag's. bdns_tag's and instance_tag's are unique.</th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="section" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">section</th>
+<th colspan="3" id="type-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">type inputs</span></th>
+<th colspan="4" id="instance-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">instance inputs</span></th>
+<th colspan="3" id="generated-outputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">generated outputs</span></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="abbreviation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">abbreviation</th>
+<th id="type_reference" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_reference</th>
+<th id="type_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_extra</th>
+<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">volume</th>
+<th id="level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level</th>
+<th id="level_iref" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level_iref</th>
+<th id="instance_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">instance_extra</th>
+<th id="type_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type_tag</th>
+<th id="instance_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">instance_tag</th>
+<th id="bdns_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">bdns_tag</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">PB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left" style="background-color: yellow">PB</td>
+<td class="gt_row gt_left" style="background-color: yellow">PB/0/1</td>
+<td class="gt_row gt_left">PB-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/-1/1</td>
+<td class="gt_row gt_left">DB-1991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/-1/1</td>
+<td class="gt_row gt_left">EM-1991</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/-1/2</td>
+<td class="gt_row gt_left">DB-1992</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/-1/2</td>
+<td class="gt_row gt_left">EM-1992</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/1</td>
+<td class="gt_row gt_left">DB-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/1</td>
+<td class="gt_row gt_left">EM-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/2</td>
+<td class="gt_row gt_left">DB-1002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/2</td>
+<td class="gt_row gt_left">EM-1002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/1/1</td>
+<td class="gt_row gt_left">DB-1011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/1/1</td>
+<td class="gt_row gt_left">EM-1011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/1/2</td>
+<td class="gt_row gt_left">DB-1012</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/1/2</td>
+<td class="gt_row gt_left">EM-1012</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/2/1</td>
+<td class="gt_row gt_left">DB-1021</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/2/1</td>
+<td class="gt_row gt_left">EM-1021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/2/2</td>
+<td class="gt_row gt_left">DB-1022</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/2/2</td>
+<td class="gt_row gt_left">EM-1022</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/3/1</td>
+<td class="gt_row gt_left">DB-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/3/1</td>
+<td class="gt_row gt_left">EM-1031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/3/2</td>
+<td class="gt_row gt_left">DB-1032</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/3/2</td>
+<td class="gt_row gt_left">EM-1032</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/1</td>
+<td class="gt_row gt_left">DB-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/1</td>
+<td class="gt_row gt_left">EM-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/2</td>
+<td class="gt_row gt_left">DB-1002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/2</td>
+<td class="gt_row gt_left">EM-1002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/-1/1</td>
+<td class="gt_row gt_left">EISO-1991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/0/1</td>
+<td class="gt_row gt_left">EISO-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/1/1</td>
+<td class="gt_row gt_left">EISO-1011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/2/1</td>
+<td class="gt_row gt_left">EISO-1021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/3/1</td>
+<td class="gt_row gt_left">EISO-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">INSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">INSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT2/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT3/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">light fittings</td>
+<td class="gt_row gt_left">SL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="11" class="gt_sourcenote">Yellow highlighting rows indicate rows that have custom tags.</td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</div>
+<p>Version <strong>?var:version</strong> is a minor upgrade.</p>
+<p>Please contact us at <strong>?var:email.info</strong>.</p>
+<p>Quarto includes <strong>?var:engine.jupyter</strong> and <strong>?var:engine.knitr</strong> computation engines.</p>
 <p><strong>Levels</strong></p>
-<div class="cell" data-execution_count="3">
-<div id="tbl-levels" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="3">
+<div class="cell" data-editable="true" data-execution_count="4">
+<div id="tbl-levels" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-editable="true" data-execution_count="4">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-levels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;1
 </figcaption>
 <div aria-describedby="tbl-levels-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="3">
+<div class="cell-output cell-output-display" data-execution_count="4">
 <div>
 
 
@@ -534,14 +1339,14 @@ Table&nbsp;1
 </div>
 </div>
 <p><strong>Volumes</strong></p>
-<div class="cell" data-execution_count="4">
-<div id="tbl-volumes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-execution_count="4">
+<div class="cell" data-editable="true" data-execution_count="5">
+<div id="tbl-volumes" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-editable="true" data-execution_count="5">
 <figure class="quarto-float quarto-float-tbl figure">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl quarto-uncaptioned" id="tbl-volumes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
 Table&nbsp;2
 </figcaption>
 <div aria-describedby="tbl-volumes-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<div class="cell-output cell-output-display" data-execution_count="4">
+<div class="cell-output cell-output-display" data-execution_count="5">
 <div>
 
 
@@ -574,593 +1379,893 @@ Table&nbsp;2
 <section id="electrical-distribution-equipment" class="level2">
 <h2 class="anchored" data-anchor-id="electrical-distribution-equipment">Electrical Distribution Equipment</h2>
 <p>For the main electrical distribution equipment a reference to every individual item is typically required, and the default tagging procedure whereby the equipment is referenced by its level, volume and level / volume instance is appropriate.</p>
-<div id="065bcc59" class="cell" data-execution_count="5">
+<div id="b9e80749" class="cell" data-editable="true" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_electrical_system(level_min<span class="op">=-</span><span class="dv">1</span>, level_max<span class="op">=</span><span class="dv">3</span>, no_volumes<span class="op">=</span><span class="dv">1</span>):</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    config_iref <span class="op">=</span> gen_config_iref(level_min, level_max, no_volumes)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"PB"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 2 dbs / floor</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch_gen_idata(gen_defs, config_iref)</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>idata <span class="op">=</span> get_electrical_system(level_min<span class="op">=</span>LEVEL_MIN, level_max<span class="op">=</span>LEVEL_MAX, no_volumes<span class="op">=</span>NO_VOLUMES)</span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> get_idata_tag_df(<span class="op">*</span>get_idata_tag_table(idata))</span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>df.style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> great_tables <span class="im">import</span> GT, html, style, loc</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars.selectors <span class="im">as</span> cs</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_electrical_distrubution_system(level_min<span class="op">=-</span><span class="dv">1</span>, level_max<span class="op">=</span><span class="dv">3</span>, no_volumes<span class="op">=</span><span class="dv">1</span>) <span class="op">-&gt;</span> <span class="bu">list</span>[ITagData]:</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    config_iref <span class="op">=</span> gen_config_iref(level_min, level_max, no_volumes)</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"PB"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span><span class="va">None</span>, on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 2 dbs / floor</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"DB"</span>, <span class="st">"EM"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span><span class="va">None</span>)  <span class="co"># 1 pb in GF</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> batch_gen_idata(gen_defs, config_iref)</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_electrical_accessory_types():</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">"""</span></span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="co">    Generates a list of TTagData objects for predefined electrical accessories.</span></span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="co">    Returns:</span></span>
+<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a><span class="co">        list: A list of TTagData objects with abbreviations and type references.</span></span>
+<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a><span class="co">    """</span></span>
+<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    abbreviations <span class="op">=</span> [<span class="st">"DSSO"</span>, <span class="st">"DSO"</span>, <span class="st">"SSSO"</span>, <span class="st">"SSO"</span>, <span class="st">"FLRB"</span>, <span class="st">"INSO"</span>]</span>
+<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    type_references <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>]</span>
+<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    accessories <span class="op">=</span> []</span>
+<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> abbreviation, type_ref <span class="kw">in</span> <span class="bu">zip</span>(abbreviations, type_references):</span>
+<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, type_ref):</span>
+<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>            accessories.append(TTagData(abbreviation<span class="op">=</span>abbreviation, type_reference<span class="op">=</span>n))</span>
+<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> accessories</span>
+<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_light_fitting_types():</span>
+<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    li <span class="op">=</span> <span class="st">"""LT</span></span>
+<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a><span class="st">DL</span></span>
+<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a><span class="st">EXIT</span></span>
+<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a><span class="st">PL</span></span>
+<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a><span class="st">SL"""</span>.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
+<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>    li_nos <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>] <span class="co"># [random.randint(2, 4) for n in range(0, len(li))]</span></span>
+<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="co"># ^ fixed random no's so git doesn't complain</span></span>
+<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    map_e <span class="op">=</span> {<span class="dv">0</span>:<span class="st">""</span>, <span class="dv">1</span>: <span class="st">"E"</span>}</span>
+<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>    typs <span class="op">=</span> []</span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> abbreviation, type_ref <span class="kw">in</span> <span class="bu">zip</span>(li, li_nos):</span>
+<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>        <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, type_ref):</span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>            e <span class="op">=</span> map_e[<span class="bu">int</span>(<span class="dv">1</span><span class="op">/</span>random.randint(<span class="dv">1</span>,<span class="dv">5</span>))]</span>
+<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> abbreviation <span class="op">==</span> <span class="st">"EXIT"</span>:</span>
+<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                e <span class="op">=</span> <span class="st">"E"</span></span>
+<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            typs.append(TTagData(abbreviation<span class="op">=</span>abbreviation, type_reference<span class="op">=</span>n, type_extra<span class="op">=</span>e))</span>
+<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> typs</span>
+<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_tags(tag_data: TTagData <span class="op">|</span> ITagData):</span>
+<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>    tag <span class="op">=</span> Tag(tag_data)</span>
+<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> tag_data.<span class="va">__class__</span> <span class="op">==</span> TTagData:</span>
+<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>            <span class="st">"type_tag"</span>: tag.<span class="bu">type</span>,</span>
+<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> {</span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>            <span class="st">"type_tag"</span>: tag.<span class="bu">type</span>,</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>            <span class="st">"instance_tag"</span>: tag.instance,</span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>            <span class="st">"bdns_tag"</span>: tag.bdns,</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a><span class="co"># Example usage</span></span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>light_fittings <span class="op">=</span> get_light_fitting_types()</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> itertools</span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span> display, Markdown, JSON</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="5">
-<style type="text/css">
+</div>
+<div id="633576ca" class="cell" data-execution_count="7">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> reactable <span class="im">import</span> render</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>gt <span class="op">=</span> display_tag_data(df)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># render(gt)</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>gt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display" data-execution_count="7">
+<div id="ghlmrrtxnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#ghlmrrtxnt table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#ghlmrrtxnt thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#ghlmrrtxnt p { margin: 0; padding: 0; }
+ #ghlmrrtxnt .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #ghlmrrtxnt .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #ghlmrrtxnt .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #ghlmrrtxnt .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #ghlmrrtxnt .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #ghlmrrtxnt .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #ghlmrrtxnt .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #ghlmrrtxnt .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #ghlmrrtxnt .gt_spanner_row { border-bottom-style: hidden; }
+ #ghlmrrtxnt .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #ghlmrrtxnt .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #ghlmrrtxnt .gt_from_md> :first-child { margin-top: 0; }
+ #ghlmrrtxnt .gt_from_md> :last-child { margin-bottom: 0; }
+ #ghlmrrtxnt .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #ghlmrrtxnt .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #ghlmrrtxnt .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #ghlmrrtxnt .gt_row_group_first td { border-top-width: 2px; }
+ #ghlmrrtxnt .gt_row_group_first th { border-top-width: 2px; }
+ #ghlmrrtxnt .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #ghlmrrtxnt .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #ghlmrrtxnt .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #ghlmrrtxnt .gt_left { text-align: left; }
+ #ghlmrrtxnt .gt_center { text-align: center; }
+ #ghlmrrtxnt .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #ghlmrrtxnt .gt_font_normal { font-weight: normal; }
+ #ghlmrrtxnt .gt_font_bold { font-weight: bold; }
+ #ghlmrrtxnt .gt_font_italic { font-style: italic; }
+ #ghlmrrtxnt .gt_super { font-size: 65%; }
+ #ghlmrrtxnt .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #ghlmrrtxnt .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
 </style>
 
-<table id="T_5708b" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th colspan="4" id="T_5708b_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">user-defined</th>
-<th colspan="4" id="T_5708b_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">generated</th>
+<tr class="gt_heading header">
+<th colspan="11" class="gt_heading gt_title gt_font_normal">Equipment Tags</th>
 </tr>
-<tr class="even">
-<th class="blank level1" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_5708b_level1_col0" class="col_heading level1 col0" data-quarto-table-cell-role="th">abbreviation</th>
-<th id="T_5708b_level1_col1" class="col_heading level1 col1" data-quarto-table-cell-role="th">level</th>
-<th id="T_5708b_level1_col2" class="col_heading level1 col2" data-quarto-table-cell-role="th">level_iref</th>
-<th id="T_5708b_level1_col3" class="col_heading level1 col3" data-quarto-table-cell-role="th">volume</th>
-<th id="T_5708b_level1_col4" class="col_heading level1 col4" data-quarto-table-cell-role="th">asset_description</th>
-<th id="T_5708b_level1_col5" class="col_heading level1 col5" data-quarto-table-cell-role="th">bdns_tag</th>
-<th id="T_5708b_level1_col6" class="col_heading level1 col6" data-quarto-table-cell-role="th">type_tag</th>
-<th id="T_5708b_level1_col7" class="col_heading level1 col7" data-quarto-table-cell-role="th">instance_tag</th>
+<tr class="gt_heading even">
+<th colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Projects contain multiple identical (equipment) type_tag's. bdns_tag's and instance_tag's are unique.</th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="section" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">section</th>
+<th colspan="3" id="type-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">type inputs</span></th>
+<th colspan="4" id="instance-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">instance inputs</span></th>
+<th colspan="3" id="generated-outputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">generated outputs</span></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="abbreviation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">abbreviation</th>
+<th id="type_reference" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_reference</th>
+<th id="type_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_extra</th>
+<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">volume</th>
+<th id="level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level</th>
+<th id="level_iref" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level_iref</th>
+<th id="instance_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">instance_extra</th>
+<th id="type_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type_tag</th>
+<th id="instance_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">instance_tag</th>
+<th id="bdns_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">bdns_tag</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td id="T_5708b_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
-<td id="T_5708b_row0_col0" class="data row0 col0">DB</td>
-<td id="T_5708b_row0_col1" class="data row0 col1">-1</td>
-<td id="T_5708b_row0_col2" class="data row0 col2">1</td>
-<td id="T_5708b_row0_col3" class="data row0 col3">1</td>
-<td id="T_5708b_row0_col4" class="data row0 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row0_col5" class="data row0 col5">DB-1991</td>
-<td id="T_5708b_row0_col6" class="data row0 col6">DB</td>
-<td id="T_5708b_row0_col7" class="data row0 col7">DB/1/-1/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">PB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left" style="background-color: yellow">PB</td>
+<td class="gt_row gt_left" style="background-color: yellow">PB/0/1</td>
+<td class="gt_row gt_left">PB-1001</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
-<td id="T_5708b_row1_col0" class="data row1 col0">EM</td>
-<td id="T_5708b_row1_col1" class="data row1 col1">-1</td>
-<td id="T_5708b_row1_col2" class="data row1 col2">1</td>
-<td id="T_5708b_row1_col3" class="data row1 col3">1</td>
-<td id="T_5708b_row1_col4" class="data row1 col4">meter - electric meter</td>
-<td id="T_5708b_row1_col5" class="data row1 col5">EM-1991</td>
-<td id="T_5708b_row1_col6" class="data row1 col6">EM</td>
-<td id="T_5708b_row1_col7" class="data row1 col7">EM/1/-1/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/-1/1</td>
+<td class="gt_row gt_left">DB-1991</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
-<td id="T_5708b_row2_col0" class="data row2 col0">DB</td>
-<td id="T_5708b_row2_col1" class="data row2 col1">-1</td>
-<td id="T_5708b_row2_col2" class="data row2 col2">2</td>
-<td id="T_5708b_row2_col3" class="data row2 col3">1</td>
-<td id="T_5708b_row2_col4" class="data row2 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row2_col5" class="data row2 col5">DB-1992</td>
-<td id="T_5708b_row2_col6" class="data row2 col6">DB</td>
-<td id="T_5708b_row2_col7" class="data row2 col7">DB/1/-1/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/-1/1</td>
+<td class="gt_row gt_left">EM-1991</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
-<td id="T_5708b_row3_col0" class="data row3 col0">EM</td>
-<td id="T_5708b_row3_col1" class="data row3 col1">-1</td>
-<td id="T_5708b_row3_col2" class="data row3 col2">2</td>
-<td id="T_5708b_row3_col3" class="data row3 col3">1</td>
-<td id="T_5708b_row3_col4" class="data row3 col4">meter - electric meter</td>
-<td id="T_5708b_row3_col5" class="data row3 col5">EM-1992</td>
-<td id="T_5708b_row3_col6" class="data row3 col6">EM</td>
-<td id="T_5708b_row3_col7" class="data row3 col7">EM/1/-1/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/-1/2</td>
+<td class="gt_row gt_left">DB-1992</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
-<td id="T_5708b_row4_col0" class="data row4 col0">PB</td>
-<td id="T_5708b_row4_col1" class="data row4 col1">0</td>
-<td id="T_5708b_row4_col2" class="data row4 col2">1</td>
-<td id="T_5708b_row4_col3" class="data row4 col3">1</td>
-<td id="T_5708b_row4_col4" class="data row4 col4">electric distribution - panel board</td>
-<td id="T_5708b_row4_col5" class="data row4 col5">PB-1001</td>
-<td id="T_5708b_row4_col6" class="data row4 col6">PB</td>
-<td id="T_5708b_row4_col7" class="data row4 col7">PB/1/0/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/-1/2</td>
+<td class="gt_row gt_left">EM-1992</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</td>
-<td id="T_5708b_row5_col0" class="data row5 col0">DB</td>
-<td id="T_5708b_row5_col1" class="data row5 col1">0</td>
-<td id="T_5708b_row5_col2" class="data row5 col2">1</td>
-<td id="T_5708b_row5_col3" class="data row5 col3">1</td>
-<td id="T_5708b_row5_col4" class="data row5 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row5_col5" class="data row5 col5">DB-1001</td>
-<td id="T_5708b_row5_col6" class="data row5 col6">DB</td>
-<td id="T_5708b_row5_col7" class="data row5 col7">DB/1/0/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/1</td>
+<td class="gt_row gt_left">DB-1001</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</td>
-<td id="T_5708b_row6_col0" class="data row6 col0">EM</td>
-<td id="T_5708b_row6_col1" class="data row6 col1">0</td>
-<td id="T_5708b_row6_col2" class="data row6 col2">1</td>
-<td id="T_5708b_row6_col3" class="data row6 col3">1</td>
-<td id="T_5708b_row6_col4" class="data row6 col4">meter - electric meter</td>
-<td id="T_5708b_row6_col5" class="data row6 col5">EM-1001</td>
-<td id="T_5708b_row6_col6" class="data row6 col6">EM</td>
-<td id="T_5708b_row6_col7" class="data row6 col7">EM/1/0/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/1</td>
+<td class="gt_row gt_left">EM-1001</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</td>
-<td id="T_5708b_row7_col0" class="data row7 col0">DB</td>
-<td id="T_5708b_row7_col1" class="data row7 col1">0</td>
-<td id="T_5708b_row7_col2" class="data row7 col2">2</td>
-<td id="T_5708b_row7_col3" class="data row7 col3">1</td>
-<td id="T_5708b_row7_col4" class="data row7 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row7_col5" class="data row7 col5">DB-1002</td>
-<td id="T_5708b_row7_col6" class="data row7 col6">DB</td>
-<td id="T_5708b_row7_col7" class="data row7 col7">DB/1/0/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/2</td>
+<td class="gt_row gt_left">DB-1002</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">8</td>
-<td id="T_5708b_row8_col0" class="data row8 col0">EM</td>
-<td id="T_5708b_row8_col1" class="data row8 col1">0</td>
-<td id="T_5708b_row8_col2" class="data row8 col2">2</td>
-<td id="T_5708b_row8_col3" class="data row8 col3">1</td>
-<td id="T_5708b_row8_col4" class="data row8 col4">meter - electric meter</td>
-<td id="T_5708b_row8_col5" class="data row8 col5">EM-1002</td>
-<td id="T_5708b_row8_col6" class="data row8 col6">EM</td>
-<td id="T_5708b_row8_col7" class="data row8 col7">EM/1/0/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/2</td>
+<td class="gt_row gt_left">EM-1002</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">9</td>
-<td id="T_5708b_row9_col0" class="data row9 col0">DB</td>
-<td id="T_5708b_row9_col1" class="data row9 col1">0</td>
-<td id="T_5708b_row9_col2" class="data row9 col2">1</td>
-<td id="T_5708b_row9_col3" class="data row9 col3">1</td>
-<td id="T_5708b_row9_col4" class="data row9 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row9_col5" class="data row9 col5">DB-1001</td>
-<td id="T_5708b_row9_col6" class="data row9 col6">DB</td>
-<td id="T_5708b_row9_col7" class="data row9 col7">DB/1/0/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/1/1</td>
+<td class="gt_row gt_left">DB-1011</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row10" class="row_heading level0 row10" data-quarto-table-cell-role="th">10</td>
-<td id="T_5708b_row10_col0" class="data row10 col0">DB</td>
-<td id="T_5708b_row10_col1" class="data row10 col1">0</td>
-<td id="T_5708b_row10_col2" class="data row10 col2">2</td>
-<td id="T_5708b_row10_col3" class="data row10 col3">1</td>
-<td id="T_5708b_row10_col4" class="data row10 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row10_col5" class="data row10 col5">DB-1002</td>
-<td id="T_5708b_row10_col6" class="data row10 col6">DB</td>
-<td id="T_5708b_row10_col7" class="data row10 col7">DB/1/0/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/1/1</td>
+<td class="gt_row gt_left">EM-1011</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row11" class="row_heading level0 row11" data-quarto-table-cell-role="th">11</td>
-<td id="T_5708b_row11_col0" class="data row11 col0">EM</td>
-<td id="T_5708b_row11_col1" class="data row11 col1">0</td>
-<td id="T_5708b_row11_col2" class="data row11 col2">1</td>
-<td id="T_5708b_row11_col3" class="data row11 col3">1</td>
-<td id="T_5708b_row11_col4" class="data row11 col4">meter - electric meter</td>
-<td id="T_5708b_row11_col5" class="data row11 col5">EM-1001</td>
-<td id="T_5708b_row11_col6" class="data row11 col6">EM</td>
-<td id="T_5708b_row11_col7" class="data row11 col7">EM/1/0/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/1/2</td>
+<td class="gt_row gt_left">DB-1012</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row12" class="row_heading level0 row12" data-quarto-table-cell-role="th">12</td>
-<td id="T_5708b_row12_col0" class="data row12 col0">EM</td>
-<td id="T_5708b_row12_col1" class="data row12 col1">0</td>
-<td id="T_5708b_row12_col2" class="data row12 col2">2</td>
-<td id="T_5708b_row12_col3" class="data row12 col3">1</td>
-<td id="T_5708b_row12_col4" class="data row12 col4">meter - electric meter</td>
-<td id="T_5708b_row12_col5" class="data row12 col5">EM-1002</td>
-<td id="T_5708b_row12_col6" class="data row12 col6">EM</td>
-<td id="T_5708b_row12_col7" class="data row12 col7">EM/1/0/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/1/2</td>
+<td class="gt_row gt_left">EM-1012</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row13" class="row_heading level0 row13" data-quarto-table-cell-role="th">13</td>
-<td id="T_5708b_row13_col0" class="data row13 col0">DB</td>
-<td id="T_5708b_row13_col1" class="data row13 col1">1</td>
-<td id="T_5708b_row13_col2" class="data row13 col2">1</td>
-<td id="T_5708b_row13_col3" class="data row13 col3">1</td>
-<td id="T_5708b_row13_col4" class="data row13 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row13_col5" class="data row13 col5">DB-1011</td>
-<td id="T_5708b_row13_col6" class="data row13 col6">DB</td>
-<td id="T_5708b_row13_col7" class="data row13 col7">DB/1/1/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/2/1</td>
+<td class="gt_row gt_left">DB-1021</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row14" class="row_heading level0 row14" data-quarto-table-cell-role="th">14</td>
-<td id="T_5708b_row14_col0" class="data row14 col0">EM</td>
-<td id="T_5708b_row14_col1" class="data row14 col1">1</td>
-<td id="T_5708b_row14_col2" class="data row14 col2">1</td>
-<td id="T_5708b_row14_col3" class="data row14 col3">1</td>
-<td id="T_5708b_row14_col4" class="data row14 col4">meter - electric meter</td>
-<td id="T_5708b_row14_col5" class="data row14 col5">EM-1011</td>
-<td id="T_5708b_row14_col6" class="data row14 col6">EM</td>
-<td id="T_5708b_row14_col7" class="data row14 col7">EM/1/1/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/2/1</td>
+<td class="gt_row gt_left">EM-1021</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row15" class="row_heading level0 row15" data-quarto-table-cell-role="th">15</td>
-<td id="T_5708b_row15_col0" class="data row15 col0">DB</td>
-<td id="T_5708b_row15_col1" class="data row15 col1">1</td>
-<td id="T_5708b_row15_col2" class="data row15 col2">2</td>
-<td id="T_5708b_row15_col3" class="data row15 col3">1</td>
-<td id="T_5708b_row15_col4" class="data row15 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row15_col5" class="data row15 col5">DB-1012</td>
-<td id="T_5708b_row15_col6" class="data row15 col6">DB</td>
-<td id="T_5708b_row15_col7" class="data row15 col7">DB/1/1/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/2/2</td>
+<td class="gt_row gt_left">DB-1022</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row16" class="row_heading level0 row16" data-quarto-table-cell-role="th">16</td>
-<td id="T_5708b_row16_col0" class="data row16 col0">EM</td>
-<td id="T_5708b_row16_col1" class="data row16 col1">1</td>
-<td id="T_5708b_row16_col2" class="data row16 col2">2</td>
-<td id="T_5708b_row16_col3" class="data row16 col3">1</td>
-<td id="T_5708b_row16_col4" class="data row16 col4">meter - electric meter</td>
-<td id="T_5708b_row16_col5" class="data row16 col5">EM-1012</td>
-<td id="T_5708b_row16_col6" class="data row16 col6">EM</td>
-<td id="T_5708b_row16_col7" class="data row16 col7">EM/1/1/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/2/2</td>
+<td class="gt_row gt_left">EM-1022</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row17" class="row_heading level0 row17" data-quarto-table-cell-role="th">17</td>
-<td id="T_5708b_row17_col0" class="data row17 col0">DB</td>
-<td id="T_5708b_row17_col1" class="data row17 col1">2</td>
-<td id="T_5708b_row17_col2" class="data row17 col2">2</td>
-<td id="T_5708b_row17_col3" class="data row17 col3">1</td>
-<td id="T_5708b_row17_col4" class="data row17 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row17_col5" class="data row17 col5">DB-1022</td>
-<td id="T_5708b_row17_col6" class="data row17 col6">DB</td>
-<td id="T_5708b_row17_col7" class="data row17 col7">DB/1/2/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/3/1</td>
+<td class="gt_row gt_left">DB-1031</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row18" class="row_heading level0 row18" data-quarto-table-cell-role="th">18</td>
-<td id="T_5708b_row18_col0" class="data row18 col0">DB</td>
-<td id="T_5708b_row18_col1" class="data row18 col1">2</td>
-<td id="T_5708b_row18_col2" class="data row18 col2">1</td>
-<td id="T_5708b_row18_col3" class="data row18 col3">1</td>
-<td id="T_5708b_row18_col4" class="data row18 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row18_col5" class="data row18 col5">DB-1021</td>
-<td id="T_5708b_row18_col6" class="data row18 col6">DB</td>
-<td id="T_5708b_row18_col7" class="data row18 col7">DB/1/2/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/3/1</td>
+<td class="gt_row gt_left">EM-1031</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row19" class="row_heading level0 row19" data-quarto-table-cell-role="th">19</td>
-<td id="T_5708b_row19_col0" class="data row19 col0">EM</td>
-<td id="T_5708b_row19_col1" class="data row19 col1">2</td>
-<td id="T_5708b_row19_col2" class="data row19 col2">1</td>
-<td id="T_5708b_row19_col3" class="data row19 col3">1</td>
-<td id="T_5708b_row19_col4" class="data row19 col4">meter - electric meter</td>
-<td id="T_5708b_row19_col5" class="data row19 col5">EM-1021</td>
-<td id="T_5708b_row19_col6" class="data row19 col6">EM</td>
-<td id="T_5708b_row19_col7" class="data row19 col7">EM/1/2/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/3/2</td>
+<td class="gt_row gt_left">DB-1032</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row20" class="row_heading level0 row20" data-quarto-table-cell-role="th">20</td>
-<td id="T_5708b_row20_col0" class="data row20 col0">EM</td>
-<td id="T_5708b_row20_col1" class="data row20 col1">2</td>
-<td id="T_5708b_row20_col2" class="data row20 col2">2</td>
-<td id="T_5708b_row20_col3" class="data row20 col3">1</td>
-<td id="T_5708b_row20_col4" class="data row20 col4">meter - electric meter</td>
-<td id="T_5708b_row20_col5" class="data row20 col5">EM-1022</td>
-<td id="T_5708b_row20_col6" class="data row20 col6">EM</td>
-<td id="T_5708b_row20_col7" class="data row20 col7">EM/1/2/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/3/2</td>
+<td class="gt_row gt_left">EM-1032</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row21" class="row_heading level0 row21" data-quarto-table-cell-role="th">21</td>
-<td id="T_5708b_row21_col0" class="data row21 col0">DB</td>
-<td id="T_5708b_row21_col1" class="data row21 col1">3</td>
-<td id="T_5708b_row21_col2" class="data row21 col2">2</td>
-<td id="T_5708b_row21_col3" class="data row21 col3">1</td>
-<td id="T_5708b_row21_col4" class="data row21 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row21_col5" class="data row21 col5">DB-1032</td>
-<td id="T_5708b_row21_col6" class="data row21 col6">DB</td>
-<td id="T_5708b_row21_col7" class="data row21 col7">DB/1/3/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/1</td>
+<td class="gt_row gt_left">DB-1001</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row22" class="row_heading level0 row22" data-quarto-table-cell-role="th">22</td>
-<td id="T_5708b_row22_col0" class="data row22 col0">DB</td>
-<td id="T_5708b_row22_col1" class="data row22 col1">3</td>
-<td id="T_5708b_row22_col2" class="data row22 col2">1</td>
-<td id="T_5708b_row22_col3" class="data row22 col3">1</td>
-<td id="T_5708b_row22_col4" class="data row22 col4">electric distribution - distribution panel / board</td>
-<td id="T_5708b_row22_col5" class="data row22 col5">DB-1031</td>
-<td id="T_5708b_row22_col6" class="data row22 col6">DB</td>
-<td id="T_5708b_row22_col7" class="data row22 col7">DB/1/3/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/1</td>
+<td class="gt_row gt_left">EM-1001</td>
 </tr>
 <tr class="even">
-<td id="T_5708b_level0_row23" class="row_heading level0 row23" data-quarto-table-cell-role="th">23</td>
-<td id="T_5708b_row23_col0" class="data row23 col0">EM</td>
-<td id="T_5708b_row23_col1" class="data row23 col1">3</td>
-<td id="T_5708b_row23_col2" class="data row23 col2">1</td>
-<td id="T_5708b_row23_col3" class="data row23 col3">1</td>
-<td id="T_5708b_row23_col4" class="data row23 col4">meter - electric meter</td>
-<td id="T_5708b_row23_col5" class="data row23 col5">EM-1031</td>
-<td id="T_5708b_row23_col6" class="data row23 col6">EM</td>
-<td id="T_5708b_row23_col7" class="data row23 col7">EM/1/3/1</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB/0/2</td>
+<td class="gt_row gt_left">DB-1002</td>
 </tr>
 <tr class="odd">
-<td id="T_5708b_level0_row24" class="row_heading level0 row24" data-quarto-table-cell-role="th">24</td>
-<td id="T_5708b_row24_col0" class="data row24 col0">EM</td>
-<td id="T_5708b_row24_col1" class="data row24 col1">3</td>
-<td id="T_5708b_row24_col2" class="data row24 col2">2</td>
-<td id="T_5708b_row24_col3" class="data row24 col3">1</td>
-<td id="T_5708b_row24_col4" class="data row24 col4">meter - electric meter</td>
-<td id="T_5708b_row24_col5" class="data row24 col5">EM-1032</td>
-<td id="T_5708b_row24_col6" class="data row24 col6">EM</td>
-<td id="T_5708b_row24_col7" class="data row24 col7">EM/1/3/2</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM/0/2</td>
+<td class="gt_row gt_left">EM-1002</td>
 </tr>
-</tbody>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/-1/1</td>
+<td class="gt_row gt_left">EISO-1991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/0/1</td>
+<td class="gt_row gt_left">EISO-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/1/1</td>
+<td class="gt_row gt_left">EISO-1011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/2/1</td>
+<td class="gt_row gt_left">EISO-1021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO/3/1</td>
+<td class="gt_row gt_left">EISO-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">DSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">SSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left">INSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">INSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT2/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT3/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">light fittings</td>
+<td class="gt_row gt_left">SL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SL1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="11" class="gt_sourcenote">Yellow highlighting rows indicate rows that have custom tags.</td>
+</tr>
+</tfoot>
+
 </table>
+
+
 </div>
 </div>
+</div>
+<p>import numpy as np df[“volume”].fillna(pd.NA).astype(int)</p>
+<p>intcols</p>
 </section>
+<section id="df.to_numpy" class="level1">
+<h1>df.to_numpy()</h1>
+<p>tag_data = di[“electrical accessories”][0] isinstance(d, TTagData)</p>
+<p>tag = Tag(tag_data) if tag.__class__ == TTagData: _ ={ “type_tag”: tag.type, } else: <em>= { “type_tag”: tag.type, “instance_tag”: tag.instance, “bdns_tag”: tag.bdns, } </em></p>
+<p>tag.__class__</p>
+<p>li[0]</p>
+<p>d = di[“electrical distribution”][0] isinstance(d, TTagData)</p>
+<p>idata</p>
+</section>
+<section id="todo-delete" class="level1">
+<h1>TODO: delete</h1>
+<p>df = get_idata_tag_df(*get_idata_tag_table(idata)) display(df.style)</p>
+<p>from bdns_plus.abbreviations import get_bdns_asset_abbreviations bdns_abbr = list(get_asset_abbreviations().keys())</p>
+<p>url_bdns = “https://github.com/theodi/BDNS/blob/master/BDNS_Abbreviations_Register.csv#L{index}” df.columns = df.columns.droplevel() df[“type”] = “” df[“type_extra”] = “” df[“instance_extra”] = “” df[“url”] = [f”<a href="{url_bdns.format(index=bdns_abbr.index(x)+2)}">{x}</a>” for x in df.abbreviation.to_list()] # cols = [‘abbreviation’, ‘type’, ‘type_extra’, ‘level’, ‘level_iref’, ‘volume’, ‘asset_description’, # ‘bdns_tag’, ‘type_tag’, ‘instance_tag’, # ‘instance_extra’] del df[“asset_description”] df[“abbreviation”] = df[“url”] del df[“url”]</p>
+</section>
+<section id="get_idata_tag_tableidata" class="level1">
+<h1>get_idata_tag_table(idata)</h1>
+</section>
+<section id="df-pd.dataframe" class="level1">
+<h1>df = pd.DataFrame()</h1>
+<p>display_tag_data(idata)</p>
 <section id="electrical-accessories" class="level2">
 <h2 class="anchored" data-anchor-id="electrical-accessories">Electrical Accessories</h2>
 <p>For electrical accessories such as sockets and switches, it is more common to simply indicate the type and not bother referencing every individual instance.</p>
-<div id="815074c0" class="cell" data-execution_count="6">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>map_abbreviation_description <span class="op">=</span> get_asset_abbreviations()</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="st">"""DSSO</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="st">DSO</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="st">SSSO</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="st">SSO</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="st">FLRB</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="st">INSO"""</span>.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>li_nos <span class="op">=</span> [<span class="dv">4</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">2</span>] <span class="co"># </span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="co"># ^ fixed random no's so git doesn't complain</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>typs <span class="op">=</span> []</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> abbreviation, type_ref <span class="kw">in</span> <span class="bu">zip</span>(li, li_nos):</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, type_ref):</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        typs.append(TTagData(abbreviation<span class="op">=</span>abbreviation, type_reference<span class="op">=</span>n))</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>df_typs <span class="op">=</span> pd.DataFrame([x.model_dump(mode<span class="op">=</span><span class="st">"json"</span>) <span class="op">|</span> {<span class="st">"asset_description"</span>: map_abbreviation_description[x.abbreviation.value]} <span class="op">|</span> {<span class="st">"type_tag"</span>: Tag(x).<span class="bu">type</span>} <span class="cf">for</span> x <span class="kw">in</span> typs])</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>df_typs <span class="op">=</span> df_typs.fillna(<span class="st">""</span>)</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>df_typs.style</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="6">
-<style type="text/css">
-</style>
+<p>electrical_accessories[0]</p>
+<p>def get_electrical_accessory_types(): ““” Generates a list of TTagData objects for predefined electrical accessories.</p>
+<pre><code>Returns:
+    list: A list of TTagData objects with abbreviations and type references.
+"""
+abbreviations = ["DSSO", "DSO", "SSSO", "SSO", "FLRB", "INSO"]
+type_references = [4, 2, 3, 2, 3, 2]
 
-<table id="T_caac7" class="caption-top table table-sm table-striped small" data-quarto-postprocess="true">
-<thead>
-<tr class="header">
-<th class="blank level0" data-quarto-table-cell-role="th">&nbsp;</th>
-<th id="T_caac7_level0_col0" class="col_heading level0 col0" data-quarto-table-cell-role="th">abbreviation</th>
-<th id="T_caac7_level0_col1" class="col_heading level0 col1" data-quarto-table-cell-role="th">type_reference</th>
-<th id="T_caac7_level0_col2" class="col_heading level0 col2" data-quarto-table-cell-role="th">type_extra</th>
-<th id="T_caac7_level0_col3" class="col_heading level0 col3" data-quarto-table-cell-role="th">asset_description</th>
-<th id="T_caac7_level0_col4" class="col_heading level0 col4" data-quarto-table-cell-role="th">type_tag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td id="T_caac7_level0_row0" class="row_heading level0 row0" data-quarto-table-cell-role="th">0</td>
-<td id="T_caac7_row0_col0" class="data row0 col0">DSSO</td>
-<td id="T_caac7_row0_col1" class="data row0 col1">1</td>
-<td id="T_caac7_row0_col2" class="data row0 col2"></td>
-<td id="T_caac7_row0_col3" class="data row0 col3">outlet - double switched socket outlet</td>
-<td id="T_caac7_row0_col4" class="data row0 col4">DSSO1</td>
-</tr>
-<tr class="even">
-<td id="T_caac7_level0_row1" class="row_heading level0 row1" data-quarto-table-cell-role="th">1</td>
-<td id="T_caac7_row1_col0" class="data row1 col0">DSSO</td>
-<td id="T_caac7_row1_col1" class="data row1 col1">2</td>
-<td id="T_caac7_row1_col2" class="data row1 col2"></td>
-<td id="T_caac7_row1_col3" class="data row1 col3">outlet - double switched socket outlet</td>
-<td id="T_caac7_row1_col4" class="data row1 col4">DSSO2</td>
-</tr>
-<tr class="odd">
-<td id="T_caac7_level0_row2" class="row_heading level0 row2" data-quarto-table-cell-role="th">2</td>
-<td id="T_caac7_row2_col0" class="data row2 col0">DSSO</td>
-<td id="T_caac7_row2_col1" class="data row2 col1">3</td>
-<td id="T_caac7_row2_col2" class="data row2 col2"></td>
-<td id="T_caac7_row2_col3" class="data row2 col3">outlet - double switched socket outlet</td>
-<td id="T_caac7_row2_col4" class="data row2 col4">DSSO3</td>
-</tr>
-<tr class="even">
-<td id="T_caac7_level0_row3" class="row_heading level0 row3" data-quarto-table-cell-role="th">3</td>
-<td id="T_caac7_row3_col0" class="data row3 col0">DSO</td>
-<td id="T_caac7_row3_col1" class="data row3 col1">1</td>
-<td id="T_caac7_row3_col2" class="data row3 col2"></td>
-<td id="T_caac7_row3_col3" class="data row3 col3">outlet - double unswitched socket outlet</td>
-<td id="T_caac7_row3_col4" class="data row3 col4">DSO1</td>
-</tr>
-<tr class="odd">
-<td id="T_caac7_level0_row4" class="row_heading level0 row4" data-quarto-table-cell-role="th">4</td>
-<td id="T_caac7_row4_col0" class="data row4 col0">SSSO</td>
-<td id="T_caac7_row4_col1" class="data row4 col1">1</td>
-<td id="T_caac7_row4_col2" class="data row4 col2"></td>
-<td id="T_caac7_row4_col3" class="data row4 col3">outlet - single switched socket outlet</td>
-<td id="T_caac7_row4_col4" class="data row4 col4">SSSO1</td>
-</tr>
-<tr class="even">
-<td id="T_caac7_level0_row5" class="row_heading level0 row5" data-quarto-table-cell-role="th">5</td>
-<td id="T_caac7_row5_col0" class="data row5 col0">SSSO</td>
-<td id="T_caac7_row5_col1" class="data row5 col1">2</td>
-<td id="T_caac7_row5_col2" class="data row5 col2"></td>
-<td id="T_caac7_row5_col3" class="data row5 col3">outlet - single switched socket outlet</td>
-<td id="T_caac7_row5_col4" class="data row5 col4">SSSO2</td>
-</tr>
-<tr class="odd">
-<td id="T_caac7_level0_row6" class="row_heading level0 row6" data-quarto-table-cell-role="th">6</td>
-<td id="T_caac7_row6_col0" class="data row6 col0">SSO</td>
-<td id="T_caac7_row6_col1" class="data row6 col1">1</td>
-<td id="T_caac7_row6_col2" class="data row6 col2"></td>
-<td id="T_caac7_row6_col3" class="data row6 col3">outlet - single unswitched socket outlet</td>
-<td id="T_caac7_row6_col4" class="data row6 col4">SSO1</td>
-</tr>
-<tr class="even">
-<td id="T_caac7_level0_row7" class="row_heading level0 row7" data-quarto-table-cell-role="th">7</td>
-<td id="T_caac7_row7_col0" class="data row7 col0">FLRB</td>
-<td id="T_caac7_row7_col1" class="data row7 col1">1</td>
-<td id="T_caac7_row7_col2" class="data row7 col2"></td>
-<td id="T_caac7_row7_col3" class="data row7 col3">outlet - floor box</td>
-<td id="T_caac7_row7_col4" class="data row7 col4">FLRB1</td>
-</tr>
-<tr class="odd">
-<td id="T_caac7_level0_row8" class="row_heading level0 row8" data-quarto-table-cell-role="th">8</td>
-<td id="T_caac7_row8_col0" class="data row8 col0">FLRB</td>
-<td id="T_caac7_row8_col1" class="data row8 col1">2</td>
-<td id="T_caac7_row8_col2" class="data row8 col2"></td>
-<td id="T_caac7_row8_col3" class="data row8 col3">outlet - floor box</td>
-<td id="T_caac7_row8_col4" class="data row8 col4">FLRB2</td>
-</tr>
-<tr class="even">
-<td id="T_caac7_level0_row9" class="row_heading level0 row9" data-quarto-table-cell-role="th">9</td>
-<td id="T_caac7_row9_col0" class="data row9 col0">INSO</td>
-<td id="T_caac7_row9_col1" class="data row9 col1">1</td>
-<td id="T_caac7_row9_col2" class="data row9 col2"></td>
-<td id="T_caac7_row9_col3" class="data row9 col3">outlet - industrial (commando) socket outlet</td>
-<td id="T_caac7_row9_col4" class="data row9 col4">INSO1</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
+accessories = []
+for abbreviation, type_ref in zip(abbreviations, type_references):
+    for n in range(1, type_ref):
+        accessories.append(TTagData(abbreviation=abbreviation, type_reference=n))
+return accessories</code></pre>
 </section>
+</section>
+<section id="example-usage" class="level1">
+<h1>Example usage</h1>
+<p>electrical_accessories = get_electrical_accessory_types()</p>
+<p>df_typs = pd.DataFrame([x.model_dump(mode=“json”) | {“asset_description”: map_abbreviation_description[x.abbreviation.value]} | {“type_tag”: Tag(x).type} for x in electrical_accessories]) df_typs = df_typs.fillna(““) df_typs.style</p>
 <section id="lighting" class="level2">
 <h2 class="anchored" data-anchor-id="lighting">Lighting</h2>
 <p>For light fixtures it is also typical to tag only by type, though it is common to also show additional info like if the fitting is emergency or not (see table below). At later stages, a light fitting may be uniquely identified to have specific commissioning values (e.g.&nbsp;a single spotlight on a control sytem, or a fitting that must be angled in a specific way), to achieve this just add the volume, level and level_iref parameters as shown in the <a href=""></a>value above.</p>
-<div id="b0de2e48" class="cell" data-execution_count="7">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>li <span class="op">=</span> <span class="st">"""LT</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="st">DL</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="st">EXIT</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="st">PL</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="st">SL"""</span>.split(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>)</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>li_nos <span class="op">=</span> [<span class="dv">3</span>, <span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">2</span>] <span class="co"># [random.randint(2, 4) for n in range(0, len(li))]</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># ^ fixed random no's so git doesn't complain</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>map_e <span class="op">=</span> {<span class="dv">0</span>:<span class="st">""</span>, <span class="dv">1</span>: <span class="st">"E"</span>}</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>typs <span class="op">=</span> []</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> abbreviation, type_ref <span class="kw">in</span> <span class="bu">zip</span>(li, li_nos):</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> n <span class="kw">in</span> <span class="bu">range</span>(<span class="dv">1</span>, type_ref):</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        e <span class="op">=</span> map_e[<span class="bu">int</span>(<span class="dv">1</span><span class="op">/</span>random.randint(<span class="dv">1</span>,<span class="dv">5</span>))]</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> abbreviation <span class="op">==</span> <span class="st">"EXIT"</span>:</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>            e <span class="op">=</span> <span class="st">"E"</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>        typs.append(TTagData(abbreviation<span class="op">=</span>abbreviation, type_reference<span class="op">=</span>n, type_extra<span class="op">=</span>e))</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>df_typs <span class="op">=</span> pd.DataFrame([x.model_dump(mode<span class="op">=</span><span class="st">"json"</span>) <span class="op">|</span> {<span class="st">"asset_description"</span>: map_abbreviation_description[x.abbreviation.value]} <span class="op">|</span> {<span class="st">"type_tag"</span>: Tag(x).<span class="bu">type</span>} <span class="cf">for</span> x <span class="kw">in</span> typs])</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>df_typs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output cell-output-display" data-execution_count="7">
-<div>
+<p>df_typs = pd.DataFrame([x.model_dump(mode=“json”) | {“asset_description”: map_abbreviation_description[x.abbreviation.value]} | {“type_tag”: Tag(x).type} for x in light_fittings]) df_typs</p>
 
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
-<thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">abbreviation</th>
-<th data-quarto-table-cell-role="th">type_reference</th>
-<th data-quarto-table-cell-role="th">type_extra</th>
-<th data-quarto-table-cell-role="th">asset_description</th>
-<th data-quarto-table-cell-role="th">type_tag</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>LT</td>
-<td>1</td>
-<td></td>
-<td>lighting - fixture</td>
-<td>LT1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>LT</td>
-<td>2</td>
-<td></td>
-<td>lighting - fixture</td>
-<td>LT2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>DL</td>
-<td>1</td>
-<td></td>
-<td>lighting - fixture - downlight</td>
-<td>DL1</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>DL</td>
-<td>2</td>
-<td></td>
-<td>lighting - fixture - downlight</td>
-<td>DL2</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>EXIT</td>
-<td>1</td>
-<td>E</td>
-<td>lighting - fixture - illuminated exit sign</td>
-<td>EXIT1/E</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>EXIT</td>
-<td>2</td>
-<td>E</td>
-<td>lighting - fixture - illuminated exit sign</td>
-<td>EXIT2/E</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>EXIT</td>
-<td>3</td>
-<td>E</td>
-<td>lighting - fixture - illuminated exit sign</td>
-<td>EXIT3/E</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>PL</td>
-<td>1</td>
-<td></td>
-<td>lighting - fixture - pendant</td>
-<td>PL1</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>PL</td>
-<td>2</td>
-<td></td>
-<td>lighting - fixture - pendant</td>
-<td>PL2</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>PL</td>
-<td>3</td>
-<td></td>
-<td>lighting - fixture - pendant</td>
-<td>PL3</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>SL</td>
-<td>1</td>
-<td></td>
-<td>lighting - fixture - spot light</td>
-<td>SL1</td>
-</tr>
-</tbody>
-</table>
-
-</div>
-</div>
-</div>
-
-
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.7.31">
+<meta name="generator" content="quarto-1.7.32">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -72,9 +72,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-8ef56b68f8fa1e9d2ba328e99e439f80.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-e1a5c8363afafaef2c763b6775fbf3ca.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9fa745074439822173273f3e694597c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
@@ -386,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="default-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="default-tag-definitions">Default Tag Definitions</h2>
 <p>The default tag definitions are available in the <code>ConfigTags</code> class.</p>
-<div id="711194d1" class="cell" data-execution_count="2">
+<div id="73187caa" class="cell" data-execution_count="2">
 <section id="type-tag" class="level3 cell-output cell-output-display cell-output-markdown">
 <h3 class="anchored" data-anchor-id="type-tag">Type Tag</h3>
 <p>Default Tag Definition for indentifying a unique type of equipment, there is likely to be many instances of a type in the building. Expected to be used when a unique reference to every item is not required. For example, a light fitting type that may be used in many locations.</p>
@@ -421,7 +421,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="custom-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="custom-tag-definitions">Custom Tag Definitions</h2>
-<div id="d977b718" class="cell" data-execution_count="3">
+<div id="244052f3" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tag_def <span class="op">=</span> {</span>
@@ -608,7 +608,7 @@ not reccommended
 <p>A RuleSet can be used to define the scope of a custom tag. (For more info refer to <a href="https://maxfordham.github.io/pyrulefilter/">pyrulefilter</a>. It allows the user to define a set of rules that are used to check the equipment data, and returns a boolean value indicating if a RuleSet matches the data. At Max Fordham, RuleSets are also used to define what equipment should be shown in a schedule, so by extension it is then possible to apply custom tags to every equipment item shown within a schedule.</p>
 <section id="ruleset-definition" class="level4">
 <h4 class="anchored" data-anchor-id="ruleset-definition">RuleSet Definition</h4>
-<div id="a41c3213" class="cell" data-execution_count="4">
+<div id="e75b5ac6" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jsonschema2md</span>
@@ -663,7 +663,7 @@ not reccommended
 <p>In this example, we show how a rule can be defined to give specific equipment a different tag if the data that defines that equipment matches a rule.</p>
 <p>The Exammple below shows ventilation equipment tagged in the normal way, but we’ll assume that AHUs must be named by their volume only (lets pretend that the project is a refurbishment and the AHU names already exist).</p>
 <p>In the code below you can see how a ruleset is defined to filter out the equipment requiring a custom tag.</p>
-<div id="589f2875" class="cell" data-execution_count="5">
+<div id="a4cdf590" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
@@ -718,19 +718,202 @@ not reccommended
 <thead>
 <tr class="header">
 <th data-quarto-table-cell-role="th"></th>
-<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">user-defined</th>
-<th colspan="4" data-quarto-table-cell-role="th" data-halign="left">generated</th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">v</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">l</th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">b</th>
 </tr>
 <tr class="even">
 <th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">abbreviation</th>
-<th data-quarto-table-cell-role="th">level</th>
-<th data-quarto-table-cell-role="th">level_iref</th>
-<th data-quarto-table-cell-role="th">volume</th>
-<th data-quarto-table-cell-role="th">asset_description</th>
-<th data-quarto-table-cell-role="th">bdns_tag</th>
-<th data-quarto-table-cell-role="th">type_tag</th>
-<th data-quarto-table-cell-role="th">instance_tag</th>
+<th data-quarto-table-cell-role="th">b</th>
+<th data-quarto-table-cell-role="th">o</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">e</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">y</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">d</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">b</th>
+<th data-quarto-table-cell-role="th">l</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">v</th>
+<th data-quarto-table-cell-role="th">_</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">p</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">n</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">u</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">e</th>
+<th data-quarto-table-cell-role="th">c</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">s</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">m</th>
+<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">l</th>
+<th data-quarto-table-cell-role="th">u</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">_</th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">_</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">v</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">_</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">_</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">t</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">d</th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">c</th>
+<th data-quarto-table-cell-role="th">a</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">o</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">g</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">g</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">e</th>
+<th data-quarto-table-cell-role="th">m</th>
+<th data-quarto-table-cell-role="th">s</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">_</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">f</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">c</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">o</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">r</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">a</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">g</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">p</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">t</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">i</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="even">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">o</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+</tr>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">n</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
+<th data-quarto-table-cell-role="th">NaN</th>
 </tr>
 </thead>
 <tbody>
@@ -744,6 +927,7 @@ not reccommended
 <td>AHU-1001</td>
 <td>AHU-Volume1</td>
 <td>AHU-Volume1</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -755,6 +939,7 @@ not reccommended
 <td>KEF-1001</td>
 <td>KEF</td>
 <td>KEF/1/0/1</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -766,6 +951,7 @@ not reccommended
 <td>KEF-1002</td>
 <td>KEF</td>
 <td>KEF/1/0/2</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -777,6 +963,7 @@ not reccommended
 <td>FAN-1001</td>
 <td>FAN</td>
 <td>FAN/1/0/1</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -788,6 +975,7 @@ not reccommended
 <td>FAN-1002</td>
 <td>FAN</td>
 <td>FAN/1/0/2</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">5</td>
@@ -799,6 +987,7 @@ not reccommended
 <td>TEF-1011</td>
 <td>TEF</td>
 <td>TEF/1/1/1</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">6</td>
@@ -810,6 +999,7 @@ not reccommended
 <td>MVHR-1011</td>
 <td>MVHR</td>
 <td>MVHR/1/1/1</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">7</td>
@@ -821,6 +1011,7 @@ not reccommended
 <td>MVHR-1021</td>
 <td>MVHR</td>
 <td>MVHR/1/2/1</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">8</td>
@@ -832,6 +1023,7 @@ not reccommended
 <td>TEF-1021</td>
 <td>TEF</td>
 <td>TEF/1/2/1</td>
+<td>False</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">9</td>
@@ -843,6 +1035,7 @@ not reccommended
 <td>MVHR-1031</td>
 <td>MVHR</td>
 <td>MVHR/1/3/1</td>
+<td>False</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">10</td>
@@ -854,6 +1047,7 @@ not reccommended
 <td>TEF-1031</td>
 <td>TEF</td>
 <td>TEF/1/3/1</td>
+<td>False</td>
 </tr>
 </tbody>
 </table>

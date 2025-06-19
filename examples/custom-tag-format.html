@@ -1,0 +1,1974 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>custom-tag-format</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../tag-solid.ico" rel="icon">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-2fef5ea3f8957b3e4ecc936fc74692ca.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-37eea08aefeeee20ff55810ff984fec1.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-9fa745074439822173273f3e694597c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-084754d1fd5c03d943eef65d7b62a8a5.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-9fa745074439822173273f3e694597c8.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<script src="https://unpkg.com/@jupyter-widgets/html-manager@*/dist/embed-amd.js" crossorigin="anonymous"></script>
+
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-sidebar floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">BDNS-plus (WIP)</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../volumes-and-levels.html"> 
+<span class="menu-text">Volumes &amp; Levels</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../tags.html"> 
+<span class="menu-text">Tags</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../customisations.html"> 
+<span class="menu-text">Customisations</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../serialisation.html"> 
+<span class="menu-text">Serialisation</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../test.html"> 
+<span class="menu-text">test</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../revit.html"> 
+<span class="menu-text">Revit</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="../examples/index.html" aria-current="page"> 
+<span class="menu-text">Examples</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../compare-ifc4_3.html"> 
+<span class="menu-text">Notes</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/maxfordham/bdns-plus"> <i class="bi bi-github" role="img" aria-label="GitHub">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/custom-tag-format.html">custom-tag-format</a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Simple</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-project-example.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Custom Project Example</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/no-config-single-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">no-config-single-volume</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/no-config-multi-volume.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">no-config-multi-volume</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-volume-and-level-codes.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">custom-volume-and-level-codes</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-tag-format.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">custom-tag-format</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/single-volume-mezzanine-levels.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">single-volume-mezzanine-levels</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">custom-tag-format</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>With no project configuration, this example generates a 2no volume with 4no levels.</p>
+<div id="f236627a" class="cell" data-execution_count="1">
+<div class="cell-output cell-output-display" data-execution_count="1">
+<script type="application/vnd.jupyter.widget-view+json">
+{"model_id":"5b5a2723142b451497e6cd361fee2dca","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+</script>
+</div>
+</div>
+<div id="21bb914f" class="cell" data-execution_count="2">
+<div class="cell-output cell-output-display" data-execution_count="2">
+<div id="txxvvsjeri" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#txxvvsjeri table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+
+#txxvvsjeri thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#txxvvsjeri p { margin: 0; padding: 0; }
+ #txxvvsjeri .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #txxvvsjeri .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #txxvvsjeri .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #txxvvsjeri .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #txxvvsjeri .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #txxvvsjeri .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #txxvvsjeri .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #txxvvsjeri .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #txxvvsjeri .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #txxvvsjeri .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #txxvvsjeri .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #txxvvsjeri .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #txxvvsjeri .gt_spanner_row { border-bottom-style: hidden; }
+ #txxvvsjeri .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #txxvvsjeri .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #txxvvsjeri .gt_from_md> :first-child { margin-top: 0; }
+ #txxvvsjeri .gt_from_md> :last-child { margin-bottom: 0; }
+ #txxvvsjeri .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #txxvvsjeri .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #txxvvsjeri .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #txxvvsjeri .gt_row_group_first td { border-top-width: 2px; }
+ #txxvvsjeri .gt_row_group_first th { border-top-width: 2px; }
+ #txxvvsjeri .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #txxvvsjeri .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #txxvvsjeri .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #txxvvsjeri .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #txxvvsjeri .gt_left { text-align: left; }
+ #txxvvsjeri .gt_center { text-align: center; }
+ #txxvvsjeri .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #txxvvsjeri .gt_font_normal { font-weight: normal; }
+ #txxvvsjeri .gt_font_bold { font-weight: bold; }
+ #txxvvsjeri .gt_font_italic { font-style: italic; }
+ #txxvvsjeri .gt_super { font-size: 65%; }
+ #txxvvsjeri .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #txxvvsjeri .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="11" class="gt_heading gt_title gt_font_normal">Equipment Tags</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Projects contain multiple identical (equipment) type_tag's. bdns_tag's and instance_tag's are unique.</th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="section" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">section</th>
+<th colspan="3" id="type-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">type inputs</span></th>
+<th colspan="4" id="instance-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">instance inputs</span></th>
+<th colspan="3" id="generated-outputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">generated outputs</span></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="abbreviation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">abbreviation</th>
+<th id="type_reference" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_reference</th>
+<th id="type_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_extra</th>
+<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">volume</th>
+<th id="level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level</th>
+<th id="level_iref" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level_iref</th>
+<th id="instance_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">instance_extra</th>
+<th id="type_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type_tag</th>
+<th id="instance_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">instance_tag</th>
+<th id="bdns_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">bdns_tag</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">PB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left" style="background-color: yellow">PB</td>
+<td class="gt_row gt_left" style="background-color: yellow">PB.1.00.01</td>
+<td class="gt_row gt_left">PB-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">PB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PB</td>
+<td class="gt_row gt_left">PB.2.00.01</td>
+<td class="gt_row gt_left">PB-2001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.-1.01</td>
+<td class="gt_row gt_left">DB-1991</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.-1.01</td>
+<td class="gt_row gt_left">EM-1991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.-1.02</td>
+<td class="gt_row gt_left">DB-1992</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.-1.02</td>
+<td class="gt_row gt_left">EM-1992</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.00.01</td>
+<td class="gt_row gt_left">DB-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.00.01</td>
+<td class="gt_row gt_left">EM-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.00.02</td>
+<td class="gt_row gt_left">DB-1002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.00.02</td>
+<td class="gt_row gt_left">EM-1002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.01.01</td>
+<td class="gt_row gt_left">DB-1011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.01.01</td>
+<td class="gt_row gt_left">EM-1011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.01.02</td>
+<td class="gt_row gt_left">DB-1012</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.01.02</td>
+<td class="gt_row gt_left">EM-1012</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.02.01</td>
+<td class="gt_row gt_left">DB-1021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.02.01</td>
+<td class="gt_row gt_left">EM-1021</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.02.02</td>
+<td class="gt_row gt_left">DB-1022</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.02.02</td>
+<td class="gt_row gt_left">EM-1022</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.03.01</td>
+<td class="gt_row gt_left">DB-1031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.03.01</td>
+<td class="gt_row gt_left">EM-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.03.02</td>
+<td class="gt_row gt_left">DB-1032</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.03.02</td>
+<td class="gt_row gt_left">EM-1032</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.-1.01</td>
+<td class="gt_row gt_left">DB-2991</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.-1.01</td>
+<td class="gt_row gt_left">EM-2991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.-1.02</td>
+<td class="gt_row gt_left">DB-2992</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.-1.02</td>
+<td class="gt_row gt_left">EM-2992</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.00.01</td>
+<td class="gt_row gt_left">DB-2001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.00.01</td>
+<td class="gt_row gt_left">EM-2001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.00.02</td>
+<td class="gt_row gt_left">DB-2002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.00.02</td>
+<td class="gt_row gt_left">EM-2002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.01.01</td>
+<td class="gt_row gt_left">DB-2011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.01.01</td>
+<td class="gt_row gt_left">EM-2011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.01.02</td>
+<td class="gt_row gt_left">DB-2012</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.01.02</td>
+<td class="gt_row gt_left">EM-2012</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.02.01</td>
+<td class="gt_row gt_left">DB-2021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.02.01</td>
+<td class="gt_row gt_left">EM-2021</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.02.02</td>
+<td class="gt_row gt_left">DB-2022</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.02.02</td>
+<td class="gt_row gt_left">EM-2022</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.03.01</td>
+<td class="gt_row gt_left">DB-2031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.03.01</td>
+<td class="gt_row gt_left">EM-2031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.03.02</td>
+<td class="gt_row gt_left">DB-2032</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.03.02</td>
+<td class="gt_row gt_left">EM-2032</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.00.01</td>
+<td class="gt_row gt_left">DB-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.00.01</td>
+<td class="gt_row gt_left">EM-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.1.00.02</td>
+<td class="gt_row gt_left">DB-1002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.1.00.02</td>
+<td class="gt_row gt_left">EM-1002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.00.01</td>
+<td class="gt_row gt_left">DB-2001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.00.01</td>
+<td class="gt_row gt_left">EM-2001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DB</td>
+<td class="gt_row gt_left">DB.2.00.02</td>
+<td class="gt_row gt_left">DB-2002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EM</td>
+<td class="gt_row gt_left">EM.2.00.02</td>
+<td class="gt_row gt_left">EM-2002</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.1.-1.01</td>
+<td class="gt_row gt_left">EISO-1991</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.1.00.01</td>
+<td class="gt_row gt_left">EISO-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.1.01.01</td>
+<td class="gt_row gt_left">EISO-1011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.1.02.01</td>
+<td class="gt_row gt_left">EISO-1021</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.1.03.01</td>
+<td class="gt_row gt_left">EISO-1031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.2.-1.01</td>
+<td class="gt_row gt_left">EISO-2991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.2.00.01</td>
+<td class="gt_row gt_left">EISO-2001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.2.01.01</td>
+<td class="gt_row gt_left">EISO-2011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.2.02.01</td>
+<td class="gt_row gt_left">EISO-2021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EISO</td>
+<td class="gt_row gt_left">EISO.2.03.01</td>
+<td class="gt_row gt_left">EISO-2031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSSO</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSSO3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">DSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSSO</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSSO2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">SSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">FLRB</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FLRB2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical accessories</td>
+<td class="gt_row gt_left">INSO</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">INSO1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">LT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">DL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">DL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT2/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">EXIT</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">EXIT3/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">PL</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">PL3</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left">SL</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SL1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="11" class="gt_sourcenote">Yellow highlighting rows indicate rows that have custom tags.</td>
+</tr>
+</tfoot>
+
+</table>
+
+
+</div>
+</div>
+</div>
+
+
+
+</main> <!-- /main -->
+<script type="application/vnd.jupyter.widget-state+json">
+{"state":{"02415bcbfcdc4debbbfca3665f215e3b":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"0aab4f28ace54930ac51662891315183":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_b2ed0b280b204f6a9ee28c64ba881e68","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_a0fc0ebe43084a2fbde8b01f2ceece95","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"162d27ab43be4725a934a3c292041609":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"1e50e69a069542469736daeb3f927b49":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":"100%"}},"1ea59a558bd5456fa83760fb7419d428":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"27e5048b55d54429a717a48c795342b0":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_4e0a800c5f634108a1d80c9813cc9513","placeholder":"​","style":"IPY_MODEL_e3fe5c01bf3c494ba7fa59edc9b8f59e","tabbable":null,"tooltip":null,"value":"No custom tags defined."}},"2d212acc40054e36b133b4877664e5bc":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"TabModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"TabModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"TabView","box_style":"","children":["IPY_MODEL_c8489fdde7994c8f9d3b76ac4566483b","IPY_MODEL_e69fcd35ff2c4755aff1044dd264b291","IPY_MODEL_6d3e900e37f54665aed60d1f61955ce8","IPY_MODEL_f217355f3ab749acb1f11fdb621e7e3d","IPY_MODEL_331cfb1b85334f4d989c131bf83e128b","IPY_MODEL_27e5048b55d54429a717a48c795342b0"],"layout":"IPY_MODEL_7132b2885f4b489f8ab645440b876977","selected_index":0,"tabbable":null,"titles":["volumes","levels","tag_bdns","tag_type","tag_instance","custom_tags"],"tooltip":null}},"331cfb1b85334f4d989c131bf83e128b":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAAA+H8AAAAAAAD4fwAAAAAAAABAAAAAAAAAAEA=","encoding":"base64","path":["_data","data","zfill","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,false,false,false]},"field_aliases":[["Abbreviation"],["Volume"],["Level"],["VolumeLevelInstance"]],"field_name":["abbreviation","volume","level","level_iref"],"ipydguuid":{"dtype":"int32","shape":[4],"type":null},"key":{"dtype":"int32","shape":[4],"type":null},"prefix":["",".",".","."],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["","","",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"dtype":"float64","shape":[4],"type":null}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"number"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_351c5233c8d3409688eb1cc9a3a1d239","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_64c41b7a2b28419298ab41f520b1d430","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"351c5233c8d3409688eb1cc9a3a1d239":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_fea19733a61e449a93aeb693aaa8995e","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_f5410609aad642f9a7b63e0f614572e3","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"417e8d3a6a8a476f95d924f4f6099470":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"4c63c47718e84cef9c2cb8be7ce5a53b":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"4e0a800c5f634108a1d80c9813cc9513":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"51f0f56d652847f0ab39803cb6f3ff2c":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"5b5a2723142b451497e6cd361fee2dca":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"AccordionModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"AccordionModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"AccordionView","box_style":"","children":["IPY_MODEL_fec81d52906e4a93bae92ae5567a927b","IPY_MODEL_2d212acc40054e36b133b4877664e5bc"],"layout":"IPY_MODEL_4c63c47718e84cef9c2cb8be7ce5a53b","selected_index":null,"tabbable":null,"titles":["User Input Config","Resultant Config Summary"],"tooltip":null}},"64c41b7a2b28419298ab41f520b1d430":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"6d3e900e37f54665aed60d1f61955ce8":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[true,true,true,false,false,true]},"field_aliases":[["Country"],["City"],["Project"],["Abbreviation"],["InstanceReference"],["InstanceExtra"]],"field_name":["country","city","project","abbreviation","instance_reference","instance_extra"],"ipydguuid":{"dtype":"int32","shape":[6],"type":null},"key":{"dtype":"int32","shape":[6],"type":null},"prefix":["","","","","-","_"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["-","-","-","","",""],"validator":{"type":"raw","value":["bdns_plus.default_fields.validate_alpha2_country","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_c24270325ad4489fb0e6ec1948521094","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_02415bcbfcdc4debbbfca3665f215e3b","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"7132b2885f4b489f8ab645440b876977":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"80632a4a879b406d995902491f4af031":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_162d27ab43be4725a934a3c292041609","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_eacba057ad8248dd89b9e9e2cc3a32d5","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"8dea285f209b47229bb58fdb3e0cb6b3":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"96876b80d86b45818db703fb998e9877":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_ba637c3429074bd88ec2c57ea6eeefab","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_a330a06da71248ad8c0a951ab185c0a7","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"a0fc0ebe43084a2fbde8b01f2ceece95":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"a330a06da71248ad8c0a951ab185c0a7":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"b2ed0b280b204f6a9ee28c64ba881e68":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"ba637c3429074bd88ec2c57ea6eeefab":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"c24270325ad4489fb0e6ec1948521094":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_8dea285f209b47229bb58fdb3e0cb6b3","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_417e8d3a6a8a476f95d924f4f6099470","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"c8489fdde7994c8f9d3b76ac4566483b":{"buffers":[{"data":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAA","encoding":"base64","path":["_data","data","id","value"]},{"data":"AQAAAAIAAAADAAAABAAAAAUAAAAGAAAABwAAAAgAAAAJAAAA","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[9],"type":null},"id":{"dtype":"int32","shape":[9],"type":null},"ipydguuid":{"dtype":"int32","shape":[9],"type":null},"name":["Volume 1","Volume 2","Volume 3","Volume 4","Volume 5","Volume 6","Volume 7","Volume 8","Volume 9"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_80632a4a879b406d995902491f4af031","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_1ea59a558bd5456fa83760fb7419d428","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"e3b4413c4ada46368be0808beaf1324a":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"e3fe5c01bf3c494ba7fa59edc9b8f59e":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"e69fcd35ff2c4755aff1044dd264b291":{"buffers":[{"data":"WgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAAAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"9v////f////4////+f////r////7/////P////3////+/////////wAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[100],"type":null},"id":{"dtype":"int32","shape":[100],"type":null},"ipydguuid":{"dtype":"int32","shape":[100],"type":null},"name":["Basement 10","Basement 9","Basement 8","Basement 7","Basement 6","Basement 5","Basement 4","Basement 3","Basement 2","Basement 1","Ground","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9","Level 10","Level 11","Level 12","Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","Level 19","Level 20","Level 21","Level 22","Level 23","Level 24","Level 25","Level 26","Level 27","Level 28","Level 29","Level 30","Level 31","Level 32","Level 33","Level 34","Level 35","Level 36","Level 37","Level 38","Level 39","Level 40","Level 41","Level 42","Level 43","Level 44","Level 45","Level 46","Level 47","Level 48","Level 49","Level 50","Level 51","Level 52","Level 53","Level 54","Level 55","Level 56","Level 57","Level 58","Level 59","Level 60","Level 61","Level 62","Level 63","Level 64","Level 65","Level 66","Level 67","Level 68","Level 69","Level 70","Level 71","Level 72","Level 73","Level 74","Level 75","Level 76","Level 77","Level 78","Level 79","Level 80","Level 81","Level 82","Level 83","Level 84","Level 85","Level 86","Level 87","Level 88","Level 89"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_0aab4f28ace54930ac51662891315183","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_51f0f56d652847f0ab39803cb6f3ff2c","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"eacba057ad8248dd89b9e9e2cc3a32d5":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"f217355f3ab749acb1f11fdb621e7e3d":{"buffers":[{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,true,true]},"field_aliases":[["Abbreviation"],["TypeReference","type"],["TypeExtra"]],"field_name":["abbreviation","type_reference","type_extra"],"ipydguuid":{"dtype":"int32","shape":[3],"type":null},"key":{"dtype":"int32","shape":[3],"type":null},"prefix":["","","/"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"suffix":["","",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_96876b80d86b45818db703fb998e9877","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_e3b4413c4ada46368be0808beaf1324a","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"f5410609aad642f9a7b63e0f614572e3":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"fea19733a61e449a93aeb693aaa8995e":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"fec81d52906e4a93bae92ae5567a927b":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_1e50e69a069542469736daeb3f927b49","msg_id":"","outputs":[{"name":"stdout","output_type":"stream","text":"{'i_tag': {'description': 'a example tag definition for ventilation instances',\n           'fields': [{'allow_none': False,\n                       'field_aliases': ['Abbreviation'],\n                       'field_name': 'abbreviation',\n                       'prefix': '',\n                       'regex': None,\n                       'suffix': '',\n                       'validator': None,\n                       'zfill': None},\n                      {'allow_none': False,\n                       'field_aliases': ['Volume'],\n                       'field_name': 'volume',\n                       'prefix': '.',\n                       'regex': None,\n                       'suffix': '',\n                       'validator': None,\n                       'zfill': None},\n                      {'allow_none': False,\n                       'field_aliases': ['Level'],\n                       'field_name': 'level',\n                       'prefix': '.',\n                       'regex': None,\n                       'suffix': '',\n                       'validator': None,\n                       'zfill': 2},\n                      {'allow_none': False,\n                       'field_aliases': ['VolumeLevelInstance'],\n                       'field_name': 'level_iref',\n                       'prefix': '.',\n                       'regex': None,\n                       'suffix': '',\n                       'validator': None,\n                       'zfill': 2}],\n           'name': \"Instance Tag, delimit with '.' and zfill level\"}}\n"}],"tabbable":null,"tooltip":null}}},"version_major":2,"version_minor":0}
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
