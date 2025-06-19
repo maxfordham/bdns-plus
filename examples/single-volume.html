@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>no-config-single-volume</title>
+<title>single-volume</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -276,10 +276,6 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Serialisation</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../test.html"> 
-<span class="menu-text">test</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../revit.html"> 
 <span class="menu-text">Revit</span></a>
   </li>  
@@ -310,7 +306,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/no-config-single-volume.html">no-config-single-volume</a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../examples/single-volume.html">single-volume</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
     </div>
@@ -325,25 +321,13 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Simple</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/custom-project-example.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Custom Project Example</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/no-config-single-volume.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">no-config-single-volume</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="../examples/no-config-multi-volume.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">no-config-multi-volume</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/single-volume.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">single-volume</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -354,14 +338,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../examples/custom-tag-format.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">custom-tag-format</span></a>
+  <a href="../examples/reformat-type-and-instance-tags.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">reformat-type-and-instance-tags</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../examples/single-volume-mezzanine-levels.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">single-volume-mezzanine-levels</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../examples/custom-nomenclature-for-vent-equipment.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">custom-nomenclature-for-vent-equipment</span></a>
   </div>
 </li>
     </ul>
@@ -378,7 +368,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">no-config-single-volume</h1>
+<h1 class="title">single-volume</h1>
 </div>
 
 
@@ -395,63 +385,62 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>With no project configuration, this example generates a single volume with 4 levels.</p>
-<p>User-input data:</p>
-<div id="cfda582f" class="cell" data-execution_count="1">
+<p>When a project configuration defines only a single volume, the volume number is automatically omitted from the instance tag.</p>
+<div id="00332500" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-display" data-execution_count="1">
 <script type="application/vnd.jupyter.widget-view+json">
-{"model_id":"8d37b252766d45399c59134888e26193","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
+{"model_id":"ab5eac0633be4fa6a8743a80554c345c","version_major":2,"version_minor":0,"quarto_mimetype":"application/vnd.jupyter.widget-view+json"}
 </script>
 </div>
 </div>
-<div id="40d87db2" class="cell" data-execution_count="2">
+<div id="794220c7" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-display" data-execution_count="2">
-<div id="fcppvodtvq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="qgujutrcyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>
-#fcppvodtvq table {
+#qgujutrcyr table {
           font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
           -webkit-font-smoothing: antialiased;
           -moz-osx-font-smoothing: grayscale;
         }
 
-#fcppvodtvq thead, tbody, tfoot, tr, td, th { border-style: none; }
+#qgujutrcyr thead, tbody, tfoot, tr, td, th { border-style: none; }
  tr { background-color: transparent; }
-#fcppvodtvq p { margin: 0; padding: 0; }
- #fcppvodtvq .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
- #fcppvodtvq .gt_caption { padding-top: 4px; padding-bottom: 4px; }
- #fcppvodtvq .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
- #fcppvodtvq .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
- #fcppvodtvq .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #fcppvodtvq .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #fcppvodtvq .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
- #fcppvodtvq .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
- #fcppvodtvq .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
- #fcppvodtvq .gt_column_spanner_outer:first-child { padding-left: 0; }
- #fcppvodtvq .gt_column_spanner_outer:last-child { padding-right: 0; }
- #fcppvodtvq .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
- #fcppvodtvq .gt_spanner_row { border-bottom-style: hidden; }
- #fcppvodtvq .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
- #fcppvodtvq .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
- #fcppvodtvq .gt_from_md> :first-child { margin-top: 0; }
- #fcppvodtvq .gt_from_md> :last-child { margin-bottom: 0; }
- #fcppvodtvq .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
- #fcppvodtvq .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
- #fcppvodtvq .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
- #fcppvodtvq .gt_row_group_first td { border-top-width: 2px; }
- #fcppvodtvq .gt_row_group_first th { border-top-width: 2px; }
- #fcppvodtvq .gt_striped { background-color: rgba(128,128,128,0.05); }
- #fcppvodtvq .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
- #fcppvodtvq .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
- #fcppvodtvq .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
- #fcppvodtvq .gt_left { text-align: left; }
- #fcppvodtvq .gt_center { text-align: center; }
- #fcppvodtvq .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
- #fcppvodtvq .gt_font_normal { font-weight: normal; }
- #fcppvodtvq .gt_font_bold { font-weight: bold; }
- #fcppvodtvq .gt_font_italic { font-style: italic; }
- #fcppvodtvq .gt_super { font-size: 65%; }
- #fcppvodtvq .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
- #fcppvodtvq .gt_asterisk { font-size: 100%; vertical-align: 0; }
+#qgujutrcyr p { margin: 0; padding: 0; }
+ #qgujutrcyr .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #qgujutrcyr .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #qgujutrcyr .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #qgujutrcyr .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #qgujutrcyr .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #qgujutrcyr .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #qgujutrcyr .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #qgujutrcyr .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #qgujutrcyr .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #qgujutrcyr .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #qgujutrcyr .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #qgujutrcyr .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #qgujutrcyr .gt_spanner_row { border-bottom-style: hidden; }
+ #qgujutrcyr .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #qgujutrcyr .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #qgujutrcyr .gt_from_md> :first-child { margin-top: 0; }
+ #qgujutrcyr .gt_from_md> :last-child { margin-bottom: 0; }
+ #qgujutrcyr .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #qgujutrcyr .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #qgujutrcyr .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #qgujutrcyr .gt_row_group_first td { border-top-width: 2px; }
+ #qgujutrcyr .gt_row_group_first th { border-top-width: 2px; }
+ #qgujutrcyr .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #qgujutrcyr .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #qgujutrcyr .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #qgujutrcyr .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #qgujutrcyr .gt_left { text-align: left; }
+ #qgujutrcyr .gt_center { text-align: center; }
+ #qgujutrcyr .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #qgujutrcyr .gt_font_normal { font-weight: normal; }
+ #qgujutrcyr .gt_font_bold { font-weight: bold; }
+ #qgujutrcyr .gt_font_italic { font-style: italic; }
+ #qgujutrcyr .gt_super { font-size: 65%; }
+ #qgujutrcyr .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #qgujutrcyr .gt_asterisk { font-size: 100%; vertical-align: 0; }
  
 </style>
 
@@ -484,7 +473,7 @@ ul.task-list li input[type="checkbox"] {
 </thead>
 <tbody class="gt_table_body">
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">PB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -497,7 +486,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">PB-1001</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -510,7 +499,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1991</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -523,7 +512,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1991</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -536,7 +525,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1992</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -549,7 +538,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1992</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -562,7 +551,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1001</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -575,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1001</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -588,7 +577,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1002</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -601,7 +590,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1002</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -614,7 +603,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1011</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -627,7 +616,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1011</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -640,7 +629,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1012</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -653,7 +642,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1012</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -666,7 +655,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1021</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -679,7 +668,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1021</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -692,7 +681,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1022</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -705,7 +694,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1022</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -718,7 +707,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1031</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -731,7 +720,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1031</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -744,7 +733,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1032</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -757,7 +746,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1032</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -770,7 +759,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1001</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -783,7 +772,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1001</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">DB</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -796,7 +785,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">DB-1002</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EM</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -809,7 +798,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EM-1002</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EISO</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -822,7 +811,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EISO-1991</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EISO</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -835,7 +824,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EISO-1001</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EISO</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -848,7 +837,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EISO-1011</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EISO</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -861,7 +850,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EISO-1021</td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #42a6cc">electrical distribution</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical distribution</td>
 <td class="gt_row gt_left">EISO</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
@@ -874,7 +863,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left">EISO-1031</td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">DSSO</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -887,7 +876,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">DSSO</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left"></td>
@@ -900,7 +889,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">DSSO</td>
 <td class="gt_row gt_left">3</td>
 <td class="gt_row gt_left"></td>
@@ -913,7 +902,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">DSO</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -926,7 +915,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">SSSO</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -939,7 +928,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">SSSO</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left"></td>
@@ -952,7 +941,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">SSO</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -965,7 +954,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">FLRB</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -978,7 +967,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">FLRB</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left"></td>
@@ -991,7 +980,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">electrical accessories</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #ccebc5">electrical accessories</td>
 <td class="gt_row gt_left">INSO</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -1004,7 +993,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">LT</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -1017,20 +1006,20 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">LT</td>
 <td class="gt_row gt_left">2</td>
-<td class="gt_row gt_left">E</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
-<td class="gt_row gt_left">LT2/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">LT2</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">DL</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -1043,7 +1032,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">DL</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left"></td>
@@ -1056,7 +1045,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">EXIT</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left">E</td>
@@ -1069,7 +1058,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">EXIT</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left">E</td>
@@ -1082,7 +1071,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">EXIT</td>
 <td class="gt_row gt_left">3</td>
 <td class="gt_row gt_left">E</td>
@@ -1095,7 +1084,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">PL</td>
 <td class="gt_row gt_left">1</td>
 <td class="gt_row gt_left"></td>
@@ -1108,7 +1097,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">PL</td>
 <td class="gt_row gt_left">2</td>
 <td class="gt_row gt_left"></td>
@@ -1121,7 +1110,7 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">PL</td>
 <td class="gt_row gt_left">3</td>
 <td class="gt_row gt_left"></td>
@@ -1134,17 +1123,212 @@ ul.task-list li input[type="checkbox"] {
 <td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td class="gt_row gt_left" style="color: #000000; background-color: #b4e2ba">light fittings</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #2b8cbe">light fittings</td>
 <td class="gt_row gt_left">SL</td>
 <td class="gt_row gt_left">1</td>
-<td class="gt_row gt_left">E</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
-<td class="gt_row gt_left">SL1/E</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">SL1</td>
 <td class="gt_row gt_left"></td>
 <td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">AHU</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">AHU</td>
+<td class="gt_row gt_left">AHU/3/1</td>
+<td class="gt_row gt_left">AHU-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/-1/1</td>
+<td class="gt_row gt_left">MVHR-1991</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/-1/1</td>
+<td class="gt_row gt_left">TEF-1991</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/0/1</td>
+<td class="gt_row gt_left">MVHR-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/0/1</td>
+<td class="gt_row gt_left">TEF-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/1</td>
+<td class="gt_row gt_left">MVHR-1011</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/1</td>
+<td class="gt_row gt_left">TEF-1011</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/1</td>
+<td class="gt_row gt_left">MVHR-1021</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/1</td>
+<td class="gt_row gt_left">TEF-1021</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/3/1</td>
+<td class="gt_row gt_left">MVHR-1031</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/3/1</td>
+<td class="gt_row gt_left">TEF-1031</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left">KEF/0/1</td>
+<td class="gt_row gt_left">KEF-1001</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left">FAN/0/1</td>
+<td class="gt_row gt_left">FAN-1001</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left">KEF/0/2</td>
+<td class="gt_row gt_left">KEF-1002</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #7bccc4">ventilation equipment</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left">FAN/0/2</td>
+<td class="gt_row gt_left">FAN-1002</td>
 </tr>
 </tbody><tfoot class="gt_sourcenotes">
 <tr class="odd">
@@ -1163,7 +1347,7 @@ ul.task-list li input[type="checkbox"] {
 
 </main> <!-- /main -->
 <script type="application/vnd.jupyter.widget-state+json">
-{"state":{"00d139cd615245b187942f84c4a1330c":{"buffers":[{"data":"WgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAAAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"9v////f////4////+f////r////7/////P////3////+/////////wAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[100],"type":null},"id":{"dtype":"int32","shape":[100],"type":null},"ipydguuid":{"dtype":"int32","shape":[100],"type":null},"name":["Basement 10","Basement 9","Basement 8","Basement 7","Basement 6","Basement 5","Basement 4","Basement 3","Basement 2","Basement 1","Ground","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9","Level 10","Level 11","Level 12","Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","Level 19","Level 20","Level 21","Level 22","Level 23","Level 24","Level 25","Level 26","Level 27","Level 28","Level 29","Level 30","Level 31","Level 32","Level 33","Level 34","Level 35","Level 36","Level 37","Level 38","Level 39","Level 40","Level 41","Level 42","Level 43","Level 44","Level 45","Level 46","Level 47","Level 48","Level 49","Level 50","Level 51","Level 52","Level 53","Level 54","Level 55","Level 56","Level 57","Level 58","Level 59","Level 60","Level 61","Level 62","Level 63","Level 64","Level 65","Level 66","Level 67","Level 68","Level 69","Level 70","Level 71","Level 72","Level 73","Level 74","Level 75","Level 76","Level 77","Level 78","Level 79","Level 80","Level 81","Level 82","Level 83","Level 84","Level 85","Level 86","Level 87","Level 88","Level 89"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_5503158396484e6f945eb09e68a399b5","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_1eb438d52fd344bcb4f94921a6738d0e","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"047971c42ee741d0a60f188536af7b5d":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"078942f306544410accc38498fc453c1":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"13f4c7537e23485a981c1f38085eace0":{"buffers":[{"data":"AQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"AQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[1],"type":null},"id":{"dtype":"int32","shape":[1],"type":null},"ipydguuid":{"dtype":"int32","shape":[1],"type":null},"name":["Volume 1"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_b742f48ae9bd44a2b6a8bc257424c8a4","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_49d2dd362661435d880d825790549bf6","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"1a515eb526084448bb7aa9843eb6b9fd":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_67ae39641133401399db6623a59f1c12","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_f5771a99b9c64aa68c50c43b673311d7","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"1b77b017885b4af48098f7d69c44ca6c":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_6a4e0d7f023343cbb32975c62285abca","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_6aa72f76ddad4be28a27649754137e68","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"1eb438d52fd344bcb4f94921a6738d0e":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"29beee3ae93e4634a2eb47f7e09ad3ce":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"2dbf82c0c79a448f93c79418a4d4c3ac":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[true,true,true,false,false,true]},"field_aliases":[["Country"],["City"],["Project"],["Abbreviation"],["InstanceReference"],["InstanceExtra"]],"field_name":["country","city","project","abbreviation","instance_reference","instance_extra"],"ipydguuid":{"dtype":"int32","shape":[6],"type":null},"key":{"dtype":"int32","shape":[6],"type":null},"prefix":["","","","","-","_"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["-","-","-","","",""],"validator":{"type":"raw","value":["bdns_plus.default_fields.validate_alpha2_country","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_bd2a5567968a48e59d3eac89d7959120","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_2f0f6a64eef542ba9514ae5f51721b83","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"2f0f6a64eef542ba9514ae5f51721b83":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"2f4ef4ee64e9441ba1bbf454ebc2bb04":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"4900215e356446dcb1534f3507ef7a89":{"buffers":[{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,true,true]},"field_aliases":[["Abbreviation"],["TypeReference","type"],["TypeExtra"]],"field_name":["abbreviation","type_reference","type_extra"],"ipydguuid":{"dtype":"int32","shape":[3],"type":null},"key":{"dtype":"int32","shape":[3],"type":null},"prefix":["","","/"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"suffix":["","",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_1a515eb526084448bb7aa9843eb6b9fd","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_d281b02dd6ce48c6b6753af5d59d89bb","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"49d2dd362661435d880d825790549bf6":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"5503158396484e6f945eb09e68a399b5":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_b780ac0898ae4692867a477c9cd48711","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_fc4bcff3cc49430db3da50be4f21ce26","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"67ae39641133401399db6623a59f1c12":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"6a4e0d7f023343cbb32975c62285abca":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"6aa72f76ddad4be28a27649754137e68":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"70f2a9cda64848fdb4d9f70affa7af65":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"TabModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"TabModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"TabView","box_style":"","children":["IPY_MODEL_13f4c7537e23485a981c1f38085eace0","IPY_MODEL_00d139cd615245b187942f84c4a1330c","IPY_MODEL_2dbf82c0c79a448f93c79418a4d4c3ac","IPY_MODEL_4900215e356446dcb1534f3507ef7a89","IPY_MODEL_c248c375e2d94671b2abf6f1ed316b2e","IPY_MODEL_83222f9c7e4e4710b49b33a0bfa4f84e"],"layout":"IPY_MODEL_f7d4b1292d64445daf087a6ede641ebf","selected_index":0,"tabbable":null,"titles":["volumes","levels","tag_bdns","tag_type","tag_instance","custom_tags"],"tooltip":null}},"83222f9c7e4e4710b49b33a0bfa4f84e":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_047971c42ee741d0a60f188536af7b5d","placeholder":"​","style":"IPY_MODEL_da6fb882228240588bca06dcf4e61823","tabbable":null,"tooltip":null,"value":"No custom tags defined."}},"87ce55c33fb54f0ea7aaedae033231f7":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"8d37b252766d45399c59134888e26193":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"AccordionModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"AccordionModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"AccordionView","box_style":"","children":["IPY_MODEL_bc57b2216573412eb533b83d345014f3","IPY_MODEL_70f2a9cda64848fdb4d9f70affa7af65"],"layout":"IPY_MODEL_29beee3ae93e4634a2eb47f7e09ad3ce","selected_index":null,"tabbable":null,"titles":["User Input Config","Resultant Config Summary"],"tooltip":null}},"9a775af7eddb459e8e3c8d2684626a8a":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"b742f48ae9bd44a2b6a8bc257424c8a4":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_2f4ef4ee64e9441ba1bbf454ebc2bb04","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_87ce55c33fb54f0ea7aaedae033231f7","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"b780ac0898ae4692867a477c9cd48711":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"bc57b2216573412eb533b83d345014f3":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_e14fb011cc0c4826842554c323d70b61","msg_id":"","outputs":[{"name":"stdout","output_type":"stream","text":"{'volumes': [{'code': 1, 'id': 1, 'name': 'Volume 1'}]}\n"}],"tabbable":null,"tooltip":null}},"bd2086e23d8a45749a11270f396e1efb":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"bd2a5567968a48e59d3eac89d7959120":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_bd2086e23d8a45749a11270f396e1efb","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_9a775af7eddb459e8e3c8d2684626a8a","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"c248c375e2d94671b2abf6f1ed316b2e":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,false,false,true]},"field_aliases":[["Abbreviation"],["Level","level"],["LevelInstance","level_instance"],["InstanceExtra"]],"field_name":["abbreviation","level","level_iref","instance_extra"],"ipydguuid":{"dtype":"int32","shape":[4],"type":null},"key":{"dtype":"int32","shape":[4],"type":null},"prefix":["","","",""],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["/","/","/",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_1b77b017885b4af48098f7d69c44ca6c","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_078942f306544410accc38498fc453c1","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"d281b02dd6ce48c6b6753af5d59d89bb":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"da6fb882228240588bca06dcf4e61823":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"e14fb011cc0c4826842554c323d70b61":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":"100%"}},"f5771a99b9c64aa68c50c43b673311d7":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"f7d4b1292d64445daf087a6ede641ebf":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"fc4bcff3cc49430db3da50be4f21ce26":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}}},"version_major":2,"version_minor":0}
+{"state":{"154cad8fb0d34769b943b44595bf5027":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"16aa5bdf984248dea0fcd436f3a85f17":{"buffers":[{"data":"WgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAAAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"9v////f////4////+f////r////7/////P////3////+/////////wAAAAABAAAAAgAAAAMAAAAEAAAABQAAAAYAAAAHAAAACAAAAAkAAAAKAAAACwAAAAwAAAANAAAADgAAAA8AAAAQAAAAEQAAABIAAAATAAAAFAAAABUAAAAWAAAAFwAAABgAAAAZAAAAGgAAABsAAAAcAAAAHQAAAB4AAAAfAAAAIAAAACEAAAAiAAAAIwAAACQAAAAlAAAAJgAAACcAAAAoAAAAKQAAACoAAAArAAAALAAAAC0AAAAuAAAALwAAADAAAAAxAAAAMgAAADMAAAA0AAAANQAAADYAAAA3AAAAOAAAADkAAAA6AAAAOwAAADwAAAA9AAAAPgAAAD8AAABAAAAAQQAAAEIAAABDAAAARAAAAEUAAABGAAAARwAAAEgAAABJAAAASgAAAEsAAABMAAAATQAAAE4AAABPAAAAUAAAAFEAAABSAAAAUwAAAFQAAABVAAAAVgAAAFcAAABYAAAAWQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAABgAAAAcAAAAIAAAACQAAAAoAAAALAAAADAAAAA0AAAAOAAAADwAAABAAAAARAAAAEgAAABMAAAAUAAAAFQAAABYAAAAXAAAAGAAAABkAAAAaAAAAGwAAABwAAAAdAAAAHgAAAB8AAAAgAAAAIQAAACIAAAAjAAAAJAAAACUAAAAmAAAAJwAAACgAAAApAAAAKgAAACsAAAAsAAAALQAAAC4AAAAvAAAAMAAAADEAAAAyAAAAMwAAADQAAAA1AAAANgAAADcAAAA4AAAAOQAAADoAAAA7AAAAPAAAAD0AAAA+AAAAPwAAAEAAAABBAAAAQgAAAEMAAABEAAAARQAAAEYAAABHAAAASAAAAEkAAABKAAAASwAAAEwAAABNAAAATgAAAE8AAABQAAAAUQAAAFIAAABTAAAAVAAAAFUAAABWAAAAVwAAAFgAAABZAAAAWgAAAFsAAABcAAAAXQAAAF4AAABfAAAAYAAAAGEAAABiAAAAYwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[100],"type":null},"id":{"dtype":"int32","shape":[100],"type":null},"ipydguuid":{"dtype":"int32","shape":[100],"type":null},"name":["Basement 10","Basement 9","Basement 8","Basement 7","Basement 6","Basement 5","Basement 4","Basement 3","Basement 2","Basement 1","Ground","Level 1","Level 2","Level 3","Level 4","Level 5","Level 6","Level 7","Level 8","Level 9","Level 10","Level 11","Level 12","Level 13","Level 14","Level 15","Level 16","Level 17","Level 18","Level 19","Level 20","Level 21","Level 22","Level 23","Level 24","Level 25","Level 26","Level 27","Level 28","Level 29","Level 30","Level 31","Level 32","Level 33","Level 34","Level 35","Level 36","Level 37","Level 38","Level 39","Level 40","Level 41","Level 42","Level 43","Level 44","Level 45","Level 46","Level 47","Level 48","Level 49","Level 50","Level 51","Level 52","Level 53","Level 54","Level 55","Level 56","Level 57","Level 58","Level 59","Level 60","Level 61","Level 62","Level 63","Level 64","Level 65","Level 66","Level 67","Level 68","Level 69","Level 70","Level 71","Level 72","Level 73","Level 74","Level 75","Level 76","Level 77","Level 78","Level 79","Level 80","Level 81","Level 82","Level 83","Level 84","Level 85","Level 86","Level 87","Level 88","Level 89"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_df6f70b1613145f891363f3a750b0ccb","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_b39f47aa4dd84261abca005341235d37","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"2522101d4c4d4d88b11a3d58f3e12f77":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"29cc238d27214102bfc2e8fee8745836":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"30f3f3ac2c584fd6ba4c81a96d05c971":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":"100%"}},"394e1cb637684595a6d0be2eb7984fe3":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"3af3d8236c0e467c8854dc87429a02ec":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_9df2a646b19647249faa3e22cc880573","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_394e1cb637684595a6d0be2eb7984fe3","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"41735601c0ff4a6ab07d670cd6d5c7bc":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAAQAAAAFAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[true,true,true,false,false,true]},"field_aliases":[["Country"],["City"],["Project"],["Abbreviation"],["InstanceReference"],["InstanceExtra"]],"field_name":["country","city","project","abbreviation","instance_reference","instance_extra"],"ipydguuid":{"dtype":"int32","shape":[6],"type":null},"key":{"dtype":"int32","shape":[6],"type":null},"prefix":["","","","","-","_"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["-","-","-","","",""],"validator":{"type":"raw","value":["bdns_plus.default_fields.validate_alpha2_country","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_5277c908c12548d7a3dbc36e8e2202d0","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_a7cc234d5a494e8f8bf9b9d778fb4edc","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"433adf6132734b74aec490a26aa2e4a1":{"model_module":"@jupyter-widgets/output","model_module_version":"1.0.0","model_name":"OutputModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/output","_model_module_version":"1.0.0","_model_name":"OutputModel","_view_count":null,"_view_module":"@jupyter-widgets/output","_view_module_version":"1.0.0","_view_name":"OutputView","layout":"IPY_MODEL_30f3f3ac2c584fd6ba4c81a96d05c971","msg_id":"","outputs":[{"name":"stdout","output_type":"stream","text":"{'volumes': [{'code': 1, 'id': 1, 'name': 'Volume 1'}]}\n"}],"tabbable":null,"tooltip":null}},"44c65ccad1b645fe926d70dbd3455e82":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_a81c0536aaa1436697ce5d38dfe1d029","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_b22e88efe54e4a1288708ef506c98546","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"503dfd6a9a1c4a098a913d5a08e2fc78":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"5277c908c12548d7a3dbc36e8e2202d0":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_503dfd6a9a1c4a098a913d5a08e2fc78","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_cf0b1825c4004f628fc0200ed4153159","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"55aa9dc4c8d3420d9e8da53eb58634de":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_154cad8fb0d34769b943b44595bf5027","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_eea49319082440eaafe0bef110ef7929","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"5dade8e38d5044588ac178d4206f99f9":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"5e3ab3c32e214ffca797134255c5f350":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLStyleModel","state":{"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLStyleModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"StyleView","background":null,"description_width":"","font_size":null,"text_color":null}},"67c5bb70593747368454165dcb24d964":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"TabModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"TabModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"TabView","box_style":"","children":["IPY_MODEL_6cc10afaff7544a683fff95137295a55","IPY_MODEL_16aa5bdf984248dea0fcd436f3a85f17","IPY_MODEL_41735601c0ff4a6ab07d670cd6d5c7bc","IPY_MODEL_ff59e7e044c14fc0b9681f123cefa9ad","IPY_MODEL_8cc3883bcba54a048c1ca6b28a254a2b","IPY_MODEL_ee1f6a03771943e6bb1d16f00616d6be"],"layout":"IPY_MODEL_c0ede1ff156c44ad9d239d0584ba1d7a","selected_index":0,"tabbable":null,"titles":["volumes","levels","tag_bdns","tag_type","tag_instance","custom_tags"],"tooltip":null}},"6cc10afaff7544a683fff95137295a55":{"buffers":[{"data":"AQAAAA==","encoding":"base64","path":["_data","data","id","value"]},{"data":"AQAAAA==","encoding":"base64","path":["_data","data","code","value"]},{"data":"AAAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"code":{"dtype":"int32","shape":[1],"type":null},"id":{"dtype":"int32","shape":[1],"type":null},"ipydguuid":{"dtype":"int32","shape":[1],"type":null},"name":["Volume 1"]},"fields":[{"id":"$NaN$"},{"code":"$NaN$"},{"name":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"id","type":"integer"},{"name":"code","type":"integer"},{"name":"name","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["id","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"name":200},"corner_renderer":null,"default_renderer":"IPY_MODEL_3af3d8236c0e467c8854dc87429a02ec","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_5dade8e38d5044588ac178d4206f99f9","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"7cf3af26ee02482583ebb90160a81e5e":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"8cc3883bcba54a048c1ca6b28a254a2b":{"buffers":[{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAAAwAAAA==","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,false,false,true]},"field_aliases":[["Abbreviation"],["Level","level"],["LevelInstance","level_instance"],["InstanceExtra"]],"field_name":["abbreviation","level","level_iref","instance_extra"],"ipydguuid":{"dtype":"int32","shape":[4],"type":null},"key":{"dtype":"int32","shape":[4],"type":null},"prefix":["","","",""],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"suffix":["/","/","/",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_44c65ccad1b645fe926d70dbd3455e82","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_29cc238d27214102bfc2e8fee8745836","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}},"9df2a646b19647249faa3e22cc880573":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"a7cc234d5a494e8f8bf9b9d778fb4edc":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"a81c0536aaa1436697ce5d38dfe1d029":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"ab5eac0633be4fa6a8743a80554c345c":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"AccordionModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"AccordionModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"AccordionView","box_style":"","children":["IPY_MODEL_433adf6132734b74aec490a26aa2e4a1","IPY_MODEL_67c5bb70593747368454165dcb24d964"],"layout":"IPY_MODEL_da1e62d18eeb4a0fb13334546dd87552","selected_index":null,"tabbable":null,"titles":["User Input Config","Resultant Config Summary"],"tooltip":null}},"b22e88efe54e4a1288708ef506c98546":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"b39f47aa4dd84261abca005341235d37":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"bec4f6cba976403281087e3efb18f2d4":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"c0ede1ff156c44ad9d239d0584ba1d7a":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"cf0b1825c4004f628fc0200ed4153159":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"d5651c58de094cf880a1bd5bd85c69a5":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"da1e62d18eeb4a0fb13334546dd87552":{"model_module":"@jupyter-widgets/base","model_module_version":"2.0.0","model_name":"LayoutModel","state":{"_model_module":"@jupyter-widgets/base","_model_module_version":"2.0.0","_model_name":"LayoutModel","_view_count":null,"_view_module":"@jupyter-widgets/base","_view_module_version":"2.0.0","_view_name":"LayoutView","align_content":null,"align_items":null,"align_self":null,"border_bottom":null,"border_left":null,"border_right":null,"border_top":null,"bottom":null,"display":null,"flex":null,"flex_flow":null,"grid_area":null,"grid_auto_columns":null,"grid_auto_flow":null,"grid_auto_rows":null,"grid_column":null,"grid_gap":null,"grid_row":null,"grid_template_areas":null,"grid_template_columns":null,"grid_template_rows":null,"height":null,"justify_content":null,"justify_items":null,"left":null,"margin":null,"max_height":null,"max_width":null,"min_height":null,"min_width":null,"object_fit":null,"object_position":null,"order":null,"overflow":null,"padding":null,"right":null,"top":null,"visibility":null,"width":null}},"df6f70b1613145f891363f3a750b0ccb":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"TextRendererModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"TextRendererModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"TextRendererView","background_color":"IPY_MODEL_7cf3af26ee02482583ebb90160a81e5e","font":"12px sans-serif","format":null,"format_type":"number","horizontal_alignment":"left","missing":"","text_color":"IPY_MODEL_2522101d4c4d4d88b11a3d58f3e12f77","text_elide_direction":"right","text_value":null,"text_wrap":false,"vertical_alignment":"center"}},"ee1f6a03771943e6bb1d16f00616d6be":{"model_module":"@jupyter-widgets/controls","model_module_version":"2.0.0","model_name":"HTMLModel","state":{"_dom_classes":[],"_model_module":"@jupyter-widgets/controls","_model_module_version":"2.0.0","_model_name":"HTMLModel","_view_count":null,"_view_module":"@jupyter-widgets/controls","_view_module_version":"2.0.0","_view_name":"HTMLView","description":"","description_allow_html":false,"layout":"IPY_MODEL_d5651c58de094cf880a1bd5bd85c69a5","placeholder":"​","style":"IPY_MODEL_5e3ab3c32e214ffca797134255c5f350","tabbable":null,"tooltip":null,"value":"No custom tags defined."}},"eea49319082440eaafe0bef110ef7929":{"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"VegaExprModel","state":{"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"VegaExprModel","_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"VegaExprView","value":"default_value"}},"ff59e7e044c14fc0b9681f123cefa9ad":{"buffers":[{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","key","value"]},{"data":"AAAAAAEAAAACAAAA","encoding":"base64","path":["_data","data","ipydguuid","value"]}],"model_module":"ipydatagrid","model_module_version":"^1.4.0","model_name":"DataGridModel","state":{"_data":{"data":{"allow_none":{"type":"raw","value":[false,true,true]},"field_aliases":[["Abbreviation"],["TypeReference","type"],["TypeExtra"]],"field_name":["abbreviation","type_reference","type_extra"],"ipydguuid":{"dtype":"int32","shape":[3],"type":null},"key":{"dtype":"int32","shape":[3],"type":null},"prefix":["","","/"],"regex":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"suffix":["","",""],"validator":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]},"zfill":{"type":"raw","value":["$NaN$","$NaN$","$NaN$"]}},"fields":[{"key":"$NaN$"},{"field_name":"$NaN$"},{"field_aliases":"$NaN$"},{"allow_none":"$NaN$"},{"prefix":"$NaN$"},{"suffix":"$NaN$"},{"zfill":"$NaN$"},{"regex":"$NaN$"},{"validator":"$NaN$"},{"ipydguuid":"$NaN$"}],"schema":{"fields":[{"name":"key","type":"integer"},{"name":"field_name","type":"string"},{"name":"field_aliases","type":"string"},{"name":"allow_none","type":"boolean"},{"name":"prefix","type":"string"},{"name":"suffix","type":"string"},{"name":"zfill","type":"string"},{"name":"regex","type":"string"},{"name":"validator","type":"string"},{"name":"ipydguuid","type":"integer"}],"pandas_version":"1.4.0","primaryKey":["key","ipydguuid"],"primaryKeyUuid":"ipydguuid"}},"_dom_classes":[],"_model_module":"ipydatagrid","_model_module_version":"^1.4.0","_model_name":"DataGridModel","_transforms":[],"_view_count":null,"_view_module":"ipydatagrid","_view_module_version":"^1.4.0","_view_name":"DataGridView","_visible_rows":[],"auto_fit_columns":false,"auto_fit_params":{"area":"all","numCols":null,"padding":30},"base_column_header_size":20,"base_column_size":64,"base_row_header_size":64,"base_row_size":20,"column_widths":{"field_name":150},"corner_renderer":null,"default_renderer":"IPY_MODEL_55aa9dc4c8d3420d9e8da53eb58634de","editable":false,"grid_style":{},"header_renderer":null,"header_visibility":"all","horizontal_stripes":false,"layout":"IPY_MODEL_bec4f6cba976403281087e3efb18f2d4","renderers":{},"selection_mode":"none","selections":[],"tabbable":null,"tooltip":null,"vertical_stripes":false}}},"version_major":2,"version_minor":0}
 </script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
