@@ -1,9 +1,2 @@
 bdns: "[BDNS](https://theodi.github.io/BDNS/)"
-
-email:
-  info: info@example.com
-  support: support@example.com
-
-engine:
-  jupyter: "[Jupyter](https://jupyter.org)"
-  knitr: "[Knitr](<https://yihui.name/knitr>)"
+bdns_plus: "[bdns_plus](https://maxfordham.github.io/bdns-plus/)"
