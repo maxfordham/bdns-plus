@@ -67,7 +67,7 @@ def serialize_iref(  # noqa: C901, PLR0912
     level_id_str = str(level_id).zfill(config.level_no_digits)
     volume_id_str = str(volume_id).zfill(config.volume_no_digits)
 
-    iref = config.iref_fstring.format(volume_id=volume_id_str, level_id=level_id_str, level_instance_id=level_iref)
+    iref = config.iref_fstring.format(volume_id=volume_id_str, level_id=level_id_str, volume_level_instance=level_iref)
     return int(iref)
 
 

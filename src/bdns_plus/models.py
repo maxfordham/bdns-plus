@@ -14,7 +14,7 @@ from .abbreviations import get_asset_abbreviations_enum
 from .default_fields import bdns_fields, instance_fields, type_fields
 from .gen_levels_volumes import gen_levels_config, gen_volumes_config
 
-INSTANCE_REFERENCE_FSTRING = "{volume_id}{level_id}{level_instance_id}"
+INSTANCE_REFERENCE_FSTRING = "{volume_id}{level_id}{volume_level_instance}"
 
 
 class StrEnum(str, Enum):
@@ -187,7 +187,9 @@ class ConfigIref(BaseModel):
     level_identifier_type: IdentifierType = IdentifierType.code
     volume_identifier_type: IdentifierType = IdentifierType.code
     map_volume_level: dict[int, int] | None = None  # allows for restricting volumes to known levels
-    iref_fstring: ty.Literal["{volume_id}{level_id}{level_instance_id}"] = INSTANCE_REFERENCE_FSTRING  # TODO: delete
+    iref_fstring: ty.Literal["{volume_id}{level_id}{volume_level_instance}"] = (
+        INSTANCE_REFERENCE_FSTRING  # TODO: delete
+    )
     is_default_levels: bool = False  # TODO: required?
     is_default_volumes: bool = False  # TODO: required?
 

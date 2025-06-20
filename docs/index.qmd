@@ -47,13 +47,13 @@ By definition, the mimumum information that `MUST` be recorded is:
 | type              | Type          | +ve integer. refers to a specific equipment type used within a project                          |
 | volume            | Instance      | +ve integer. indicates the volume within a project the equipment is situated.                 |
 | level             | Instance      | +ve integer. indicates the level within a project the equipment is situated                      |
-| level_instance_id | Instance      | +ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level | #TODO: volume_level_instance
+| volume_level_instance | Instance      | +ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level | #TODO: volume_level_instance
 | unique_instance_id| Instance      | +ve integer. calculated value from other instance parameters. used to create bdns tag            |
 
 
 
 - **type** properties (`abbreviation` and `type`) would be the same for every identical item of equipment.
-- **instance** properties (`volume`, `level` and `level_instance_id`) in combination with `abbreviation`,
+- **instance** properties (`volume`, `level` and `volume_level_instance`) in combination with `abbreviation`,
 `MUST` define a specific/unique instance of equipment within a project.
 - `volume` and `level` integer properties may be mapped to more human-readable codes,
 when this is done the mappings `MUST` be provided to the project teams.
@@ -104,11 +104,11 @@ if `type_extra` is included it `MUST` be delimited from the `unique_type_referen
 
 The instance tag is used to indicate a specific instance of equipment within a project.
 For a given unique item of equipment in a project, the `instance_tag` `MUST` be unique.
-The `instance_tag` `SHOULD` indicate the equipment `abbreviation`, the volume, level and `level_instance_id`.
+The `instance_tag` `SHOULD` indicate the equipment `abbreviation`, the volume, level and `volume_level_instance`.
 The `instance_tag` `MAY` be the same as the `bdns_tag`.
 
 Extra information about the equipment instance `MAY` be stored in the `instance_extra` property.
-For legibility, the `unique_instance_reference` `MAY` be formatted with a delimiter (`instance_tag_delimiter`) between the `abbreviation`, `volume_reference`, `level_reference` and `level_instance_id`.
+For legibility, the `unique_instance_reference` `MAY` be formatted with a delimiter (`instance_tag_delimiter`) between the `abbreviation`, `volume_reference`, `level_reference` and `volume_level_instance`.
 The `unique_instance_reference` `MUST` serialisable / deserialisable to / from the `bdns_tag`.
 The `instance_tag` `MUST` include the `unique_instance_reference` and `MAY` include the `instance_extra` field.
 Where there is only 1no project volume, the `volume_reference` `MAY` be omitted from the `instance_tag`.
@@ -135,14 +135,14 @@ This is because mezzanine levels are 1/2 levels, and there is no logical way to 
 
 ### `instance_tag` Example
 
-- `abbreviation` = `LT`, `volume_id` = `1`, `level_id` = `0`, `level_instance_id` = `1`, `instance_extra` = `E`, `instance_extra_delimiter` = `/`, `instance_tag_delimiter` = `_`
+- `abbreviation` = `LT`, `volume_id` = `1`, `level_id` = `0`, `volume_level_instance` = `1`, `instance_extra` = `E`, `instance_extra_delimiter` = `/`, `instance_tag_delimiter` = `_`
   - => `volume_reference` = `A`, `level_reference` = `GF`
   - => `unique_instance_reference` = `LT/A/GF/1`
   - => `instance_tag` = `LT/A/GF/1_E`
 
 ## BDNS Tag
 
-For a given `abbreviation`, the `volume_id`, `level_id` and `level_instance_id` `MUST` be combined to create a unique identifier (`instance_id`) for each piece of equipment.
+For a given `abbreviation`, the `volume_id`, `level_id` and `volume_level_instance` `MUST` be combined to create a unique identifier (`instance_id`) for each piece of equipment.
 NOTE. This unique number `MUST` be independent of the specific equipment type (`type`).
 
 | property name | property type | data type        | description                                                                          |
@@ -150,11 +150,11 @@ NOTE. This unique number `MUST` be independent of the specific equipment type (`
 | instance_id   | Instance      | positive integer | combined with `abbreviation` creates a unique reference to an item of equipment      |
 | bdns_tag      | Instance      | string           | unique reference to a given piece of equipment, which encodes abbreviation, level and volume |
 
-It `MUST` be possible to serialise and deserialise between [`volume_id`, `level_id` and `level_instance_id`] and [`instance_id`] to create a unique identifier for each piece of equipment.
+It `MUST` be possible to serialise and deserialise between [`volume_id`, `level_id` and `volume_level_instance`] and [`instance_id`] to create a unique identifier for each piece of equipment.
 
-It `SHOULD` be simple to a user interogating the `instance_id` how to determine the `volume_id`, `level_id` and `level_instance_id`.
+It `SHOULD` be simple to a user interogating the `instance_id` how to determine the `volume_id`, `level_id` and `volume_level_instance`.
 
-- e.g. `instance_id` = `1001` would be `volume_id` = `1`, `level_id` = `0` and `level_instance_id` = `1`.
+- e.g. `instance_id` = `1001` would be `volume_id` = `1`, `level_id` = `0` and `volume_level_instance` = `1`.
 
 ### `bdns_tag` Valid Implementations
 

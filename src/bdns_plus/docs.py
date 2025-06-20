@@ -83,7 +83,7 @@ def summarise_instance_reference_construction(config_iref: ConfigIref) -> str:
 
 - Volumes are represented by {volume_no_digits}no integer digits (volume_id).
 - Levels are represented by {level_no_digits}no integer digits (level_id).
-- An enumerating integer value is added to ensure uniqueness for a given floor / level (level_instance_id).
+- An enumerating integer value is added to ensure uniqueness for a given floor / level (volume_level_instance).
 - These numbers are joined without delimiter to create a unique number for a given abbreviation:
   - {INSTANCE_REFERENCE_FSTRING.replace("{", "[").replace("}", "]")}"""
 
