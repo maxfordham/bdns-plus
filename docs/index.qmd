@@ -4,7 +4,7 @@ title: BDNS-plus (WIP)
 ---
 
 {{< var bdns >}} (Building Device Naming Syntax) ➕ **equipment tagging**.
-`bdns-plus` extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
+`bdns-plus` is a superset of {{< var bdns >}}: extending BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
 It does so by defining metadata required for every item of equipment, from this metadata it is then possible to serialize a [BDNS compliant, machine read-able tag](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2),
 as well a tag that clearly communicates the metadata in a format designed for improved human-legibility and compliance with project standards.
 
@@ -12,13 +12,13 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 
 ## Definition of Terms
 
-- `project` - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.
-- `volume` - a section of a project. For a single building project it typically has 1 volume. For a multi-building project each building will be a volume. External landscaping may be a separate volume.
-- `level` - a floor of a building.
-- `type` - a specific type of equipment, i.e. an item with a defined model number that can ultimately be purchased.
-- `instance` - a specific piece of equipment / asset within a project. Every asset is unique.
-- **WIP** `system_type` - what system type a piece of equipment belongs to (e.g. a radiator would below to LTHW system type)
-- **WIP** `system_id` - the specific system that a piece of equipment belongs to. For electrical systems this parameter
+- **project** - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.
+- **volume** - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume. External landscaping may be a separate volume.
+- **level** - a floor of a building. This `MAY`  include [mezzanine levels], see discussion.
+- **type** - a specific type of equipment, i.e. an item with a defined model number that can ultimately be purchased.
+- **instance** - a specific piece of equipment / asset within a project. Every asset is unique.
+- **coming soon...** **system_type** - what system type a piece of equipment belongs to (e.g. a radiator would below to LTHW system type)
+- **coming soon...** **system_id** - the specific system that a piece of equipment belongs to. For electrical systems this parameter
 isn't used as typically all electrical appliances will connect back a common point (the utilities connection), but for
 closed mechanical systems (e.g. LTHW systems) it is possible/common to have multiple distinct closed systems within a single project.
 
@@ -38,23 +38,27 @@ Using this approach it is possible to apply BDNS a compliant methodology on a la
 leading to a potential value-add if the projects considers a BDNS compliant asset solution at the later stages of the project.
 
 In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined.
+The properties are used to: a) store valuable data about the item, b) create identification tags.
 By definition, the mimumum information that `MUST` be recorded is:
 
 | property name     | property type | description                                                                         |
 |-------------------|---------------|-------------------------------------------------------------------------------------|
 | abbreviation      | Type          | uppercase, alphabetic, 2-6 chars, indicates equipment type                          |
-| type              | Type          | refers to a specific equipment type used within a project                           |
-| volume            | Instance      | indicates the volume within a project the equipment is situated                     |
-| level             | Instance      | indicates the level within a project the equipment is situated                      |
-| level_instance_id | Instance      | a numerical indentifyer for a specific piece of equipment within a volume and level |
-| unique_instance_id| Instance      | calculated value from other instance parameters. used to create bdns tag            |
+| type              | Type          | +ve integer. refers to a specific equipment type used within a project                          |
+| volume            | Instance      | +ve integer. indicates the volume within a project the equipment is situated.                 |
+| level             | Instance      | +ve integer. indicates the level within a project the equipment is situated                      |
+| level_instance_id | Instance      | +ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level | #TODO: volume_level_instance
+| unique_instance_id| Instance      | +ve integer. calculated value from other instance parameters. used to create bdns tag            |
 
 
-Parameters with property type, `Type` (`abbreviation` and `type`) would be the same for every identical item of equipment.
-Parameters with property type, `Instance` (`volume`, `level` and `level_instance_id`), define a specific instance of
-equipment within a project and the combination of these paramenters and `abbreviation` `MUST` be unique.
 
-The tagging properties can used to generate:
+- **type** properties (`abbreviation` and `type`) would be the same for every identical item of equipment.
+- **instance** properties (`volume`, `level` and `level_instance_id`) in combination with `abbreviation`,
+`MUST` define a specific/unique instance of equipment within a project.
+- `volume` and `level` integer properties may be mapped to more human-readable codes,
+when this is done the mappings `MUST` be provided to the project teams.
+
+Tagging properties are used to generate:
 
 - a **type tag**. to indicate the type of a given asset/piece of equipment.
   - this is unique to the equipemnt type only, there may be many instances of this type in a building.
@@ -65,21 +69,19 @@ The tagging properties can used to generate:
 - a **BDNS tag**. this is `MUST` be unique to an individual asset within a project.
   - its focus is on legibility and ease of use for humans and machines.
 
-It is acknowledged that positive integers are a restrictive format to communicate volume and level information, and that this may not be the best way to communicate this information to a user. In the sections below a description is given about how a software system can be used to convert between the `volume_id`, `level_id` and `level_instance_id` and a more human-readable format.
-
 ## Type Tag
 
 The `type_tag` is used to indicate the type of a given asset/piece of equipment on design information.
-For a given `Type` of equipment, the combination of the `abbreviation` and `type_id` `MUST` be unique.
+For a given `Type` of equipment, the combination of the `abbreviation` and `type` `MUST` be unique.
 There `MAY` be many instances of eqipment of the same type within a project and therefore many indentical `type_tag`s.
-The `type_id` and `abbreviation` `MUST` be combined without a delimiter to create a `unique_type_reference`.
+The `type` and `abbreviation` `MUST` be combined without a delimiter to create a `unique_type_reference`.
 Extra information about the equipment type `MAY` be stored in the `type_extra` property.
 The `type_tag` `MUST` include the `unique_type_reference` and `MAY` include the `type_extra` field,
 if `type_extra` is included it `MUST` be delimited from the `unique_type_reference` with a `type_extra_delimiter` character.
 
 | property name         | property type | data type                       | description                                                                                              |
 |-----------------------|---------------|---------------------------------|----------------------------------------------------------------------------------------------------------|
-| unique_type_reference | Type          | uppercase alphabetic, 2-6 chars | combines `abbreviation` and `type_id` to create a `unique_type_reference`                                |
+| unique_type_reference | Type          | uppercase alphabetic, 2-6 chars | combines `abbreviation` and `type` to create a `unique_type_reference`                                |
 | type_extra            | Type          | string                          | used to indicate extra type information. e.g. `type_extra`="E" good indicate and emergency light fitting |
 | type_extra_delimiter  | N/A           | string character                | used to delimit `unique_type_reference` and `type_extra`                                                 |
 | type_tag              | Type          | string                          | `MUST` contain `unique_type_reference` and `MAY` contain `type_extra`                                    |
@@ -91,10 +93,10 @@ if `type_extra` is included it `MUST` be delimited from the `unique_type_referen
 
 ### `type_tag` Example
 
-- `abbreviation` = `LT`, `type_id` = `1`, `type_extra` = `E`, `type_extra_delimiter` = `/`
+- `abbreviation` = `LT`, `type` = `1`, `type_extra` = `E`, `type_extra_delimiter` = `/`
   - => `unique_type_reference` = `LT1`
   - => `type_tag` = `LT1/E`
-- `abbreviation` = `RAD`, `type_id` = `3`, `type_extra` = None, `type_extra_delimiter` = `/`
+- `abbreviation` = `RAD`, `type` = `3`, `type_extra` = None, `type_extra_delimiter` = `/`
   - => `unique_type_reference` = `RAD3`
   - => `type_tag` = `RAD3`
 
@@ -105,8 +107,6 @@ For a given unique item of equipment in a project, the `instance_tag` `MUST` be 
 The `instance_tag` `SHOULD` indicate the equipment `abbreviation`, the volume, level and `level_instance_id`.
 The `instance_tag` `MAY` be the same as the `bdns_tag`.
 
-The `volume_id` `MAY` be mapped to a human-readable `volume_reference` and the `level_id` `MAY` be mapped to a human-readable `level_reference`.
-Where a mapped `volume_reference` and `level_reference` is used, a `level_name` and `volume_name` `MAY` also be provided.
 Extra information about the equipment instance `MAY` be stored in the `instance_extra` property.
 For legibility, the `unique_instance_reference` `MAY` be formatted with a delimiter (`instance_tag_delimiter`) between the `abbreviation`, `volume_reference`, `level_reference` and `level_instance_id`.
 The `unique_instance_reference` `MUST` serialisable / deserialisable to / from the `bdns_tag`.
@@ -143,7 +143,7 @@ This is because mezzanine levels are 1/2 levels, and there is no logical way to 
 ## BDNS Tag
 
 For a given `abbreviation`, the `volume_id`, `level_id` and `level_instance_id` `MUST` be combined to create a unique identifier (`instance_id`) for each piece of equipment.
-NOTE. This unique number `MUST` be independent of the specific equipment type (`type_id`).
+NOTE. This unique number `MUST` be independent of the specific equipment type (`type`).
 
 | property name | property type | data type        | description                                                                          |
 |---------------|---------------|------------------|--------------------------------------------------------------------------------------|
