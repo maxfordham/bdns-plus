@@ -2,16 +2,42 @@ project:
   type: website
 
 website:
+  favicon: tag-solid.ico
   navbar:
     left:
       - index.qmd
-      - examples.qmd
-      - compare-ifc4_3.qmd
+      - volumes-and-levels.qmd
+      - tags.py
+      - customisations.py
+      - serialisation.qmd
+      - revit.qmd
+      - text: "Examples"
+        id: examples
+        href: examples/index.html
+
+
+    right:
+      - text: "Notes"
+        href: compare-ifc4_3.qmd
+      - icon: github
+        href: https://github.com/maxfordham/bdns-plus
+        aria-label: GitHub
+
+
+  sidebar:
+    - id: examples
+      contents: 
+        - examples/index.py
+        - examples/single-volume.py
+        - examples/custom-volume-and-level-codes.py
+        - examples/reformat-type-and-instance-tags.py
+        - examples/single-volume-mezzanine-levels.py
+        - examples/custom-nomenclature-for-vent-equipment.py
 
 format:
   html:
-    theme:
-      - cosmo
-      - brand
     css: styles.css
     toc: true
+    theme:
+      light: flatly
+      dark: darkly

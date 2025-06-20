@@ -1,6 +1,8 @@
 ---
 title: Compare BDNS Abbreviations vs ifc4x3 classes
 toc: true
+execute:
+  enabled: false
 format:
   html:
     code-fold: true
@@ -11,12 +13,14 @@ jupyter:
       extension: .qmd
       format_name: quarto
       format_version: '1.0'
-      jupytext_version: 1.17.0
+      jupytext_version: 1.17.2
   kernelspec:
     display_name: Python 3 (ipykernel)
     language: python
     name: python3
 ---
+
+
 ```{python}
 import pandas as pd
 import pathlib
@@ -129,3 +133,4 @@ df["bdns_suggested_updates"] = df.ifc_class.map(updates)
 # df.to_csv("map.csv")
 df.fillna("").style
 ```
+

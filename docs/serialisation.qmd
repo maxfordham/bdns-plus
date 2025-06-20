@@ -1,0 +1,15 @@
+---
+toc: true
+execute:
+  echo: false
+title: Serialisation
+---
+
+## Serialising Unique Numeric Identifiers
+
+It is helpful to have a simple, machine readable unique integer number to identify
+a piece of equipment of a given abbreviation, as [described here by BDNS](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2). Given that in BDNS-plus other fields which identify
+a specific instance of equipment are defined; it is possible to generate a unique id from these fields.
+
+
+
