@@ -46,7 +46,7 @@ display(gr_levels)
 
 The volume "code" and level "code" will be a parameter defined on every placed instance in Revit.
 These codes can then be used to build a tag, and also be used to map to the id and generate a
-BDNS compliant unique_instance_id.
+BDNS compliant bdns_id.
 
 For example, given the following data:
 
@@ -101,7 +101,7 @@ Setting the levels and volumes explicitly allows users to:
 (i.e. >90 floors, >9 basement floors, >9 volumes)
 - add custom project encodings for levels and volumes
    - e.g. define volumes as A, B, C, D rather than numeric
-- add encodings for things like mezzanine levels
+- add encodings for things like mezzanine levels (see [mezzanine example](examples/simgle-volume-mezzanine-levels))
    - Note: this is not recommended as when codifying to an integer value for producing the BDNS tag
      it is impossible to map 1/2 floors (i.e. mezzanines).
 

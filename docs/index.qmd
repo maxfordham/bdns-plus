@@ -4,10 +4,11 @@ title: BDNS-plus (WIP)
 ---
 
 {{< var bdns >}} (Building Device Naming Syntax) ➕ **equipment tagging**.
-`bdns-plus` is a superset of {{< var bdns >}}: extending BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
-`bdns-plus` defines metadata required for every item of equipment, from which it is possible to serialize a [BDNS compliant, machine read-able tag](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2) (`bdns_tag`),
-as well a `instance_tag` and `type_tag` which comunnicate the same metadata in a format designed for improved human-legibility and compliance with project standards.
-`bdns-plus` is also a python package, that can be used to define tags and build tags from object data.
+`bdns-plus` is a superset of {{< var bdns >}}: it extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications).
+`bdns-plus` defines metadata required for every item of equipment.
+From the metadata `bdns-plus` will serialize a [BDNS compliant, machine read-able tag](https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2) (`bdns_tag`),
+as well an `instance_tag` and `type_tag` in a project configurable format that is optimised for improved human-legibility.
+`bdns-plus` is a python package, that can be used to define tags and build tags from object data.
 
 To quickly grasps the projects goals refer to the [examples](examples/index).
 
@@ -16,8 +17,9 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 ## Definition of Terms
 
 - **project** - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.
-- **volume** - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume. External landscaping may be a separate volume.
-- **level** - a floor of a building. This `MAY`  include [mezzanine levels], see discussion.
+- **volume** - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume.
+Mixed use buildings can also be separated into multiple volumes defined by use-type. External landscaping may be a separate volume.
+- **level** - a floor of a building. This `MAY` include [mezzanine levels, see example.](examples/simgle-volume-mezzanine-levels)
 - **type** - a specific type of equipment, i.e. an item with a defined model number that can ultimately be purchased.
 - **instance** - a specific piece of equipment / asset within a project. Every asset is unique.
 <!-- - **coming soon...** **system_type** - what system type a piece of equipment belongs to (e.g. a radiator would below to LTHW system type)
@@ -25,20 +27,16 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 isn't used as typically all electrical appliances will connect back a common point (the utilities connection), but for
 closed mechanical systems (e.g. LTHW systems) it is possible/common to have multiple distinct closed systems within a single project. -->
 
-## Overview
+## Required Properties and Tags
 
 A definition of the properties required for equipment tagging for the digital identification of equipment
 for use in the design, construction and management of buildings.
 
-It is designed to be an opinionated superset of the [BDNS](https://theodi.github.io/BDNS/) standard.
-The focus of this standard is to simultaneously provide a unique, machine-readable identifier for each asset as well
-as a human-readable and intuitive tag that can be used on drawings and other design information. Whilst the BDNS standard
-`MAY` be used as is for equipment tagging on drawing and at later stages in asset management systems, the formation of the
-`bdns_tag` is not consistent with many project drawing standards. This standard aims to consistently define the properties
-that `MUST` be recorded for each asset, and from this information it `MUST` be possible to generate a compliant `bdns_tag`. 
-The same properties `MUST` then be used to create a more flexible / human-readable `type_tag` and `instance_tag` for equipment references/tags on drawings.
-Using this approach it is possible to apply BDNS a compliant methodology on a larger number of projects, improving standardisation and
-leading to a potential value-add if the projects considers a BDNS compliant asset solution at the later stages of the project.
+::: {.callout-note}
+On some projects it may make the most sense to use vanilla BDNS throughout all design information
+and asset management systems. `bdns-plus` enables projects that require more flexibility in how a tag
+is displaced also comply with BDNS.
+:::
 
 In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined.
 The properties are used to: a) store valuable data about the item, b) create identification tags.
@@ -51,33 +49,22 @@ By definition, the mimumum information that `MUST` be recorded is:
 | type_extra        | Type          | string. *optional*. extra type info that `MAY` be included with the `type_tag`. `MUST NOT` be used for uniqueness|
 | volume            | Instance      | +ve integer. indicates the volume within a project the equipment is situated.                 |
 | level             | Instance      | +ve integer. indicates the level within a project the equipment is situated                      |
-| volume_level_instance | Instance      | +ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level | 
-| unique_instance_id| Instance      | +ve integer. calculated value from other instance parameters. used to create bdns tag            |
-| instance_extra    | Instance          | string. *optional*. extra instance info that `MAY` be included with the `instance_tag`/`bdns_tag`. `MUST NOT` be used for uniqueness|
+| volume_level_instance | Instance  | +ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level | 
+| bdns_id           | Instance      | +ve integer. calculated value from other instance parameters. combined with abbreviation to create a bdns tag            |
+| instance_extra    | Instance      | string. *optional*. extra instance info that `MAY` be included with the `instance_tag`/`bdns_tag`. `MUST NOT` be used for uniqueness|
+
 <!-- system_type
 system_id -->
 
+Tagging properties are used to generate the following tags.
 
-- **Type** properties would be the same for every identical item of equipment.
-- **Instance** properties in combination with `abbreviation`,
-`MUST` define a specific/unique instance of equipment within a project.
-- `volume` and `level` integer properties may be mapped to more human-readable codes,
-when this is done the mappings `MUST` be provided to the project teams.
 
-Tagging properties are used to generate:
-
-- a **type tag**. to indicate the type of a given asset/piece of equipment.
-  - this is unique to the equipemnt type only, there may be many instances of this type in a building.
-  - as an example, this is typically used on lighting layouts where many luminaires of the same type are used.
-- a **instance tag**. this is `MUST` be unique to an individual asset within a project.
-  - it is directly interchangeable with the bdns tag (and `MAY` be the same).
-  - its focus is on legibility and ease of use for humans.
 - a **BDNS tag**. this is `MUST` be unique to an individual asset within a project.
   - its focus is on legibility and ease of use for humans and machines.
 
 The way that type tags, instance tags and bdns tags are build `SHOULD` be the same for every type of equipment in a project.
-User `MAY`, but `SHOULD NOT` choose to have different tagging methodolgies for specific types of equipment. When this is done
-they `MUST` define a [custom tag definition](tags#Custom-Tags-for-Specific-Equipment-Types) and scope that is shared with the project team.
+Users `MAY`, but `SHOULD NOT` choose to have different tagging methodolgies for specific types of equipment. When this is done
+they `MUST` define a [custom tag definition](tags#Custom-Tags-for-Specific-Equipment-Types) and [scope](tags#How-to-Define-the-Scope-of-a-Custom-Tag) that is shared with the project team.
 
 ## Type Tag
 
@@ -104,12 +91,13 @@ Where uses create custom tag definitions, these `MUST` be provided to the design
 
 The instance tag is used to indicate a specific instance of equipment within a project.
 For a given unique item of equipment in a project, the `instance_tag` `MUST` be unique.
-The `instance_tag` `SHOULD` indicate the equipment `abbreviation`, the `volume`, `level` and `volume_level_instance`.
+The `instance_tag` `SHOULD` indicate the equipment `abbreviation`, the `volume`, `level` and `volume_level_instance`,
+which when combined `MUST` be unique for every item of equipment in the project.
 The `instance_tag` `MAY` be the same as the `bdns_tag`.
 
 Extra information about the equipment instance `MAY` be stored in the `instance_extra` property.
-The `unique_instance_reference` `MUST` serialisable / deserialisable to / from the `bdns_tag`.
-Where there is only 1no project volume, the `volume` `MAY` be omitted from the `instance_tag`.
+Where there is only 1no project volume, the `volume` `MAY` be omitted from the `instance_tag`, see [single-volume example](examples/single-volume).
+
 
 ### `instance_tag` Example using bdns-plus defaults
 
@@ -118,10 +106,10 @@ Where there is only 1no project volume, the `volume` `MAY` be omitted from the `
 
 ## BDNS Tag
 
-For a given `abbreviation`, the `volume`, `level` and `volume_level_instance` `SHOULD` be combined to create a unique identifier (`unique_instance_id`) for each piece of equipment.
-See [serialisation](serialisation).
-The `bdns_tag` must take the format defined in the the [BDNS Standard](https://jgunstone.github.io/BDNS/BDNS_Specification_naming_syntax.html#physical-deviceasset-labels), and provided by `bdns-plus` as default.
-
+The combination of `abbreviation` and `bdns_id` `MUST` be unique for every item of equipment in a project.
+The `volume`, `level` and `volume_level_instance` `SHOULD` be combined to create `bdns_id` for each piece of equipment,
+this is the currently the only configuration offered by `bdns-plus`, see [serialisation](serialisation).
+The `bdns_tag` `MUST` take the format defined in the the [BDNS Standard](https://jgunstone.github.io/BDNS/BDNS_Specification_naming_syntax.html#physical-deviceasset-labels), and provided by `bdns-plus` as default.
 
 ### `bdns_tag` Example using bdns-plus defaults
 
