@@ -75,8 +75,8 @@ Refer to [reformat-type-and-instance-tags](examples/reformat-type-and-instance-t
 
 # %%
 tag_def = {
-    "name": "Ventilation Equipment Instances",
-    "description": "a example tag definition for ventilation instances",
+    "name": "Equipment Instances",
+    "description": "a example tag definition with different formatting",
     "fields": [
         {
             "field_name": "abbreviation",
@@ -205,10 +205,11 @@ In the code below you can see how a ruleset is defined to filter out the equipme
 
 # %%
 import pandas as pd
+import polars as pl
 from pyrulefilter import Rule, RuleSet, ruleset_check_dicts
 
-from bdns_plus.docs import get_idata_tag_table
-from bdns_plus.gen_idata import batch_gen_idata
+from bdns_plus.docs import display_tag_data, get_idata_tag_table, get_tags, get_vent_equipment
+from bdns_plus.gen_idata import batch_gen_idata, gen_config_iref
 from bdns_plus.models import Config, CustomTagDef, GenDefinition, TagDef
 
 
@@ -219,12 +220,14 @@ def get_idata_tag_df(header: list[tuple], idata: list[dict]) -> pd.DataFrame:
     return df_tags
 
 
-gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=[1])
-gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=[1, 2, 3], on_volumes=[1])
-gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0], on_volumes=[1])
-gen_defs = [gen_def1, gen_def2, gen_def3]
-idata = batch_gen_idata(gen_defs, config_iref)
-
+# gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=[1])
+# gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=[1, 2, 3], on_volumes=[1])
+# gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0], on_volumes=[1])
+# gen_defs = [gen_def1, gen_def2, gen_def3]
+# idata = batch_gen_idata(gen_defs, config_iref)
+LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 2
+config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+idata = get_vent_equipment(config_iref)
 
 r = Rule(
     parameter="abbreviation",
@@ -246,4 +249,12 @@ custom_tag = CustomTagDef(
     scope=rule_set,
 )
 config = Config(custom_tags=[custom_tag])
-display(get_idata_tag_df(*get_idata_tag_table(idata, config=config)))
+data = [
+    {"section": "vent", "is_custom": "False"} | x.model_dump(mode="json") | get_tags(x, config=config) for x in idata
+]  # TODO: generalise this into fn in docs.py
+di_arrays = {key: [d.get(key, None) for d in data] for key in data[0]}
+di_arrays = {k: [str(x) if x is not None else "" for x in v] for k, v in di_arrays.items()}
+df_tags = pl.DataFrame(di_arrays)
+df_tags = df_tags.drop("uniclass_ss")
+display_tag_data(df_tags)
+# display(get_idata_tag_df(*get_idata_tag_table(idata, config=config)))
