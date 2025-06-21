@@ -382,7 +382,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="default-tag-definitions" class="level2">
 <h2 class="anchored" data-anchor-id="default-tag-definitions">Default Tag Definitions</h2>
 <p>The default tag definitions are available in the <code>ConfigTags</code> class.</p>
-<div id="44329e2c" class="cell" data-execution_count="2">
+<div id="67beb177" class="cell" data-execution_count="2">
 <section id="type-tag" class="level3 cell-output cell-output-display cell-output-markdown">
 <h3 class="anchored" data-anchor-id="type-tag">Type Tag</h3>
 <p>Default Tag Definition for indentifying a unique type of equipment, there is likely to be many instances of a type in the building. Expected to be used when a unique reference to every item is not required. For example, a light fitting type that may be used in many locations.</p>
@@ -430,12 +430,12 @@ Tip
 <p>Refer to <a href="examples/reformat-type-and-instance-tags">reformat-type-and-instance-tags</a> for a more comprehensive example.</p>
 </div>
 </div>
-<div id="8b3659b0" class="cell" data-execution_count="3">
+<div id="7ed688f2" class="cell" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>tag_def <span class="op">=</span> {</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"Ventilation Equipment Instances"</span>,</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"description"</span>: <span class="st">"a example tag definition for ventilation instances"</span>,</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="st">"name"</span>: <span class="st">"Equipment Instances"</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"description"</span>: <span class="st">"a example tag definition with different formatting"</span>,</span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">"fields"</span>: [</span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        {</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            <span class="st">"field_name"</span>: <span class="st">"abbreviation"</span>,</span>
@@ -518,8 +518,8 @@ Tag Definition as json data. Can be loaded dynamically and configured per projec
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="sourceCode" id="cb2"><pre class="sourceCode json code-with-copy"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Ventilation Equipment Instances"</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"a example tag definition for ventilation instances"</span><span class="fu">,</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"name"</span><span class="fu">:</span> <span class="st">"Equipment Instances"</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"description"</span><span class="fu">:</span> <span class="st">"a example tag definition with different formatting"</span><span class="fu">,</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="dt">"fields"</span><span class="fu">:</span> <span class="ot">[</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">"field_name"</span><span class="fu">:</span> <span class="st">"abbreviation"</span><span class="fu">,</span></span>
@@ -575,9 +575,9 @@ Tag Definition as json data. Can be loaded dynamically and configured per projec
 </div>
 </div>
 </div>
-<section id="ventilation-equipment-instances" class="level3 cell-output cell-output-display cell-output-markdown">
-<h3 class="anchored" data-anchor-id="ventilation-equipment-instances">Ventilation Equipment Instances</h3>
-<p>a example tag definition for ventilation instances</p>
+<section id="equipment-instances" class="level3 cell-output cell-output-display cell-output-markdown">
+<h3 class="anchored" data-anchor-id="equipment-instances">Equipment Instances</h3>
+<p>a example tag definition with different formatting</p>
 <p><strong>Required</strong>: [abbreviation].[volume].[level].[level_iref]</p>
 <p><strong>Allowed</strong>: [abbreviation].[volume].[level].[level_iref]</p>
 </section>
@@ -630,7 +630,7 @@ not reccommended
 <p>A RuleSet can be used to define the scope of a custom tag. (For more info refer to <a href="https://maxfordham.github.io/pyrulefilter/">pyrulefilter</a>. It allows the user to define a set of rules that are used to check the equipment data, and returns a boolean value indicating if a RuleSet matches the data. At Max Fordham, RuleSets are also used to define what equipment should be shown in a schedule, so by extension it is then possible to apply custom tags to every equipment item shown within a schedule.</p>
 <section id="ruleset-definition" class="level4">
 <h4 class="anchored" data-anchor-id="ruleset-definition">RuleSet Definition</h4>
-<div id="470e9127" class="cell" data-execution_count="4">
+<div id="61b5f68f" class="cell" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> jsonschema2md</span>
@@ -685,394 +685,488 @@ not reccommended
 <p>In this example, we show how a rule can be defined to give specific equipment a different tag if the data that defines that equipment matches a rule.</p>
 <p>The Exammple below shows ventilation equipment tagged in the normal way, but we’ll assume that AHUs must be named by their volume only (lets pretend that the project is a refurbishment and the AHU names already exist).</p>
 <p>In the code below you can see how a ruleset is defined to filter out the equipment requiring a custom tag.</p>
-<div id="c2c4d6ea" class="cell" data-execution_count="5">
+<div id="ee35392f" class="cell" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyrulefilter <span class="im">import</span> Rule, RuleSet, ruleset_check_dicts</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> get_idata_tag_table</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> Config, CustomTagDef, GenDefinition, TagDef</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> polars <span class="im">as</span> pl</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pyrulefilter <span class="im">import</span> Rule, RuleSet, ruleset_check_dicts</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.docs <span class="im">import</span> display_tag_data, get_idata_tag_table, get_tags, get_vent_equipment</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.gen_idata <span class="im">import</span> batch_gen_idata, gen_config_iref</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> bdns_plus.models <span class="im">import</span> Config, CustomTagDef, GenDefinition, TagDef</span>
 <span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_idata_tag_df(header: <span class="bu">list</span>[<span class="bu">tuple</span>], idata: <span class="bu">list</span>[<span class="bu">dict</span>]) <span class="op">-&gt;</span> pd.DataFrame:</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    annotated_cols <span class="op">=</span> pd.MultiIndex.from_tuples(header)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    df_tags <span class="op">=</span> pd.DataFrame(idata).sort_values(by<span class="op">=</span>[<span class="st">"level"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    df_tags.columns <span class="op">=</span> annotated_cols</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_tags</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> get_idata_tag_df(header: <span class="bu">list</span>[<span class="bu">tuple</span>], idata: <span class="bu">list</span>[<span class="bu">dict</span>]) <span class="op">-&gt;</span> pd.DataFrame:</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    annotated_cols <span class="op">=</span> pd.MultiIndex.from_tuples(header)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    df_tags <span class="op">=</span> pd.DataFrame(idata).sort_values(by<span class="op">=</span>[<span class="st">"level"</span>]).reset_index(drop<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    df_tags.columns <span class="op">=</span> annotated_cols</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> df_tags</span>
 <span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>gen_def1 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"AHU"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span>[<span class="dv">1</span>])</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>gen_def2 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"MVHR"</span>, <span class="st">"TEF"</span>], no_items<span class="op">=</span><span class="dv">1</span>, on_levels<span class="op">=</span>[<span class="dv">1</span>, <span class="dv">2</span>, <span class="dv">3</span>], on_volumes<span class="op">=</span>[<span class="dv">1</span>])</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>gen_def3 <span class="op">=</span> GenDefinition(abbreviation<span class="op">=</span>[<span class="st">"KEF"</span>, <span class="st">"FAN"</span>], no_items<span class="op">=</span><span class="dv">2</span>, on_levels<span class="op">=</span>[<span class="dv">0</span>], on_volumes<span class="op">=</span>[<span class="dv">1</span>])</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>gen_defs <span class="op">=</span> [gen_def1, gen_def2, gen_def3]</span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>idata <span class="op">=</span> batch_gen_idata(gen_defs, config_iref)</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> Rule(</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    parameter<span class="op">=</span><span class="st">"abbreviation"</span>,</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    operator<span class="op">=</span><span class="st">"equals"</span>,</span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">"AHU"</span>,</span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>rule_set <span class="op">=</span> RuleSet(rule<span class="op">=</span>[r], set_type<span class="op">=</span><span class="st">"OR"</span>)</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>custom_tag_def <span class="op">=</span> TagDef(</span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Custom AHU Instance Tag"</span>,</span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>    fields<span class="op">=</span>[</span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        TagField(field_name<span class="op">=</span><span class="st">"abbreviation"</span>, suffix<span class="op">=</span><span class="st">"-"</span>),</span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>        TagField(field_name<span class="op">=</span><span class="st">"volume"</span>, prefix<span class="op">=</span><span class="st">"Volume"</span>),</span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    ],</span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>custom_tag <span class="op">=</span> CustomTagDef(</span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"Custom AHU Tag"</span>,</span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>    i_tag<span class="op">=</span>custom_tag_def,</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>    t_tag<span class="op">=</span>custom_tag_def,  <span class="co"># just override it to be the same</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    scope<span class="op">=</span>rule_set,</span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(custom_tags<span class="op">=</span>[custom_tag])</span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>display(get_idata_tag_df(<span class="op">*</span>get_idata_tag_table(idata, config<span class="op">=</span>config)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=[1])</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=[1, 2, 3], on_volumes=[1])</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0], on_volumes=[1])</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co"># gen_defs = [gen_def1, gen_def2, gen_def3]</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># idata = batch_gen_idata(gen_defs, config_iref)</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>LEVEL_MIN, LEVEL_MAX, NO_VOLUMES <span class="op">=</span> <span class="op">-</span><span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">2</span></span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>config_iref <span class="op">=</span> gen_config_iref(level_min<span class="op">=</span>LEVEL_MIN, level_max<span class="op">=</span>LEVEL_MAX, no_volumes<span class="op">=</span>NO_VOLUMES)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>idata <span class="op">=</span> get_vent_equipment(config_iref)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> Rule(</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>    parameter<span class="op">=</span><span class="st">"abbreviation"</span>,</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>    operator<span class="op">=</span><span class="st">"equals"</span>,</span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>    value<span class="op">=</span><span class="st">"AHU"</span>,</span>
+<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>rule_set <span class="op">=</span> RuleSet(rule<span class="op">=</span>[r], set_type<span class="op">=</span><span class="st">"OR"</span>)</span>
+<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>custom_tag_def <span class="op">=</span> TagDef(</span>
+<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">"Custom AHU Instance Tag"</span>,</span>
+<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    fields<span class="op">=</span>[</span>
+<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>        TagField(field_name<span class="op">=</span><span class="st">"abbreviation"</span>, suffix<span class="op">=</span><span class="st">"-"</span>),</span>
+<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>        TagField(field_name<span class="op">=</span><span class="st">"volume"</span>, prefix<span class="op">=</span><span class="st">"Volume"</span>),</span>
+<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>    ],</span>
+<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>custom_tag <span class="op">=</span> CustomTagDef(</span>
+<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>    description<span class="op">=</span><span class="st">"Custom AHU Tag"</span>,</span>
+<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>    i_tag<span class="op">=</span>custom_tag_def,</span>
+<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    t_tag<span class="op">=</span>custom_tag_def,  <span class="co"># just override it to be the same</span></span>
+<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>    scope<span class="op">=</span>rule_set,</span>
+<span id="cb5-44"><a href="#cb5-44" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-45"><a href="#cb5-45" aria-hidden="true" tabindex="-1"></a>config <span class="op">=</span> Config(custom_tags<span class="op">=</span>[custom_tag])</span>
+<span id="cb5-46"><a href="#cb5-46" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> [</span>
+<span id="cb5-47"><a href="#cb5-47" aria-hidden="true" tabindex="-1"></a>    {<span class="st">"section"</span>: <span class="st">"vent"</span>, <span class="st">"is_custom"</span>: <span class="st">"False"</span>} <span class="op">|</span> x.model_dump(mode<span class="op">=</span><span class="st">"json"</span>) <span class="op">|</span> get_tags(x, config<span class="op">=</span>config) <span class="cf">for</span> x <span class="kw">in</span> idata</span>
+<span id="cb5-48"><a href="#cb5-48" aria-hidden="true" tabindex="-1"></a>]  <span class="co"># </span><span class="al">TODO</span><span class="co">: generalise this into fn in docs.py</span></span>
+<span id="cb5-49"><a href="#cb5-49" aria-hidden="true" tabindex="-1"></a>di_arrays <span class="op">=</span> {key: [d.get(key, <span class="va">None</span>) <span class="cf">for</span> d <span class="kw">in</span> data] <span class="cf">for</span> key <span class="kw">in</span> data[<span class="dv">0</span>]}</span>
+<span id="cb5-50"><a href="#cb5-50" aria-hidden="true" tabindex="-1"></a>di_arrays <span class="op">=</span> {k: [<span class="bu">str</span>(x) <span class="cf">if</span> x <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> <span class="st">""</span> <span class="cf">for</span> x <span class="kw">in</span> v] <span class="cf">for</span> k, v <span class="kw">in</span> di_arrays.items()}</span>
+<span id="cb5-51"><a href="#cb5-51" aria-hidden="true" tabindex="-1"></a>df_tags <span class="op">=</span> pl.DataFrame(di_arrays)</span>
+<span id="cb5-52"><a href="#cb5-52" aria-hidden="true" tabindex="-1"></a>df_tags <span class="op">=</span> df_tags.drop(<span class="st">"uniclass_ss"</span>)</span>
+<span id="cb5-53"><a href="#cb5-53" aria-hidden="true" tabindex="-1"></a>display_tag_data(df_tags)</span>
+<span id="cb5-54"><a href="#cb5-54" aria-hidden="true" tabindex="-1"></a><span class="co"># display(get_idata_tag_df(*get_idata_tag_table(idata, config=config)))</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display">
-<div>
+<div class="cell-output cell-output-display" data-execution_count="5">
+<div id="ccfmgidsbs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>
+#ccfmgidsbs table {
+          font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
 
+#ccfmgidsbs thead, tbody, tfoot, tr, td, th { border-style: none; }
+ tr { background-color: transparent; }
+#ccfmgidsbs p { margin: 0; padding: 0; }
+ #ccfmgidsbs .gt_table { display: table; border-collapse: collapse; line-height: normal; margin-left: auto; margin-right: auto; color: #333333; font-size: 16px; font-weight: normal; font-style: normal; background-color: #FFFFFF; width: auto; border-top-style: solid; border-top-width: 2px; border-top-color: #A8A8A8; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #A8A8A8; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; }
+ #ccfmgidsbs .gt_caption { padding-top: 4px; padding-bottom: 4px; }
+ #ccfmgidsbs .gt_title { color: #333333; font-size: 125%; font-weight: initial; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; border-bottom-color: #FFFFFF; border-bottom-width: 0; }
+ #ccfmgidsbs .gt_subtitle { color: #333333; font-size: 85%; font-weight: initial; padding-top: 3px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; border-top-color: #FFFFFF; border-top-width: 0; }
+ #ccfmgidsbs .gt_heading { background-color: #FFFFFF; text-align: center; border-bottom-color: #FFFFFF; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ccfmgidsbs .gt_bottom_border { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ccfmgidsbs .gt_col_headings { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; }
+ #ccfmgidsbs .gt_col_heading { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; padding-left: 5px; padding-right: 5px; overflow-x: hidden; }
+ #ccfmgidsbs .gt_column_spanner_outer { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: normal; text-transform: inherit; padding-top: 0; padding-bottom: 0; padding-left: 4px; padding-right: 4px; }
+ #ccfmgidsbs .gt_column_spanner_outer:first-child { padding-left: 0; }
+ #ccfmgidsbs .gt_column_spanner_outer:last-child { padding-right: 0; }
+ #ccfmgidsbs .gt_column_spanner { border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: bottom; padding-top: 5px; padding-bottom: 5px; overflow-x: hidden; display: inline-block; width: 100%; }
+ #ccfmgidsbs .gt_spanner_row { border-bottom-style: hidden; }
+ #ccfmgidsbs .gt_group_heading { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; text-align: left; }
+ #ccfmgidsbs .gt_empty_group_heading { padding: 0.5px; color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; vertical-align: middle; }
+ #ccfmgidsbs .gt_from_md> :first-child { margin-top: 0; }
+ #ccfmgidsbs .gt_from_md> :last-child { margin-bottom: 0; }
+ #ccfmgidsbs .gt_row { padding-top: 8px; padding-bottom: 8px; padding-left: 5px; padding-right: 5px; margin: 10px; border-top-style: solid; border-top-width: 1px; border-top-color: #D3D3D3; border-left-style: none; border-left-width: 1px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 1px; border-right-color: #D3D3D3; vertical-align: middle; overflow-x: hidden; }
+ #ccfmgidsbs .gt_stub { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; }
+ #ccfmgidsbs .gt_stub_row_group { color: #333333; background-color: #FFFFFF; font-size: 100%; font-weight: initial; text-transform: inherit; border-right-style: solid; border-right-width: 2px; border-right-color: #D3D3D3; padding-left: 5px; padding-right: 5px; vertical-align: top; }
+ #ccfmgidsbs .gt_row_group_first td { border-top-width: 2px; }
+ #ccfmgidsbs .gt_row_group_first th { border-top-width: 2px; }
+ #ccfmgidsbs .gt_striped { background-color: rgba(128,128,128,0.05); }
+ #ccfmgidsbs .gt_table_body { border-top-style: solid; border-top-width: 2px; border-top-color: #D3D3D3; border-bottom-style: solid; border-bottom-width: 2px; border-bottom-color: #D3D3D3; }
+ #ccfmgidsbs .gt_sourcenotes { color: #333333; background-color: #FFFFFF; border-bottom-style: none; border-bottom-width: 2px; border-bottom-color: #D3D3D3; border-left-style: none; border-left-width: 2px; border-left-color: #D3D3D3; border-right-style: none; border-right-width: 2px; border-right-color: #D3D3D3; }
+ #ccfmgidsbs .gt_sourcenote { font-size: 90%; padding-top: 4px; padding-bottom: 4px; padding-left: 5px; padding-right: 5px; text-align: left; }
+ #ccfmgidsbs .gt_left { text-align: left; }
+ #ccfmgidsbs .gt_center { text-align: center; }
+ #ccfmgidsbs .gt_right { text-align: right; font-variant-numeric: tabular-nums; }
+ #ccfmgidsbs .gt_font_normal { font-weight: normal; }
+ #ccfmgidsbs .gt_font_bold { font-weight: bold; }
+ #ccfmgidsbs .gt_font_italic { font-style: italic; }
+ #ccfmgidsbs .gt_super { font-size: 65%; }
+ #ccfmgidsbs .gt_footnote_marks { font-size: 75%; vertical-align: 0.4em; position: initial; }
+ #ccfmgidsbs .gt_asterisk { font-size: 100%; vertical-align: 0; }
+ 
+</style>
 
-<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
 <thead>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">v</th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">l</th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">b</th>
+<tr class="gt_heading header">
+<th colspan="11" class="gt_heading gt_title gt_font_normal">Equipment Tags</th>
 </tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">b</th>
-<th data-quarto-table-cell-role="th">o</th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">e</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">y</th>
-<th data-quarto-table-cell-role="th">n</th>
-<th data-quarto-table-cell-role="th">d</th>
+<tr class="gt_heading even">
+<th colspan="11" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Projects contain multiple identical (equipment) type_tag's. bdns_tag's and instance_tag's are unique.</th>
 </tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">b</th>
-<th data-quarto-table-cell-role="th">l</th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">v</th>
-<th data-quarto-table-cell-role="th">_</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">p</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">n</th>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="section" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">section</th>
+<th colspan="3" id="generated-outputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">generated outputs</span></th>
+<th colspan="3" id="type-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">type inputs</span></th>
+<th colspan="4" id="instance-inputs" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><span class="gt_column_spanner">instance inputs</span></th>
 </tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">r</th>
-<th data-quarto-table-cell-role="th">u</th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">e</th>
-<th data-quarto-table-cell-role="th">c</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">s</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">m</th>
-<th colspan="2" data-quarto-table-cell-role="th" data-halign="left">l</th>
-<th data-quarto-table-cell-role="th">u</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">_</th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">_</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">v</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">_</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">_</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">n</th>
-<th data-quarto-table-cell-role="th">t</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">d</th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">c</th>
-<th data-quarto-table-cell-role="th">a</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">r</th>
-<th data-quarto-table-cell-role="th">o</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">g</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">g</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">e</th>
-<th data-quarto-table-cell-role="th">m</th>
-<th data-quarto-table-cell-role="th">s</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">_</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">f</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">c</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">o</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">r</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">a</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">n</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">g</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">p</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">t</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">i</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="even">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">o</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-</tr>
-<tr class="header">
-<th data-quarto-table-cell-role="th"></th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">n</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
-<th data-quarto-table-cell-role="th">NaN</th>
+<tr class="gt_col_headings even">
+<th id="type_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">type_tag</th>
+<th id="instance_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">instance_tag</th>
+<th id="bdns_tag" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">bdns_tag</th>
+<th id="abbreviation" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">abbreviation</th>
+<th id="type_reference" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_reference</th>
+<th id="type_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">type_extra</th>
+<th id="volume" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">volume</th>
+<th id="level" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level</th>
+<th id="level_iref" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">level_iref</th>
+<th id="instance_extra" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="text-align: left; writing-mode: sideways-lr; vertical-align: middle; padding: 8px 0px;" scope="col">instance_extra</th>
 </tr>
 </thead>
-<tbody>
+<tbody class="gt_table_body">
 <tr class="odd">
-<td data-quarto-table-cell-role="th">0</td>
-<td>AHU</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>air handling unit - air handling unit</td>
-<td>AHU-1001</td>
-<td>AHU-Volume1</td>
-<td>AHU-Volume1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">AHU-Volume1</td>
+<td class="gt_row gt_left">AHU-Volume1</td>
+<td class="gt_row gt_left">AHU-1031</td>
+<td class="gt_row gt_left">AHU</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">1</td>
-<td>KEF</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>fan - kitchen exhaust fan</td>
-<td>KEF-1001</td>
-<td>KEF</td>
-<td>KEF/1/0/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">AHU-Volume2</td>
+<td class="gt_row gt_left">AHU-Volume2</td>
+<td class="gt_row gt_left">AHU-2031</td>
+<td class="gt_row gt_left">AHU</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2</td>
-<td>KEF</td>
-<td>0</td>
-<td>2</td>
-<td>1</td>
-<td>fan - kitchen exhaust fan</td>
-<td>KEF-1002</td>
-<td>KEF</td>
-<td>KEF/1/0/2</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/-1/1</td>
+<td class="gt_row gt_left">MVHR-1991</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
-<td>FAN</td>
-<td>0</td>
-<td>1</td>
-<td>1</td>
-<td>fan</td>
-<td>FAN-1001</td>
-<td>FAN</td>
-<td>FAN/1/0/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/-1/1</td>
+<td class="gt_row gt_left">TEF-1991</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
-<td>FAN</td>
-<td>0</td>
-<td>2</td>
-<td>1</td>
-<td>fan</td>
-<td>FAN-1002</td>
-<td>FAN</td>
-<td>FAN/1/0/2</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/0/1</td>
+<td class="gt_row gt_left">MVHR-1001</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">5</td>
-<td>TEF</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>fan - toilet extract fan</td>
-<td>TEF-1011</td>
-<td>TEF</td>
-<td>TEF/1/1/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/0/1</td>
+<td class="gt_row gt_left">TEF-1001</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">6</td>
-<td>MVHR</td>
-<td>1</td>
-<td>1</td>
-<td>1</td>
-<td>air handling - mechanical ventilation with hea...</td>
-<td>MVHR-1011</td>
-<td>MVHR</td>
-<td>MVHR/1/1/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/1/1</td>
+<td class="gt_row gt_left">MVHR-1011</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">7</td>
-<td>MVHR</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>air handling - mechanical ventilation with hea...</td>
-<td>MVHR-1021</td>
-<td>MVHR</td>
-<td>MVHR/1/2/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/1/1</td>
+<td class="gt_row gt_left">TEF-1011</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8</td>
-<td>TEF</td>
-<td>2</td>
-<td>1</td>
-<td>1</td>
-<td>fan - toilet extract fan</td>
-<td>TEF-1021</td>
-<td>TEF</td>
-<td>TEF/1/2/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/2/1</td>
+<td class="gt_row gt_left">MVHR-1021</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">9</td>
-<td>MVHR</td>
-<td>3</td>
-<td>1</td>
-<td>1</td>
-<td>air handling - mechanical ventilation with hea...</td>
-<td>MVHR-1031</td>
-<td>MVHR</td>
-<td>MVHR/1/3/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/2/1</td>
+<td class="gt_row gt_left">TEF-1021</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">10</td>
-<td>TEF</td>
-<td>3</td>
-<td>1</td>
-<td>1</td>
-<td>fan - toilet extract fan</td>
-<td>TEF-1031</td>
-<td>TEF</td>
-<td>TEF/1/3/1</td>
-<td>False</td>
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/1/3/1</td>
+<td class="gt_row gt_left">MVHR-1031</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
 </tr>
-</tbody>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/1/3/1</td>
+<td class="gt_row gt_left">TEF-1031</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/-1/1</td>
+<td class="gt_row gt_left">MVHR-2991</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/-1/1</td>
+<td class="gt_row gt_left">TEF-2991</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">-1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/0/1</td>
+<td class="gt_row gt_left">MVHR-2001</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/0/1</td>
+<td class="gt_row gt_left">TEF-2001</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/1/1</td>
+<td class="gt_row gt_left">MVHR-2011</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/1/1</td>
+<td class="gt_row gt_left">TEF-2011</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/2/1</td>
+<td class="gt_row gt_left">MVHR-2021</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/2/1</td>
+<td class="gt_row gt_left">TEF-2021</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left">MVHR/2/3/1</td>
+<td class="gt_row gt_left">MVHR-2031</td>
+<td class="gt_row gt_left">MVHR</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left">TEF/2/3/1</td>
+<td class="gt_row gt_left">TEF-2031</td>
+<td class="gt_row gt_left">TEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left">3</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left">KEF/1/0/1</td>
+<td class="gt_row gt_left">KEF-1001</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left">FAN/1/0/1</td>
+<td class="gt_row gt_left">FAN-1001</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left">KEF/1/0/2</td>
+<td class="gt_row gt_left">KEF-1002</td>
+<td class="gt_row gt_left">KEF</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" style="color: #000000; background-color: #f7fcf0">vent</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left">FAN/1/0/2</td>
+<td class="gt_row gt_left">FAN-1002</td>
+<td class="gt_row gt_left">FAN</td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left"></td>
+<td class="gt_row gt_left">1</td>
+<td class="gt_row gt_left">0</td>
+<td class="gt_row gt_left">2</td>
+<td class="gt_row gt_left"></td>
+</tr>
+</tbody><tfoot class="gt_sourcenotes">
+<tr class="odd">
+<td colspan="11" class="gt_sourcenote">Yellow highlighting rows indicate rows that have custom tags.</td>
+</tr>
+</tfoot>
+
 </table>
+
 
 </div>
 </div>
