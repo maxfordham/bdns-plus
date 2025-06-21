@@ -220,11 +220,6 @@ def get_idata_tag_df(header: list[tuple], idata: list[dict]) -> pd.DataFrame:
     return df_tags
 
 
-# gen_def1 = GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[0], on_volumes=[1])
-# gen_def2 = GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=[1, 2, 3], on_volumes=[1])
-# gen_def3 = GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[0], on_volumes=[1])
-# gen_defs = [gen_def1, gen_def2, gen_def3]
-# idata = batch_gen_idata(gen_defs, config_iref)
 LEVEL_MIN, LEVEL_MAX, NO_VOLUMES = -1, 3, 2
 config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
 idata = get_vent_equipment(config_iref)
@@ -257,4 +252,3 @@ di_arrays = {k: [str(x) if x is not None else "" for x in v] for k, v in di_arra
 df_tags = pl.DataFrame(di_arrays)
 df_tags = df_tags.drop("uniclass_ss")
 display_tag_data(df_tags)
-# display(get_idata_tag_df(*get_idata_tag_table(idata, config=config)))
