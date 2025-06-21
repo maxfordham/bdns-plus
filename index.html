@@ -308,7 +308,7 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#definition-of-terms" id="toc-definition-of-terms" class="nav-link active" data-scroll-target="#definition-of-terms">Definition of Terms</a></li>
-  <li><a href="#overview" id="toc-overview" class="nav-link" data-scroll-target="#overview">Overview</a></li>
+  <li><a href="#required-properties-and-tags" id="toc-required-properties-and-tags" class="nav-link" data-scroll-target="#required-properties-and-tags">Required Properties and Tags</a></li>
   <li><a href="#type-tag" id="toc-type-tag" class="nav-link" data-scroll-target="#type-tag">Type Tag</a>
   <ul class="collapse">
   <li><a href="#type_tag-example-using-bdns-plus-defaults" id="toc-type_tag-example-using-bdns-plus-defaults" class="nav-link" data-scroll-target="#type_tag-example-using-bdns-plus-defaults"><code>type_tag</code> Example using bdns-plus defaults</a></li>
@@ -348,15 +348,15 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p><a href="https://theodi.github.io/BDNS/">BDNS</a> (Building Device Naming Syntax) ➕ <strong>equipment tagging</strong>. <code>bdns-plus</code> is a superset of <a href="https://theodi.github.io/BDNS/">BDNS</a>: extending BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications). <code>bdns-plus</code> defines metadata required for every item of equipment, from which it is possible to serialize a <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2">BDNS compliant, machine read-able tag</a> (<code>bdns_tag</code>), as well a <code>instance_tag</code> and <code>type_tag</code> which comunnicate the same metadata in a format designed for improved human-legibility and compliance with project standards. <code>bdns-plus</code> is also a python package, that can be used to define tags and build tags from object data.</p>
+<p><a href="https://theodi.github.io/BDNS/">BDNS</a> (Building Device Naming Syntax) ➕ <strong>equipment tagging</strong>. <code>bdns-plus</code> is a superset of <a href="https://theodi.github.io/BDNS/">BDNS</a>: it extends BDNS to define a consistent and configurable approach to producing equipment references for Design Information (drawings, schedules, specifications). <code>bdns-plus</code> defines metadata required for every item of equipment. From the metadata <code>bdns-plus</code> will serialize a <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-2">BDNS compliant, machine read-able tag</a> (<code>bdns_tag</code>), as well an <code>instance_tag</code> and <code>type_tag</code> in a project configurable format that is optimised for improved human-legibility. <code>bdns-plus</code> is a python package, that can be used to define tags and build tags from object data.</p>
 <p>To quickly grasps the projects goals refer to the <a href="examples/index">examples</a>.</p>
 <p>The key words <code>MUST</code>, <code>MUST NOT</code>, <code>REQUIRED</code>, <code>SHALL</code>, <code>SHALL NOT</code>, <code>SHOULD</code>, <code>SHOULD NOT</code>, <code>RECOMMENDED</code>, <code>MAY</code>, and <code>OPTIONAL</code> in this document are to be interpreted as described in <a href="https://www.ietf.org/rfc/rfc2119.txt">RFC 2119</a>.</p>
 <section id="definition-of-terms" class="level2">
 <h2 class="anchored" data-anchor-id="definition-of-terms">Definition of Terms</h2>
 <ul>
 <li><strong>project</strong> - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.</li>
-<li><strong>volume</strong> - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume. External landscaping may be a separate volume.</li>
-<li><strong>level</strong> - a floor of a building. This <code>MAY</code> include [mezzanine levels], see discussion.</li>
+<li><strong>volume</strong> - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume. Mixed use buildings can also be separated into multiple volumes defined by use-type. External landscaping may be a separate volume.</li>
+<li><strong>level</strong> - a floor of a building. This <code>MAY</code> include <a href="examples/simgle-volume-mezzanine-levels">mezzanine levels, see example.</a></li>
 <li><strong>type</strong> - a specific type of equipment, i.e.&nbsp;an item with a defined model number that can ultimately be purchased.</li>
 <li><strong>instance</strong> - a specific piece of equipment / asset within a project. Every asset is unique. <!-- - **coming soon...** **system_type** - what system type a piece of equipment belongs to (e.g. a radiator would below to LTHW system type)
 - **coming soon...** **system_id** - the specific system that a piece of equipment belongs to. For electrical systems this parameter
@@ -364,10 +364,22 @@ isn't used as typically all electrical appliances will connect back a common poi
 closed mechanical systems (e.g. LTHW systems) it is possible/common to have multiple distinct closed systems within a single project. --></li>
 </ul>
 </section>
-<section id="overview" class="level2">
-<h2 class="anchored" data-anchor-id="overview">Overview</h2>
+<section id="required-properties-and-tags" class="level2">
+<h2 class="anchored" data-anchor-id="required-properties-and-tags">Required Properties and Tags</h2>
 <p>A definition of the properties required for equipment tagging for the digital identification of equipment for use in the design, construction and management of buildings.</p>
-<p>It is designed to be an opinionated superset of the <a href="https://theodi.github.io/BDNS/">BDNS</a> standard. The focus of this standard is to simultaneously provide a unique, machine-readable identifier for each asset as well as a human-readable and intuitive tag that can be used on drawings and other design information. Whilst the BDNS standard <code>MAY</code> be used as is for equipment tagging on drawing and at later stages in asset management systems, the formation of the <code>bdns_tag</code> is not consistent with many project drawing standards. This standard aims to consistently define the properties that <code>MUST</code> be recorded for each asset, and from this information it <code>MUST</code> be possible to generate a compliant <code>bdns_tag</code>. The same properties <code>MUST</code> then be used to create a more flexible / human-readable <code>type_tag</code> and <code>instance_tag</code> for equipment references/tags on drawings. Using this approach it is possible to apply BDNS a compliant methodology on a larger number of projects, improving standardisation and leading to a potential value-add if the projects considers a BDNS compliant asset solution at the later stages of the project.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>On some projects it may make the most sense to use vanilla BDNS throughout all design information and asset management systems. <code>bdns-plus</code> enables projects that require more flexibility in how a tag is displaced also comply with BDNS.</p>
+</div>
+</div>
 <p>In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined. The properties are used to: a) store valuable data about the item, b) create identification tags. By definition, the mimumum information that <code>MUST</code> be recorded is:</p>
 <table class="caption-top table">
 <colgroup>
@@ -414,9 +426,9 @@ closed mechanical systems (e.g. LTHW systems) it is possible/common to have mult
 <td>+ve integer. a numerical indentifyer for a specific piece of equipment within a volume and level</td>
 </tr>
 <tr class="odd">
-<td>unique_instance_id</td>
+<td>bdns_id</td>
 <td>Instance</td>
-<td>+ve integer. calculated value from other instance parameters. used to create bdns tag</td>
+<td>+ve integer. calculated value from other instance parameters. combined with abbreviation to create a bdns tag</td>
 </tr>
 <tr class="even">
 <td>instance_extra</td>
@@ -427,29 +439,14 @@ closed mechanical systems (e.g. LTHW systems) it is possible/common to have mult
 </table>
 <!-- system_type
 system_id -->
+<p>Tagging properties are used to generate the following tags.</p>
 <ul>
-<li><strong>Type</strong> properties would be the same for every identical item of equipment.</li>
-<li><strong>Instance</strong> properties in combination with <code>abbreviation</code>, <code>MUST</code> define a specific/unique instance of equipment within a project.</li>
-<li><code>volume</code> and <code>level</code> integer properties may be mapped to more human-readable codes, when this is done the mappings <code>MUST</code> be provided to the project teams.</li>
-</ul>
-<p>Tagging properties are used to generate:</p>
-<ul>
-<li>a <strong>type tag</strong>. to indicate the type of a given asset/piece of equipment.
-<ul>
-<li>this is unique to the equipemnt type only, there may be many instances of this type in a building.</li>
-<li>as an example, this is typically used on lighting layouts where many luminaires of the same type are used.</li>
-</ul></li>
-<li>a <strong>instance tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
-<ul>
-<li>it is directly interchangeable with the bdns tag (and <code>MAY</code> be the same).</li>
-<li>its focus is on legibility and ease of use for humans.</li>
-</ul></li>
 <li>a <strong>BDNS tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
 <ul>
 <li>its focus is on legibility and ease of use for humans and machines.</li>
 </ul></li>
 </ul>
-<p>The way that type tags, instance tags and bdns tags are build <code>SHOULD</code> be the same for every type of equipment in a project. User <code>MAY</code>, but <code>SHOULD NOT</code> choose to have different tagging methodolgies for specific types of equipment. When this is done they <code>MUST</code> define a <a href="tags#Custom-Tags-for-Specific-Equipment-Types">custom tag definition</a> and scope that is shared with the project team.</p>
+<p>The way that type tags, instance tags and bdns tags are build <code>SHOULD</code> be the same for every type of equipment in a project. Users <code>MAY</code>, but <code>SHOULD NOT</code> choose to have different tagging methodolgies for specific types of equipment. When this is done they <code>MUST</code> define a <a href="tags#Custom-Tags-for-Specific-Equipment-Types">custom tag definition</a> and <a href="tags#How-to-Define-the-Scope-of-a-Custom-Tag">scope</a> that is shared with the project team.</p>
 </section>
 <section id="type-tag" class="level2">
 <h2 class="anchored" data-anchor-id="type-tag">Type Tag</h2>
@@ -473,8 +470,8 @@ system_id -->
 </section>
 <section id="instance-tag" class="level2">
 <h2 class="anchored" data-anchor-id="instance-tag">Instance Tag</h2>
-<p>The instance tag is used to indicate a specific instance of equipment within a project. For a given unique item of equipment in a project, the <code>instance_tag</code> <code>MUST</code> be unique. The <code>instance_tag</code> <code>SHOULD</code> indicate the equipment <code>abbreviation</code>, the <code>volume</code>, <code>level</code> and <code>volume_level_instance</code>. The <code>instance_tag</code> <code>MAY</code> be the same as the <code>bdns_tag</code>.</p>
-<p>Extra information about the equipment instance <code>MAY</code> be stored in the <code>instance_extra</code> property. The <code>unique_instance_reference</code> <code>MUST</code> serialisable / deserialisable to / from the <code>bdns_tag</code>. Where there is only 1no project volume, the <code>volume</code> <code>MAY</code> be omitted from the <code>instance_tag</code>.</p>
+<p>The instance tag is used to indicate a specific instance of equipment within a project. For a given unique item of equipment in a project, the <code>instance_tag</code> <code>MUST</code> be unique. The <code>instance_tag</code> <code>SHOULD</code> indicate the equipment <code>abbreviation</code>, the <code>volume</code>, <code>level</code> and <code>volume_level_instance</code>, which when combined <code>MUST</code> be unique for every item of equipment in the project. The <code>instance_tag</code> <code>MAY</code> be the same as the <code>bdns_tag</code>.</p>
+<p>Extra information about the equipment instance <code>MAY</code> be stored in the <code>instance_extra</code> property. Where there is only 1no project volume, the <code>volume</code> <code>MAY</code> be omitted from the <code>instance_tag</code>, see <a href="examples/single-volume">single-volume example</a>.</p>
 <section id="instance_tag-example-using-bdns-plus-defaults" class="level3">
 <h3 class="anchored" data-anchor-id="instance_tag-example-using-bdns-plus-defaults"><code>instance_tag</code> Example using bdns-plus defaults</h3>
 <ul>
@@ -487,7 +484,7 @@ system_id -->
 </section>
 <section id="bdns-tag" class="level2">
 <h2 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h2>
-<p>For a given <code>abbreviation</code>, the <code>volume</code>, <code>level</code> and <code>volume_level_instance</code> <code>SHOULD</code> be combined to create a unique identifier (<code>unique_instance_id</code>) for each piece of equipment. See <a href="serialisation">serialisation</a>. The <code>bdns_tag</code> must take the format defined in the the <a href="https://jgunstone.github.io/BDNS/BDNS_Specification_naming_syntax.html#physical-deviceasset-labels">BDNS Standard</a>, and provided by <code>bdns-plus</code> as default.</p>
+<p>The combination of <code>abbreviation</code> and <code>bdns_id</code> <code>MUST</code> be unique for every item of equipment in a project. The <code>volume</code>, <code>level</code> and <code>volume_level_instance</code> <code>SHOULD</code> be combined to create <code>bdns_id</code> for each piece of equipment, this is the currently the only configuration offered by <code>bdns-plus</code>, see <a href="serialisation">serialisation</a>. The <code>bdns_tag</code> <code>MUST</code> take the format defined in the the <a href="https://jgunstone.github.io/BDNS/BDNS_Specification_naming_syntax.html#physical-deviceasset-labels">BDNS Standard</a>, and provided by <code>bdns-plus</code> as default.</p>
 <section id="bdns_tag-example-using-bdns-plus-defaults" class="level3">
 <h3 class="anchored" data-anchor-id="bdns_tag-example-using-bdns-plus-defaults"><code>bdns_tag</code> Example using bdns-plus defaults</h3>
 <ul>
