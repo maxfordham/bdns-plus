@@ -308,18 +308,11 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#definition-of-terms" id="toc-definition-of-terms" class="nav-link active" data-scroll-target="#definition-of-terms">Definition of Terms</a></li>
-  <li><a href="#required-properties-and-tags" id="toc-required-properties-and-tags" class="nav-link" data-scroll-target="#required-properties-and-tags">Required Properties and Tags</a></li>
-  <li><a href="#type-tag" id="toc-type-tag" class="nav-link" data-scroll-target="#type-tag">Type Tag</a>
+  <li><a href="#required-properties-and-tags" id="toc-required-properties-and-tags" class="nav-link" data-scroll-target="#required-properties-and-tags">Required Properties and Tags</a>
   <ul class="collapse">
-  <li><a href="#type_tag-example-using-bdns-plus-defaults" id="toc-type_tag-example-using-bdns-plus-defaults" class="nav-link" data-scroll-target="#type_tag-example-using-bdns-plus-defaults"><code>type_tag</code> Example using bdns-plus defaults</a></li>
-  </ul></li>
-  <li><a href="#instance-tag" id="toc-instance-tag" class="nav-link" data-scroll-target="#instance-tag">Instance Tag</a>
-  <ul class="collapse">
-  <li><a href="#instance_tag-example-using-bdns-plus-defaults" id="toc-instance_tag-example-using-bdns-plus-defaults" class="nav-link" data-scroll-target="#instance_tag-example-using-bdns-plus-defaults"><code>instance_tag</code> Example using bdns-plus defaults</a></li>
-  </ul></li>
-  <li><a href="#bdns-tag" id="toc-bdns-tag" class="nav-link" data-scroll-target="#bdns-tag">BDNS Tag</a>
-  <ul class="collapse">
-  <li><a href="#bdns_tag-example-using-bdns-plus-defaults" id="toc-bdns_tag-example-using-bdns-plus-defaults" class="nav-link" data-scroll-target="#bdns_tag-example-using-bdns-plus-defaults"><code>bdns_tag</code> Example using bdns-plus defaults</a></li>
+  <li><a href="#type-tag" id="toc-type-tag" class="nav-link" data-scroll-target="#type-tag">Type Tag</a></li>
+  <li><a href="#instance-tag" id="toc-instance-tag" class="nav-link" data-scroll-target="#instance-tag">Instance Tag</a></li>
+  <li><a href="#bdns-tag" id="toc-bdns-tag" class="nav-link" data-scroll-target="#bdns-tag">BDNS Tag</a></li>
   </ul></li>
   <li><a href="#related-work" id="toc-related-work" class="nav-link" data-scroll-target="#related-work">Related Work</a></li>
   </ul>
@@ -377,7 +370,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>On some projects it may make the most sense to use vanilla BDNS throughout all design information and asset management systems. <code>bdns-plus</code> enables projects that require more flexibility in how a tag is displaced also comply with BDNS.</p>
+<p>On some projects it may make the most sense to use vanilla BDNS throughout all design information and asset management systems. <code>bdns-plus</code> enables projects that require more flexibility in how a tag is displayed to also comply with BDNS.</p>
 </div>
 </div>
 <p>In simplest terms, this standard defines that for each item of equipment, its type must be defined and its approximate location must be defined. The properties are used to: a) store valuable data about the item, b) create identification tags. By definition, the mimumum information that <code>MUST</code> be recorded is:</p>
@@ -440,20 +433,25 @@ Note
 <!-- system_type
 system_id -->
 <p>Tagging properties are used to generate the following tags.</p>
-<ul>
-<li>a <strong>BDNS tag</strong>. this is <code>MUST</code> be unique to an individual asset within a project.
-<ul>
-<li>its focus is on legibility and ease of use for humans and machines.</li>
-</ul></li>
-</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
 <p>The way that type tags, instance tags and bdns tags are build <code>SHOULD</code> be the same for every type of equipment in a project. Users <code>MAY</code>, but <code>SHOULD NOT</code> choose to have different tagging methodolgies for specific types of equipment. When this is done they <code>MUST</code> define a <a href="tags#Custom-Tags-for-Specific-Equipment-Types">custom tag definition</a> and <a href="tags#How-to-Define-the-Scope-of-a-Custom-Tag">scope</a> that is shared with the project team.</p>
-</section>
-<section id="type-tag" class="level2">
-<h2 class="anchored" data-anchor-id="type-tag">Type Tag</h2>
+</div>
+</div>
+<section id="type-tag" class="level3">
+<h3 class="anchored" data-anchor-id="type-tag">Type Tag</h3>
 <p>The <code>type_tag</code> is used to indicate the type of a given asset/piece of equipment on design information. For a given Type of equipment, the combination of the <code>abbreviation</code> and <code>type</code> <code>MUST</code> be unique. There <code>MAY</code> be many instances of eqipment of the same Type within a project and therefore many indentical <code>type_tag</code>s. The <code>type</code> and <code>abbreviation</code> parameters <a href="https://theodi.github.io/BDNS/BDNS_Specification_naming_syntax.html#format-1"><code>MUST</code> be combined without a delimiter</a>. Extra information about the equipment type <code>MAY</code> be stored in the <code>type_extra</code> property.</p>
 <p>Users are <code>RECOMMENDED</code> to use the default type tag definition provided by <a href="https://maxfordham.github.io/bdns-plus/">bdns_plus</a>, see <a href="examples/index">default example</a>. Users <code>MAY</code> create custom tag definitions as described in <a href="tags">tags</a>. Where uses create custom tag definitions, these <code>MUST</code> be provided to the design team.</p>
-<section id="type_tag-example-using-bdns-plus-defaults" class="level3">
-<h3 class="anchored" data-anchor-id="type_tag-example-using-bdns-plus-defaults"><code>type_tag</code> Example using bdns-plus defaults</h3>
+<section id="type_tag-example-using-bdns-plus-defaults" class="level4">
+<h4 class="anchored" data-anchor-id="type_tag-example-using-bdns-plus-defaults"><code>type_tag</code> Example using bdns-plus defaults</h4>
 <ul>
 <li><code>abbreviation</code> = <code>LT</code>, <code>type</code> = <code>1</code>, <code>type_extra</code> = <code>E</code>, <code>type_extra_delimiter</code> = <code>/</code>
 <ul>
@@ -468,12 +466,12 @@ system_id -->
 </ul>
 </section>
 </section>
-<section id="instance-tag" class="level2">
-<h2 class="anchored" data-anchor-id="instance-tag">Instance Tag</h2>
+<section id="instance-tag" class="level3">
+<h3 class="anchored" data-anchor-id="instance-tag">Instance Tag</h3>
 <p>The instance tag is used to indicate a specific instance of equipment within a project. For a given unique item of equipment in a project, the <code>instance_tag</code> <code>MUST</code> be unique. The <code>instance_tag</code> <code>SHOULD</code> indicate the equipment <code>abbreviation</code>, the <code>volume</code>, <code>level</code> and <code>volume_level_instance</code>, which when combined <code>MUST</code> be unique for every item of equipment in the project. The <code>instance_tag</code> <code>MAY</code> be the same as the <code>bdns_tag</code>.</p>
 <p>Extra information about the equipment instance <code>MAY</code> be stored in the <code>instance_extra</code> property. Where there is only 1no project volume, the <code>volume</code> <code>MAY</code> be omitted from the <code>instance_tag</code>, see <a href="examples/single-volume">single-volume example</a>.</p>
-<section id="instance_tag-example-using-bdns-plus-defaults" class="level3">
-<h3 class="anchored" data-anchor-id="instance_tag-example-using-bdns-plus-defaults"><code>instance_tag</code> Example using bdns-plus defaults</h3>
+<section id="instance_tag-example-using-bdns-plus-defaults" class="level4">
+<h4 class="anchored" data-anchor-id="instance_tag-example-using-bdns-plus-defaults"><code>instance_tag</code> Example using bdns-plus defaults</h4>
 <ul>
 <li><code>abbreviation</code> = <code>LT</code>, <code>volume</code> = <code>1</code>, <code>level</code> = <code>0</code>, <code>volume_level_instance</code> = <code>1</code>, <code>instance_extra</code> = <code>E</code>
 <ul>
@@ -482,17 +480,18 @@ system_id -->
 </ul>
 </section>
 </section>
-<section id="bdns-tag" class="level2">
-<h2 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h2>
+<section id="bdns-tag" class="level3">
+<h3 class="anchored" data-anchor-id="bdns-tag">BDNS Tag</h3>
 <p>The combination of <code>abbreviation</code> and <code>bdns_id</code> <code>MUST</code> be unique for every item of equipment in a project. The <code>volume</code>, <code>level</code> and <code>volume_level_instance</code> <code>SHOULD</code> be combined to create <code>bdns_id</code> for each piece of equipment, this is the currently the only configuration offered by <code>bdns-plus</code>, see <a href="serialisation">serialisation</a>. The <code>bdns_tag</code> <code>MUST</code> take the format defined in the the <a href="https://jgunstone.github.io/BDNS/BDNS_Specification_naming_syntax.html#physical-deviceasset-labels">BDNS Standard</a>, and provided by <code>bdns-plus</code> as default.</p>
-<section id="bdns_tag-example-using-bdns-plus-defaults" class="level3">
-<h3 class="anchored" data-anchor-id="bdns_tag-example-using-bdns-plus-defaults"><code>bdns_tag</code> Example using bdns-plus defaults</h3>
+<section id="bdns_tag-example-using-bdns-plus-defaults" class="level4">
+<h4 class="anchored" data-anchor-id="bdns_tag-example-using-bdns-plus-defaults"><code>bdns_tag</code> Example using bdns-plus defaults</h4>
 <ul>
 <li><code>abbreviation</code> = <code>LT</code>, <code>volume</code> = <code>1</code>, <code>level</code> = <code>0</code>, <code>volume_level_instance</code> = <code>1</code>, <code>instance_extra</code> = <code>E</code>
 <ul>
 <li>=&gt; <code>instance_tag</code> = <code>LT-1001_E</code></li>
 </ul></li>
 </ul>
+</section>
 </section>
 </section>
 <section id="related-work" class="level2">
