@@ -10,7 +10,9 @@
 
 # %% [markdown]
 """
-With no project configuration, this example generates a 2no volume with 4no levels.
+This is an example from the wild, where the engineers designing the ventilation
+equipment followed a different convention used elsewhere in the project. Whilst this
+is generally discouraged, it is sometimes necessary to accommodate such requirements.
 """
 
 # %%
@@ -75,3 +77,5 @@ config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volum
 config = Config(**config_iref.model_dump() | user_input_config)
 df = gen_project_equipment_data(config=config)
 display_tag_data(df)
+
+# %%

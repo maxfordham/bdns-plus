@@ -133,17 +133,6 @@ def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> tuple[l
     return header, li
 
 
-def gen_data_4levels_1volume() -> list[ITagData]:
-    """Generate data for 4 levels in 1 volume."""
-    from bdns_plus.gen_levels_volumes import gen_levels_config, gen_volumes_config
-
-    config = Config()
-    config.levels = gen_levels_config(4)
-    config.volumes = gen_volumes_config(1)
-
-    return config.bdns_tag.gen_data(config=config, gen_iref=False)
-
-
 def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData]:
     gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
 
@@ -212,11 +201,13 @@ def get_tags(tag_data: TTagData | ITagData, config: Config = None):
     if tag_data.__class__ == TTagData:
         return {
             "type_tag": tag.type,
+            "is_custom": tag.is_custom,
         }
     return {
         "type_tag": tag.type,
         "instance_tag": tag.instance,
         "bdns_tag": tag.bdns,
+        "is_custom": tag.is_custom,
     }
 
 
@@ -236,10 +227,6 @@ def gen_project_equipment_data(config: Config = None):
 
     li = list(itertools.chain.from_iterable(di_.values()))
     di_arrays = {key: [d.get(key, None) for d in li] for key in li[0]}
-    length = len(li)
-    di_arrays["is_custom"] = ["False"] * length
-    di_arrays["is_custom"][0] = "True"
-
     di_arrays = {k: [str(x) if x is not None else "" for x in v] for k, v in di_arrays.items()}
 
     return pl.DataFrame(di_arrays)
