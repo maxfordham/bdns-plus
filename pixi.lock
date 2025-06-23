@@ -696,7 +696,7 @@ packages:
 - pypi: ./
   name: bdns-plus
   version: 0.1.0
-  sha256: 26f0bf2a39298b1469640fd50a4fd671b99b98c705f74f1cb968c3b0159ef8c0
+  sha256: 70cc18a6353e295ef72b9d6fd991a7ad4c0cdc7ef19e6d2a4b5735e8c8c59934
   requires_dist:
   - bsdd>=0.8.2,<0.9
   - pydantic-settings>=2.8.0,<3
