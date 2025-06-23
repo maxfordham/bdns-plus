@@ -59,12 +59,15 @@ package = {features = ["package"], no-default-feature = true}
 
 [tool.pixi.tasks]
 tests = "pytest"
-delete-docs = "rm -r docs/_site"
+delete-docs = { cmd = """rm -r _site
+&& find . -name "*.quarto_ipynb" -type f -delete
+""", cwd = "docs" } 
 
 [tool.pixi.feature.docs.tasks]
 jlab = { cmd = "jupyter lab", cwd = "docs" }
 docs = { cmd = "quarto render .", cwd = "docs" }
 preview = { cmd = "quarto preview .", cwd = "docs" }
+
 
 [tool.pixi.feature.package.tasks]
 build = "hatch build"
