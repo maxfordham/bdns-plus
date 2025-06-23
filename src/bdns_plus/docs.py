@@ -171,7 +171,7 @@ def get_vent_equipment(config_iref: ConfigIref) -> list[ITagData]:
     vent_equipment = batch_gen_idata(
         [
             GenDefinition(abbreviation=["AHU"], types=[1], no_items=1, on_levels=[rf], on_volumes=None),
-            GenDefinition(abbreviation=["MVHR", "TEF"], types=[1], no_items=1, on_levels=None, on_volumes=None),
+            GenDefinition(abbreviation=["MVHR", "TEF"], types=[1, 1], no_items=1, on_levels=None, on_volumes=None),
             GenDefinition(abbreviation=["KEF"], types=[1], no_items=1, on_levels=[gf], on_volumes=[vol1]),
             GenDefinition(abbreviation=["KEF"], types=[2], no_items=1, on_levels=[rf], on_volumes=[vol1]),
         ],
