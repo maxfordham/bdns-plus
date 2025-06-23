@@ -286,6 +286,7 @@ class Config(ConfigTags, ConfigIref):
 
 class GenDefinition(BaseModel):
     abbreviation: AbbreviationsEnum | list[AbbreviationsEnum]
+    types: list[int | None] | None = None
     no_items: int = 1
     on_levels: list | None = None
     on_volumes: list | None = None

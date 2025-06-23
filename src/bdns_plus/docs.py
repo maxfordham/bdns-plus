@@ -137,10 +137,28 @@ def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData
     gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
 
     gen_defs = [
-        GenDefinition(abbreviation=["PB"], no_items=1, on_levels=[gf], on_volumes=None),  # 1 pb in GF
-        GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=None, on_volumes=None),  # 2 dbs / floor
-        GenDefinition(abbreviation=["DB", "EM"], no_items=2, on_levels=[gf], on_volumes=None),  # extras on GF
-        GenDefinition(abbreviation=["EISO"], no_items=1, on_levels=None, on_volumes=None),  # isolator 1 per flor
+        GenDefinition(abbreviation=["PB"], types=[1], no_items=1, on_levels=[gf], on_volumes=None),  # 1 pb in GF
+        GenDefinition(
+            abbreviation=["DB", "EM"],
+            types=[1, 1],
+            no_items=2,
+            on_levels=None,
+            on_volumes=None,
+        ),  # 2 dbs / floor
+        GenDefinition(
+            abbreviation=["DB", "EM"],
+            types=[2, 2],
+            no_items=2,
+            on_levels=[gf],
+            on_volumes=None,
+        ),  # extras on GF
+        GenDefinition(
+            abbreviation=["EISO"],
+            types=[1],
+            no_items=1,
+            on_levels=None,
+            on_volumes=None,
+        ),  # isolator 1 per flor
     ]
 
     return batch_gen_idata(gen_defs, config_iref)
@@ -152,9 +170,10 @@ def get_vent_equipment(config_iref: ConfigIref) -> list[ITagData]:
     vol1 = next(x.code for x in config_iref.volumes if int(x.id) == 1)  # volume 1
     vent_equipment = batch_gen_idata(
         [
-            GenDefinition(abbreviation=["AHU"], no_items=1, on_levels=[rf], on_volumes=None),
-            GenDefinition(abbreviation=["MVHR", "TEF"], no_items=1, on_levels=None, on_volumes=None),
-            GenDefinition(abbreviation=["KEF", "FAN"], no_items=2, on_levels=[gf], on_volumes=[vol1]),
+            GenDefinition(abbreviation=["AHU"], types=[1], no_items=1, on_levels=[rf], on_volumes=None),
+            GenDefinition(abbreviation=["MVHR", "TEF"], types=[1], no_items=1, on_levels=None, on_volumes=None),
+            GenDefinition(abbreviation=["KEF"], types=[1], no_items=1, on_levels=[gf], on_volumes=[vol1]),
+            GenDefinition(abbreviation=["KEF"], types=[2], no_items=1, on_levels=[rf], on_volumes=[vol1]),
         ],
         config_iref,
     )

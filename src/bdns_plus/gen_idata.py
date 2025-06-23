@@ -37,8 +37,34 @@ def gen_idata(
         for x in on_levels:
             for i in range(1, gen_def.no_items + 1):
                 if isinstance(gen_def.abbreviation, list):
-                    for a in gen_def.abbreviation:
-                        items.extend([ITagData(level=x, volume=v, abbreviation=a, level_iref=i)])
+                    if isinstance(gen_def.types, list):
+                        assert len(gen_def.abbreviation) == len(gen_def.types), (
+                            "If abbreviation is a list, types must also be a list of the same length."
+                        )
+                        items.extend(
+                            [
+                                ITagData(
+                                    level=x,
+                                    volume=v,
+                                    abbreviation=a,
+                                    type_reference=t,
+                                    level_iref=i,
+                                )
+                                for a, t in zip(gen_def.abbreviation, gen_def.types, strict=False)
+                            ],
+                        )
+                    else:
+                        for a in gen_def.abbreviation:
+                            items.extend(
+                                [
+                                    ITagData(
+                                        level=x,
+                                        volume=v,
+                                        abbreviation=a,
+                                        level_iref=i,
+                                    ),
+                                ],
+                            )
                 else:
                     items.extend([ITagData(level=x, volume=v, abbreviation=gen_def.abbreviation, level_iref=i)])
 
