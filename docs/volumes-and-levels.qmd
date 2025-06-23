@@ -28,9 +28,10 @@ from bdns_plus.gen_levels_volumes import gen_volumes_config, gen_levels_config
 import pandas as pd
 from IPython.display import display
 
+def mkgrid(df): return DataGrid(df.set_index("id"), column_widths={"name": 100})
+
 _v, _l = gen_volumes_config(), gen_levels_config()
 df_volumes, df_levels = pd.DataFrame(_v[1:], columns = _v[0]), pd.DataFrame(_l[1:], columns = _l[0])
-def mkgrid(df): return DataGrid(df.set_index("id"), column_widths={"name": 100}) #, layout={"width":"40%"}
 gr_volumes, gr_levels = mkgrid(df_volumes), mkgrid(df_levels)
 ```
 
@@ -108,6 +109,8 @@ Setting the levels and volumes explicitly allows users to:
 
 ```{python}
 #| echo: true
+#| layout-ncol: 2
+#| fig-cap-location: top
 
 from bdns_plus.models import Config, to_records
 from bdns_plus.tag import Tag
@@ -124,10 +127,20 @@ _levels = """id,code,name,
 0,GF,Ground Floor,
 1,L1,Level 1,"""
 
-volumes = to_records(list(csv.reader(_volumes.split("\n"))))
-levels = to_records(list(csv.reader(_levels.split("\n"))))
+_v = to_records(list(csv.reader(_volumes.split("\n"))))
+_l = to_records(list(csv.reader(_levels.split("\n"))))
 
-config = Config(volumes=volumes, levels=levels)
+df_volumes, df_levels = pd.DataFrame(_v[1:], columns = _v[0]), pd.DataFrame(_l[1:], columns = _l[0])
+gr_volumes, gr_levels = mkgrid(df_volumes), mkgrid(df_levels)
+
+display(gr_volumes)
+display(gr_levels)
+
+```
+
+```{python}
+#| echo: true
+config = Config(volumes=_v, levels=_l)
 
 equipment_data = {
     "abbreviation": "AHU",
@@ -140,4 +153,3 @@ equipment_data = {
 tag = Tag(equipment_data, config=config)
 display(Markdown(tag.summary))
 ```
-
