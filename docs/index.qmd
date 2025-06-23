@@ -1,6 +1,6 @@
 ---
 toc: true
-title: BDNS-plus (WIP)
+title: BDNS-plus
 ---
 
 {{< var bdns >}} (Building Device Naming Syntax) ➕ **equipment tagging**.
