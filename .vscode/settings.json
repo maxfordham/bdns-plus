@@ -13,5 +13,5 @@
     "ruff.organizeImports": true,
     "ruff.fixAll": true,
     "editor.formatOnSave": true,
-    "editor.defaultFormatter": "charliermarsh.ruff"
+    "editor.defaultFormatter": "charliermarsh.ruff",
 }

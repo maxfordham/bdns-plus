@@ -5,6 +5,8 @@ name: Build docs
 on:
     push:
       branches: [main]
+    pull_request:
+      branches: [main]
 
 jobs:
   build:
@@ -17,7 +19,7 @@ jobs:
             pixi-version: v0.45.0
             cache: true
             cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
-      - run: pixi run build-docs
+      - run: pixi run docs
       - name: Push docs to gh-pages
         uses: JamesIves/github-pages-deploy-action@v4
         with:

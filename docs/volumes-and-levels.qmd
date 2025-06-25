@@ -1,0 +1,156 @@
+---
+toc: true
+execute:
+  echo: false
+title: Volumes & Levels
+---
+
+`bdns-plus` allows a project to define the levels and volumes in use in their project.
+
+## Defaults
+
+::: {.callout-tip}
+Refer to [no-config-multi-volume](examples/index) for a more comprehensive example.
+:::
+
+You see that `levels` and `volumes` are set to `None` by default.
+In the background, `bdns-plus` generates levels and volumes tables supporting
+all numeric combinations where the level can be encoded by 2no integer digits
+and the volume can be encoded by 1no integer digit >= 1. See below.
+
+```{python}
+#| fig-cap: "Volumes"
+#| label: tbl-volumes
+
+import ipywidgets as w
+from ipydatagrid import DataGrid
+from bdns_plus.gen_levels_volumes import gen_volumes_config, gen_levels_config
+import pandas as pd
+from IPython.display import display
+
+def mkgrid(df, **kwargs): return DataGrid(df.set_index("id"), column_widths={"name": 100}, **kwargs)
+
+_v, _l = gen_volumes_config(), gen_levels_config()
+df_volumes, df_levels = pd.DataFrame(_v[1:], columns = _v[0]), pd.DataFrame(_l[1:], columns = _l[0])
+gr_volumes, gr_levels = mkgrid(df_volumes), mkgrid(df_levels)
+```
+
+
+```{python}
+#| layout-ncol: 2
+#| fig-cap-location: top
+
+display(gr_volumes)
+display(gr_levels)
+```
+
+
+The volume "code" and level "code" will be a parameter defined on every placed instance in Revit.
+These codes can then be used to build a tag, and also be used to map to the id and generate a
+BDNS compliant bdns_id.
+
+For example, given the following data:
+
+```{python}
+#| echo: true
+import pandas as pd
+from IPython.display import Markdown
+from bdns_plus.tag import Tag
+
+
+equipment_data = {
+    "abbreviation": "AHU",
+    "type": 2,
+    "level": 1,
+    "volume": 3,
+    "level_iref":1
+}
+tag = Tag(equipment_data)
+display(Markdown(tag.summary))
+```
+
+
+where the level is a -ve number, it is serialised to be (100 - basement level), i.e. B1 = -1 = 99. 
+The default mapping tables above facilitate this to create a compliant BDNS tag:
+
+```{python}
+#| echo: true
+
+equipment_data = {
+    "abbreviation": "AHU",
+    "type": 2,
+    "level": -1,
+    "volume": 1,
+    "level_iref":1
+}
+tag = Tag(equipment_data)
+display(Markdown(tag.summary))
+```
+
+
+## Customising Volumes and Levels
+
+::: {.callout-tip}
+Refer to [custom-volume-and-level-codes](examples/custom-volume-and-level-codes) for a more comprehensive example.
+:::
+
+
+Setting the levels and volumes explicitly allows users to:
+
+- restrict the allowed values to a more limited set, and ensure compliance with that set
+- extend the levels / volumes for extremely large projects 
+(i.e. >90 floors, >9 basement floors, >9 volumes)
+- add custom project encodings for levels and volumes
+   - e.g. define volumes as A, B, C, D rather than numeric
+- add encodings for things like mezzanine levels (see [mezzanine example](examples/simgle-volume-mezzanine-levels))
+   - Note: this is not recommended as when codifying to an integer value for producing the BDNS tag
+     it is impossible to map 1/2 floors (i.e. mezzanines).
+
+
+```{python}
+#| echo: true
+#| layout-ncol: 2
+#| fig-cap-location: top
+
+from bdns_plus.models import Config, to_records
+from bdns_plus.tag import Tag
+import csv
+
+_volumes = """id,code,name
+1,A,Block A
+2,B,Block B
+3,C,Block C"""
+
+
+_levels = """id,code,name
+99,B1,Basement Level
+0,GF,Ground Floor
+1,L1,Level 1"""
+
+_v = to_records(list(csv.reader(_volumes.split("\n"))))
+_l = to_records(list(csv.reader(_levels.split("\n"))))
+
+df_volumes, df_levels = pd.DataFrame(_v), pd.DataFrame(_l)
+layout = dict(height="100px")
+gr_volumes, gr_levels = mkgrid(df_volumes, layout=layout), mkgrid(df_levels, layout=layout)
+
+display(gr_volumes)
+display(gr_levels)
+
+```
+
+```{python}
+#| echo: true
+config = Config(volumes=_v, levels=_l)
+
+equipment_data = {
+    "abbreviation": "AHU",
+    "type": 2,
+    "level": "B1",
+    "volume": "B",
+    "level_iref": 1
+}
+
+tag = Tag(equipment_data, config=config)
+display(Markdown(tag.summary))
+```
