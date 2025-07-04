@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import logging
+from typing import TYPE_CHECKING
 
-from annotated_types import Annotated, Ge
+if TYPE_CHECKING:
+    from annotated_types import Annotated, Ge
 
 logger = logging.getLogger(__name__)
 level_min, level_max, ground = -9, 89, 90
@@ -79,7 +81,8 @@ def check_dict_var(data: dict, key: str):
 def is_level_number_and_level_instance_reference(
     data: dict,
 ) -> None | tuple[int, int]:
-    """Return values for `level_number` and `level_instance_reference`
+    """
+    Return values for `level_number` and `level_instance_reference`
     if they exist and are not None
     """
     if False in [

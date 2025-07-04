@@ -1,0 +1,27 @@
+name: Publish to PyPI
+
+on:
+  push:
+    tags:
+      - '*'
+      - '!rc*'  # Exclude release candidates
+jobs:
+
+  pypi-publish:
+    name: Upload release to PyPI
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: prefix-dev/setup-pixi@v0.8.10
+        with:
+            pixi-version: v0.49.0
+            cache: true
+            cache-write: ${{ github.event_name == 'push' && github.ref_name == 'main' }}
+      - run: pixi run build
+      - name: Publish package distributions to PyPI
+        uses: pypa/gh-action-pypi-publish@release/v1
+    environment:
+      name: pypi
+      url: https://pypi.org/p/bdns-plus
+    permissions:
+      id-token: write  # IMPORTANT: this permission is mandatory for trusted publishing
