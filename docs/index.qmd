@@ -17,8 +17,8 @@ The key words `MUST`, `MUST NOT`, `REQUIRED`, `SHALL`, `SHALL NOT`, `SHOULD`, `S
 ## Definition of Terms
 
 - **project** - a construction project. It may be multi-stage and may have multiple buildings. The client will be the same and typically the project team will be the same.
-- **volume** - a section of a project. A single building project typically has 1 volume. A multi-building project each building will be a volume.
-Mixed use buildings can also be separated into multiple volumes defined by use-type. External landscaping may be a separate volume.
+- **volume** - a zone / collection of adjacent space within a project. A single building project typically has 1 volume. A multi-building project each building will be a volume.
+Mixed use buildings can also be separated into multiple volumes defined by use-type, for example a residential block with a commercial lower floor(s) would be modelled as two volumes. External landscaping may be a separate volume. For the purposes of tagging, equipment can belong to one and only one volume.
 - **level** - a floor of a building. This `MAY` include [mezzanine levels, see example.](examples/simgle-volume-mezzanine-levels)
 - **type** - a specific type of equipment, i.e. an item with a defined model number that can ultimately be purchased.
 - **instance** - a specific piece of equipment / asset within a project. Every asset is unique.
