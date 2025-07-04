@@ -64,6 +64,7 @@ tests = "pytest"
 delete-docs = { cmd = """rm -r _site
 && find . -name "*.quarto_ipynb" -type f -delete
 """, cwd = "docs" } 
+delete-pkg = { cmd = "rm -r dist" }
 
 [tool.pixi.feature.docs.tasks]
 jlab = { cmd = "jupyter lab", cwd = "docs" }
@@ -73,8 +74,6 @@ preview = { cmd = "quarto preview .", cwd = "docs" }
 
 [tool.pixi.feature.package.tasks]
 build = "hatch build"
-# publish = "hatch publish -u __token__ -a <your-pypi-token>"
-# ship  = {depends-on = ["build", "publish"]}
 
 
 

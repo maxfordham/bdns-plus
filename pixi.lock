@@ -691,7 +691,7 @@ packages:
 - pypi: ./
   name: bdns-plus
   version: 0.1.0
-  sha256: a99c00e7a223c0a47d0c1866f515bfbf29c865d80f027afbc1853b6ef2331653
+  sha256: 6304db88a497b7b394fcaa4296584f5abd693e842878a2930475eb4cee048569
   requires_dist:
   - pyrulefilter>=0.5.0,<0.6
   - bsdd>=0.8.2,<0.9
