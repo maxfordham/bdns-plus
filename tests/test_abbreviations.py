@@ -10,4 +10,5 @@ def test_get_bdns_asset_abbreviations():
         "dbo_entity_type",
         "ifc4_3",
         "ifc2x3",
+        "is_ifc_default",
     ]
