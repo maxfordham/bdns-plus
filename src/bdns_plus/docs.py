@@ -4,6 +4,10 @@ Code to document how the tags have been configured.
 Used to generate documentation and custom project spec documents.
 """
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 try:
     import ipywidgets as w
     import pandas as pd
@@ -14,7 +18,10 @@ try:
 
 except ImportError as err:
     e = "great_tables and polars are not installed. Please install them to use this module."
-    raise ImportError(e) from err
+    logger.warning(e)
+    logger.warning(f"ImportError details: {err}")
+    # Optionally, you can still raise the error if you want to halt execution:
+    # raise ImportError(e) from err
 
 import itertools
 import json
@@ -251,7 +258,7 @@ def gen_project_equipment_data(config: Config = None):
     return pl.DataFrame(di_arrays)
 
 
-def display_tag_data(df_tags: pl.DataFrame) -> GT:
+def display_tag_data(df_tags):  # : pl.DataFrame -> GT
     domain = df_tags.select(pl.col("section")).unique().to_series().to_list()
     return (
         GT(df_tags)
