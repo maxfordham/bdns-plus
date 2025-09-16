@@ -126,7 +126,7 @@ def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> tuple[l
         # "type_reference",
         # "type_extra",
         "level",
-        "level_iref",
+        "volume_level_instance",
     ]
     generated = [
         "is_custom",
@@ -274,7 +274,7 @@ def display_tag_data(df_tags):  # : pl.DataFrame -> GT
                 "type_extra",
                 "volume",
                 "level",
-                "level_iref",
+                "volume_level_instance",
                 "instance_extra",
                 "is_custom",
             ],
@@ -286,7 +286,7 @@ def display_tag_data(df_tags):  # : pl.DataFrame -> GT
         )
         .tab_spanner(
             label="instance inputs",
-            columns=["volume", "level", "level_iref", "instance_extra"],
+            columns=["volume", "level", "volume_level_instance", "instance_extra"],
         )
         .tab_spanner(
             label="generated outputs",

@@ -48,7 +48,7 @@ def gen_idata(
                                     volume=v,
                                     abbreviation=a,
                                     type_reference=t,
-                                    level_iref=i,
+                                    volume_level_instance=i,
                                 )
                                 for a, t in zip(gen_def.abbreviation, gen_def.types, strict=False)
                             ],
@@ -61,12 +61,14 @@ def gen_idata(
                                         level=x,
                                         volume=v,
                                         abbreviation=a,
-                                        level_iref=i,
+                                        volume_level_instance=i,
                                     ),
                                 ],
                             )
                 else:
-                    items.extend([ITagData(level=x, volume=v, abbreviation=gen_def.abbreviation, level_iref=i)])
+                    items.extend(
+                        [ITagData(level=x, volume=v, abbreviation=gen_def.abbreviation, volume_level_instance=i)],
+                    )
 
     return items
 

@@ -65,7 +65,7 @@ tag_def = {
             "validator": None,
         },
         {
-            "field_name": "level_iref",
+            "field_name": "volume_level_instance",
             "field_aliases": [
                 "VolumeLevelInstance",
             ],

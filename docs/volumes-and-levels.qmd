@@ -63,7 +63,7 @@ equipment_data = {
     "type": 2,
     "level": 1,
     "volume": 3,
-    "level_iref":1
+    "volume_level_instance":1
 }
 tag = Tag(equipment_data)
 display(Markdown(tag.summary))
@@ -81,7 +81,7 @@ equipment_data = {
     "type": 2,
     "level": -1,
     "volume": 1,
-    "level_iref":1
+    "volume_level_instance":1
 }
 tag = Tag(equipment_data)
 display(Markdown(tag.summary))
@@ -148,7 +148,7 @@ equipment_data = {
     "type": 2,
     "level": "B1",
     "volume": "B",
-    "level_iref": 1
+    "volume_level_instance": 1
 }
 
 tag = Tag(equipment_data, config=config)

@@ -3,7 +3,7 @@ from io import StringIO
 
 from bdns_plus.iref import serialize_iref
 
-# volume,level_number,level_instance_reference,instance_reference
+# volume,level_number,volume_level_instance,instance_reference
 _ = """1,1,1,1011
 1,10,1,1101
 1,0,1,1001
@@ -18,15 +18,15 @@ EXAMPLE_DATA = [[int(x) for x in row] for row in csv.reader(StringIO(_), delimit
 
 
 def test_serialize_iref():
-    volume, level, level_iref, iref = EXAMPLE_DATA[0]
-    _iref = serialize_iref(level, level_iref)
+    volume, level, volume_level_instance, iref = EXAMPLE_DATA[0]
+    _iref = serialize_iref(level, volume_level_instance)
     assert iref == _iref
 
 
 def test_serialize_irefs():
     for x in EXAMPLE_DATA:
-        volume, level, level_iref, iref = x
-        _iref = serialize_iref(level, level_iref, volume=volume)
+        volume, level, volume_level_instance, iref = x
+        _iref = serialize_iref(level, volume_level_instance, volume=volume)
         if iref != _iref:
             continue
         assert iref == _iref

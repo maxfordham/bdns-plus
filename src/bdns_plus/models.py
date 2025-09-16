@@ -95,9 +95,14 @@ class Iref(BaseModel):
         ...,
         validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
     )
-    level_iref: int = Field(  # TODO: volume_level_instance
+    volume_level_instance: int = Field(  # TODO: volume_level_instance
         ...,
-        validation_alias=AliasChoices("level_instance", "LevelInstance", "VolumeLevelInstance", "level_iref"),
+        validation_alias=AliasChoices(
+            "level_instance",
+            "LevelInstance",
+            "VolumeLevelInstance",
+            "volume_level_instance",
+        ),
     )
     volume: int | str = Field(
         1,

@@ -115,7 +115,7 @@ tag_def = {
             "validator": None,
         },
         {
-            "field_name": "level_iref",
+            "field_name": "volume_level_instance",
             "field_aliases": [
                 "VolumeLevelInstance",
             ],
@@ -131,7 +131,7 @@ tag_def = {
 
 itag_def = TagDef(**tag_def)
 
-data = {"abbreviation": "AHU", "level": "GF", "level_iref": 1, "volume": "N"}
+data = {"abbreviation": "AHU", "level": "GF", "volume_level_instance": 1, "volume": "N"}
 tag_string = simple_tag(data, tag=itag_def)
 json_str = data_as_json_markdown(itag_def.model_dump(mode="json"))
 
