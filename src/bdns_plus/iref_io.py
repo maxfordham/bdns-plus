@@ -25,14 +25,14 @@ def gen_levels(low, high):
 
 def serialize_iref(
     level_number: int,
-    level_iref: Annotated[int, Ge(0)],
+    volume_level_instance: Annotated[int, Ge(0)],
     level_min=-9,
     level_max=89,
 ) -> Annotated[int, Ge(0)]:
     """Return instance reference integer (>0) given a level number and level instance"""
     map_level_id = gen_levels(level_min, level_max)
     level_id = map_level_id[level_number]
-    return int(f"{level_id}0{level_iref}")
+    return int(f"{level_id}0{volume_level_instance}")
 
 
 def deserialize_iref(
@@ -42,17 +42,17 @@ def deserialize_iref(
 ) -> tuple[int | None, Annotated[int, Ge(0)] | None]:
     """Return a level number and level instance given a instance reference integer (>0)"""
     try:
-        level_id, level_iref = str(iref).split("0", 1)
+        level_id, volume_level_instance = str(iref).split("0", 1)
     except ValueError:
-        e = f"could not split instance_reference={iref} on '0' to get level_number and level_instance_reference"
+        e = f"could not split instance_reference={iref} on '0' to get level_number and volume_level_instance"
         logger.warning(e)
         return None, None
-    if level_iref[0] == "0":
+    if volume_level_instance[0] == "0":
         level_id = level_id + "0"
-    level_id, level_iref = int(level_id), int(level_iref)
+    level_id, volume_level_instance = int(level_id), int(volume_level_instance)
     map_id_level = {v: k for k, v in gen_levels(level_min, level_max).items()}
     level_number = map_id_level[level_id]
-    return level_number, level_iref
+    return level_number, volume_level_instance
 
 
 def get_next_iref(irefs: list[int], level_number: None | int = None):
@@ -62,10 +62,10 @@ def get_next_iref(irefs: list[int], level_number: None | int = None):
         return serialize_iref(level_number, 1)
     if level_number is not None and len(irefs) > 0:
         _ = [deserialize_iref(iref) for iref in irefs]
-        level_irefs = [x[1] for x in _ if x[0] == level_number]
-        if len(level_irefs) == 0:
+        volume_level_instances = [x[1] for x in _ if x[0] == level_number]
+        if len(volume_level_instances) == 0:
             return serialize_iref(level_number, 1)
-        return serialize_iref(level_number, max(level_irefs) + 1)
+        return serialize_iref(level_number, max(volume_level_instances) + 1)
     e = f"get_next_iref error where irefs={irefs}, level_number={level_number}"
     raise ValueError(e)
 
@@ -78,16 +78,16 @@ def check_dict_var(data: dict, key: str):
         return False
 
 
-def is_level_number_and_level_instance_reference(
+def is_level_number_and_volume_level_instance(
     data: dict,
 ) -> None | tuple[int, int]:
     """
-    Return values for `level_number` and `level_instance_reference`
+    Return values for `level_number` and `volume_level_instance`
     if they exist and are not None
     """
     if False in [
         check_dict_var(data, "level_number"),
-        check_dict_var(data, "level_instance_reference"),
+        check_dict_var(data, "volume_level_instance"),
     ]:
         return False
     return True

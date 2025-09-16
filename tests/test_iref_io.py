@@ -3,7 +3,7 @@ from io import StringIO
 
 from bdns_plus.iref_io import deserialize_iref, get_next_iref, serialize_iref
 
-# level_number,level_instance_reference,instance_reference
+# level_number,volume_level_instance,instance_reference
 _ = """1,1,101
 10,1,1001
 0,1,9001
@@ -18,29 +18,29 @@ EXAMPLE_DATA = [[int(x) for x in row] for row in csv.reader(StringIO(_), delimit
 
 
 def test_serialize_iref():
-    level, level_iref, iref = EXAMPLE_DATA[0]
-    _iref = serialize_iref(level, level_iref)
+    level, volume_level_instance, iref = EXAMPLE_DATA[0]
+    _iref = serialize_iref(level, volume_level_instance)
     assert iref == _iref
 
 
 def test_serialize_irefs():
     for x in EXAMPLE_DATA:
-        level, level_iref, iref = x
-        _iref = serialize_iref(level, level_iref)
+        level, volume_level_instance, iref = x
+        _iref = serialize_iref(level, volume_level_instance)
         assert iref == _iref
 
 
 def test_deserialize_iref():
-    level, level_iref, iref = EXAMPLE_DATA[3]
-    _level, _level_iref = deserialize_iref(iref)
-    assert (level, level_iref) == (_level, _level_iref)
+    level, volume_level_instance, iref = EXAMPLE_DATA[3]
+    _level, _volume_level_instance = deserialize_iref(iref)
+    assert (level, volume_level_instance) == (_level, _volume_level_instance)
 
 
 def test_deserialize_irefs():
     for x in EXAMPLE_DATA:
-        level, level_iref, iref = x
-        _level, _level_iref = deserialize_iref(iref)
-        assert (level, level_iref) == (_level, _level_iref)
+        level, volume_level_instance, iref = x
+        _level, _volume_level_instance = deserialize_iref(iref)
+        assert (level, volume_level_instance) == (_level, _volume_level_instance)
 
 
 def test_get_next_iref():
