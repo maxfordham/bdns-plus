@@ -107,7 +107,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/09/52/7bbfb6e987d9a8a945f22941a8da63e3529465f1b106ef0e26f5df7c780d/pytest_examples-0.0.18-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/14/1b/a298b06749107c305e1fe0f814c6c74aea7b2f1e10989cb30f544a1b3253/python_dotenv-1.2.1-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/84/25/d9db8be44e205a124f6c98bc0324b2bb149b7431c53877fc6d1038dddaf5/pytokens-0.3.0-py3-none-any.whl
-      - pypi: https://files.pythonhosted.org/packages/92/05/434ddd86becd64629c25fb6b4ce7637dd52a45cc4a4415a3008fe61c27b9/ruff-0.14.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pypi: https://files.pythonhosted.org/packages/96/bc/058fe0aefc0fbf0d19614cb6d1a3e2c048f7dc77ca64957f33b12cfdc5ef/ruff-0.14.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/2e/54/647ade08bf0db230bfea292f893923872fd20be6ac6f53b2b936ba839d75/zipp-3.23.0-py3-none-any.whl
       - pypi: ./
   docs:
@@ -369,7 +369,7 @@ environments:
       - pypi: https://files.pythonhosted.org/packages/84/25/d9db8be44e205a124f6c98bc0324b2bb149b7431c53877fc6d1038dddaf5/pytokens-0.3.0-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/ec/87/2dd6e046b003d95a28dd7a133014e3d5b61bb62319291142887203dff70e/reactable-0.1.6-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/bd/3d/22a4eaba214a917c80e04f6025d26143690f0419511e0116508e24b11c9b/regex-2025.11.3-cp314-cp314-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl
-      - pypi: https://files.pythonhosted.org/packages/92/05/434ddd86becd64629c25fb6b4ce7637dd52a45cc4a4415a3008fe61c27b9/ruff-0.14.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+      - pypi: https://files.pythonhosted.org/packages/96/bc/058fe0aefc0fbf0d19614cb6d1a3e2c048f7dc77ca64957f33b12cfdc5ef/ruff-0.14.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
       - pypi: https://files.pythonhosted.org/packages/23/a0/984525d19ca5c8a6c33911a0c164b11490dd0f90ff7fd689f704f84e9a11/sse_starlette-3.0.3-py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/49/58/97655efdfeb5b4eeab85b1fc5d3fa1023661246c2ab2a26ea8e47402d4f2/sseclient_py-1.8.0-py2.py3-none-any.whl
       - pypi: https://files.pythonhosted.org/packages/d9/52/1064f510b141bd54025f9b55105e26d1fa970b9be67ad766380a3c9b74b0/starlette-0.50.0-py3-none-any.whl
@@ -707,14 +707,14 @@ packages:
   timestamp: 1764345096843
 - pypi: ./
   name: bdns-plus
-  version: 0.1.0
-  sha256: 026ecd740beaa8eecef953d2db57609bb884dba13d321406eb3c236f5be0d2f5
+  version: 0.2.1.dev8+ge28566e2b.d20251204
+  sha256: 4aed853772205af86d72c8f3376a0f0ba9f9462badddc2e259b44d595fef5c60
   requires_dist:
-  - pyrulefilter>=0.5.0,<0.6
   - bsdd>=0.8.2,<0.9
-  - pydantic>=2.8.0,<3
-  - pydantic-settings>=2.8.0,<3
   - pycountry>=24.6.1,<25
+  - pydantic-settings>=2.8.0,<3
+  - pydantic>=2.8.0,<3
+  - pyrulefilter>=0.5.0,<0.6
   requires_python: '>=3.11'
   editable: true
 - conda: https://conda.anaconda.org/conda-forge/noarch/beautifulsoup4-4.14.3-pyha770c72_0.conda
@@ -3863,10 +3863,10 @@ packages:
   - pkg:pypi/rpds-py?source=hash-mapping
   size: 376121
   timestamp: 1764543122774
-- pypi: https://files.pythonhosted.org/packages/92/05/434ddd86becd64629c25fb6b4ce7637dd52a45cc4a4415a3008fe61c27b9/ruff-0.14.7-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+- pypi: https://files.pythonhosted.org/packages/96/bc/058fe0aefc0fbf0d19614cb6d1a3e2c048f7dc77ca64957f33b12cfdc5ef/ruff-0.14.8-py3-none-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
   name: ruff
-  version: 0.14.7
-  sha256: 281f0e61a23fcdcffca210591f0f53aafaa15f9025b5b3f9706879aaa8683bc4
+  version: 0.14.8
+  sha256: cb6e8bf7b4f627548daa1b69283dac5a296bfe9ce856703b03130732e20ddfe2
   requires_python: '>=3.7'
 - conda: https://conda.anaconda.org/conda-forge/linux-64/secretstorage-3.4.1-py314hdafbbf9_0.conda
   sha256: f6883925a130126cdbdc62c2f43513db53c9f889cde4abc3bc66542336a87150
