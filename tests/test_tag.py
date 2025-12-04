@@ -57,6 +57,22 @@ def test_tag():
     assert tag.type == "ABBR1"
 
 
+def test_tag_digital_schedules_data():
+    data = {
+        "abbreviation": "ASHP",
+        "type_reference": 1,
+        "function_reference": None,
+        "instance_reference": 2,
+        "volume_reference": "3",
+        "level_reference": "3",
+        "volume_level_instance": 5,
+    }
+    tag = Tag(data)
+    assert tag.bdns == "ASHP-3035"
+    assert tag.instance == "ASHP/3/3/5"
+    assert tag.type == "ASHP1"
+
+
 def test_custom_tag():
     from pyrulefilter import Rule, RuleSet
 

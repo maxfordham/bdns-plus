@@ -15,6 +15,7 @@ try:
     import polars.selectors as cs
     from great_tables import GT, html, loc, style
     from ipydatagrid import DataGrid
+    from IPython.display import Markdown, display
 
 except ImportError as err:
     e = "great_tables and polars are not installed. Please install them to use this module."
@@ -26,7 +27,6 @@ except ImportError as err:
 import itertools
 import json
 import random
-from pprint import pprint
 
 import yaml
 
@@ -347,7 +347,9 @@ def display_config_summary(config: Config):
 def display_config_user_and_generated(user_input: dict, config: Config):
     out = w.Output(layout=w.Layout(width="100%"))
     with out:
-        pprint(user_input)
+        display(
+            Markdown(f"""{json.dumps(user_input, indent=2)}"""),
+        )
 
     return w.Accordion(
         [

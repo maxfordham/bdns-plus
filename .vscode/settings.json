@@ -14,4 +14,7 @@
     "ruff.fixAll": true,
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "charliermarsh.ruff",
+    "python-envs.defaultEnvManager": "renan-r-santos.pixi-code:pixi",
+    "python-envs.pythonProjects": [],
+    "python-envs.defaultPackageManager": "renan-r-santos.pixi-code:pixi",
 }

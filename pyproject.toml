@@ -32,7 +32,7 @@ pytest = "*"
 [tool.pixi.pypi-dependencies]
 bdns_plus = { path = ".", editable = true }
 pytest-examples = { version = ">=0.0.18,<0.0.20" }
-great_tables = { git = "git+https://github.com/posit-dev/great-tables", branch = "main"}   # move to pypi when >v0.17.0 released
+great_tables = { git = "git+https://github.com/posit-dev/great-tables", branch = "main"}   # TODO: move to pypi when >v0.17.0 released
 
 [tool.pixi.feature.docs.dependencies]
 jupyterlab = { version = ">=4.0.0,<5"}
@@ -65,6 +65,7 @@ delete-docs = { cmd = """rm -r _site
 && find . -name "*.quarto_ipynb" -type f -delete
 """, cwd = "docs" } 
 delete-pkg = { cmd = "rm -r dist" }
+open-docs = {cmd="/mnt/c/windows/explorer.exe index.html", cwd="docs/_site"} # this will only work on WSL
 
 [tool.pixi.feature.docs.tasks]
 jlab = { cmd = "jupyter lab", cwd = "docs" }
