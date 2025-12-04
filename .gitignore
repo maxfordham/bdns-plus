@@ -10,3 +10,4 @@ __pycache__
 .ipynb_checkpoints
 docs/.ipynb_checkpoints
 *.quarto_ipynb
+src/bdns_plus/_version.py

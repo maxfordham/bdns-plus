@@ -23,8 +23,11 @@ requires = ["hatchling", "hatch-vcs"]
 [tool.hatch.version]
 source = "vcs"
 
+[tool.hatch.build.hooks.vcs]
+version-file = "src/bdns_plus/_version.py"
+
 [tool.hatch.build.targets.sdist]
-include = ["/src/bdns-plus"]
+include = ["/src/bdns_plus"]
 
 [tool.pixi.project]
 channels = ["conda-forge"]
@@ -38,7 +41,7 @@ pytest = "*"
 [tool.pixi.pypi-dependencies]
 bdns_plus = { path = ".", editable = true }
 pytest-examples = { version = ">=0.0.18,<0.0.20" }
-great_tables = { git = "git+https://github.com/posit-dev/great-tables", branch = "main"}   # TODO: move to pypi when >v0.17.0 released
+great-tables = { version = ">=0.20.0,<0.30.0" }
 
 [tool.pixi.feature.docs.dependencies]
 jupyterlab = { version = ">=4.0.0,<5"}
