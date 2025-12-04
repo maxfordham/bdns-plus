@@ -33,6 +33,7 @@ website:
         - examples/reformat-type-and-instance-tags.py
         - examples/single-volume-mezzanine-levels.py
         - examples/custom-nomenclature-for-vent-equipment.py
+        - examples/J7763-config-example.py
 
 format:
   html:

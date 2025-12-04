@@ -32,6 +32,8 @@ def serialize_iref(  # noqa: C901, PLR0912
         e = f"level_identifier_type={level_indentifier_type} not supported"
         raise ValueError(e)
 
+    map_level, level_lookup_key = convert_codes_type(config.levels, level, map_level)
+
     # get map_volume
     if volume_identifier_type == IdentifierType.code:
         map_volume = {x.code: x.id for x in config.volumes}
@@ -43,16 +45,18 @@ def serialize_iref(  # noqa: C901, PLR0912
         e = f"volume_identifier_type={volume_identifier_type} not supported"
         raise ValueError(e)
 
+    map_volume, volume_lookup_key = convert_codes_type(config.volumes, volume, map_volume)
+
     try:
-        level_id = map_level[level]
+        level_id = map_level[level_lookup_key]
     except KeyError as err:
-        e = f"level={level} not in config.levels (length={len(config.levels)}) with identifier_type={level_indentifier_type}"
+        e = f"level={level_lookup_key} not in config.levels (length={len(config.levels)}) with identifier_type={level_indentifier_type}"
         raise ValueError(e) from err
 
     try:
-        volume_id = map_volume[volume]
+        volume_id = map_volume[volume_lookup_key]
     except KeyError as err:
-        e = f"volume={volume} not in config.volumes (length={len(config.volumes)}) with identifier_type={volume_identifier_type}"
+        e = f"volume={volume_lookup_key} not in config.volumes (length={len(config.volumes)}) with identifier_type={volume_identifier_type}"
         raise ValueError(e) from err
 
     # validator that levels and volumes are compatible
@@ -77,3 +81,11 @@ def serialize_iref(  # noqa: C901, PLR0912
 
 def deserialize_iref(iref: int) -> tuple[int, int]:
     """Return level number and level instance given an instance reference integer."""
+
+
+def convert_codes_type(list_with_codes: list, lookup_key: str | int, mapping: dict) -> tuple[dict, str | int]:
+    """Convert codes in list to strings if any code is a string."""
+    types = {type(x.code) for x in list_with_codes}
+    if str in types:
+        return {str(k): v for k, v in mapping.items()}, str(lookup_key)
+    return mapping, int(lookup_key)

@@ -93,7 +93,16 @@ def default_volumes() -> list[Volume]:
 class Iref(BaseModel):
     level: int | str = Field(
         ...,
-        validation_alias=AliasChoices("level", "level_id", "level_number", "Level", "LevelId", "LevelNumber"),
+        validation_alias=AliasChoices(
+            "level",
+            "level_id",
+            "level_number",
+            "Level",
+            "LevelId",
+            "LevelNumber",
+            "level_reference",
+            "LevelReference",
+        ),
     )
     volume_level_instance: int = Field(  # TODO: volume_level_instance
         ...,
@@ -106,7 +115,16 @@ class Iref(BaseModel):
     )
     volume: int | str = Field(
         1,
-        validation_alias=AliasChoices("volume", "volume_id", "volume_number", "Volume", "VolumeId", "VolumeNumber"),
+        validation_alias=AliasChoices(
+            "volume",
+            "volume_id",
+            "volume_number",
+            "Volume",
+            "VolumeId",
+            "VolumeNumber",
+            "volume_reference",
+            "VolumeReference",
+        ),
     )
     # TODO: allow volume is None and ignore in tag when none.
     #       if zero set to None (e.g. for single volume projects)
