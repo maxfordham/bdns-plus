@@ -93,6 +93,19 @@ def _build_tag(data: dict, tag: TagDef) -> str:
     return s.strip("_/-.")
 
 
+def _build_tag_description(data: dict, tag: TagDef) -> str:
+    """Return tag description."""
+    desc_parts = []
+    for field in tag.fields:
+        value = data.get(field.field_name)
+        if value is None:
+            continue  # go to next field
+        part = f"{field.prefix} {field.field_name} {field.suffix}".strip()
+        desc_parts.append(part)
+    desc = "(" + " ".join(desc_parts).strip("_/-. ") + ")"
+    return desc
+
+
 def simple_tag(
     data: dict | ITagData | TTagData,
     tag: TagDef,
@@ -100,6 +113,14 @@ def simple_tag(
     """Build tag string from data. By default, generates an iref on the fly."""
     tag_data = _get_tag_data(data, tag, gen_iref=False, config=None)
     return _build_tag(tag_data, tag)
+
+
+def simple_tag_with_description(data: dict | ITagData | TTagData, tag: TagDef) -> str:
+    """Build tag string with description from data."""
+    tag_data = _get_tag_data(data, tag, gen_iref=False, config=None)
+    generated_tag = _build_tag(tag_data, tag)
+    description = _build_tag_description(tag_data, tag)
+    return f"{generated_tag} {description}"
 
 
 def build_tag(

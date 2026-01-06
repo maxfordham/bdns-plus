@@ -147,12 +147,37 @@ def type_fields() -> list[dict]:
     ]
 
 
+def type_fields_without_extra() -> list[dict]:
+    return [
+        abbreviation_field(),
+        type_reference_field(),
+    ]
+
+
 def instance_fields(*, include_type: bool = False, include_volume: bool = True) -> list[dict]:
     fields = [
         abbreviation_field(suffix="/"),
         level_field(suffix="/"),
         level_instance_field(suffix="/"),
         instance_extra_field(),
+    ]
+    if include_type and include_volume:
+        fields.insert(1, type_reference_field())
+        fields.insert(2, volume_field(suffix="/"))
+    elif include_type and not include_volume:
+        fields.insert(1, type_reference_field())
+    elif not include_type and include_volume:
+        fields.insert(1, volume_field(suffix="/"))
+    else:
+        pass
+    return fields
+
+
+def instance_fields_without_extra(*, include_type: bool = False, include_volume: bool = True) -> list[dict]:
+    fields = [
+        abbreviation_field(suffix="/"),
+        level_field(suffix="/"),
+        level_instance_field(suffix="/"),
     ]
     if include_type and include_volume:
         fields.insert(1, type_reference_field())
