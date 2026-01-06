@@ -5,13 +5,28 @@ from __future__ import annotations
 import typing as ty
 from enum import Enum
 
-from pydantic import AliasChoices, BaseModel, ConfigDict, Field, ImportString, computed_field, model_validator
+from pydantic import (
+    AliasChoices,
+    BaseModel,
+    ConfigDict,
+    Field,
+    ImportString,
+    RootModel,
+    computed_field,
+    model_validator,
+)
 
 # if ty.TYPE_CHECKING:
 from pyrulefilter import RuleSet
 
 from .abbreviations import get_asset_abbreviations_enum
-from .default_fields import bdns_fields, instance_fields, type_fields
+from .default_fields import (
+    bdns_fields,
+    instance_fields,
+    instance_fields_without_extra,
+    type_fields,
+    type_fields_without_extra,
+)
 from .gen_levels_volumes import gen_levels_config, gen_volumes_config
 
 INSTANCE_REFERENCE_FSTRING = "{volume_id}{level_id}{volume_level_instance}"
@@ -35,7 +50,11 @@ class TagField(BaseModel):
     allow_none: bool = False
     prefix: str = ""
     suffix: str = ""
-    zfill: int | None = None
+    zfill: int | None = Field(
+        None,
+        name="Number of digits (zero-padded)",
+        title="Number of digits (zero-padded)",
+    )
     regex: str | None = None
     validator: ImportString | None = None
 
@@ -65,14 +84,20 @@ class TagType(str, Enum):
 
 
 class _Base(BaseModel):
-    id: int = Field(..., description="Unique integer ID for the tag. Likely used by the database.")
+    id: int = Field(
+        ...,
+        description="Unique integer ID for the tag. Likely used by the database.",
+        name="id",
+    )
     code: str | int = Field(
         ...,
         description="Unique Code for the tag. Likely used in drawing references and when modelling.",
+        name="code",
     )
     name: str = Field(  # name, title ?
         ...,
         description="Unique Description for the tag. Used in reports / legends.",
+        name="name",
     )
 
 
@@ -80,6 +105,24 @@ class Level(_Base): ...
 
 
 class Volume(_Base): ...
+
+
+class Levels(RootModel):
+    root: list[Level] = Field(
+        ...,
+        json_schema_extra={
+            "datagrid_index_name": ["name"],
+        },
+    )
+
+
+class Volumes(RootModel):
+    root: list[Volume] = Field(
+        ...,
+        json_schema_extra={
+            "datagrid_index_name": ["name"],
+        },
+    )
 
 
 def default_levels() -> list[Level]:
@@ -174,7 +217,7 @@ tref_tag_def_description = (
 )
 
 
-class TypeTag(TagDef):
+class TypeTag(TagDef):  # Default Type Tag
     @model_validator(mode="before")
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
@@ -185,13 +228,24 @@ class TypeTag(TagDef):
         return di
 
 
+class TypeTagWithoutExtra(TagDef):  # Default Type Tag
+    @model_validator(mode="before")
+    @classmethod
+    def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
+        di = {}
+        di["name"] = "Type Tag"
+        di["description"] = tref_tag_def_description
+        di["fields"] = type_fields_without_extra()
+        return di
+
+
 iref_tag_def_description = (
     "Default Tag Definition for indentifying a unique instance of equipment within a building. "
     "Expected to be used for adding equipment references to drawings, reports and legends. "
 )
 
 
-class InstanceTag(TagDef):
+class InstanceTag(TagDef):  # Default Instance Tag
     @model_validator(mode="before")
     @classmethod
     def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
@@ -199,6 +253,17 @@ class InstanceTag(TagDef):
         di["name"] = "Instance Tag"
         di["description"] = iref_tag_def_description
         di["fields"] = instance_fields(include_type=False)
+        return di
+
+
+class InstanceTagWithoutExtra(TagDef):
+    @model_validator(mode="before")
+    @classmethod
+    def _set_fields(cls, data: ty.Any) -> dict:  # noqa: ANN401
+        di = {}
+        di["name"] = "Instance Tag"
+        di["description"] = iref_tag_def_description
+        di["fields"] = instance_fields_without_extra(include_type=False)
         return di
 
 
@@ -266,8 +331,12 @@ class CustomTagDef(BaseModel):
 
     description: str | None = None
     scope: RuleSet | None = None
-    i_tag: TagDef | type[TagDef] = InstanceTag()
-    t_tag: TagDef | type[TagDef] = TypeTag()
+    i_tag: TagDef | type[TagDef] | None = None
+    t_tag: TagDef | type[TagDef] | None = None
+
+
+class CustomTagDefList(RootModel):
+    root: list[CustomTagDef]
 
 
 class ConfigTags(BaseModel):
@@ -301,6 +370,13 @@ class ConfigTags(BaseModel):
             data["fields"] = [f for f in data["fields"] if f["field_name"] != "volume"]
             self.i_tag = TagDef(**data)
         return self
+
+
+class BaseConfig(ConfigTags, ConfigIref):
+    """Base Config is an identical model to Config Tags, except without default values for i_tag and t_tag."""
+
+    i_tag: TagDef | type[TagDef] | None = None
+    t_tag: TagDef | type[TagDef] | None = None
 
 
 class Config(ConfigTags, ConfigIref):
