@@ -42,11 +42,6 @@ class BdnsPlusConfig(w.VBox):
                     "code": "ZZ",
                     "name": "Multiple Zones/Sitewide",
                 },
-                {
-                    "id": 91,
-                    "code": "B1",
-                    "name": "Main Building (B1)",
-                },
             ],
             "levels": [
                 {
@@ -127,7 +122,9 @@ class BdnsPlusConfig(w.VBox):
 
         # Custom tags with info message and ShowHide
         self.custom_tags = JsonableModel(CustomTagDefList)
-        self.custom_tags_info = w.HTML("<b>If custom tags are required, please contact the digital design team</b>")
+        self.custom_tags_info = w.HTML(
+            "<b>If custom tags are required, please contact your Group/Project Digital Design Engineer</b>",
+        )
         self.show_hide_custom_tags = ShowHide(
             title="Show custom tags",
             fn_display=lambda: self.custom_tags,
@@ -262,9 +259,9 @@ class BdnsPlusConfig(w.VBox):
         """Update the instance tag example based on current widget values."""
         example_data = {
             "abbreviation": "AHU",
-            "volume": 1,
-            "level": 2,
-            "volume_level_instance": 3,
+            "volume": "ZZ",
+            "level": "XX",
+            "volume_level_instance": 1,
         }
         self._update_tag_example(
             self.i_tag_widget,
@@ -306,9 +303,12 @@ class BdnsPlusConfig(w.VBox):
             if not config_dict:
                 config_dict = {}
 
-            config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=NO_VOLUMES)
+            # Use actual number of volumes from current widget values
+            actual_no_volumes = len(self.volume_grid.value) if self.volume_grid.value else NO_VOLUMES
+            config_iref = gen_config_iref(level_min=LEVEL_MIN, level_max=LEVEL_MAX, no_volumes=actual_no_volumes)
 
-            config = Config(**config_iref.model_dump() | config_dict)
+            # Always show volume in examples, even with single volume (set drop_if_single_volume=False)
+            config = Config(**config_iref.model_dump() | config_dict | {"drop_if_single_volume": False})
 
             # Generate example data
             df = gen_project_equipment_data(config=config)
