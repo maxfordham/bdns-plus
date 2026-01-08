@@ -141,10 +141,20 @@ def get_idata_tag_table(idata: list[ITagData], config: Config = None) -> tuple[l
 
 
 def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData]:
-    gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
+    # Use level with id=0 if it exists, otherwise use first level
+    gf = next(
+        (x.code for x in config_iref.levels if int(x.id) == 0),
+        config_iref.levels[0].code if config_iref.levels else None,
+    )
 
     gen_defs = [
-        GenDefinition(abbreviation=["PB"], types=[1], no_items=1, on_levels=[gf], on_volumes=None),  # 1 pb in GF
+        GenDefinition(
+            abbreviation=["PB"],
+            types=[1],
+            no_items=1,
+            on_levels=[gf] if gf else None,
+            on_volumes=None,
+        ),  # 1 pb in GF
         GenDefinition(
             abbreviation=["DB", "EM"],
             types=[1, 1],
@@ -172,15 +182,35 @@ def get_electrical_distrubution_system(config_iref: ConfigIref) -> list[ITagData
 
 
 def get_vent_equipment(config_iref: ConfigIref) -> list[ITagData]:
-    gf = next(x.code for x in config_iref.levels if int(x.id) == 0)  # ground floor
-    rf = config_iref.levels[-1].code  # roof floor
-    vol1 = next(x.code for x in config_iref.volumes if int(x.id) == 1)  # volume 1
+    # Use level with id=0 if it exists, otherwise use first level
+    gf = next(
+        (x.code for x in config_iref.levels if int(x.id) == 0),
+        config_iref.levels[0].code if config_iref.levels else None,
+    )
+    rf = config_iref.levels[-1].code if config_iref.levels else None  # roof floor
+    # Use volume with id=1 if it exists, otherwise use first volume
+    vol1 = next(
+        (x.code for x in config_iref.volumes if int(x.id) == 1),
+        config_iref.volumes[0].code if config_iref.volumes else None,
+    )
     vent_equipment = batch_gen_idata(
         [
-            GenDefinition(abbreviation=["AHU"], types=[1], no_items=1, on_levels=[rf], on_volumes=None),
+            GenDefinition(abbreviation=["AHU"], types=[1], no_items=1, on_levels=[rf] if rf else None, on_volumes=None),
             GenDefinition(abbreviation=["MVHR", "TEF"], types=[1, 1], no_items=1, on_levels=None, on_volumes=None),
-            GenDefinition(abbreviation=["KEF"], types=[1], no_items=1, on_levels=[gf], on_volumes=[vol1]),
-            GenDefinition(abbreviation=["KEF"], types=[2], no_items=1, on_levels=[rf], on_volumes=[vol1]),
+            GenDefinition(
+                abbreviation=["KEF"],
+                types=[1],
+                no_items=1,
+                on_levels=[gf] if gf else None,
+                on_volumes=[vol1] if vol1 else None,
+            ),
+            GenDefinition(
+                abbreviation=["KEF"],
+                types=[2],
+                no_items=1,
+                on_levels=[rf] if rf else None,
+                on_volumes=[vol1] if vol1 else None,
+            ),
         ],
         config_iref,
     )
