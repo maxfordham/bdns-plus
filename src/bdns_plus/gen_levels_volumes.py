@@ -28,11 +28,28 @@ def gen_level_name(level: int) -> str:
     return f"Level {level}"
 
 
+def gen_level_code_string(level: int) -> str:
+    if level == 0:
+        return "GF"
+    if level < 0:
+        return f"B{-level}"
+    return f"L{level}"
+
+
 def gen_levels_config(*, level_min: int = LEVEL_MIN, level_max: int = LEVEL_MAX) -> list[list]:
     map_code_id = gen_levels(low=level_min, high=level_max)
     map_code_name = {level: gen_level_name(level) for level in map_code_id.keys()}
     header = MODEL_FIELDS
     rows = [[map_code_id[x], x, map_code_name[x]] for x in map_code_id.keys()]
+    return [header, *rows]
+
+
+def gen_levels_config_string_code(*, level_min: int = LEVEL_MIN, level_max: int = LEVEL_MAX) -> list[list]:
+    map_code_id = gen_levels(low=level_min, high=level_max)
+    map_code_name = {level: gen_level_name(level) for level in map_code_id.keys()}
+    map_code_string = {level: gen_level_code_string(level) for level in map_code_id.keys()}
+    header = MODEL_FIELDS
+    rows = [[map_code_id[x], map_code_string[x], map_code_name[x]] for x in map_code_id.keys()]
     return [header, *rows]
 
 
