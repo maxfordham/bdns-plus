@@ -80,7 +80,7 @@ class TestBdnsPlusConfigInitialization:
         assert widget.value is not None
         assert "volumes" in widget.value
         assert "levels" in widget.value
-        assert len(widget.value["volumes"]) == 2
+        assert len(widget.value["volumes"]) == 1
         assert len(widget.value["levels"]) == 2
 
     def test_init_with_default_value(self, default_value):
