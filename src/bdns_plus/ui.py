@@ -68,11 +68,11 @@ class BdnsPlusConfig(w.VBox):
         # Extract value before passing kwargs to super
         initial_value = kwargs.pop("value", None)
 
-        self.volume_grid = EditGrid(Volumes)
+        self.volume_grid = EditGrid(Volumes, column_widths={"name": 100})
         self.volume_grid.ui_add.show_null = True
         self.volume_grid.ui_edit.show_null = True
 
-        self.level_grid = EditGrid(Levels)
+        self.level_grid = EditGrid(Levels, column_widths={"name": 100})
         self.level_grid.ui_add.show_null = True
         self.level_grid.ui_edit.show_null = True
 
